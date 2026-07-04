@@ -10,12 +10,27 @@ from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
 import re
+from urllib.parse import quote_plus, urlparse, urlunparse, unquote
 
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
-mongo_url = os.environ['MONGO_URL']
+def encode_mongo_url(url: str) -> str:
+    """URL-encode special characters in MongoDB URI credentials (RFC 3986)."""
+    parsed = urlparse(url)
+    if parsed.username or parsed.password:
+        username = quote_plus(unquote(parsed.username or ""))
+        password = quote_plus(unquote(parsed.password or ""))
+        # Reconstruct netloc with encoded credentials
+        host = parsed.hostname
+        if parsed.port:
+            host = f"{host}:{parsed.port}"
+        netloc = f"{username}:{password}@{host}"
+        parsed = parsed._replace(netloc=netloc)
+    return urlunparse(parsed)
+
+mongo_url = encode_mongo_url(os.environ['MONGO_URL'])
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
@@ -176,10 +191,8 @@ async def get_courses(category: Optional[str] = None, level: Optional[str] = Non
     return {"count": len(items), "items": items}
 
 def send_email_notification(lead: Lead):
-    import smtplib
-    from email.mime.text import MIMEText
-    from email.header import Header
     import os
+    import requests
 
     smtp_host = os.getenv("SMTP_HOST", "")
     smtp_port = int(os.getenv("SMTP_PORT", 587))
@@ -187,6 +200,9 @@ def send_email_notification(lead: Lead):
     smtp_pass = os.getenv("SMTP_PASSWORD", "")
     smtp_from = os.getenv("SMTP_FROM", "info@studio-form.app")
     smtp_internal_to = os.getenv("SMTP_TO", "info@studio-form.app")
+
+    resend_key = os.getenv("RESEND_API_KEY", "")
+    resend_from = os.getenv("RESEND_FROM", "onboarding@resend.dev")
 
     # ---------- Internal notification email (HTML) ----------
     internal_subject = f"New Lead: {lead.name} ({lead.company or 'No Company'})"
@@ -224,12 +240,67 @@ def send_email_notification(lead: Lead):
     print(f"[Email Notification Log] Internal Email\nFrom: {smtp_from}\nTo: {smtp_internal_to}\nSubject: {internal_subject}\n\n{internal_body_html}")
     print(f"[Email Notification Log] User Confirmation Email\nFrom: {smtp_from}\nTo: {lead.email}\nSubject: {user_subject}\n\n{user_body_html}")
 
+    # ===== Option 1: Send via Resend HTTP API (if key is provided) =====
+    if resend_key:
+        headers = {
+            "Authorization": f"Bearer {resend_key}",
+            "Content-Type": "application/json",
+        }
+        
+        # Send internal lead notification to owner
+        try:
+            r1 = requests.post(
+                "https://api.resend.com/emails",
+                headers=headers,
+                json={
+                    "from": resend_from,
+                    "to": smtp_internal_to,
+                    "subject": internal_subject,
+                    "html": internal_body_html,
+                },
+                timeout=10
+            )
+            if r1.status_code in [200, 201]:
+                print(f"[Resend Notification] Internal email sent successfully: {r1.text}")
+            else:
+                print(f"[Resend Notification Error] Internal email failed. Status: {r1.status_code}, Response: {r1.text}")
+        except Exception as e:
+            print(f"[Resend Notification Exception] Failed to send internal email: {e}")
+            
+        # Send user confirmation email (only if domain is verified, as onboarding@resend.dev has recipient restrictions)
+        if resend_from == "onboarding@resend.dev":
+            print("[Resend Notification] Using 'onboarding@resend.dev'. Skipping sending confirmation email to lead to avoid Resend free tier restrictions.")
+        else:
+            try:
+                r2 = requests.post(
+                    "https://api.resend.com/emails",
+                    headers=headers,
+                    json={
+                        "from": resend_from,
+                        "to": lead.email,
+                        "subject": user_subject,
+                        "html": user_body_html,
+                    },
+                    timeout=10
+                )
+                if r2.status_code in [200, 201]:
+                    print(f"[Resend Notification] User confirmation email sent successfully: {r2.text}")
+                else:
+                    print(f"[Resend Notification Error] User confirmation email failed. Status: {r2.status_code}, Response: {r2.text}")
+            except Exception as e:
+                print(f"[Resend Notification Exception] Failed to send user confirmation email: {e}")
+        return
+
+    # ===== Option 2: Fallback to standard SMTP =====
+    import smtplib
+    from email.mime.text import MIMEText
+    from email.header import Header
+
     if not smtp_host:
-        print("[Email Notification] SMTP_HOST not configured. Notification not sent via email (printed above).")
+        print("[Email Notification] SMTP_HOST and RESEND_API_KEY not configured. Notification not sent via email (printed above).")
         return
 
     try:
-        # Helper to send a single email
         def _send(to_addr: str, subject: str, html_body: str):
             msg = MIMEText(html_body, "html", "utf-8")
             msg["Subject"] = Header(subject, "utf-8")
@@ -248,12 +319,11 @@ def send_email_notification(lead: Lead):
             server.sendmail(smtp_from, [to_addr], msg.as_string())
             server.close()
 
-        # Send both emails
         _send(smtp_internal_to, internal_subject, internal_body_html)
         _send(lead.email, user_subject, user_body_html)
-        print("[Email Notification] Both HTML emails sent successfully.")
+        print("[Email Notification] Both HTML emails sent successfully via SMTP.")
     except Exception as e:
-        print(f"[Email Notification Error] Failed to send email: {e}")
+        print(f"[Email Notification Error] Failed to send email via SMTP: {e}")
 
 
 @api_router.post("/leads")
@@ -291,10 +361,22 @@ async def get_stats():
 
 
 
+cors_origins_str = os.environ.get('CORS_ORIGINS', '*')
+origins = [o.strip() for o in cors_origins_str.split(',') if o.strip()]
+allow_credentials = True
+if not origins or "*" in origins:
+    origins = ["*"]
+    allow_credentials = False
+
 app.add_middleware(
     CORSMiddleware,
+<<<<<<< HEAD
     allow_origins=os.environ["CORS_ORIGINS"].split(","),
     allow_credentials=True,
+=======
+    allow_credentials=allow_credentials,
+    allow_origins=origins,
+>>>>>>> c1f3951e2 (Integrate Resend API with SMTP fallback)
     allow_methods=["*"],
     allow_headers=["*"],
 )
