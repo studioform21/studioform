@@ -289,15 +289,17 @@ async def get_stats():
     }
 
 
-app.include_router(api_router)
+
 
 app.add_middleware(
     CORSMiddleware,
+    allow_origins=os.environ["CORS_ORIGINS"].split(","),
     allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(api_router)
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
