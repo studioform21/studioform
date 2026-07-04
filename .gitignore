@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+.venv/
+venv/
+env/
+ENV/
+
+# Pycache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Production builds
+build/
+dist/
+
+# Environment files (important: contains passwords)
+.env
+.env.local
+.env.production
+
+# Editor/System configs
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
