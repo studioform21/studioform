@@ -370,13 +370,8 @@ if not origins or "*" in origins:
 
 app.add_middleware(
     CORSMiddleware,
-<<<<<<< HEAD
-    allow_origins=os.environ["CORS_ORIGINS"].split(","),
-    allow_credentials=True,
-=======
     allow_credentials=allow_credentials,
     allow_origins=origins,
->>>>>>> c1f3951e2 (Integrate Resend API with SMTP fallback)
     allow_methods=["*"],
     allow_headers=["*"],
 )
