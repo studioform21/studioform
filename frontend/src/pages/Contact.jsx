@@ -1,0 +1,112 @@
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
+import { toast } from "sonner";
+import { http } from "@/lib/api";
+import PageHero from "@/components/PageHero";
+import SectionHeader from "@/components/SectionHeader";
+
+const INTERESTS = ["AI SaaS Platforms", "AI Voice Agents", "Domain LLM", "RAG Chatbots", "AI Automations", "Claude Skills", "AI & ML Workshops", "General"];
+
+export default function Contact() {
+    const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", interest: "AI SaaS Platforms", message: "", source: "contact" });
+    const [busy, setBusy] = useState(false);
+
+    const submit = async (e) => {
+        e.preventDefault();
+        
+        if (form.phone) {
+            const phoneRegex = /^\+?\d{7,15}$/;
+            if (!phoneRegex.test(form.phone)) {
+                toast.error("Please enter a valid phone number (7 to 15 digits, optional '+' prefix).");
+                return;
+            }
+        }
+
+        setBusy(true);
+        try {
+            const r = await http.post("/leads", form);
+            toast.success("Thanks — we'll reach out within 24 hours.");
+            setForm({ ...form, name: "", email: "", phone: "", company: "", message: "" });
+        } catch {
+            toast.error("Submission failed. Try again.");
+        } finally { setBusy(false); }
+    };
+
+    const set = (k) => (e) => setForm(f => ({ ...f, [k]: e.target.value }));
+
+    return (
+        <div>
+            <PageHero command="studioform --contact" eyebrow="Contact" title="Let's build" accent="something." subtitle="Tell us what you want to deploy. We'll come back in 24 hours with a plan." />
+
+            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div className="grid lg:grid-cols-5 gap-6">
+                    <motion.form onSubmit={submit} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="lg:col-span-3 glass-card p-6 sm:p-8 space-y-4" data-testid="contact-form">
+                        <div className="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label className="block text-xs font-mono uppercase text-white/40 mb-2">Name</label>
+                                <input data-testid="contact-name" required value={form.name} onChange={set("name")} className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 focus:border-brand-orange/60 outline-none" />
+                            </div>
+                            <div>
+                                <label className="block text-xs font-mono uppercase text-white/40 mb-2">Work Email</label>
+                                <input data-testid="contact-email" type="email" required value={form.email} onChange={set("email")} className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 focus:border-brand-orange/60 outline-none" />
+                            </div>
+                        </div>
+                        <div className="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label className="block text-xs font-mono uppercase text-white/40 mb-2">Phone</label>
+                                <input data-testid="contact-phone" value={form.phone} onChange={set("phone")} className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 focus:border-brand-orange/60 outline-none" />
+                            </div>
+                            <div>
+                                <label className="block text-xs font-mono uppercase text-white/40 mb-2">Company</label>
+                                <input data-testid="contact-company" value={form.company} onChange={set("company")} className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 focus:border-brand-orange/60 outline-none" />
+                            </div>
+                        </div>
+                        <div>
+                            <label className="block text-xs font-mono uppercase text-white/40 mb-2">I'm interested in</label>
+                            <div className="flex flex-wrap gap-2">
+                                {INTERESTS.map(it => (
+                                    <button type="button" key={it} onClick={() => setForm(f => ({ ...f, interest: it }))} className={`px-3 py-1.5 rounded-full text-xs font-mono border transition ${form.interest === it ? "bg-brand-orange text-black border-brand-orange" : "border-white/10 text-white/70 hover:border-brand-orange/40"}`} data-testid={`interest-${it.replace(/s+/g, '-')}`}>{it}</button>
+                                ))}
+                            </div>
+                        </div>
+                        <div>
+                            <label className="block text-xs font-mono uppercase text-white/40 mb-2">What do you want to build?</label>
+                            <textarea data-testid="contact-message" required rows={5} value={form.message} onChange={set("message")} className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 focus:border-brand-orange/60 outline-none" />
+                        </div>
+                        <button type="submit" disabled={busy} data-testid="contact-submit" className="w-full px-6 py-3 rounded-full bg-brand-orange text-black font-medium hover:brightness-110 disabled:opacity-50">
+                            {busy ? "Sending..." : "Send Message"}
+                        </button>
+                        <p className="text-[11px] text-white/40 font-mono">$ studioform --submit → we reply within 24 hours, Mon–Fri.</p>
+                    </motion.form>
+
+                    <div className="lg:col-span-2 space-y-4">
+                        {[{ Icon: Mail, label: "Email", value: "info@studio-form.app" },
+                        { Icon: Phone, label: "Landline", value: "+91 731 408 6183" },
+                        { Icon: MapPin, label: "Studio HQ", value: "Indore" },
+                        ].map(({ Icon, label, value }) => (
+                            <div key={label} className="glass-card p-5 flex items-center gap-4">
+                                <div className="w-10 h-10 rounded-xl bg-brand-orange/10 border border-brand-orange/30 flex items-center justify-center text-brand-orange"><Icon size={18} /></div>
+                                <div>
+                                    <div className="text-xs font-mono uppercase text-white/40">{label}</div>
+                                    <div className="font-display font-bold">{value}</div>
+                                </div>
+                            </div>
+                        ))}
+                        <div className="glass-card aspect-[4/3]">
+                            <iframe
+                                src="https://www.google.com/maps?q=Indore,India&output=embed"
+                                width="100%"
+                                height="100%"
+                                style={{ border: 0 }}
+                                allowFullScreen
+                                loading="lazy"
+                                title="Indore Map"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    );
+}
