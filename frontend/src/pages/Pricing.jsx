@@ -9,7 +9,7 @@ const PRICING_STRUCTURED_DATA = {
     "@type": "WebPage",
     "name": "AI Services Pricing | Studio Form",
     "description": "Transparent pricing for Studio Form AI voice agents, custom LLMs, RAG chatbots, and enterprise automation integrations.",
-    "url": "https://studio-form.app/pricing"
+    "url": "https://www.studioform.app/pricing"
 };
 
 const TIERS = [

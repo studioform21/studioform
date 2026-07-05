@@ -35,7 +35,7 @@ const BLOG_ARTICLES = {
             "headline": "GPT-5 Launches with Reasoning Bands",
             "datePublished": "2026-02-08T00:00:00Z",
             "author": { "@type": "Person", "name": "Studio Form Research" },
-            "publisher": { "@type": "Organization", "name": "Studio Form", "url": "https://studio-form.app" }
+            "publisher": { "@type": "Organization", "name": "Studio Form", "url": "https://www.studioform.app" }
         }
     },
     "marathi-voice-agent-playbook": {
@@ -66,7 +66,7 @@ const BLOG_ARTICLES = {
             "headline": "Building a Marathi Voice Agent: Playbook",
             "datePublished": "2026-01-06T00:00:00Z",
             "author": { "@type": "Person", "name": "Sarthak" },
-            "publisher": { "@type": "Organization", "name": "Studio Form", "url": "https://studio-form.app" }
+            "publisher": { "@type": "Organization", "name": "Studio Form", "url": "https://www.studioform.app" }
         }
     },
     "rbi-ai-regulation": {
@@ -97,7 +97,7 @@ const BLOG_ARTICLES = {
             "headline": "RBI's Draft AI Regulation: A Pragmatic BFSI Checklist",
             "datePublished": "2026-01-12T00:00:00Z",
             "author": { "@type": "Person", "name": "Compliance Operations" },
-            "publisher": { "@type": "Organization", "name": "Studio Form", "url": "https://studio-form.app" }
+            "publisher": { "@type": "Organization", "name": "Studio Form", "url": "https://www.studioform.app" }
         }
     }
 };

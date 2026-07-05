@@ -56,7 +56,7 @@ export default function Docs() {
         "@type": "TechArticle",
         "headline": doc.title,
         "description": doc.body,
-        "url": `https://studio-form.app/docs#${activeId}`,
+        "url": `https://www.studioform.app/docs#${activeId}`,
         "author": {
             "@type": "Organization",
             "name": "Studio Form"

@@ -12,7 +12,7 @@ const AUTOMATION_STRUCTURED_DATA = {
     "@type": "CollectionPage",
     "name": "AI Automation Workflows | Studio Form",
     "description": "Browse and deploy from the world's largest catalog of 10,000+ agentic AI automation workflows across sales, finance, support, HR, and ops.",
-    "url": "https://studio-form.app/ai-automation"
+    "url": "https://www.studioform.app/ai-automation"
 };
 
 const WORKFLOWS = [

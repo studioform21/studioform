@@ -14,7 +14,7 @@ const ABOUT_STRUCTURED_DATA = {
     "publisher": {
         "@type": "Organization",
         "name": "Studio Form",
-        "url": "https://studio-form.app"
+        "url": "https://www.studioform.app"
     }
 };
 

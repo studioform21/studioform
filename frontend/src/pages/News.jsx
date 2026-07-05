@@ -11,11 +11,11 @@ const NEWS_STRUCTURED_DATA = {
     "@type": "NewsMediaOrganization",
     "name": "Studio Form Media House",
     "description": "Daily coverage of AI shipments, emerging research, policy, and insights from the frontlines of agentic AI development.",
-    "url": "https://studio-form.app/ai-news",
+    "url": "https://www.studioform.app/ai-news",
     "parentOrganization": {
         "@type": "Organization",
         "name": "Studio Form",
-        "url": "https://studio-form.app"
+        "url": "https://www.studioform.app"
     }
 };
 

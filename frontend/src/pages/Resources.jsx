@@ -76,7 +76,7 @@ export default function Resources() {
         "@type": "WebPage",
         "name": `${res.title} | Studio Form Resources`,
         "description": res.desc,
-        "url": `https://studio-form.app/resources/${resourceId}`
+        "url": `https://www.studioform.app/resources/${resourceId}`
     };
 
     // Calculate ROI

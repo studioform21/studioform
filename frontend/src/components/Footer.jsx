@@ -112,7 +112,7 @@ export default function Footer() {
                     <div className="flex items-center gap-2 font-mono text-[11px] text-white/60">
                         <span className="pulse-dot" /> all systems operational
                         <span className="text-white/20">|</span>
-                        <Mail size={12} /> info@studio-form.app
+                        <Mail size={12} /> info@studioform.app
                     </div>
                 </div>
             </div>

@@ -198,8 +198,8 @@ def send_email_notification(lead: Lead):
     smtp_port = int(os.getenv("SMTP_PORT", 587))
     smtp_user = os.getenv("SMTP_USER", "")
     smtp_pass = os.getenv("SMTP_PASSWORD", "")
-    smtp_from = os.getenv("SMTP_FROM", "info@studio-form.app")
-    smtp_internal_to = os.getenv("SMTP_TO", "info@studio-form.app")
+    smtp_from = os.getenv("SMTP_FROM", "info@studioform.app")
+    smtp_internal_to = os.getenv("SMTP_TO", "info@studioform.app")
 
     resend_key = os.getenv("RESEND_API_KEY", "")
     resend_from = os.getenv("RESEND_FROM", "onboarding@resend.dev")

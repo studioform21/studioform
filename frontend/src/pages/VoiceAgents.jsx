@@ -64,7 +64,7 @@ const VOICE_AGENTS_STRUCTURED_DATA = {
     "provider": {
         "@type": "Organization",
         "name": "Studio Form",
-        "url": "https://studio-form.app"
+        "url": "https://www.studioform.app"
     }
 };
 

@@ -16,7 +16,7 @@ const UNIVERSITY_STRUCTURED_DATA = {
     "@type": "EducationalOrganization",
     "name": "Studio Form AI University",
     "description": "Learn AI and ML from people who ship code. 100+ courses across 12+ tracks covering ML, NLP, RAG, speech, and autonomous agents.",
-    "url": "https://studio-form.app/ai-university"
+    "url": "https://www.studioform.app/ai-university"
 };
 
 const GROWTH = Array.from({ length: 12 }).map((_, i) => ({ m: ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"][i], v: 20 + i * 8 + Math.round(Math.random() * 5) }));

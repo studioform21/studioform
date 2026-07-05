@@ -14,7 +14,7 @@ export default function SEOMeta({
     faqs = []
 }) {
     const location = useLocation();
-    const siteUrl = "https://studio-form.app";
+    const siteUrl = "https://www.studioform.app";
     const currentUrl = `${siteUrl}${location.pathname}`;
     const canonical = canonicalUrl || currentUrl;
 

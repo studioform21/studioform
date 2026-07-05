@@ -194,7 +194,7 @@ export default function CaseStudies() {
         "@type": "CollectionPage",
         "name": "AI Case Studies | Studio Form",
         "description": "Read real-world case studies detailing business outcomes, saved hours, and cost reductions achieved with custom AI systems.",
-        "url": "https://studio-form.app/case-studies"
+        "url": "https://www.studioform.app/case-studies"
     };
 
     return (

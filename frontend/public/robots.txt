@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://studio-form.app/sitemap.xml
+Sitemap: https://www.studioform.app/sitemap.xml

@@ -14,7 +14,7 @@ const PRODUCTS_STRUCTURED_DATA = {
     "@type": "CollectionPage",
     "name": "AI SaaS Platforms | Studio Form",
     "description": "Browse Studio Form's portfolio of 60+ enterprise-ready AI SaaS platforms across 12+ industries, including logistics, healthcare, aviation, and legal.",
-    "url": "https://studio-form.app/products"
+    "url": "https://www.studioform.app/products"
 };
 
 export default function Products() {

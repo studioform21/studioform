@@ -72,16 +72,16 @@ const HOME_STRUCTURED_DATA = {
     "@graph": [
         {
             "@type": "Organization",
-            "@id": "https://studio-form.app/#organization",
+            "@id": "https://www.studioform.app/#organization",
             "name": "Studio Form",
-            "url": "https://studio-form.app",
+            "url": "https://www.studioform.app",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://studio-form.app/logo_dark.png",
+                "url": "https://www.studioform.app/logo_dark.png",
                 "caption": "Studio Form Logo"
             },
             "description": "India's pioneering agentic AI company. We build autonomous AI agents, voice systems, domain LLMs, and automation workflows that actually ship.",
-            "email": "legal@studio-form.app",
+            "email": "legal@studioform.app",
             "telephone": "+917300000000",
             "address": {
                 "@type": "PostalAddress",
@@ -100,7 +100,7 @@ const HOME_STRUCTURED_DATA = {
             "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
-                "email": "legal@studio-form.app",
+                "email": "legal@studioform.app",
                 "telephone": "+917300000000"
             },
             "sameAs": [
@@ -111,18 +111,18 @@ const HOME_STRUCTURED_DATA = {
         },
         {
             "@type": "WebSite",
-            "@id": "https://studio-form.app/#website",
-            "url": "https://studio-form.app",
+            "@id": "https://www.studioform.app/#website",
+            "url": "https://www.studioform.app",
             "name": "Studio Form",
             "description": "Building the Fabric of Future Intelligence. India's pioneering agentic AI company.",
             "publisher": {
-                "@id": "https://studio-form.app/#organization"
+                "@id": "https://www.studioform.app/#organization"
             },
             "potentialAction": {
                 "@type": "SearchAction",
                 "target": {
                     "@type": "EntryPoint",
-                    "urlTemplate": "https://studio-form.app/services/ai-agents?q={search_term_string}"
+                    "urlTemplate": "https://www.studioform.app/services/ai-agents?q={search_term_string}"
                 },
                 "query-input": "required name=search_term_string"
             }

@@ -13,7 +13,7 @@ const TEAM_STRUCTURED_DATA = {
     "@type": "AboutPage",
     "name": "Studio Form Team",
     "description": "Meet the team of builders, founders, and engineers at Studio Form behind India's pioneering agentic AI and voice systems.",
-    "url": "https://studio-form.app/team"
+    "url": "https://www.studioform.app/team"
 };
 
 const LEADERS = [
@@ -100,7 +100,7 @@ export default function Team() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
                     <div className="glass-card p-6 flex items-center gap-4">
                         <Mail className="text-brand-orange" size={20} />
-                        <div><div className="text-xs font-mono text-white/40">Press &amp; PR</div><div className="font-display font-bold">info@studio-form.app</div></div>
+                        <div><div className="text-xs font-mono text-white/40">Press &amp; PR</div><div className="font-display font-bold">info@studioform.app</div></div>
                     </div>
                     <div className="glass-card p-6 flex items-center gap-4">
                         <Phone className="text-brand-orange" size={20} />

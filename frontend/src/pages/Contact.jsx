@@ -12,7 +12,7 @@ const CONTACT_STRUCTURED_DATA = {
     "@type": "ContactPage",
     "name": "Contact Studio Form",
     "description": "Get in touch with Studio Form to book a demo, schedule AI workshops, or request custom enterprise AI deployments.",
-    "url": "https://studio-form.app/contact"
+    "url": "https://www.studioform.app/contact"
 };
 
 const INTERESTS = ["AI SaaS Platforms", "AI Voice Agents", "Domain LLM", "RAG Chatbots", "AI Automations", "Claude Skills", "AI & ML Workshops", "General"];
@@ -96,7 +96,7 @@ export default function Contact() {
                     </motion.form>
 
                     <div className="lg:col-span-2 space-y-4">
-                        {[{ Icon: Mail, label: "Email", value: "info@studio-form.app" },
+                        {[{ Icon: Mail, label: "Email", value: "info@studioform.app" },
                         { Icon: Phone, label: "Landline", value: "+91 731 408 6183" },
                         { Icon: MapPin, label: "Studio HQ", value: "Indore" },
                         ].map(({ Icon, label, value }) => (
