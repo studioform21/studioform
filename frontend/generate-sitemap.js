@@ -14,7 +14,9 @@ const STATIC_ROUTES = [
     "docs",
     "privacy",
     "terms",
-    "refund"
+    "refund",
+    "shipping",
+    "cancellation"
 ];
 
 const SERVICES = [

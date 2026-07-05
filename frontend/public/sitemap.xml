@@ -79,6 +79,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://studio-form.app/shipping</loc>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://studio-form.app/cancellation</loc>
+    <lastmod>2026-07-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://studio-form.app/services/ai-agents</loc>
     <lastmod>2026-07-05</lastmod>
     <changefreq>weekly</changefreq>

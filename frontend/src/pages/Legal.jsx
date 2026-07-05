@@ -17,6 +17,16 @@ const LEGAL_META = {
         title: "Refund Policy",
         desc: "Review Studio Form's Refund Policy, cancellation terms, cooling-off window, and refund eligibility.",
         keywords: "refund policy, cancellation policy, subscription refund, billing queries"
+    },
+    shipping: {
+        title: "Shipping & Delivery Policy",
+        desc: "Review Studio Form's digital delivery and service activation guidelines.",
+        keywords: "shipping policy, delivery policy, digital delivery, service activation"
+    },
+    cancellation: {
+        title: "Cancellation Policy",
+        desc: "Review how to cancel subscriptions, active plans, or custom service contracts with Studio Form.",
+        keywords: "cancellation policy, terminate subscription, cancel plan"
     }
 };
 
@@ -65,6 +75,26 @@ const COPY = {
             ["Pro-rata refunds", "For annual subscriptions cancelled mid-term, we issue a pro-rata refund on the unused months minus a 10% administrative fee."],
             ["Non-refundable items", "Custom development engagements, GPU reservations, and education programs that have started are non-refundable."],
             ["How to claim", "Email billing@studio-form.app with your order ID. We process verified refunds within 7 working days."],
+        ],
+    },
+    shipping: {
+        title: "Shipping &",
+        accent: "Delivery.",
+        cmd: "studioform --shipping",
+        body: [
+            ["Digital Delivery", "Since all products and services provided by Studio Form are digital software-as-a-service (SaaS) platforms, custom workflow scripts, or API integrations, no physical shipping takes place."],
+            ["Activation Timeline", "Self-serve SaaS plans are activated immediately upon successful payment confirmation. Custom voice agents, databases, and ML models are delivered according to agreed timeline structures (typically 2-4 weeks)."],
+            ["Access Credentials", "Login details, API keys, and private cluster keys are dispatched electronically to your registered workspace email address."],
+        ],
+    },
+    cancellation: {
+        title: "Cancellation",
+        accent: "Policy.",
+        cmd: "studioform --cancellation",
+        body: [
+            ["How to Cancel", "You can cancel your subscription at any time via your account billing dashboard, or by writing to support@studio-form.app."],
+            ["Effect of Cancellation", "Upon cancellation, your plan remains active until the end of your current billing period. No additional recurring charges will be generated."],
+            ["Custom Engagements", "Cancellation terms for dedicated GPU clusters, model fine-tuning contracts, and workshops are governed by their respective custom Statement of Work (SOW)."],
         ],
     },
 };

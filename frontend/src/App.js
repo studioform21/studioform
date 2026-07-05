@@ -77,6 +77,8 @@ function App() {
                         <Route path="/privacy" element={<Legal kind="privacy" />} />
                         <Route path="/terms" element={<Legal kind="terms" />} />
                         <Route path="/refund" element={<Legal kind="refund" />} />
+                        <Route path="/shipping" element={<Legal kind="shipping" />} />
+                        <Route path="/cancellation" element={<Legal kind="cancellation" />} />
                         <Route path="*" element={<Home />} />
                     </Routes>
                 </main>

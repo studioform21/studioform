@@ -34,7 +34,9 @@ const COLS = [
             ["Contact", "/contact"],
             ["Privacy", "/privacy"],
             ["Terms", "/terms"],
-            ["Refund Policy", "/refund"]
+            ["Refund Policy", "/refund"],
+            ["Shipping Policy", "/shipping"],
+            ["Cancellation Policy", "/cancellation"]
         ]
     }
 ];
