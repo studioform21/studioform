@@ -359,7 +359,7 @@ async def get_stats():
     }
 
 
-
+app.include_router(api_router)
 
 cors_origins_str = os.environ.get('CORS_ORIGINS', '*')
 origins = [o.strip() for o in cors_origins_str.split(',') if o.strip()]
@@ -375,8 +375,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-app.include_router(api_router)
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
