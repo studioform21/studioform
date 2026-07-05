@@ -32,6 +32,7 @@ const COLS = [
             ["About", "/about"],
             ["Team", "/team"],
             ["Contact", "/contact"],
+            ["Changelog", "/changelog"],
             ["Privacy", "/privacy"],
             ["Terms", "/terms"],
             ["Refund Policy", "/refund"],
@@ -82,6 +83,9 @@ export default function Footer() {
                                 {busy ? "..." : "Subscribe"}
                             </button>
                         </form>
+                        <p className="text-[10px] text-white/40 font-mono pt-1">
+                            By subscribing, you agree to our <Link to="/privacy" className="underline hover:text-brand-orange">Privacy Policy</Link> under the DPDP Act, 2023.
+                        </p>
                         <div className="flex items-center gap-3 pt-3">
                             {[Twitter, Linkedin, Youtube, Github].map((Icon, i) => (
                                 <a key={i} href="#" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/70 hover:text-brand-orange hover:border-brand-orange/40 transition">

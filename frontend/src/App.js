@@ -24,6 +24,9 @@ import IndustryPage from "@/pages/IndustryPage";
 import Resources from "@/pages/Resources";
 import Docs from "@/pages/Docs";
 import BlogPost from "@/pages/BlogPost";
+import Changelog from "@/pages/Changelog";
+import NotFound from "@/pages/NotFound";
+import CookieConsent from "@/components/CookieConsent";
 
 function App() {
     return (
@@ -73,16 +76,18 @@ function App() {
                         <Route path="/blog/:slug" element={<BlogPost />} />
                         <Route path="/ai-news/:slug" element={<BlogPost />} />
                         <Route path="/docs" element={<Docs />} />
+                        <Route path="/changelog" element={<Changelog />} />
                         
                         <Route path="/privacy" element={<Legal kind="privacy" />} />
                         <Route path="/terms" element={<Legal kind="terms" />} />
                         <Route path="/refund" element={<Legal kind="refund" />} />
                         <Route path="/shipping" element={<Legal kind="shipping" />} />
                         <Route path="/cancellation" element={<Legal kind="cancellation" />} />
-                        <Route path="*" element={<Home />} />
+                        <Route path="*" element={<NotFound />} />
                     </Routes>
                 </main>
                 <Footer />
+                <CookieConsent />
             </BrowserRouter>
             <Toaster theme="dark" position="bottom-right" toastOptions={{ style: { background: "#0A0A0A", color: "#fff", border: "1px solid rgba(255,255,255,0.1)" } }} />
         </div>

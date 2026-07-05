@@ -50,8 +50,16 @@
       "dest": "backend/api/index.py"
     },
     {
-      "src": "/(.*)",
-      "dest": "frontend/$1"
+      "src": "/(static|logo_dark.png|favicon.ico|manifest.json|robots.txt|sitemap.xml|rss.xml)(.*)",
+      "dest": "frontend/$1$2"
+    },
+    {
+      "src": "/(pricing|about|team|contact|ai-news|blog|docs|changelog|services|industries|case-studies|resources|privacy|terms|refund|shipping|cancellation|workshops|ai-university)(.*)",
+      "dest": "frontend/index.html"
+    },
+    {
+      "src": "/$",
+      "dest": "frontend/index.html"
     }
   ]
 }

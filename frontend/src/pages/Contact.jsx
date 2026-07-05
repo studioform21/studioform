@@ -89,6 +89,18 @@ export default function Contact() {
                             <label className="block text-xs font-mono uppercase text-white/40 mb-2">What do you want to build?</label>
                             <textarea data-testid="contact-message" required rows={5} value={form.message} onChange={set("message")} className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 focus:border-brand-orange/60 outline-none" />
                         </div>
+                        <div className="flex items-start gap-3 py-2">
+                            <input
+                                type="checkbox"
+                                id="consent"
+                                required
+                                className="mt-1 accent-brand-orange w-4 h-4 rounded border-white/10"
+                                data-testid="contact-consent"
+                            />
+                            <label htmlFor="consent" className="text-xs text-white/60 leading-relaxed font-mono">
+                                I agree to the <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-brand-orange hover:underline">Privacy Policy</a> and consent to the processing of my personal data under the DPDP Act, 2023.
+                            </label>
+                        </div>
                         <button type="submit" disabled={busy} data-testid="contact-submit" className="w-full px-6 py-3 rounded-full bg-brand-orange text-black font-medium hover:brightness-110 disabled:opacity-50">
                             {busy ? "Sending..." : "Send Message"}
                         </button>
