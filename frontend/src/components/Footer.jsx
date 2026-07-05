@@ -89,7 +89,7 @@ export default function Footer() {
                         <div className="flex items-center gap-3 pt-3">
                             {[
                                 { Icon: Twitter, url: "https://x.com/studioform" },
-                                { Icon: Linkedin, url: "https://linkedin.com/company/studioform" },
+                                { Icon: Linkedin, url: "https://www.linkedin.com/in/studioform" },
                                 { Icon: Youtube, url: "https://youtube.com/@studioform" },
                                 { Icon: Github, url: "https://github.com/studioform" }
                             ].map(({ Icon, url }, i) => (
