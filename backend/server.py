@@ -364,6 +364,21 @@ app.include_router(api_router)
 cors_origins_str = os.environ.get('CORS_ORIGINS', '*')
 origins = [o.strip() for o in cors_origins_str.split(',') if o.strip()]
 allow_credentials = True
+
+# Add default allowed domains dynamically
+default_origins = [
+    "https://studioform.app",
+    "https://www.studioform.app",
+    "https://studio-form.app",
+    "https://www.studio-form.app",
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "http://127.0.0.1:3000"
+]
+for do in default_origins:
+    if do not in origins:
+        origins.append(do)
+
 if not origins or "*" in origins:
     origins = ["*"]
     allow_credentials = False
