@@ -44,6 +44,19 @@
       ]
     }
   ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "studioform.app"
+        }
+      ],
+      "destination": "https://www.studioform.app/:path*",
+      "permanent": true
+    }
+  ],
   "routes": [
     {
       "src": "/api/(.*)",
