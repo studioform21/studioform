@@ -87,8 +87,13 @@ export default function Footer() {
                             By subscribing, you agree to our <Link to="/privacy" className="underline hover:text-brand-orange">Privacy Policy</Link> under the DPDP Act, 2023.
                         </p>
                         <div className="flex items-center gap-3 pt-3">
-                            {[Twitter, Linkedin, Youtube, Github].map((Icon, i) => (
-                                <a key={i} href="#" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/70 hover:text-brand-orange hover:border-brand-orange/40 transition">
+                            {[
+                                { Icon: Twitter, url: "https://x.com/studioform" },
+                                { Icon: Linkedin, url: "https://linkedin.com/company/studioform" },
+                                { Icon: Youtube, url: "https://youtube.com/@studioform" },
+                                { Icon: Github, url: "https://github.com/studioform" }
+                            ].map(({ Icon, url }, i) => (
+                                <a key={i} href={url} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/70 hover:text-brand-orange hover:border-brand-orange/40 transition">
                                     <Icon size={16} />
                                 </a>
                             ))}
