@@ -85,10 +85,10 @@ const HOME_STRUCTURED_DATA = {
             "telephone": "+917300000000",
             "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "Noida, Sector 62",
-                "addressLocality": "Noida",
-                "addressRegion": "Uttar Pradesh",
-                "postalCode": "201301",
+                "streetAddress": "Scheme 78, Vijay Nagar",
+                "addressLocality": "Indore",
+                "addressRegion": "Madhya Pradesh",
+                "postalCode": "452010",
                 "addressCountry": "IN"
             },
             "founder": [
@@ -135,8 +135,8 @@ export default function Home() {
         <div>
             <SEOMeta
                 title="Fabric of Future Intelligence"
-                description="India's pioneering agentic AI company. We build autonomous AI agents, voice systems, domain LLMs, and automation workflows that actually ship."
-                keywords="agentic AI, AI voice agents, domain LLM, RAG chatbots, AI automation, Studio Form"
+                description="Studio Form is a pioneering agentic AI company in Indore, India. We build autonomous AI voice agents, domain LLMs, and custom automation workflows that actually ship."
+                keywords="AI company in Indore, agentic AI Indore, AI voice agents, domain LLM, RAG chatbots, AI automation, Studio Form"
                 structuredData={HOME_STRUCTURED_DATA}
             />
             <Marquee items={MARQUEE_ITEMS} />
@@ -155,7 +155,7 @@ export default function Home() {
                             Intelligence.
                         </motion.h1>
                         <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="mt-6 text-lg text-white/65 max-w-xl leading-relaxed">
-                            India's pioneering agentic AI company. We build autonomous AI agents, voice systems, domain LLMs, and automation workflows that actually ship.
+                            India's pioneering agentic AI company. Headquartered in Indore, we build autonomous AI agents, voice systems, domain LLMs, and automation workflows that actually ship.
                         </motion.p>
                         <motion.div {...fadeUp} transition={{ delay: 0.15 }} className="mt-8 flex flex-wrap gap-3">
                             <Link to="/services/ai-agents" className="px-6 py-3 rounded-full bg-brand-orange text-black font-medium text-sm hover:brightness-110 transition inline-flex items-center gap-2" data-testid="hero-cta-products">
