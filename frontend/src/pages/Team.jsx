@@ -5,7 +5,16 @@ import PageHero from "@/components/PageHero";
 import StatCounter from "@/components/StatCounter";
 import CTASection from "@/components/CTASection";
 import SectionHeader from "@/components/SectionHeader";
+import SEOMeta from "@/components/SEOMeta";
 import { stagger } from "@/lib/anim";
+
+const TEAM_STRUCTURED_DATA = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "Studio Form Team",
+    "description": "Meet the team of builders, founders, and engineers at Studio Form behind India's pioneering agentic AI and voice systems.",
+    "url": "https://studio-form.app/team"
+};
 
 const LEADERS = [
     { name: "Pranjal Rai", role: "CEO & Co-founder", bio: "Built India's first multilingual voice agent stack. Speaker, builder, mentor.", skills: [" Innovation", "Agents", "Strategy"] },
@@ -39,6 +48,12 @@ function Avatar({ name }) {
 export default function Team() {
     return (
         <div>
+            <SEOMeta
+                title="Our Team"
+                description="Meet the founders and team of builders at Studio Form who are constructing the fabric of future intelligence."
+                keywords="Studio Form team, Pranjal Rai, Sarthak Choukse, Nehal Mishra, AI builders India"
+                structuredData={TEAM_STRUCTURED_DATA}
+            />
             <PageHero command="studioform --team" eyebrow="Team" title="Builders, operators," accent="curious people.">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl">
                     <StatCounter value={10} suffix="+" label="People" />

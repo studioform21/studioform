@@ -5,6 +5,15 @@ import CodeCard, { Cmt, Kw, Str } from "@/components/CodeCard";
 import FilterableCatalogGrid from "@/components/FilterableCatalogGrid";
 import CTASection from "@/components/CTASection";
 import SectionHeader from "@/components/SectionHeader";
+import SEOMeta from "@/components/SEOMeta";
+
+const AUTOMATION_STRUCTURED_DATA = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "AI Automation Workflows | Studio Form",
+    "description": "Browse and deploy from the world's largest catalog of 10,000+ agentic AI automation workflows across sales, finance, support, HR, and ops.",
+    "url": "https://studio-form.app/ai-automation"
+};
 
 const WORKFLOWS = [
     { id: "w-01", name: "Sales Lead Auto-Qualifier", category: "Sales", trigger: "New CRM lead", desc: "Enriches, scores, books a demo, and notifies the rep — under 30 seconds." },
@@ -32,10 +41,25 @@ function WfCard({ item }) {
     );
 }
 
+const AUTOMATION_FAQS = [
+    { q: "What is an AI Automation workflow?", a: "It is an automated sequence that triggers from your apps (e.g. CRM, email, forms) and uses AI to qualify, reconcile, route, or output data automatically." },
+    { q: "How do you handle human reviews?", a: "We build human-in-the-loop triggers. For high-risk decisions (like payments or patient health dispatches), the AI halts and prompts a manager via Slack or email before proceeding." },
+    { q: "Which automation platforms do you support?", a: "We deploy workflows natively using n8n, Make, Zapier, or our custom high-scale Node/Python runtime servers." },
+    { q: "How secure is data processing?", a: "Data is processed entirely within encrypted sessions. We support private VPC hosting to comply with strict banking and health regulations." },
+    { q: "What is the setup time for a catalog workflow?", a: "Browsed catalog workflows can be customized and deployed to production in 2-4 working days." }
+];
+
 export default function AIAutomation() {
     const cats = Array.from(new Set(WORKFLOWS.map(w => w.category)));
     return (
         <div>
+            <SEOMeta
+                title="AI Automation Workflows"
+                description="Browse and deploy from the world's largest catalog of 10,000+ agentic AI automation workflows across sales, finance, support, HR, and ops."
+                keywords="AI automation, workflow automation, RPA, agentic workflows, CRM automation, invoice OCR automation, Studio Form workflows"
+                structuredData={AUTOMATION_STRUCTURED_DATA}
+                faqs={AUTOMATION_FAQS}
+            />
             <PageHero command="studioform --automation" eyebrow="AI Automation" title="10,000+ workflows." accent="Browse. Pick. Deploy.">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl">
                     <StatCounter value={10247} suffix="+" label="Workflows" />
@@ -62,6 +86,18 @@ export default function AIAutomation() {
                     renderCard={(w) => <WfCard item={w} />}
                     testid="automation-grid"
                 />
+            </section>
+
+            <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-white/10">
+                <SectionHeader command="studioform --faqs" title="Frequently Asked" accentInTitle="Questions" />
+                <div className="grid md:grid-cols-2 gap-6 mt-8">
+                    {AUTOMATION_FAQS.map((faq, idx) => (
+                        <div key={idx} className="glass-card p-5">
+                            <h4 className="font-bold text-sm text-white">{faq.q}</h4>
+                            <p className="mt-2 text-xs text-white/60 leading-relaxed">{faq.a}</p>
+                        </div>
+                    ))}
+                </div>
             </section>
 
             <CTASection title="Need a workflow we don't have?" subtitle="Describe it. We build it in days, not months." primary={{ label: "Request a workflow", to: "/contact" }} secondary={{ label: "Browse products", to: "/products" }} />

@@ -7,6 +7,15 @@ import FilterableCatalogGrid from "@/components/FilterableCatalogGrid";
 import ProductCard from "@/components/ProductCard";
 import CTASection from "@/components/CTASection";
 import SectionHeader from "@/components/SectionHeader";
+import SEOMeta from "@/components/SEOMeta";
+
+const PRODUCTS_STRUCTURED_DATA = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "AI SaaS Platforms | Studio Form",
+    "description": "Browse Studio Form's portfolio of 60+ enterprise-ready AI SaaS platforms across 12+ industries, including logistics, healthcare, aviation, and legal.",
+    "url": "https://studio-form.app/products"
+};
 
 export default function Products() {
     const [items, setItems] = useState([]);
@@ -15,6 +24,12 @@ export default function Products() {
 
     return (
         <div>
+            <SEOMeta
+                title="AI SaaS Platforms"
+                description="Browse Studio Form's portfolio of 60+ enterprise-ready AI SaaS platforms across 12+ industries, including logistics, healthcare, aviation, and legal."
+                keywords="AI SaaS, Enterprise AI, AI platforms, Studio Form products, AI logistics, AI aviation"
+                structuredData={PRODUCTS_STRUCTURED_DATA}
+            />
             <PageHero command="studioform --products" eyebrow="AI SaaS Platforms" title="60+ AI platforms." accent="Across 12+ industries." subtitle="Production-ready SaaS apps built and shipped by us. Browse, customize, deploy.">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl">
                     <StatCounter value={items.length || 24} suffix="+" label="Products" />

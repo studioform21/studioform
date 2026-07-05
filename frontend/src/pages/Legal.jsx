@@ -1,5 +1,32 @@
 import React from "react";
 import PageHero from "@/components/PageHero";
+import SEOMeta from "@/components/SEOMeta";
+
+const LEGAL_META = {
+    privacy: {
+        title: "Privacy Policy",
+        desc: "Review Studio Form's Privacy Policy, data privacy guidelines, data residency details, and user rights.",
+        keywords: "privacy policy, data security, data residency India, user rights Studio Form"
+    },
+    terms: {
+        title: "Terms of Service",
+        desc: "Review Studio Form's Terms of Service, usage policies, intellectual property rights, and service levels.",
+        keywords: "terms of service, user agreement, SLA policy, governing law India, terms and conditions"
+    },
+    refund: {
+        title: "Refund Policy",
+        desc: "Review Studio Form's Refund Policy, cancellation terms, cooling-off window, and refund eligibility.",
+        keywords: "refund policy, cancellation policy, subscription refund, billing queries"
+    }
+};
+
+const getLegalStructuredData = (kind, title, desc) => ({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": `${title} | Studio Form`,
+    "description": desc,
+    "url": `https://studio-form.app/${kind}`
+});
 
 const COPY = {
     privacy: {
@@ -44,8 +71,15 @@ const COPY = {
 
 export default function Legal({ kind = "privacy" }) {
     const c = COPY[kind];
+    const meta = LEGAL_META[kind] || { title: "Legal Policy", desc: "Studio Form legal policies.", keywords: "legal, policy" };
     return (
         <div>
+            <SEOMeta
+                title={meta.title}
+                description={meta.desc}
+                keywords={meta.keywords}
+                structuredData={getLegalStructuredData(kind, meta.title, meta.desc)}
+            />
             <PageHero command={c.cmd} title={c.title} accent={c.accent} subtitle="Last updated: February 2026. Plain English, no dark patterns." />
             <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-8">
                 {c.body.map(([t, b]) => (

@@ -1,5 +1,5 @@
 import "@/index.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Toaster } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -18,6 +18,12 @@ import Legal from "@/pages/Legal";
 import ScrollToTop from "@/components/ScrollToTop";
 import RagChatbots from "@/pages/RagChatbots";
 import Workshops from "@/pages/Workshops";
+import Pricing from "@/pages/Pricing";
+import CaseStudies from "@/pages/CaseStudies";
+import IndustryPage from "@/pages/IndustryPage";
+import Resources from "@/pages/Resources";
+import Docs from "@/pages/Docs";
+import BlogPost from "@/pages/BlogPost";
 
 function App() {
     return (
@@ -28,19 +34,46 @@ function App() {
                 <main className="relative">
                     <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path="/products" element={<Products />} />
-                        <Route path="/voice-agents" element={<VoiceAgents />} />
-                        <Route path="/ai-automation" element={<AIAutomation />} />
-                        <Route path="/llms" element={<LLMs />} />
-                        <Route path="/rag-chatbots" element={<RagChatbots />} />
+                        <Route path="/pricing" element={<Pricing />} />
+                        
+                        {/* Services Nested Routing */}
+                        <Route path="/services/ai-agents" element={<Products />} />
+                        <Route path="/services/voice-agents" element={<VoiceAgents />} />
+                        <Route path="/services/rag-chatbots" element={<RagChatbots />} />
+                        <Route path="/services/llm-development" element={<LLMs />} />
+                        <Route path="/services/ai-automation" element={<AIAutomation />} />
+                        <Route path="/services/ai-consulting" element={<Workshops />} />
+                        <Route path="/services/fine-tuning" element={<LLMs />} />
+                        <Route path="/services/custom-ai" element={<ClaudeSkills />} />
+
+                        {/* Backward Compatibility Redirects */}
+                        <Route path="/voice-agents" element={<Navigate to="/services/voice-agents" replace />} />
+                        <Route path="/rag-chatbots" element={<Navigate to="/services/rag-chatbots" replace />} />
+                        <Route path="/llms" element={<Navigate to="/services/llm-development" replace />} />
+                        <Route path="/ai-automation" element={<Navigate to="/services/ai-automation" replace />} />
+                        <Route path="/products" element={<Navigate to="/services/ai-agents" replace />} />
+                        <Route path="/claude-skills" element={<Navigate to="/services/custom-ai" replace />} />
+
+                        {/* Case Studies */}
+                        <Route path="/case-studies" element={<CaseStudies />} />
+                        <Route path="/case-studies/:caseStudyId" element={<CaseStudies />} />
+
+                        {/* Programmatic Industries & Resources */}
+                        <Route path="/industries/:industryId" element={<IndustryPage />} />
+                        <Route path="/resources/:resourceId" element={<Resources />} />
+
+                        {/* Other Routes */}
                         <Route path="/workshops" element={<Workshops />} />
-                        <Route path="/claude-skills" element={<ClaudeSkills />} />
                         <Route path="/ai-university" element={<AIUniversity />} />
                         <Route path="/about" element={<About />} />
                         <Route path="/team" element={<Team />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/ai-news" element={<News />} />
                         <Route path="/blog" element={<News />} />
+                        <Route path="/blog/:slug" element={<BlogPost />} />
+                        <Route path="/ai-news/:slug" element={<BlogPost />} />
+                        <Route path="/docs" element={<Docs />} />
+                        
                         <Route path="/privacy" element={<Legal kind="privacy" />} />
                         <Route path="/terms" element={<Legal kind="terms" />} />
                         <Route path="/refund" element={<Legal kind="refund" />} />

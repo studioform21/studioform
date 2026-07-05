@@ -5,6 +5,15 @@ import { toast } from "sonner";
 import { http } from "@/lib/api";
 import PageHero from "@/components/PageHero";
 import SectionHeader from "@/components/SectionHeader";
+import SEOMeta from "@/components/SEOMeta";
+
+const CONTACT_STRUCTURED_DATA = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Studio Form",
+    "description": "Get in touch with Studio Form to book a demo, schedule AI workshops, or request custom enterprise AI deployments.",
+    "url": "https://studio-form.app/contact"
+};
 
 const INTERESTS = ["AI SaaS Platforms", "AI Voice Agents", "Domain LLM", "RAG Chatbots", "AI Automations", "Claude Skills", "AI & ML Workshops", "General"];
 
@@ -37,6 +46,12 @@ export default function Contact() {
 
     return (
         <div>
+            <SEOMeta
+                title="Contact Us"
+                description="Get in touch with Studio Form. Tell us what you want to deploy, and we will get back to you with a detailed plan in 24 hours."
+                keywords="contact Studio Form, book AI demo, hire AI company, deploy AI agents India"
+                structuredData={CONTACT_STRUCTURED_DATA}
+            />
             <PageHero command="studioform --contact" eyebrow="Contact" title="Let's build" accent="something." subtitle="Tell us what you want to deploy. We'll come back in 24 hours with a plan." />
 
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

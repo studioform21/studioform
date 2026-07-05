@@ -8,7 +8,16 @@ import StatCounter from "@/components/StatCounter";
 import CTASection from "@/components/CTASection";
 import SectionHeader from "@/components/SectionHeader";
 import FilterableCatalogGrid from "@/components/FilterableCatalogGrid";
+import SEOMeta from "@/components/SEOMeta";
 import { stagger } from "@/lib/anim";
+
+const UNIVERSITY_STRUCTURED_DATA = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Studio Form AI University",
+    "description": "Learn AI and ML from people who ship code. 100+ courses across 12+ tracks covering ML, NLP, RAG, speech, and autonomous agents.",
+    "url": "https://studio-form.app/ai-university"
+};
 
 const GROWTH = Array.from({ length: 12 }).map((_, i) => ({ m: ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"][i], v: 20 + i * 8 + Math.round(Math.random() * 5) }));
 const RADAR = [
@@ -51,6 +60,12 @@ export default function AIUniversity() {
 
     return (
         <div>
+            <SEOMeta
+                title="AI University"
+                description="Learn AI and ML from people who ship code. 100+ courses across 12+ tracks covering ML, NLP, RAG, speech, and autonomous agents."
+                keywords="AI university, learn AI engineering, ML training India, agentic AI courses, RAG workshops, deep learning certification, Studio Form university"
+                structuredData={UNIVERSITY_STRUCTURED_DATA}
+            />
             <PageHero command="studioform --university" eyebrow="AI University" title="Learn AI from" accent="people who ship it." subtitle="100+ courses across 12+ tracks. Cohort, self-paced, on-campus, on-site.">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl">
                     <StatCounter value={100} suffix="+" label="Courses" />

@@ -8,6 +8,7 @@ import CodeCard from "@/components/CodeCard";
 import FilterableCatalogGrid from "@/components/FilterableCatalogGrid";
 import CTASection from "@/components/CTASection";
 import SectionHeader from "@/components/SectionHeader";
+import SEOMeta from "@/components/SEOMeta";
 import { fadeUp, stagger } from "@/lib/anim";
 
 const LANGS = [
@@ -55,6 +56,26 @@ function VoiceCard({ item }) {
     );
 }
 
+const VOICE_AGENTS_STRUCTURED_DATA = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "AI Voice Agents",
+    "description": "Multilingual conversational AI voice agents for inbound, outbound, and support automation across 12+ industries in 15+ languages.",
+    "provider": {
+        "@type": "Organization",
+        "name": "Studio Form",
+        "url": "https://studio-form.app"
+    }
+};
+
+const SERVICE_FAQS = [
+    { q: "How much does an AI voice agent cost?", a: "Starter plans begin at $499/mo, with Custom options available for high call volume environments." },
+    { q: "How long does deployment take?", a: "Standard voice agents can be deployed in 2 days. Complex custom integrations take 2-4 weeks." },
+    { q: "Which LLMs do you support?", a: "We support major enterprise models including GPT-4, Claude 3.5, and our fine-tuned logibrain 7B." },
+    { q: "Do you integrate with CRMs?", a: "Yes. Out-of-the-box integrations include Salesforce, HubSpot, Zoho, and Tally ERP." },
+    { q: "Is WhatsApp supported?", a: "Yes. Voice agents can coordinate checkouts, send reminders, and sync order files with WhatsApp Business APIs." }
+];
+
 export default function VoiceAgents() {
     const [items, setItems] = useState([]);
     useEffect(() => { http.get("/voice-agents").then(r => setItems(r.data.items)); }, []);
@@ -62,6 +83,13 @@ export default function VoiceAgents() {
 
     return (
         <div>
+            <SEOMeta
+                title="AI Voice Agents"
+                description="Multilingual conversational AI voice agents for inbound, outbound, and support automation across 12+ industries in 15+ languages."
+                keywords="voice agents, conversational AI, voice AI, call center automation, multilingual voice AI, Studio Form voice"
+                structuredData={VOICE_AGENTS_STRUCTURED_DATA}
+                faqs={SERVICE_FAQS}
+            />
             <PageHero command="studioform --voice" eyebrow="Voice AI" title="52+ multilingual" accent="voice agents." subtitle="Inbound, outbound, and bilingual conversational agents across 12+ industries.">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl">
                     <StatCounter value={52} suffix="+" label="Agents" />
@@ -141,6 +169,18 @@ export default function VoiceAgents() {
                     renderCard={(v) => <VoiceCard item={v} />}
                     testid="voice-grid"
                 />
+            </section>
+
+            <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-white/10">
+                <SectionHeader command="studioform --faqs" title="Frequently Asked" accentInTitle="Questions" />
+                <div className="grid md:grid-cols-2 gap-6 mt-8">
+                    {SERVICE_FAQS.map((faq, idx) => (
+                        <div key={idx} className="glass-card p-5">
+                            <h4 className="font-bold text-sm text-white">{faq.q}</h4>
+                            <p className="mt-2 text-xs text-white/60 leading-relaxed">{faq.a}</p>
+                        </div>
+                    ))}
+                </div>
             </section>
 
             <CTASection title="Ship a voice agent in 2 weeks." subtitle="From phone number to production conversation — we handle telephony, NLU, CRM, and ops." primary={{ label: "Book a voice demo", to: "/contact" }} secondary={{ label: "See products", to: "/products" }} />

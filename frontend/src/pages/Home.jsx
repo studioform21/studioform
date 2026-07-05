@@ -11,15 +11,16 @@ import ComparisonTable from "@/components/ComparisonTable";
 import ProcessSteps from "@/components/ProcessSteps";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
 import CTASection from "@/components/CTASection";
+import SEOMeta from "@/components/SEOMeta";
 import { fadeUp, stagger } from "@/lib/anim";
 
 const ECOSYSTEM = [
-    { icon: Package, count: "60+ Platforms", title: "AI SaaS Platforms", desc: "Enterprise-ready AI apps across 12+ industries — healthcare, logistics, aviation, real estate, finance.", tags: ["Health", "Logi", "Avia", "Fin", "Real", "Edu"], to: "/products" },
-    { icon: Mic2, count: "52+ Agents", title: "AI Voice Agents", desc: "Multilingual voice agents in 15+ languages and 12+ industries — inbound, outbound, multilingual.", tags: ["EN", "HI", "TA", "TE"], to: "/voice-agents" },
-    { icon: Brain, count: "4+ Models", title: "Domain LLM", desc: "Custom LLMs fine-tuned for aviation, legal, healthcare, finance and more.", tags: ["Domain", "Tuned"], to: "/llms" },
-    { icon: MessageCircle, count: "100+ Deployed", title: "RAG Chatbots", desc: "Secure, permission-aware chatbots that talk to your enterprise PDFs, documents, Notion, and databases.", tags: ["Notion", "SQL", "ACL"], to: "/rag-chatbots" },
-    { icon: Zap, count: "10,000+ Workflows", title: "AI Automations", desc: "The world's largest catalog of agentic automation workflows. Pick one, we deploy it.", tags: ["$ find 'sales'"], to: "/ai-automation" },
-    { icon: Shield, count: "100+ Skills", title: "Claude Skills", desc: "Custom Claude skill packs for enterprise automation and agentic workflows.", tags: ["Agents"], to: "/claude-skills" },
+    { icon: Package, count: "60+ Platforms", title: "AI SaaS Platforms", desc: "Enterprise-ready AI apps across 12+ industries — healthcare, logistics, aviation, real estate, finance.", tags: ["Health", "Logi", "Avia", "Fin", "Real", "Edu"], to: "/services/ai-agents" },
+    { icon: Mic2, count: "52+ Agents", title: "AI Voice Agents", desc: "Multilingual voice agents in 15+ languages and 12+ industries — inbound, outbound, multilingual.", tags: ["EN", "HI", "TA", "TE"], to: "/services/voice-agents" },
+    { icon: Brain, count: "4+ Models", title: "Domain LLM", desc: "Custom LLMs fine-tuned for aviation, legal, healthcare, finance and more.", tags: ["Domain", "Tuned"], to: "/services/llm-development" },
+    { icon: MessageCircle, count: "100+ Deployed", title: "RAG Chatbots", desc: "Secure, permission-aware chatbots that talk to your enterprise PDFs, documents, Notion, and databases.", tags: ["Notion", "SQL", "ACL"], to: "/services/rag-chatbots" },
+    { icon: Zap, count: "10,000+ Workflows", title: "AI Automations", desc: "The world's largest catalog of agentic automation workflows. Pick one, we deploy it.", tags: ["$ find 'sales'"], to: "/services/ai-automation" },
+    { icon: Shield, count: "100+ Skills", title: "Claude Skills", desc: "Custom Claude skill packs for enterprise automation and agentic workflows.", tags: ["Agents"], to: "/services/custom-ai" },
     { icon: GraduationCap, count: "45+ Companies", title: "AI & ML Workshops", desc: "Hands-on, engineer-led workshops to help your teams design, build, and deploy modern AI systems.", tags: ["Agents", "RAG", "Eval"], to: "/workshops" },
     { icon: Newspaper, count: "Media", title: "AI News & Media", desc: "Studio Form Media House — latest AI industry news, insights, and analysis.", tags: ["Daily"], to: "/ai-news" },
 ];
@@ -66,9 +67,78 @@ const MARQUEE_ITEMS = [
     "Concept to deployed AI in 2–4 weeks",
 ];
 
+const HOME_STRUCTURED_DATA = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://studio-form.app/#organization",
+            "name": "Studio Form",
+            "url": "https://studio-form.app",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://studio-form.app/logo_dark.png",
+                "caption": "Studio Form Logo"
+            },
+            "description": "India's pioneering agentic AI company. We build autonomous AI agents, voice systems, domain LLMs, and automation workflows that actually ship.",
+            "email": "legal@studio-form.app",
+            "telephone": "+917300000000",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Noida, Sector 62",
+                "addressLocality": "Noida",
+                "addressRegion": "Uttar Pradesh",
+                "postalCode": "201301",
+                "addressCountry": "IN"
+            },
+            "founder": [
+                {
+                    "@type": "Person",
+                    "name": "Sarthak"
+                }
+            ],
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "email": "legal@studio-form.app",
+                "telephone": "+917300000000"
+            },
+            "sameAs": [
+                "https://github.com/studioform",
+                "https://twitter.com/studioform",
+                "https://linkedin.com/company/studioform"
+            ]
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://studio-form.app/#website",
+            "url": "https://studio-form.app",
+            "name": "Studio Form",
+            "description": "Building the Fabric of Future Intelligence. India's pioneering agentic AI company.",
+            "publisher": {
+                "@id": "https://studio-form.app/#organization"
+            },
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": {
+                    "@type": "EntryPoint",
+                    "urlTemplate": "https://studio-form.app/services/ai-agents?q={search_term_string}"
+                },
+                "query-input": "required name=search_term_string"
+            }
+        }
+    ]
+};
+
 export default function Home() {
     return (
         <div>
+            <SEOMeta
+                title="Fabric of Future Intelligence"
+                description="India's pioneering agentic AI company. We build autonomous AI agents, voice systems, domain LLMs, and automation workflows that actually ship."
+                keywords="agentic AI, AI voice agents, domain LLM, RAG chatbots, AI automation, Studio Form"
+                structuredData={HOME_STRUCTURED_DATA}
+            />
             <Marquee items={MARQUEE_ITEMS} />
 
             {/* HERO */}
@@ -88,8 +158,8 @@ export default function Home() {
                             India's pioneering agentic AI company. We build autonomous AI agents, voice systems, domain LLMs, and automation workflows that actually ship.
                         </motion.p>
                         <motion.div {...fadeUp} transition={{ delay: 0.15 }} className="mt-8 flex flex-wrap gap-3">
-                            <Link to="/products" className="px-6 py-3 rounded-full bg-brand-orange text-black font-medium text-sm hover:brightness-110 transition inline-flex items-center gap-2" data-testid="hero-cta-products">
-                                Explore Products <ArrowRight size={16} />
+                            <Link to="/services/ai-agents" className="px-6 py-3 rounded-full bg-brand-orange text-black font-medium text-sm hover:brightness-110 transition inline-flex items-center gap-2" data-testid="hero-cta-products">
+                                Explore Services <ArrowRight size={16} />
                             </Link>
                             <Link to="/contact" className="px-6 py-3 rounded-full border border-white/15 text-white font-medium text-sm hover:border-brand-orange hover:text-brand-orange transition" data-testid="hero-cta-demo">
                                 Book a Demo

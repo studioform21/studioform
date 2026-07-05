@@ -3,7 +3,20 @@ import { motion } from "framer-motion";
 import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
 import SectionHeader from "@/components/SectionHeader";
+import SEOMeta from "@/components/SEOMeta";
 import { stagger } from "@/lib/anim";
+
+const ABOUT_STRUCTURED_DATA = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Studio Form",
+    "description": "Studio Form is a full-stack agentic AI company. We design, build, deploy, and operate autonomous AI agents, voice systems, and custom LLMs for India and the world.",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Studio Form",
+        "url": "https://studio-form.app"
+    }
+};
 
 const TIMELINE = [
     { year: "2023", title: "The studio begins", body: "Founders ship their first voice agent for a logistics SMB. It books truckloads at night, while everyone sleeps." },
@@ -33,6 +46,12 @@ const VALUES = [
 export default function About() {
     return (
         <div>
+            <SEOMeta
+                title="About Us"
+                description="Studio Form is a full-stack agentic AI company. We design, build, deploy, and operate autonomous AI agents, voice systems, and custom LLMs for India and the world."
+                keywords="Studio Form history, agentic AI company, full-stack AI, Indian AI startup, AI mission, AI vision"
+                structuredData={ABOUT_STRUCTURED_DATA}
+            />
             <PageHero command="studioform --about" eyebrow="About" title="An AI company that" accent="ships, not pitches." subtitle="Studio Form is a full-stack agentic AI company. We design, build, deploy, and operate AI for India and the world." />
 
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid md:grid-cols-2 gap-6">

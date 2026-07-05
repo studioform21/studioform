@@ -7,21 +7,24 @@ import { toast } from "sonner";
 
 const COLS = [
     {
-        title: "Products", links: [
-            ["AI SaaS Platforms", "/products"],
-            ["AI Voice Agents", "/voice-agents"],
-            ["Domain LLM", "/llms"],
-            ["RAG Chatbots", "/rag-chatbots"],
-            ["AI Automations", "/ai-automation"],
-            ["Claude Skills", "/claude-skills"],
-            ["AI & ML Workshops", "/workshops"],
+        title: "Services", links: [
+            ["AI Agents", "/services/ai-agents"],
+            ["AI Voice Agents", "/services/voice-agents"],
+            ["RAG Chatbots", "/services/rag-chatbots"],
+            ["LLM Development", "/services/llm-development"],
+            ["AI Automation", "/services/ai-automation"],
+            ["AI Consulting", "/services/ai-consulting"],
+            ["Fine Tuning", "/services/fine-tuning"],
+            ["Custom AI", "/services/custom-ai"]
         ]
     },
     {
-        title: "Learn", links: [
+        title: "Learn & Resources", links: [
             ["AI University", "/ai-university"],
             ["AI News", "/ai-news"],
-            ["Blog", "/blog"],
+            ["Case Studies", "/case-studies"],
+            ["Pricing", "/pricing"],
+            ["Docs", "/docs"]
         ]
     },
     {
@@ -31,9 +34,9 @@ const COLS = [
             ["Contact", "/contact"],
             ["Privacy", "/privacy"],
             ["Terms", "/terms"],
-            ["Refund Policy", "/refund"],
+            ["Refund Policy", "/refund"]
         ]
-    },
+    }
 ];
 
 export default function Footer() {

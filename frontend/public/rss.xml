@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+    <title>Studio Form - AI News &amp; Insights</title>
+    <link>https://studio-form.app/ai-news</link>
+    <description>Stay updated with the latest in agentic AI, voice agents, domain-specific LLM fine-tuning, and enterprise RAG chatbots.</description>
+    <language>en-us</language>
+    <pubDate>Sun, 05 Jul 2026 00:00:00 GMT</pubDate>
+    <lastBuildDate>Sun, 05 Jul 2026 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://studio-form.app/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+        <title>The Rise of Dialect-Aware AI Voice Agents</title>
+        <link>https://studio-form.app/ai-news</link>
+        <guid>https://studio-form.app/ai-news#voice-agents-dialect</guid>
+        <description>How modern voice systems understand and communicate in Indic dialects like Bhojpuri, Marathi, and Tamil to automate call centers.</description>
+        <pubDate>Sat, 04 Jul 2026 12:00:00 GMT</pubDate>
+    </item>
+    <item>
+        <title>Why Layout-Aware Parsers are Critical for Healthcare RAG</title>
+        <link>https://studio-form.app/ai-news</link>
+        <guid>https://studio-form.app/ai-news#healthcare-rag-parsers</guid>
+        <description>Understanding tables, headers, and footers in medical report PDFs is the difference between accurate diagnosis triaging and hallucinated advice.</description>
+        <pubDate>Wed, 01 Jul 2026 09:00:00 GMT</pubDate>
+    </item>
+</channel>
+</rss>

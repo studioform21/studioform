@@ -9,6 +9,7 @@ import { stagger } from "@/lib/anim";
 export default function GenericOffering({
     command, eyebrow, title, accent, subtitle, stats, sectionCmd, sectionTitle, sectionAccent, sectionSubtitle, items,
     cta = {},
+    faqs = []
 }) {
     return (
         <div>
@@ -29,6 +30,19 @@ export default function GenericOffering({
                     ))}
                 </div>
             </section>
+            {faqs && faqs.length > 0 && (
+                <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-white/10">
+                    <SectionHeader command={`${command}--faqs`} title="Frequently Asked" accentInTitle="Questions" />
+                    <div className="grid md:grid-cols-2 gap-6 mt-8">
+                        {faqs.map((faq, idx) => (
+                            <div key={idx} className="glass-card p-5">
+                                <h4 className="font-bold text-sm text-white">{faq.q}</h4>
+                                <p className="mt-2 text-xs text-white/60 leading-relaxed">{faq.a}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            )}
             <CTASection title={cta.title} subtitle={cta.subtitle} primary={cta.primary} secondary={cta.secondary} />
         </div>
     );
