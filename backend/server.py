@@ -369,28 +369,39 @@ async def send_marketing_email(payload: MarketingEmailSend):
     if payload.password != "email@1234":
         raise HTTPException(status_code=401, detail="Invalid authorization password")
         
-    # Locate template path (resilient check)
-    possible_paths = [
-        ROOT_DIR / ".." / "marketing" / "email-template.html",
-        ROOT_DIR / ".." / "frontend" / "public" / "email-template.html",
-        ROOT_DIR / "email-template.html"
-    ]
-    
-    template_path = None
-    for p in possible_paths:
-        if p.exists():
-            template_path = p
-            break
-            
-    if not template_path:
-        raise HTTPException(status_code=500, detail="Email template file (email-template.html) not found on server")
-        
-    # Read template HTML
+    # Load template HTML (HTTP first for instant Vercel sync, fallback to local files)
+    template_html = ""
     try:
-        with open(template_path, "r", encoding="utf-8") as f:
-            template_html = f.read()
+        import requests
+        # Fetch directly from live website to ensure instant updates without backend redeploys
+        resp = requests.get("https://www.studioform.app/email-template.html", timeout=5)
+        if resp.status_code == 200:
+            template_html = resp.text
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Failed to read template: {str(e)}")
+        print(f"HTTP template fetch failed: {str(e)}, falling back to local files.")
+        
+    if not template_html:
+        # Locate template path (resilient check)
+        possible_paths = [
+            ROOT_DIR / ".." / "marketing" / "email-template.html",
+            ROOT_DIR / ".." / "frontend" / "public" / "email-template.html",
+            ROOT_DIR / "email-template.html"
+        ]
+        template_path = None
+        for p in possible_paths:
+            if p.exists():
+                template_path = p
+                break
+                
+        if not template_path:
+            raise HTTPException(status_code=500, detail="Email template file (email-template.html) not found on server")
+            
+        # Read template HTML
+        try:
+            with open(template_path, "r", encoding="utf-8") as f:
+                template_html = f.read()
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Failed to read template: {str(e)}")
         
     # Render variables
     name = payload.recipient_name or "there"
