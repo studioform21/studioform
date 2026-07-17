@@ -362,6 +362,7 @@ class MarketingEmailSend(BaseModel):
     recipient_email: EmailStr
     recipient_name: Optional[str] = "there"
     recipient_company: Optional[str] = "Your Business"
+    template_id: Optional[str] = "general"
 
 
 @api_router.post("/send-marketing-email")
@@ -369,12 +370,20 @@ async def send_marketing_email(payload: MarketingEmailSend):
     if payload.password != "email@1234":
         raise HTTPException(status_code=401, detail="Invalid authorization password")
         
+    # Map template ID to filename
+    template_filename = "email-template.html"
+    t_id = payload.template_id or "general"
+    if t_id == "voice":
+        template_filename = "voice-agents-template.html"
+    elif t_id == "chatbot":
+        template_filename = "chatbots-template.html"
+        
     # Load template HTML (HTTP first for instant Vercel sync, fallback to local files)
     template_html = ""
     try:
         import requests
         # Fetch directly from live website to ensure instant updates without backend redeploys
-        resp = requests.get("https://www.studioform.app/email-template.html", timeout=5)
+        resp = requests.get(f"https://www.studioform.app/{template_filename}", timeout=5)
         if resp.status_code == 200:
             template_html = resp.text
     except Exception as e:
@@ -383,9 +392,9 @@ async def send_marketing_email(payload: MarketingEmailSend):
     if not template_html:
         # Locate template path (resilient check)
         possible_paths = [
-            ROOT_DIR / ".." / "marketing" / "email-template.html",
-            ROOT_DIR / ".." / "frontend" / "public" / "email-template.html",
-            ROOT_DIR / "email-template.html"
+            ROOT_DIR / ".." / "marketing" / template_filename,
+            ROOT_DIR / ".." / "frontend" / "public" / template_filename,
+            ROOT_DIR / template_filename
         ]
         template_path = None
         for p in possible_paths:
@@ -394,7 +403,7 @@ async def send_marketing_email(payload: MarketingEmailSend):
                 break
                 
         if not template_path:
-            raise HTTPException(status_code=500, detail="Email template file (email-template.html) not found on server")
+            raise HTTPException(status_code=500, detail=f"Email template file ({template_filename}) not found on server")
             
         # Read template HTML
         try:
@@ -415,7 +424,12 @@ async def send_marketing_email(payload: MarketingEmailSend):
     rendered_html = re.sub(r'\{\{\s*company_name\s*\|\s*default\("[^"]*"\)\s*\}\}', company, rendered_html)
     rendered_html = re.sub(r'\{\{\s*company_name\s*\}\}', company, rendered_html)
     
-    subject = f"AI Can Save {company} 4-6 Hours Every Day | Studio Form"
+    if t_id == "voice":
+        subject = f"Automate Customer Calls with AI Voice Agents | Studio Form"
+    elif t_id == "chatbot":
+        subject = f"Extract Insights & Automate Support with RAG Chatbots | Studio Form"
+    else:
+        subject = f"AI Can Save {company} 4-6 Hours Every Day | Studio Form"
     
     # Re-use SMTP & Resend configuration from environment
     smtp_host = os.getenv("SMTP_HOST", "")

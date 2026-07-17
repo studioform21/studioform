@@ -379,6 +379,16 @@
             <!-- Left Side controls -->
             <div class="control-panel">
                 <div>
+                    <h2 class="section-title">Campaign Config</h2>
+                    <div class="input-group" style="margin-bottom: 24px;">
+                        <label class="input-label" for="campaign-template">Select Email Template</label>
+                        <select class="terminal-input" id="campaign-template" onchange="loadSelectedTemplate()" style="background-color: #121212; border: 1px solid #27272a; border-radius: 8px; width: 100%; padding: 10px; color: #e4e4e7; font-family: 'Space Grotesk', sans-serif; cursor: pointer; outline: none;">
+                            <option value="general">General B2B Overview</option>
+                            <option value="voice">AI Voice Agents Focus</option>
+                            <option value="chatbot">AI Chatbots & RAG Focus</option>
+                        </select>
+                    </div>
+
                     <h2 class="section-title">Recipient Config</h2>
                     
                     <div class="input-group">
@@ -495,21 +505,32 @@
             document.getElementById("dashboard-screen").style.display = "flex";
             
             logConsole("System authenticated.", "success");
-            logConsole("Loading raw email template...", "info");
+            await loadSelectedTemplate();
+        }
+
+        async function loadSelectedTemplate() {
+            const templateType = document.getElementById("campaign-template").value;
+            let templateFile = "email-template.html";
+            if (templateType === "voice") {
+                templateFile = "voice-agents-template.html";
+            } else if (templateType === "chatbot") {
+                templateFile = "chatbots-template.html";
+            }
+            
+            logConsole(`Loading template: ${templateFile}...`, "info");
             
             try {
-                // Fetch template from static assets
-                const response = await fetch("./email-template.html");
+                const response = await fetch(`./${templateFile}`);
                 if (response.ok) {
                     rawEmailTemplate = await response.text();
-                    logConsole("Template email-template.html loaded.", "success");
+                    logConsole(`Template ${templateFile} loaded.`, "success");
                     updatePreview();
                 } else {
                     throw new Error("Failed to load template file.");
                 }
             } catch (err) {
-                logConsole("Error loading email-template.html. Please ensure it is deployed in your public assets folder.", "error");
-                rawEmailTemplate = "<h1>Error: Email template not loaded.</h1>";
+                logConsole(`Error loading ${templateFile}. Please ensure it is deployed in your public assets folder.`, "error");
+                rawEmailTemplate = `<h1>Error: Email template ${templateFile} not loaded.</h1>`;
             }
         }
 
@@ -530,9 +551,17 @@
             const iframe = document.getElementById("preview-frame");
             iframe.srcdoc = rendered;
             
-            // Update Subject display
+            // Update Subject display dynamically based on selected template
+            const templateType = document.getElementById("campaign-template").value;
+            let subjectStr = `AI Can Save ${company} 4-6 Hours Every Day | Studio Form`;
+            if (templateType === "voice") {
+                subjectStr = `Automate Customer Calls with AI Voice Agents | Studio Form`;
+            } else if (templateType === "chatbot") {
+                subjectStr = `Extract Insights & Automate Support with RAG Chatbots | Studio Form`;
+            }
+            
             const subjectHeader = document.getElementById("preview-subject");
-            subjectHeader.textContent = `Subject: AI Can Save ${company} 4-6 Hours Every Day | Studio Form`;
+            subjectHeader.textContent = `Subject: ${subjectStr}`;
         }
 
         function logConsole(message, type = "info") {
@@ -549,6 +578,7 @@
             const email = document.getElementById("rcpt-email").value;
             const name = document.getElementById("rcpt-name").value || "there";
             const company = document.getElementById("rcpt-company").value || "Your Business";
+            const templateId = document.getElementById("campaign-template").value;
             const password = sessionStorage.getItem("sales_key");
 
             if (!email) {
@@ -574,7 +604,8 @@
                         password: password,
                         recipient_email: email,
                         recipient_name: name,
-                        recipient_company: company
+                        recipient_company: company,
+                        template_id: templateId
                     })
                 });
 
