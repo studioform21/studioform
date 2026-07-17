@@ -6,6 +6,7 @@ import Marquee from "@/components/Marquee";
 import TerminalLabel from "@/components/TerminalLabel";
 import StatCounter from "@/components/StatCounter";
 import InteractiveTerminal from "@/components/InteractiveTerminal";
+import CodeCard, { Cmt, Kw, Str } from "@/components/CodeCard";
 import SectionHeader from "@/components/SectionHeader";
 import ComparisonTable from "@/components/ComparisonTable";
 import ProcessSteps from "@/components/ProcessSteps";
