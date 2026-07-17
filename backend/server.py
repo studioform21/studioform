@@ -357,6 +357,127 @@ async def get_stats():
         "calls_processed_m": 1.0,
         "avg_response_s": 0.42,
     }
+class MarketingEmailSend(BaseModel):
+    password: str
+    recipient_email: EmailStr
+    recipient_name: Optional[str] = "there"
+    recipient_company: Optional[str] = "Your Business"
+
+
+@api_router.post("/send-marketing-email")
+async def send_marketing_email(payload: MarketingEmailSend):
+    if payload.password != "email@1234":
+        raise HTTPException(status_code=401, detail="Invalid authorization password")
+        
+    # Locate template path (resilient check)
+    possible_paths = [
+        ROOT_DIR / ".." / "marketing" / "email-template.html",
+        ROOT_DIR / ".." / "frontend" / "public" / "email-template.html",
+        ROOT_DIR / "email-template.html"
+    ]
+    
+    template_path = None
+    for p in possible_paths:
+        if p.exists():
+            template_path = p
+            break
+            
+    if not template_path:
+        raise HTTPException(status_code=500, detail="Email template file (email-template.html) not found on server")
+        
+    # Read template HTML
+    try:
+        with open(template_path, "r", encoding="utf-8") as f:
+            template_html = f.read()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to read template: {str(e)}")
+        
+    # Render variables
+    name = payload.recipient_name or "there"
+    company = payload.recipient_company or "Your Business"
+    
+    # Replacing variables
+    rendered_html = template_html
+    import re
+    rendered_html = re.sub(r'\{\{\s*first_name\s*\|\s*default\("[^"]*"\)\s*\}\}', name, rendered_html)
+    rendered_html = re.sub(r'\{\{\s*first_name\s*\}\}', name, rendered_html)
+    rendered_html = re.sub(r'\{\{\s*company_name\s*\|\s*default\("[^"]*"\)\s*\}\}', company, rendered_html)
+    rendered_html = re.sub(r'\{\{\s*company_name\s*\}\}', company, rendered_html)
+    
+    subject = f"AI Can Save {company} 4-6 Hours Every Day | Studio Form"
+    
+    # Re-use SMTP & Resend configuration from environment
+    smtp_host = os.getenv("SMTP_HOST", "")
+    smtp_port = int(os.getenv("SMTP_PORT", 587))
+    smtp_user = os.getenv("SMTP_USER", "")
+    smtp_pass = os.getenv("SMTP_PASSWORD", "")
+    
+    # Force sender identity as "Sales Team <sales@studioform.app>"
+    sender_display = "Sales Team <sales@studioform.app>"
+    sender_raw = "sales@studioform.app"
+    
+    resend_key = os.getenv("RESEND_API_KEY", "")
+    
+    email_id = str(uuid.uuid4())
+    
+    if resend_key:
+        import requests
+        headers = {
+            "Authorization": f"Bearer {resend_key}",
+            "Content-Type": "application/json",
+        }
+        try:
+            r = requests.post(
+                "https://api.resend.com/emails",
+                headers=headers,
+                json={
+                    "from": sender_display,
+                    "to": payload.recipient_email,
+                    "subject": subject,
+                    "html": rendered_html,
+                },
+                timeout=15
+            )
+            if r.status_code in [200, 201]:
+                res_data = r.json()
+                return {"ok": True, "id": res_data.get("id", email_id)}
+            else:
+                raise HTTPException(status_code=500, detail=f"Resend service error: {r.status_code} - {r.text}")
+        except Exception as e:
+            if isinstance(e, HTTPException):
+                raise e
+            raise HTTPException(status_code=500, detail=f"Failed to send via Resend: {str(e)}")
+            
+    elif smtp_host:
+        import smtplib
+        from email.mime.text import MIMEText
+        from email.header import Header
+        try:
+            msg = MIMEText(rendered_html, "html", "utf-8")
+            msg["Subject"] = Header(subject, "utf-8")
+            msg["From"] = sender_display
+            msg["To"] = payload.recipient_email
+            
+            if smtp_port == 465:
+                server = smtplib.SMTP_SSL(smtp_host, smtp_port, timeout=15)
+            else:
+                server = smtplib.SMTP(smtp_host, smtp_port, timeout=15)
+                server.ehlo()
+                if smtp_port == 587:
+                    server.starttls()
+                    server.ehlo()
+            if smtp_user and smtp_pass:
+                server.login(smtp_user, smtp_pass)
+            server.sendmail(sender_raw, [payload.recipient_email], msg.as_string())
+            server.close()
+            return {"ok": True, "id": email_id}
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Failed to send via SMTP: {str(e)}")
+            
+    else:
+        # Dry-run mode for development
+        print(f"[Email Dry Run] From: {sender_display} | To: {payload.recipient_email} | Subject: {subject}")
+        return {"ok": True, "id": f"dryrun-{email_id}", "detail": "Dry run mode (no mailer configured)"}
 
 
 app.include_router(api_router)

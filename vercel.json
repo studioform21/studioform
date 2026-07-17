@@ -73,7 +73,7 @@
       "dest": "backend/api/index.py"
     },
     {
-      "src": "/(static|logo_dark.png|favicon.ico|manifest.json|robots.txt|sitemap.xml|rss.xml)(.*)",
+      "src": "/(static|logo_dark.png|favicon.ico|manifest.json|robots.txt|sitemap.xml|rss.xml|email-template.html)(.*)",
       "dest": "frontend/$1$2"
     },
     {
