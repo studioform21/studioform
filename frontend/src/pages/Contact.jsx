@@ -144,12 +144,7 @@ export default function Contact() {
                         { email: "contact@studioform.app", desc: "Contact requests" },
                         { email: "support@studioform.app", desc: "Customer support" },
                         { email: "sales@studioform.app", desc: "Sales inquiries" },
-                        { email: "hr@studioform.app", desc: "Hiring and recruitment" },
-                        { email: "careers@studioform.app", desc: "Job applications" },
-                        { email: "accounts@studioform.app", desc: "Billing and accounts" },
-                        { email: "billing@studioform.app", desc: "Invoices and payments" },
                         { email: "admin@studioform.app", desc: "Website & server administration" },
-                        { email: "marketing@studioform.app", desc: "Marketing campaigns" },
                         { email: "hello@studioform.app", desc: "Friendly general contact" }
                     ].map(d => (
                         <div key={d.email} className="glass-card p-5 flex flex-col justify-between hover:border-brand-orange/40 transition duration-200">
