@@ -59,6 +59,16 @@
   ],
   "routes": [
     {
+      "src": "/$",
+      "has": [
+        {
+          "type": "host",
+          "value": "email.studioform.app"
+        }
+      ],
+      "dest": "frontend/b2b-marketing-email.html"
+    },
+    {
       "src": "/api/(.*)",
       "dest": "backend/api/index.py"
     },
