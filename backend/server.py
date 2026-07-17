@@ -492,6 +492,8 @@ default_origins = [
     "https://www.studioform.app",
     "https://studio-form.app",
     "https://www.studio-form.app",
+    "https://email.studioform.app",
+    "https://email.studio-form.app",
     "http://localhost:3000",
     "http://localhost:5173",
     "http://127.0.0.1:3000"
