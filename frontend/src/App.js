@@ -29,6 +29,15 @@ import NotFound from "@/pages/NotFound";
 import CookieConsent from "@/components/CookieConsent";
 
 function App() {
+    if (
+        typeof window !== "undefined" && 
+        window.location.hostname === "email.studioform.app" && 
+        window.location.pathname === "/"
+    ) {
+        window.location.href = "/b2b-marketing-email.html";
+        return null;
+    }
+
     return (
         <div className="min-h-screen bg-[#0A0A0A] text-white antialiased">
             <BrowserRouter>
