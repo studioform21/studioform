@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
 import SEOMeta from "@/components/SEOMeta";
@@ -108,9 +109,9 @@ export default function Pricing() {
                                 ))}
                             </ul>
 
-                            <button className={`mt-8 w-full py-3 rounded-full font-medium text-sm transition inline-flex items-center justify-center gap-2 ${t.popular ? "bg-brand-orange text-black hover:brightness-110" : "border border-white/15 text-white hover:border-brand-orange/60"}`}>
+                            <Link to="/contact" className={`mt-8 w-full py-3 rounded-full font-medium text-sm transition inline-flex items-center justify-center gap-2 ${t.popular ? "bg-brand-orange text-black hover:brightness-110" : "border border-white/15 text-white hover:border-brand-orange/60"}`}>
                                 {t.cta} <ArrowRight size={14} />
-                            </button>
+                            </Link>
                         </div>
                     ))}
                 </div>
