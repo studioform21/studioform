@@ -44,41 +44,75 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div id="root">
-      <!-- Fallback semantic structure for search crawlers (overwritten by React runtime) -->
-      <header>
-        <nav>
-          <a href="/">Home</a> | 
-          <a href="/pricing">Pricing</a> | 
-          <a href="/case-studies">Case Studies</a> | 
-          <a href="/docs">Documentation</a> | 
-          <a href="/contact">Contact</a> | 
-          <a href="/changelog">Changelog</a>
-        </nav>
-      </header>
-      <main>
-        <article>
-          <h1>Studio Form - Custom Enterprise AI &amp; Voice Agent Company in Indore</h1>
-          <p>Headquartered in Indore, India, Studio Form is a leading global developer of custom agentic artificial intelligence solutions. We specialize in building and deploying production-ready autonomous systems, multilingual voice agents, private domain-specific Large Language Models (LLMs), and layout-aware document intelligence architectures for enterprises across India and international markets. Our engineered platforms automate repetitive workflows, reduce overhead, and deliver measurable return on investment for operations in healthcare, logistics, e-commerce, banking, hospitality, real estate, and education.</p>
-          
-          <h2>Autonomous AI Voice Agents &amp; Contact Center Automation</h2>
-          <p>Our flagship AI Voice Agents represent the state of the art in conversational telephony. Built with advanced Natural Language Understanding (NLU), they understand and communicate in major world languages as well as local Indic dialects like Hindi, Marathi, Bengali, and Tamil. We deploy inbound reception agents that handle appointment bookings and route complex customer inquiries, outbound qualifier systems that nurture leads directly from CRM platforms, and e-commerce transaction bots that verify orders to reduce Return-to-Origin (RTO) rates. Every deployment is customized with secure database integrations, live status logging, and automatic email or SMS event notifications.</p>
-          
-          <h2>Custom LLM Development &amp; Fine-Tuning</h2>
-          <p>In the field of model training and fine-tuning, Studio Form helps organizations bypass public API restrictions. We train custom, private domain LLMs on secure infrastructure, ensuring customer datasets remain private and compliant with data residency acts. Whether you require a specialized model for medical diagnostics, legal contract analysis, or financial risk assessment, we optimize models like Claude, GPT-4, Llama 3, and Gemini to align with your proprietary data. Our deployments support model evaluation pipelines, latency testing, and secure API endpoints.</p>
-          
-          <h2>Enterprise AI Automation &amp; Agent Workflows</h2>
-          <p>For document-heavy workflows, we build custom Retrieval-Augmented Generation (RAG) systems. Unlike simple PDF search boxes, our layout-aware parsers extract complex tables, headers, footers, and charts from structured and unstructured documents. This is critical for high-stakes fields like healthcare billing, corporate tax audits, and compliance reviews. Our RAG platforms connect to vector databases like Pinecone, Qdrant, or MongoDB Atlas, employing hybrid search and reranking models to deliver factual, zero-hallucination answers.</p>
-          
-          <h2>AI Consulting, Training Seminars, &amp; Workshops</h2>
-          <p>We also provide AI Consulting, training seminars, and hands-on workshops. Our Claude Skills engineering bootcamps and executive AI strategy seminars help boards and technical teams build clear roadmaps, evaluate return on investment, and construct secure governance frameworks. We cover prompt engineering guidelines, rate limiting, dataset curation, and model evaluation metrics.</p>
-          
-          <h2>Enterprise Software Integrations &amp; Uptime Commitments</h2>
-          <p>Every Studio Form platform is built for direct enterprise integration. We connect our autonomous agents and data pipelines with standard business software, including Salesforce, HubSpot, SAP, Slack, and custom legacy database warehouses. By automating back-office processes, synchronizing database entries in real-time, and deploying local API fallbacks, we guarantee high availability, edge compatibility, and 99.97% service uptime.</p>
-          
-          <h2>Data Protection, Compliance &amp; DPDP Alignment</h2>
-          <p>Our platform is fully aligned with regional privacy standards, including India's Digital Personal Data Protection (DPDP) Act of 2023. We integrate secure cookie banners, mandatory user consent checkouts, and clear data erasure tools to safeguard personal information. All system activities, deployment versions, and platform updates are recorded in our public release changelog.</p>
-        </article>
-      </main>
+      <!-- Premium Loading Screen (Visible to users while JS downloads) -->
+      <div id="loader-screen" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: #0A0A0A; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #ffffff;">
+        <div style="margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">
+          <!-- Custom Orange Terminal Icon -->
+          <span style="color: #ea580c; font-family: monospace; font-size: 28px; font-weight: bold;">&gt;_</span>
+          <span style="font-size: 24px; font-weight: 800; letter-spacing: 1px; color: #ffffff;">STUDIO<span style="color: #ea580c;">FORM</span></span>
+        </div>
+        <!-- Pulse loader -->
+        <div style="width: 40px; height: 40px; border: 3px solid rgba(234, 88, 12, 0.1); border-radius: 50%; border-top-color: #ea580c; animation: spin 1s ease-in-out infinite;"></div>
+        <div style="margin-top: 20px; font-size: 13px; color: #71717a; letter-spacing: 0.5px; font-family: monospace;">
+          Initializing agentic mesh...
+        </div>
+      </div>
+
+      <style>
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+        /* Hide fallback text from visual display but keep it for SEO crawlers */
+        .seo-fallback {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
+      </style>
+
+      <!-- Fallback semantic structure for search crawlers (hidden visually, active for SEO) -->
+      <div class="seo-fallback">
+        <header>
+          <nav>
+            <a href="/">Home</a> | 
+            <a href="/pricing">Pricing</a> | 
+            <a href="/case-studies">Case Studies</a> | 
+            <a href="/docs">Documentation</a> | 
+            <a href="/contact">Contact</a> | 
+            <a href="/changelog">Changelog</a>
+          </nav>
+        </header>
+        <main>
+          <article>
+            <h1>Studio Form - Custom Enterprise AI &amp; Voice Agent Company in Indore</h1>
+            <p>Headquartered in Indore, India, Studio Form is a leading global developer of custom agentic artificial intelligence solutions. We specialize in building and deploying production-ready autonomous systems, multilingual voice agents, private domain-specific Large Language Models (LLMs), and layout-aware document intelligence architectures for enterprises across India and international markets. Our engineered platforms automate repetitive workflows, reduce overhead, and deliver measurable return on investment for operations in healthcare, logistics, e-commerce, banking, hospitality, real estate, and education.</p>
+            
+            <h2>Autonomous AI Voice Agents &amp; Contact Center Automation</h2>
+            <p>Our flagship AI Voice Agents represent the state of the art in conversational telephony. Built with advanced Natural Language Understanding (NLU), they understand and communicate in major world languages as well as local Indic dialects like Hindi, Marathi, Bengali, and Tamil. We deploy inbound reception agents that handle appointment bookings and route complex customer inquiries, outbound qualifier systems that nurture leads directly from CRM platforms, and e-commerce transaction bots that verify orders to reduce Return-to-Origin (RTO) rates. Every deployment is customized with secure database integrations, live status logging, and automatic email or SMS event notifications.</p>
+            
+            <h2>Custom LLM Development &amp; Fine-Tuning</h2>
+            <p>In the field of model training and fine-tuning, Studio Form helps organizations bypass public API restrictions. We train custom, private domain LLMs on secure infrastructure, ensuring customer datasets remain private and compliant with data residency acts. Whether you require a specialized model for medical diagnostics, legal contract analysis, or financial risk assessment, we optimize models like Claude, GPT-4, Llama 3, and Gemini to align with your proprietary data. Our deployments support model evaluation pipelines, latency testing, and secure API endpoints.</p>
+            
+            <h2>Enterprise AI Automation &amp; Agent Workflows</h2>
+            <p>For document-heavy workflows, we build custom Retrieval-Augmented Generation (RAG) systems. Unlike simple PDF search boxes, our layout-aware parsers extract complex tables, headers, footers, and charts from structured and unstructured documents. This is critical for high-stakes fields like healthcare billing, corporate tax audits, and compliance reviews. Our RAG platforms connect to vector databases like Pinecone, Qdrant, or MongoDB Atlas, employing hybrid search and reranking models to deliver factual, zero-hallucination answers.</p>
+            
+            <h2>AI Consulting, Training Seminars, &amp; Workshops</h2>
+            <p>We also provide AI Consulting, training seminars, and hands-on workshops. Our Claude Skills engineering bootcamps and executive AI strategy seminars help boards and technical teams build clear roadmaps, evaluate return on investment, and construct secure governance frameworks. We cover prompt engineering guidelines, rate limiting, dataset curation, and model evaluation metrics.</p>
+            
+            <h2>Enterprise Software Integrations &amp; Uptime Commitments</h2>
+            <p>Every Studio Form platform is built for direct enterprise integration. We connect our autonomous agents and data pipelines with standard business software, including Salesforce, HubSpot, SAP, Slack, and custom legacy database warehouses. By automating back-office processes, synchronizing database entries in real-time, and deploying local API fallbacks, we guarantee high availability, edge compatibility, and 99.97% service uptime.</p>
+            
+            <h2>Data Protection, Compliance &amp; DPDP Alignment</h2>
+            <p>Our platform is fully aligned with regional privacy standards, including India's Digital Personal Data Protection (DPDP) Act of 2023. We integrate secure cookie banners, mandatory user consent checkouts, and clear data erasure tools to safeguard personal information. All system activities, deployment versions, and platform updates are recorded in our public release changelog.</p>
+          </article>
+        </main>
+      </div>
     </div>
   </body>
 </html>
