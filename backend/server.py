@@ -363,6 +363,9 @@ class MarketingEmailSend(BaseModel):
     recipient_name: Optional[str] = "there"
     recipient_company: Optional[str] = "Your Business"
     template_id: Optional[str] = "general"
+    persona: Optional[str] = ""
+    platform: Optional[str] = ""
+    language: Optional[str] = ""
 
 
 @api_router.post("/send-marketing-email")
@@ -377,6 +380,8 @@ async def send_marketing_email(payload: MarketingEmailSend):
         template_filename = "voice-agents-template.html"
     elif t_id == "chatbot":
         template_filename = "chatbots-template.html"
+    elif t_id == "blueprint":
+        template_filename = "blueprint-template.html"
         
     # Load template HTML (HTTP first for instant Vercel sync, fallback to local files)
     template_html = ""
@@ -423,11 +428,17 @@ async def send_marketing_email(payload: MarketingEmailSend):
     rendered_html = re.sub(r'\{\{\s*first_name\s*\}\}', name, rendered_html)
     rendered_html = re.sub(r'\{\{\s*company_name\s*\|\s*default\("[^"]*"\)\s*\}\}', company, rendered_html)
     rendered_html = re.sub(r'\{\{\s*company_name\s*\}\}', company, rendered_html)
+    rendered_html = re.sub(r'\{\{\s*persona\s*\}\}', payload.persona or "AI Agent", rendered_html)
+    rendered_html = re.sub(r'\{\{\s*platform\s*\}\}', payload.platform or "Web Widget", rendered_html)
+    rendered_html = re.sub(r'\{\{\s*language\s*\}\}', payload.language or "English", rendered_html)
+    rendered_html = re.sub(r'\{\{\s*email\s*\}\}', payload.recipient_email, rendered_html)
     
     if t_id == "voice":
         subject = f"Automate Customer Calls with AI Voice Agents | Studio Form"
     elif t_id == "chatbot":
         subject = f"Extract Insights & Automate Support with RAG Chatbots | Studio Form"
+    elif t_id == "blueprint":
+        subject = f"Your AI Agent System Architecture Blueprint | Studio Form"
     else:
         subject = f"AI Can Save {company} 4-6 Hours Every Day | Studio Form"
     

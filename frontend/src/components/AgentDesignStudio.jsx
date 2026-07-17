@@ -74,7 +74,10 @@ export default function AgentDesignStudio() {
                     recipient_email: leadEmail,
                     recipient_name: leadName || "Builder",
                     recipient_company: `${personas[persona].title} Project`,
-                    template_id: "general" // sends standard email template to register lead
+                    template_id: "blueprint",
+                    persona: personas[persona].title,
+                    platform: platforms[platform],
+                    language: languages[language]
                 })
             });
             setStep(4);
