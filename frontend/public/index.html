@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Immediate Redirect for Subdomain (Bypasses React bundle load) -->
+    <script>
+      if (
+        window.location.hostname === "email.studioform.app" && 
+        window.location.pathname === "/"
+      ) {
+        window.location.replace("/b2b-marketing-email.html");
+      }
+    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TDZD69CNFY"></script>
     <script>
