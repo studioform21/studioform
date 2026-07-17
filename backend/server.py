@@ -412,8 +412,8 @@ async def send_marketing_email(payload: MarketingEmailSend):
     smtp_user = os.getenv("SMTP_USER", "")
     smtp_pass = os.getenv("SMTP_PASSWORD", "")
     
-    # Force sender identity as "Sales Team <sales@studioform.app>"
-    sender_display = "Sales Team <sales@studioform.app>"
+    # Force sender identity as "Studioform <sales@studioform.app>"
+    sender_display = "Studioform <sales@studioform.app>"
     sender_raw = "sales@studioform.app"
     
     resend_key = os.getenv("RESEND_API_KEY", "")
