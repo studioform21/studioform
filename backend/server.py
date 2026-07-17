@@ -430,6 +430,8 @@ async def send_marketing_email(payload: MarketingEmailSend):
     resend_key = os.getenv("RESEND_API_KEY", "")
     
     email_id = str(uuid.uuid4())
+    status = "success"
+    err_msg = None
     
     if resend_key:
         import requests
@@ -449,15 +451,12 @@ async def send_marketing_email(payload: MarketingEmailSend):
                 },
                 timeout=15
             )
-            if r.status_code in [200, 201]:
-                res_data = r.json()
-                return {"ok": True, "id": res_data.get("id", email_id)}
-            else:
-                raise HTTPException(status_code=500, detail=f"Resend service error: {r.status_code} - {r.text}")
+            if r.status_code not in [200, 201]:
+                status = "failed"
+                err_msg = f"Resend service error: {r.status_code} - {r.text}"
         except Exception as e:
-            if isinstance(e, HTTPException):
-                raise e
-            raise HTTPException(status_code=500, detail=f"Failed to send via Resend: {str(e)}")
+            status = "failed"
+            err_msg = f"Failed to send via Resend: {str(e)}"
             
     elif smtp_host:
         import smtplib
@@ -481,14 +480,56 @@ async def send_marketing_email(payload: MarketingEmailSend):
                 server.login(smtp_user, smtp_pass)
             server.sendmail(sender_raw, [payload.recipient_email], msg.as_string())
             server.close()
-            return {"ok": True, "id": email_id}
         except Exception as e:
-            raise HTTPException(status_code=500, detail=f"Failed to send via SMTP: {str(e)}")
+            status = "failed"
+            err_msg = f"Failed to send via SMTP: {str(e)}"
             
     else:
         # Dry-run mode for development
         print(f"[Email Dry Run] From: {sender_display} | To: {payload.recipient_email} | Subject: {subject}")
-        return {"ok": True, "id": f"dryrun-{email_id}", "detail": "Dry run mode (no mailer configured)"}
+        err_msg = "Dry run mode (no mailer configured)"
+        
+    # Save campaign log in MongoDB
+    try:
+        log_doc = {
+            "id": email_id,
+            "recipient_email": payload.recipient_email,
+            "recipient_name": name,
+            "recipient_company": company,
+            "status": status,
+            "error_message": err_msg if status == "failed" else None,
+            "created_at": datetime.now(timezone.utc).isoformat()
+        }
+        await db["marketing_campaign_logs"].insert_one(log_doc)
+    except Exception as dbe:
+        print(f"Failed to save marketing log to MongoDB: {str(dbe)}")
+        
+    if status == "failed":
+        raise HTTPException(status_code=500, detail=err_msg)
+        
+    return {"ok": True, "id": email_id, "detail": err_msg if not resend_key and not smtp_host else None}
+
+
+@api_router.get("/marketing-campaign-logs")
+async def get_marketing_campaign_logs(password: str):
+    if password != "email@1234":
+        raise HTTPException(status_code=401, detail="Invalid authorization password")
+    try:
+        cursor = db["marketing_campaign_logs"].find({}).sort("created_at", -1).limit(200)
+        logs = []
+        async for doc in cursor:
+            logs.append({
+                "id": doc.get("id"),
+                "recipient_email": doc.get("recipient_email"),
+                "recipient_name": doc.get("recipient_name"),
+                "recipient_company": doc.get("recipient_company"),
+                "status": doc.get("status"),
+                "error_message": doc.get("error_message"),
+                "created_at": doc.get("created_at")
+            })
+        return logs
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
 
 
 app.include_router(api_router)

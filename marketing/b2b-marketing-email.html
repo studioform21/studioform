@@ -260,16 +260,35 @@
             position: relative;
         }
 
-        .preview-label {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 12px;
-            font-weight: 500;
-            color: #71717a;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
+        .preview-header-tabs {
+            border-bottom: 1px solid #1f1f22;
+            padding-bottom: 8px;
+            margin-bottom: 16px;
             display: flex;
             justify-content: space-between;
+            align-items: center;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            color: #71717a;
+            padding: 6px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Space Grotesk', sans-serif;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            color: #e4e4e7;
+        }
+
+        .tab-btn.active {
+            color: #ffffff;
+            border-bottom-color: #ea580c;
         }
 
         .preview-iframe {
@@ -392,13 +411,42 @@
                 </div>
             </div>
             
-            <!-- Right Side Live Preview -->
+            <!-- Right Side Live Preview & Shared Database Logs -->
             <div class="preview-area">
-                <div class="preview-label">
-                    <span>Live Mail Preview</span>
-                    <span style="font-family:'JetBrains Mono', monospace; font-size:11px;" id="preview-subject">Subject: AI Can Save Your Business 4-6 Hours Every Day</span>
+                <div class="preview-header-tabs">
+                    <div style="display: flex; gap: 8px;">
+                        <button id="tab-preview-btn" class="tab-btn active" onclick="switchTab('preview')">Live Preview</button>
+                        <button id="tab-logs-btn" class="tab-btn" onclick="switchTab('logs')">Campaign Logs</button>
+                    </div>
+                    <span style="font-family:'JetBrains Mono', monospace; font-size:11px; color:#71717a;" id="preview-subject">Subject: AI Can Save Your Business 4-6 Hours Every Day</span>
                 </div>
+                
                 <iframe class="preview-iframe" id="preview-frame" sandbox="allow-same-origin"></iframe>
+                
+                <!-- Logs Container -->
+                <div id="logs-container" style="display: none; flex: 1; flex-direction: column; overflow-y: auto; background-color: #050505; border: 1px solid #27272a; border-radius: 8px; padding: 16px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #71717a;">$ cat /var/log/email-outbound.log</span>
+                        <button class="logout-btn" onclick="fetchLogs()" style="padding: 4px 10px; font-size: 11px;">Refresh Logs</button>
+                    </div>
+                    <div style="overflow-x: auto; flex: 1;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 12px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid #27272a; text-align: left; color: #71717a;">
+                                    <th style="padding: 8px 12px;">Date</th>
+                                    <th style="padding: 8px 12px;">Recipient</th>
+                                    <th style="padding: 8px 12px;">Company</th>
+                                    <th style="padding: 8px 12px; text-align: center;">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="logs-table-body">
+                                <tr>
+                                    <td colspan="4" style="text-align: center; color: #71717a; padding: 32px 0;">Loading logs from database...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
             
         </div>
@@ -539,6 +587,8 @@
                     document.getElementById("rcpt-name").value = "";
                     document.getElementById("rcpt-company").value = "";
                     updatePreview();
+                    // Refresh campaign logs silently
+                    fetchLogs();
                 } else {
                     logConsole(`Failed to send: ${result.detail || "Unknown error"}`, "error");
                 }
@@ -547,6 +597,72 @@
             } finally {
                 sendBtn.disabled = false;
                 spinner.style.display = "none";
+            }
+        }
+
+        function switchTab(tab) {
+            const previewFrame = document.getElementById("preview-frame");
+            const logsContainer = document.getElementById("logs-container");
+            const previewSubject = document.getElementById("preview-subject");
+            const tabPreviewBtn = document.getElementById("tab-preview-btn");
+            const tabLogsBtn = document.getElementById("tab-logs-btn");
+            
+            if (tab === "preview") {
+                previewFrame.style.display = "block";
+                logsContainer.style.display = "none";
+                previewSubject.style.display = "inline";
+                tabPreviewBtn.classList.add("active");
+                tabLogsBtn.classList.remove("active");
+            } else {
+                previewFrame.style.display = "none";
+                logsContainer.style.display = "flex";
+                previewSubject.style.display = "none";
+                tabPreviewBtn.classList.remove("active");
+                tabLogsBtn.classList.add("active");
+                fetchLogs();
+            }
+        }
+
+        async function fetchLogs() {
+            const tableBody = document.getElementById("logs-table-body");
+            const password = sessionStorage.getItem("sales_key") || "";
+            
+            try {
+                const response = await fetch(`${API_BASE}/marketing-campaign-logs?password=${encodeURIComponent(password)}`);
+                if (!response.ok) {
+                    throw new Error("Failed to fetch logs");
+                }
+                const logs = await response.json();
+                
+                if (logs.length === 0) {
+                    tableBody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #71717a; padding: 32px 0;">No outbound campaigns sent yet.</td></tr>`;
+                    return;
+                }
+                
+                tableBody.innerHTML = logs.map(log => {
+                    const statusColor = log.status === "success" ? "#22c55e" : "#ef4444";
+                    const statusLabel = log.status === "success" ? "Sent" : "Failed";
+                    const formattedDate = new Date(log.created_at).toLocaleString();
+                    const tooltip = log.error_message ? `title="${log.error_message.replace(/"/g, '&quot;')}"` : "";
+                    
+                    return `
+                        <tr style="border-bottom: 1px solid #1f1f22; color: #e4e4e7;">
+                            <td style="padding: 10px 12px; color: #71717a; white-space: nowrap;">${formattedDate}</td>
+                            <td style="padding: 10px 12px;">
+                                <div>${log.recipient_name}</div>
+                                <div style="font-size: 11px; color: #71717a;">${log.recipient_email}</div>
+                            </td>
+                            <td style="padding: 10px 12px;">${log.recipient_company}</td>
+                            <td style="padding: 10px 12px; text-align: center;">
+                                <span style="display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 10px; font-weight: bold; background-color: ${statusColor}15; color: ${statusColor}; border: 1px solid ${statusColor}30;" ${tooltip}>
+                                    ${statusLabel}
+                                </span>
+                            </td>
+                        </tr>
+                    `;
+                }).join("");
+            } catch (err) {
+                tableBody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #ef4444; padding: 32px 0;">Error loading logs: ${err.message}</td></tr>`;
             }
         }
     </script>
