@@ -5,7 +5,7 @@ import { ArrowRight, Package, Mic2, GraduationCap, Zap, Brain, MessageCircle, Fl
 import Marquee from "@/components/Marquee";
 import TerminalLabel from "@/components/TerminalLabel";
 import StatCounter from "@/components/StatCounter";
-import CodeCard, { Cmt, Kw, Str } from "@/components/CodeCard";
+import InteractiveTerminal from "@/components/InteractiveTerminal";
 import SectionHeader from "@/components/SectionHeader";
 import ComparisonTable from "@/components/ComparisonTable";
 import ProcessSteps from "@/components/ProcessSteps";
@@ -176,22 +176,7 @@ export default function Home() {
                     </div>
 
                     <motion.div {...fadeUp} transition={{ delay: 0.15 }} className="lg:col-span-5">
-                        <CodeCard filename="studioform-core.tsx">
-                            <div><Cmt>// Studio Form system status</Cmt></div>
-                            <div className="mt-2"><Kw>const</Kw> platform = {"{"}</div>
-                            <div className="pl-6">agents: <Str>"200 active"</Str>,</div>
-                            <div className="pl-6">voices: <Str>"50+ active"</Str>,</div>
-                            <div className="pl-6">llms: <Str>"4 domain models"</Str>,</div>
-                            <div className="pl-6">uptime: <Str>"99.97%"</Str>,</div>
-                            <div className="pl-6">status: <Str>"● operational"</Str></div>
-                            <div>{"};"}</div>
-                            <div className="mt-4 space-y-1 text-white/60">
-                                <div>{"> Initializing agentic mesh..."}</div>
-                                <div>{"> Voice agents:"} <span className="text-brand-orange">ONLINE</span></div>
-                                <div>{"> LLM inference:"} <span className="text-brand-orange">ACTIVE</span></div>
-                                <div>{"> System:"} <span className="text-brand-orange">ALL GREEN ✓</span></div>
-                            </div>
-                        </CodeCard>
+                        <InteractiveTerminal />
                     </motion.div>
                 </div>
             </section>
