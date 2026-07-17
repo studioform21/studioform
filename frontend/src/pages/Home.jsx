@@ -12,6 +12,7 @@ import ProcessSteps from "@/components/ProcessSteps";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
 import CTASection from "@/components/CTASection";
 import SEOMeta from "@/components/SEOMeta";
+import AgentDesignStudio from "@/components/AgentDesignStudio";
 import { fadeUp, stagger } from "@/lib/anim";
 
 const ECOSYSTEM = [
@@ -303,6 +304,8 @@ export default function Home() {
                 <SectionHeader command="studioform --reviews" title="What people" accentInTitle="say." />
                 <TestimonialCarousel items={TESTIMONIALS} />
             </section>
+
+            <AgentDesignStudio />
 
             <CTASection />
         </div>
