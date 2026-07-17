@@ -69,7 +69,7 @@ const VOICE_AGENTS_STRUCTURED_DATA = {
 };
 
 const SERVICE_FAQS = [
-    { q: "How much does an AI voice agent cost?", a: "Starter plans begin at $499/mo, with Custom options available for high call volume environments." },
+    { q: "How much does an AI voice agent cost?", a: "Starter plans begin at $199/mo, with Custom options available for high call volume environments." },
     { q: "How long does deployment take?", a: "Standard voice agents can be deployed in 2 days. Complex custom integrations take 2-4 weeks." },
     { q: "Which LLMs do you support?", a: "We support major enterprise models including GPT-4, Claude 3.5, and our fine-tuned logibrain 7B." },
     { q: "Do you integrate with CRMs?", a: "Yes. Out-of-the-box integrations include Salesforce, HubSpot, Zoho, and Tally ERP." },

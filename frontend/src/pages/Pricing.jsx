@@ -15,7 +15,7 @@ const PRICING_STRUCTURED_DATA = {
 const TIERS = [
     {
         name: "Starter",
-        price: "$499",
+        price: "$199",
         period: "per month",
         desc: "Ideal for SMBs starting their AI journey.",
         features: [
@@ -30,7 +30,7 @@ const TIERS = [
     },
     {
         name: "Growth",
-        price: "$1,499",
+        price: "$599",
         period: "per month",
         desc: "Perfect for scaling operations and voice call volumes.",
         features: [
