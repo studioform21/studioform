@@ -100,7 +100,7 @@ export default function Footer() {
                         </div>
                         <div className="pt-4">
                             <a href="https://www.producthunt.com/products/studio-form-2?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-studio-form-2" target="_blank" rel="noopener noreferrer" className="inline-block">
-                                <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1199636&theme=light&t=1784358496968" alt="Studio Form - Building the Fabric of Future Intelligence | Product Hunt" style={{ width: "250px", height: "54px" }} width="250" height="54" />
+                                <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1199636&theme=neutral&t=1784358496968" alt="Studio Form - Building the Fabric of Future Intelligence | Product Hunt" style={{ width: "250px", height: "54px" }} width="250" height="54" />
                             </a>
                         </div>
                     </div>

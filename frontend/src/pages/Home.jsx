@@ -167,12 +167,6 @@ export default function Home() {
                             </Link>
                         </motion.div>
 
-                        <motion.div {...fadeUp} transition={{ delay: 0.18 }} className="mt-6">
-                            <a href="https://www.producthunt.com/products/studio-form-2?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-studio-form-2" target="_blank" rel="noopener noreferrer" className="inline-block">
-                                <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1199636&theme=light&t=1784358496968" alt="Studio Form - Building the Fabric of Future Intelligence | Product Hunt" style={{ width: "250px", height: "54px" }} width="250" height="54" />
-                            </a>
-                        </motion.div>
-
                         <motion.div {...fadeUp} transition={{ delay: 0.2 }} className="mt-12 grid grid-cols-1 lg:grid-cols-4 gap-6">
                             <StatCounter testid="hero-stat-projects" value={121} suffix="+" label="Projects" />
                             <StatCounter testid="hero-stat-voice" value={50} suffix="+" label="Voice Agents" />
