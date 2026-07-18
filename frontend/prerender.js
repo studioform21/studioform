@@ -36,8 +36,10 @@ const SEO_CONFIG = {
             ],
             "address": {
                 "@type": "PostalAddress",
+                "streetAddress": "Indore HQ",
                 "addressLocality": "Indore",
                 "addressRegion": "Madhya Pradesh",
+                "postalCode": "452001",
                 "addressCountry": "IN"
             }
         }
