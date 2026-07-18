@@ -73,6 +73,14 @@
       "destination": "/frontend/$1$2"
     },
     {
+      "source": "/(pricing|about|team|contact|ai-news|docs|changelog|privacy|terms|refund|shipping|cancellation|workshops|ai-university|case-studies)",
+      "destination": "/frontend/$1/index.html"
+    },
+    {
+      "source": "/(services|industries|case-studies|resources|ai-news)/:slug",
+      "destination": "/frontend/$1/:slug/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/frontend/index.html"
     }
