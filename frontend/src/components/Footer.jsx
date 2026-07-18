@@ -88,9 +88,9 @@ export default function Footer() {
                         </p>
                         <div className="flex items-center gap-3 pt-3">
                             {[
-                                { Icon: Twitter, url: "https://x.com/studioform" },
+                                { Icon: Twitter, url: "https://x.com/Studio_Form_" },
                                 { Icon: Linkedin, url: "https://www.linkedin.com/in/studioform" },
-                                { Icon: Youtube, url: "https://youtube.com/@studioform" },
+                                { Icon: Youtube, url: "https://www.youtube.com/@Studio-Form" },
                                 { Icon: Github, url: "https://github.com/studioform" }
                             ].map(({ Icon, url }, i) => (
                                 <a key={i} href={url} target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/70 hover:text-brand-orange hover:border-brand-orange/40 transition">

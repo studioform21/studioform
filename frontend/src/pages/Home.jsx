@@ -106,7 +106,7 @@ const HOME_STRUCTURED_DATA = {
             },
             "sameAs": [
                 "https://github.com/studioform",
-                "https://twitter.com/studioform",
+                "https://x.com/Studio_Form_",
                 "https://www.linkedin.com/in/studioform"
             ]
         },
