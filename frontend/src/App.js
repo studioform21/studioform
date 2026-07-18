@@ -1,6 +1,7 @@
 import "@/index.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Toaster } from "sonner";
+import { Analytics } from "@vercel/analytics/react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Home from "@/pages/Home";
@@ -99,6 +100,7 @@ function App() {
                 <CookieConsent />
             </BrowserRouter>
             <Toaster theme="dark" position="bottom-right" toastOptions={{ style: { background: "#0A0A0A", color: "#fff", border: "1px solid rgba(255,255,255,0.1)" } }} />
+            <Analytics />
         </div>
     );
 }
