@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "cleanUrls": true,
   "builds": [
     {
       "src": "frontend/package.json",
@@ -57,22 +58,18 @@
       "permanent": true
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "backend/api/index.py"
+      "source": "/api/(.*)",
+      "destination": "/backend/api/index.py"
     },
     {
-      "src": "/(static|logo_dark.png|favicon.ico|manifest.json|robots.txt|sitemap.xml|rss.xml|email-template.html)(.*)",
-      "dest": "frontend/$1$2"
+      "source": "/(static|logo_dark.png|favicon.ico|manifest.json|robots.txt|sitemap.xml|rss.xml|email-template.html)(.*)",
+      "destination": "/frontend/$1$2"
     },
     {
-      "src": "/(pricing|about|team|contact|ai-news|blog|docs|changelog|services|industries|case-studies|resources|privacy|terms|refund|shipping|cancellation|workshops|ai-university)(.*)",
-      "dest": "frontend/index.html"
-    },
-    {
-      "src": "/$",
-      "dest": "frontend/index.html"
+      "source": "/(.*)",
+      "destination": "/frontend/index.html"
     }
   ]
 }

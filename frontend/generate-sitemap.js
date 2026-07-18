@@ -65,34 +65,32 @@ const today = new Date().toISOString().split("T")[0];
 let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
 xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
 
-const addUrl = (route, priority = "0.8", freq = "weekly") => {
+const addUrl = (route) => {
     xml += `  <url>\n`;
     xml += `    <loc>${siteUrl}${route ? "/" + route : ""}</loc>\n`;
     xml += `    <lastmod>${today}</lastmod>\n`;
-    xml += `    <changefreq>${freq}</changefreq>\n`;
-    xml += `    <priority>${priority}</priority>\n`;
     xml += `  </url>\n`;
 };
 
 // Static routes
-STATIC_ROUTES.forEach(r => addUrl(r, r === "" ? "1.0" : "0.8", r === "" ? "daily" : "weekly"));
+STATIC_ROUTES.forEach(r => addUrl(r));
 
 // Services
-SERVICES.forEach(s => addUrl(`services/${s}`, "0.9", "weekly"));
+SERVICES.forEach(s => addUrl(`services/${s}`));
 
 // Industries
-INDUSTRIES.forEach(i => addUrl(`industries/${i}`, "0.7", "weekly"));
+INDUSTRIES.forEach(i => addUrl(`industries/${i}`));
 
 // Case studies
-CASE_STUDIES.forEach(c => addUrl(`case-studies/${c}`, "0.8", "weekly"));
+CASE_STUDIES.forEach(c => addUrl(`case-studies/${c}`));
 
 // Resources
-RESOURCES.forEach(res => addUrl(`resources/${res}`, "0.7", "weekly"));
+RESOURCES.forEach(res => addUrl(`resources/${res}`));
 
 // Blogs
 BLOGS.forEach(b => {
-    addUrl(`blog/${b}`, "0.8", "weekly");
-    addUrl(`ai-news/${b}`, "0.8", "weekly");
+    addUrl(`blog/${b}`);
+    addUrl(`ai-news/${b}`);
 });
 
 xml += `</urlset>\n`;
