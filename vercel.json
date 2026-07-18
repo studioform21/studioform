@@ -47,6 +47,11 @@
   ],
   "redirects": [
     {
+      "source": "/blog/:slug",
+      "destination": "/ai-news/:slug",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {

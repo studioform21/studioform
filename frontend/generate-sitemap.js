@@ -65,10 +65,10 @@ const today = new Date().toISOString().split("T")[0];
 let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
 xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
 
-const addUrl = (route) => {
+const addUrl = (route, lastmod = today) => {
     xml += `  <url>\n`;
     xml += `    <loc>${siteUrl}${route ? "/" + route : ""}</loc>\n`;
-    xml += `    <lastmod>${today}</lastmod>\n`;
+    xml += `    <lastmod>${lastmod}</lastmod>\n`;
     xml += `  </url>\n`;
 };
 
@@ -87,14 +87,21 @@ CASE_STUDIES.forEach(c => addUrl(`case-studies/${c}`));
 // Resources
 RESOURCES.forEach(res => addUrl(`resources/${res}`));
 
-// Blogs
+// Blogs (only AI News, with their specific publication dates)
 BLOGS.forEach(b => {
-    addUrl(`blog/${b}`);
-    addUrl(`ai-news/${b}`);
+    let date = "2026-07-18"; // default fallback
+    if (b === "gpt-5-reasoning-bands") {
+        date = "2026-02-08";
+    } else if (b === "marathi-voice-agent-playbook") {
+        date = "2026-01-06";
+    } else if (b === "rbi-ai-regulation") {
+        date = "2026-01-12";
+    }
+    addUrl(`ai-news/${b}`, date);
 });
 
 xml += `</urlset>\n`;
 
 const destPath = path.join(__dirname, "public", "sitemap.xml");
 fs.writeFileSync(destPath, xml, "utf8");
-console.log(`Successfully generated dynamic sitemap with ${STATIC_ROUTES.length + SERVICES.length + INDUSTRIES.length + CASE_STUDIES.length + RESOURCES.length + (BLOGS.length * 2)} routes at ${destPath}`);
+console.log(`Successfully generated dynamic sitemap with ${STATIC_ROUTES.length + SERVICES.length + INDUSTRIES.length + CASE_STUDIES.length + RESOURCES.length + BLOGS.length} routes at ${destPath}`);
