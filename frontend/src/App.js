@@ -34,7 +34,7 @@ function App() {
         window.location.hostname === "email.studioform.app" && 
         window.location.pathname === "/"
     ) {
-        window.location.href = "/b2b-marketing-email.html";
+        window.location.href = "/b2b-marketing-email";
         return null;
     }
 
