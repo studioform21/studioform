@@ -10,10 +10,6 @@
       }
     },
     {
-      "src": "marketing/**",
-      "use": "@vercel/static"
-    },
-    {
       "src": "backend/server.py",
       "use": "@vercel/python"
     }
@@ -74,46 +70,46 @@
     },
     {
       "source": "/b2b-marketing-email",
-      "destination": "/marketing/b2b-marketing-email.html"
+      "destination": "/frontend/b2b-marketing-email.html"
     },
     {
       "source": "/b2b-marketing-email.html",
-      "destination": "/marketing/b2b-marketing-email.html"
+      "destination": "/frontend/b2b-marketing-email.html"
     },
     {
       "source": "/blueprint-template",
-      "destination": "/marketing/blueprint-template.html"
+      "destination": "/frontend/blueprint-template.html"
     },
     {
       "source": "/blueprint-template.html",
-      "destination": "/marketing/blueprint-template.html"
+      "destination": "/frontend/blueprint-template.html"
     },
     {
       "source": "/chatbots-template",
-      "destination": "/marketing/chatbots-template.html"
+      "destination": "/frontend/chatbots-template.html"
     },
     {
       "source": "/chatbots-template.html",
-      "destination": "/marketing/chatbots-template.html"
+      "destination": "/frontend/chatbots-template.html"
     },
     {
       "source": "/voice-agents-template",
-      "destination": "/marketing/voice-agents-template.html"
+      "destination": "/frontend/voice-agents-template.html"
     },
     {
       "source": "/voice-agents-template.html",
-      "destination": "/marketing/voice-agents-template.html"
+      "destination": "/frontend/voice-agents-template.html"
     },
     {
       "source": "/email-template",
-      "destination": "/marketing/email-template.html"
+      "destination": "/frontend/email-template.html"
     },
     {
       "source": "/email-template.html",
-      "destination": "/marketing/email-template.html"
+      "destination": "/frontend/email-template.html"
     },
     {
-      "source": "/(static|images|logo_dark.png|favicon.ico|manifest.json|robots.txt|sitemap.xml|rss.xml|llms.txt)(.*)",
+      "source": "/(static|images|logo_dark.png|email_hero_blue.png|favicon.ico|manifest.json|robots.txt|sitemap.xml|rss.xml|llms.txt)(.*)",
       "destination": "/frontend/$1$2"
     },
     {
