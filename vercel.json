@@ -69,7 +69,23 @@
       "destination": "/backend/api/index.py"
     },
     {
-      "source": "/(static|images|logo_dark.png|favicon.ico|manifest.json|robots.txt|sitemap.xml|rss.xml|llms.txt|email-template.html|b2b-marketing-email.html|blueprint-template.html|chatbots-template.html|voice-agents-template.html)(.*)",
+      "source": "/b2b-marketing-email.html",
+      "destination": "/frontend/b2b-marketing-email.html"
+    },
+    {
+      "source": "/blueprint-template.html",
+      "destination": "/frontend/blueprint-template.html"
+    },
+    {
+      "source": "/chatbots-template.html",
+      "destination": "/frontend/chatbots-template.html"
+    },
+    {
+      "source": "/voice-agents-template.html",
+      "destination": "/frontend/voice-agents-template.html"
+    },
+    {
+      "source": "/(static|images|logo_dark.png|favicon.ico|manifest.json|robots.txt|sitemap.xml|rss.xml|llms.txt|email-template.html)(.*)",
       "destination": "/frontend/$1$2"
     },
     {
