@@ -143,10 +143,12 @@ const SEO_CONFIG = {
         }
     },
     "/services/voice-agents": {
-        title: "Enterprise AI Voice Agents — Automated Call Center Telephony",
-        description: "Deploy custom multilingual AI voice agents for inbound call routing, outbound qualification, and automated CRM updates with sub-second response latency.",
-        h1: "Autonomous Enterprise AI Voice Agents",
+        title: "AI Voice Agents for Enterprise Contact Centers | Studio Form",
+        description: "Deploy production AI voice agents with sub-800ms latency, Indic code-mixing, and Twilio, Vonage, or SIP telephony. Studio Form builds autonomous inbound, outbound, and verification agents on private infrastructure.",
+        h1: "AI Voice Agents built for real contact-center work",
         article: `
+            <h2>Autonomous AI Voice Agents from Studio Form</h2>
+            <p>Studio Form builds secure, production-grade autonomous AI voice agents for enterprise contact-center automation. Our voice agents are optimized for inbound reception, outbound lead qualification, and e-commerce order verification.</p>
             <h2>Sub-Second Latency Telephony</h2>
             <p>Our voice agents use specialized Whisper-based speech recognition and custom streaming text-to-speech nodes to achieve conversational latency under 800ms. We optimize the audio pipelines for Twilio, Vonage, and SIP trunks.</p>
             <h2>Multilingual & Dialect Support</h2>
