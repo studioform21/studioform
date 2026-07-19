@@ -27,6 +27,7 @@ import BlogPost from "@/pages/BlogPost";
 import Changelog from "@/pages/Changelog";
 import NotFound from "@/pages/NotFound";
 import CookieConsent from "@/components/CookieConsent";
+import EmailDashboard from "@/pages/EmailDashboard";
 
 function App() {
     if (
@@ -38,11 +39,13 @@ function App() {
         return null;
     }
 
+    const isEmailDashboard = typeof window !== "undefined" && window.location.pathname.startsWith("/b2b-marketing-email");
+
     return (
         <div className="min-h-screen bg-[#0A0A0A] text-white antialiased">
             <BrowserRouter>
                 <ScrollToTop />
-                <Navbar />
+                {!isEmailDashboard && <Navbar />}
                 <main className="relative">
                     <Routes>
                         <Route path="/" element={<Home />} />
@@ -92,11 +95,12 @@ function App() {
                         <Route path="/refund" element={<Legal kind="refund" />} />
                         <Route path="/shipping" element={<Legal kind="shipping" />} />
                         <Route path="/cancellation" element={<Legal kind="cancellation" />} />
+                        <Route path="/b2b-marketing-email" element={<EmailDashboard />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </main>
-                <Footer />
-                <CookieConsent />
+                {!isEmailDashboard && <Footer />}
+                {!isEmailDashboard && <CookieConsent />}
             </BrowserRouter>
             <Toaster theme="dark" position="bottom-right" toastOptions={{ style: { background: "#0A0A0A", color: "#fff", border: "1px solid rgba(255,255,255,0.1)" } }} />
         </div>
