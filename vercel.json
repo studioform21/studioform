@@ -69,7 +69,7 @@
       "destination": "/backend/api/index.py"
     },
     {
-      "source": "/(static|logo_dark.png|favicon.ico|manifest.json|robots.txt|sitemap.xml|rss.xml|email-template.html)(.*)",
+      "source": "/(static|images|logo_dark.png|favicon.ico|manifest.json|robots.txt|sitemap.xml|rss.xml|llms.txt|email-template.html|b2b-marketing-email.html|blueprint-template.html|chatbots-template.html|voice-agents-template.html)(.*)",
       "destination": "/frontend/$1$2"
     },
     {
