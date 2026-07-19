@@ -519,8 +519,13 @@
             
             logConsole(`Loading template: ${templateFile}...`, "info");
             
+            // On production Vercel, cleanUrls is enabled, so we must fetch without the .html extension.
+            // Locally on Webpack Dev Server, we must fetch with the .html extension.
+            const isLocal = window.location.origin.includes("localhost") || window.location.origin.includes("127.0.0.1");
+            const fetchPath = isLocal ? `/${templateFile}` : `/${templateFile.replace(/\.html$/, "")}`;
+            
             try {
-                const response = await fetch(`/${templateFile}`);
+                const response = await fetch(fetchPath);
                 if (response.ok) {
                     rawEmailTemplate = await response.text();
                     logConsole(`Template ${templateFile} loaded.`, "success");
