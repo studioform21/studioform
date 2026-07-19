@@ -122,11 +122,130 @@ const SEO_CONFIG = {
             "@type": "WebPage",
             "name": "Changelog — Studio Form"
         }
+    },
+    "/services/voice-agents": {
+        title: "Enterprise AI Voice Agents — Automated Call Center Telephony",
+        description: "Deploy custom multilingual AI voice agents for inbound call routing, outbound qualification, and automated CRM updates with sub-second response latency.",
+        h1: "Autonomous Enterprise AI Voice Agents",
+        article: `
+            <h2>Sub-Second Latency Telephony</h2>
+            <p>Our voice agents use specialized Whisper-based speech recognition and custom streaming text-to-speech nodes to achieve conversational latency under 800ms. We optimize the audio pipelines for Twilio, Vonage, and SIP trunks.</p>
+            <h2>Multilingual & Dialect Support</h2>
+            <p>Deploy agents capable of code-mixing regional Indic dialects (Hindi, Marathi, Tamil, Telugu) with English, ensuring natural conversations for customer service, logistics dispatch, and payment verification.</p>
+        `,
+        schema: {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "AI Voice Agents",
+            "provider": {
+                "@type": "Organization",
+                "name": "Studio Form"
+            }
+        }
+    },
+    "/services/rag-chatbots": {
+        title: "Enterprise RAG Chatbots & Semantic Document Intelligence",
+        description: "Secure, hallucination-free RAG chatbots trained on private databases, PDFs, Notion, and SQL. Layout-aware parsers extract complex tables with exact precision.",
+        h1: "Layout-Aware RAG Chatbots for Enterprise",
+        article: `
+            <h2>Hallucination-Free Vector Search</h2>
+            <p>We connect custom LLMs to secure vector databases (MongoDB Atlas, Pinecone, Qdrant) with metadata-level permission controls (ACL). This guarantees that users only see data they are authorized to access.</p>
+            <h2>Document Layout Parsing</h2>
+            <p>Our document intelligence pipelines parse tables, charts, and structured layouts from scanned PDFs, ensuring precise data retrieval for legal, financial, and healthcare operations.</p>
+        `,
+        schema: {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "RAG Chatbots",
+            "provider": {
+                "@type": "Organization",
+                "name": "Studio Form"
+            }
+        }
+    },
+    "/industries/healthcare": {
+        title: "Enterprise AI for Healthcare & Patient Data Intelligence",
+        description: "Deploy secure, HIPAA-compliant AI voice agents and layout-aware document parsers to automate patient triage, billing sheets, and medical records.",
+        h1: "Agentic AI & Document Intelligence in Healthcare",
+        article: `
+            <h2>HIPAA-Compliant Patient Portals</h2>
+            <p>Automate patient scheduling and outbound follow-up calls with secure voice agents. All data is processed in isolated private cloud environments with zero public API logs.</p>
+            <h2>Medical PDF Extraction</h2>
+            <p>Extract clinical tables, treatment histories, and billing metrics from complex medical PDFs with 99.4% precision using layout-aware parser arrays.</p>
+        `,
+        schema: {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "AI Solutions for Healthcare"
+        }
+    },
+    "/ai-news/marathi-voice-agent-playbook": {
+        title: "Building a Marathi Voice Agent: Playbook | Studio Form Insights",
+        description: "An engineering playbook on building conversational voice agents in Marathi. Learn how to handle regional accents, code-mixed phrases, and sub-second TTS stream latency.",
+        h1: "Building a Marathi Voice Agent: Playbook",
+        article: `
+            <h2>ASR & Accent Adaptation</h2>
+            <p>Telephony agents in Maharashtra must interpret colloquial, code-mixed phrases (Marathi mixed with English terms). We fine-tune Whisper and Conformer models to map local dialect tokens accurately.</p>
+            <h2>Streaming TTS Optimization</h2>
+            <p>We stream audio payloads directly to Twilio using WebSockets, reducing TTS generation gaps below 800ms to keep conversational transitions smooth.</p>
+        `,
+        schema: {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "Building a Marathi Voice Agent: Playbook",
+            "datePublished": "2026-01-06",
+            "author": {
+                "@type": "Organization",
+                "name": "Studio Form"
+            }
+        }
+    },
+    "/ai-news/gpt-5-reasoning-bands": {
+        title: "GPT-5 Launches with Reasoning Bands: Tech Deep-Dive",
+        description: "A technical deep-dive into OpenAI's GPT-5 Reasoning Bands. Learn how compute-budget scaling at inference time impacts enterprise agentic workflows.",
+        h1: "GPT-5 Launches with Reasoning Bands",
+        article: `
+            <h2>Inference-Time Compute Scaling</h2>
+            <p>OpenAI's Reasoning Bands allow developers to allocate custom search and verification token budgets. This shifts validation loops inside the model container, improving accuracy on complex tasks.</p>
+            <h2>Benchmarking Agentic Efficiency</h2>
+            <p>We compare GPT-5's compute scaling against domain-specific fine-tuned models, outlining when to use general-purpose reasoning versus specialized low-latency endpoints.</p>
+        `,
+        schema: {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "GPT-5 Launches with Reasoning Bands",
+            "datePublished": "2026-02-08",
+            "author": {
+                "@type": "Organization",
+                "name": "Studio Form"
+            }
+        }
+    },
+    "/ai-news/rbi-ai-regulation": {
+        title: "RBI's Draft AI Regulation: A Pragmatic BFSI Compliance Checklist",
+        description: "A pragmatic compliance checklist for India's BFSI sector following the RBI draft guidelines on AI. Learn about data residency, model bias audits, and explainability.",
+        h1: "RBI's Draft AI Regulation: A Pragmatic BFSI Checklist",
+        article: `
+            <h2>On-Premise Residency & Private VPCs</h2>
+            <p>The RBI directives mandate local Indian geography data residency for all financial prompts and model logs. This requires moving to private VPCs and fine-tuned models.</p>
+            <h2>Explainability & Credit Decisioning</h2>
+            <p>Decisions assisted by AI models (such as loan pre-qualification) must have transparent trace logs of features and weights to satisfy regulatory compliance auditors.</p>
+        `,
+        schema: {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "RBI's Draft AI Regulation: A Pragmatic BFSI Checklist",
+            "datePublished": "2026-01-12",
+            "author": {
+                "@type": "Organization",
+                "name": "Studio Form"
+            }
+        }
     }
 };
 
 // Generic Fallbacks generator for dynamic routes (blogs, services, industries, resources)
-const getGenericSEO = (route) => {
+const getGenericSEO = (route, lastmod) => {
     const segments = route.split('/').filter(Boolean);
     const category = segments[0] || "";
     const slug = segments[1] || "";
@@ -178,7 +297,7 @@ const getGenericSEO = (route) => {
                 "@context": "https://schema.org",
                 "@type": "BlogPosting",
                 "headline": formattedName,
-                "datePublished": "2026-07-18",
+                "datePublished": lastmod,
                 "author": {
                     "@type": "Organization",
                     "name": "Studio Form"
@@ -217,21 +336,32 @@ function main() {
     const baseHtml = fs.readFileSync(INDEX_HTML_PATH, 'utf8');
     const sitemapContent = fs.readFileSync(SITEMAP_PATH, 'utf8');
     
-    // Discover all URLs from sitemap
-    const locRegex = /<loc>(.*?)<\/loc>/g;
-    let match;
+    // Discover all URLs from sitemap and extract their lastmod dates
+    const urlRegex = /<url>([\s\S]*?)<\/url>/g;
+    let urlMatch;
     const routes = [];
+    const routeLastmods = {};
     
-    while ((match = locRegex.exec(sitemapContent)) !== null) {
-        const routePath = getRoutePath(match[1]);
-        routes.push(routePath);
+    while ((urlMatch = urlRegex.exec(sitemapContent)) !== null) {
+        const urlBlock = urlMatch[1];
+        const locMatch = /<loc>(.*?)<\/loc>/.exec(urlBlock);
+        const lastmodMatch = /<lastmod>(.*?)<\/lastmod>/.exec(urlBlock);
+        
+        if (locMatch) {
+            const routePath = getRoutePath(locMatch[1]);
+            routes.push(routePath);
+            if (lastmodMatch) {
+                routeLastmods[routePath] = lastmodMatch[1];
+            }
+        }
     }
     
     console.log(`Discovered ${routes.length} routes from sitemap.xml`);
     
     routes.forEach(route => {
         // Resolve configuration
-        const config = SEO_CONFIG[route] || getGenericSEO(route);
+        const lastmod = routeLastmods[route] || new Date().toISOString().split("T")[0];
+        const config = SEO_CONFIG[route] || getGenericSEO(route, lastmod);
         const fullUrl = `https://www.studioform.app${route}`;
         
         let prerendered = baseHtml;
