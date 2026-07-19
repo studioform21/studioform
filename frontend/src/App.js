@@ -28,6 +28,7 @@ import Changelog from "@/pages/Changelog";
 import NotFound from "@/pages/NotFound";
 import CookieConsent from "@/components/CookieConsent";
 import EmailDashboard from "@/pages/EmailDashboard";
+import TwilioAlternatives from "@/pages/TwilioAlternatives";
 
 function App() {
     if (
@@ -96,6 +97,7 @@ function App() {
                         <Route path="/shipping" element={<Legal kind="shipping" />} />
                         <Route path="/cancellation" element={<Legal kind="cancellation" />} />
                         <Route path="/b2b-marketing-email" element={<EmailDashboard />} />
+                        <Route path="/twilio-alternatives" element={<TwilioAlternatives />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </main>
