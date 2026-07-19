@@ -366,6 +366,8 @@ class MarketingEmailSend(BaseModel):
     persona: Optional[str] = ""
     platform: Optional[str] = ""
     language: Optional[str] = ""
+    custom_subject: Optional[str] = None
+    custom_body: Optional[str] = None
 
 
 @api_router.post("/send-marketing-email")
@@ -374,55 +376,72 @@ async def send_marketing_email(payload: MarketingEmailSend):
         raise HTTPException(status_code=401, detail="Invalid authorization password")
         
     # Map template ID to filename
-    template_filename = "email-template.html"
     t_id = payload.template_id or "general"
-    if t_id == "voice":
-        template_filename = "voice-agents-template.html"
-    elif t_id == "chatbot":
-        template_filename = "chatbots-template.html"
-    elif t_id == "blueprint":
-        template_filename = "blueprint-template.html"
-        
-    # Load template HTML (HTTP first for instant Vercel sync, fallback to local files)
-    template_html = ""
-    try:
-        import requests
-        # Fetch directly from live website to ensure instant updates without backend redeploys
-        resp = requests.get(f"https://www.studioform.app/{template_filename}", timeout=5)
-        if resp.status_code == 200:
-            template_html = resp.text
-    except Exception as e:
-        print(f"HTTP template fetch failed: {str(e)}, falling back to local files.")
-        
-    if not template_html:
-        # Locate template path (resilient check)
-        possible_paths = [
-            ROOT_DIR / ".." / "marketing" / template_filename,
-            ROOT_DIR / ".." / "frontend" / "public" / template_filename,
-            ROOT_DIR / template_filename
-        ]
-        template_path = None
-        for p in possible_paths:
-            if p.exists():
-                template_path = p
-                break
-                
-        if not template_path:
-            raise HTTPException(status_code=500, detail=f"Email template file ({template_filename}) not found on server")
+    
+    if t_id == "custom":
+        rendered_html = payload.custom_body or ""
+        subject = payload.custom_subject or "Custom Email"
+    else:
+        template_filename = "email-template.html"
+        if t_id == "voice":
+            template_filename = "voice-agents-template.html"
+        elif t_id == "chatbot":
+            template_filename = "chatbots-template.html"
+        elif t_id == "blueprint":
+            template_filename = "blueprint-template.html"
             
-        # Read template HTML
+        # Load template HTML (HTTP first for instant Vercel sync, fallback to local files)
+        template_html = ""
         try:
-            with open(template_path, "r", encoding="utf-8") as f:
-                template_html = f.read()
+            import requests
+            # Fetch directly from live website to ensure instant updates without backend redeploys
+            resp = requests.get(f"https://www.studioform.app/{template_filename}", timeout=5)
+            if resp.status_code == 200:
+                template_html = resp.text
         except Exception as e:
-            raise HTTPException(status_code=500, detail=f"Failed to read template: {str(e)}")
+            print(f"HTTP template fetch failed: {str(e)}, falling back to local files.")
+            
+        if not template_html:
+            # Locate template path (resilient check)
+            possible_paths = [
+                ROOT_DIR / ".." / "marketing" / template_filename,
+                ROOT_DIR / ".." / "frontend" / "public" / template_filename,
+                ROOT_DIR / template_filename
+            ]
+            template_path = None
+            for p in possible_paths:
+                if p.exists():
+                    template_path = p
+                    break
+                    
+            if not template_path:
+                raise HTTPException(status_code=500, detail=f"Email template file ({template_filename}) not found on server")
+                
+            # Read template HTML
+            try:
+                with open(template_path, "r", encoding="utf-8") as f:
+                    template_html = f.read()
+            except Exception as e:
+                raise HTTPException(status_code=500, detail=f"Failed to read template: {str(e)}")
+            
+        rendered_html = template_html
         
+        if t_id == "voice":
+            subject = f"Automate Customer Calls with AI Voice Agents | Studio Form"
+        elif t_id == "chatbot":
+            subject = f"Extract Insights & Automate Support with RAG Chatbots | Studio Form"
+        elif t_id == "blueprint":
+            subject = f"Your AI Agent System Architecture Blueprint | Studio Form"
+        else:
+            name = payload.recipient_name or "there"
+            company = payload.recipient_company or "Your Business"
+            subject = f"AI Can Save {company} 4-6 Hours Every Day | Studio Form"
+            
     # Render variables
     name = payload.recipient_name or "there"
     company = payload.recipient_company or "Your Business"
     
     # Replacing variables
-    rendered_html = template_html
     import re
     rendered_html = re.sub(r'\{\{\s*first_name\s*\|\s*default\("[^"]*"\)\s*\}\}', name, rendered_html)
     rendered_html = re.sub(r'\{\{\s*first_name\s*\}\}', name, rendered_html)
@@ -433,14 +452,11 @@ async def send_marketing_email(payload: MarketingEmailSend):
     rendered_html = re.sub(r'\{\{\s*language\s*\}\}', payload.language or "English", rendered_html)
     rendered_html = re.sub(r'\{\{\s*email\s*\}\}', payload.recipient_email, rendered_html)
     
-    if t_id == "voice":
-        subject = f"Automate Customer Calls with AI Voice Agents | Studio Form"
-    elif t_id == "chatbot":
-        subject = f"Extract Insights & Automate Support with RAG Chatbots | Studio Form"
-    elif t_id == "blueprint":
-        subject = f"Your AI Agent System Architecture Blueprint | Studio Form"
-    else:
-        subject = f"AI Can Save {company} 4-6 Hours Every Day | Studio Form"
+    # Also replace variables in custom subject
+    subject = re.sub(r'\{\{\s*first_name\s*\|\s*default\("[^"]*"\)\s*\}\}', name, subject)
+    subject = re.sub(r'\{\{\s*first_name\s*\}\}', name, subject)
+    subject = re.sub(r'\{\{\s*company_name\s*\|\s*default\("[^"]*"\)\s*\}\}', company, subject)
+    subject = re.sub(r'\{\{\s*company_name\s*\}\}', company, subject)
     
     # Re-use SMTP & Resend configuration from environment
     smtp_host = os.getenv("SMTP_HOST", "")

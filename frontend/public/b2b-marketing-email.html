@@ -386,7 +386,20 @@
                             <option value="general">General B2B Overview</option>
                             <option value="voice">AI Voice Agents Focus</option>
                             <option value="chatbot">AI Chatbots & RAG Focus</option>
+                            <option value="custom">Custom Email (No Template)</option>
                         </select>
+                    </div>
+
+                    <!-- Custom Mail Config (Hidden by default) -->
+                    <div id="custom-email-config" style="display: none; margin-bottom: 24px;">
+                        <div class="input-group" style="margin-bottom: 16px;">
+                            <label class="input-label" for="custom-subject">Email Subject</label>
+                            <input class="terminal-input" type="text" id="custom-subject" placeholder="Enter custom subject" oninput="updatePreview()">
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label" for="custom-body">Email Body (HTML/Plain)</label>
+                            <textarea class="terminal-input" id="custom-body" placeholder="Enter email body..." style="min-height: 180px; font-family: 'JetBrains Mono', monospace; font-size: 13px; resize: vertical; line-height: 1.5; padding: 12px;" oninput="updatePreview()"></textarea>
+                        </div>
                     </div>
 
                     <h2 class="section-title">Recipient Config</h2>
@@ -510,6 +523,17 @@
 
         async function loadSelectedTemplate() {
             const templateType = document.getElementById("campaign-template").value;
+            
+            const customEmailConfig = document.getElementById("custom-email-config");
+            if (templateType === "custom") {
+                customEmailConfig.style.display = "block";
+                rawEmailTemplate = "";
+                updatePreview();
+                return;
+            } else {
+                customEmailConfig.style.display = "none";
+            }
+            
             let templateFile = "email-template.html";
             if (templateType === "voice") {
                 templateFile = "voice-agents-template.html";
@@ -540,13 +564,40 @@
         }
 
         function updatePreview() {
-            if (!rawEmailTemplate) return;
-            
+            const templateType = document.getElementById("campaign-template").value;
             const name = document.getElementById("rcpt-name").value || "there";
             const company = document.getElementById("rcpt-company").value || "Your Business";
             
+            let rendered = "";
+            let subjectStr = "";
+            
+            if (templateType === "custom") {
+                const customBody = document.getElementById("custom-body").value || "<p>Hello {{ first_name }},</p><p>Start writing your custom email here...</p>";
+                rendered = customBody;
+                
+                const customSubject = document.getElementById("custom-subject").value || "Custom Email Subject";
+                subjectStr = customSubject;
+            } else {
+                if (!rawEmailTemplate) return;
+                rendered = rawEmailTemplate;
+                
+                // Update Subject display dynamically based on selected template
+                subjectStr = `AI Can Save ${company} 4-6 Hours Every Day | Studio Form`;
+                if (templateType === "voice") {
+                    subjectStr = `Automate Customer Calls with AI Voice Agents | Studio Form`;
+                } else if (templateType === "chatbot") {
+                    subjectStr = `Extract Insights & Automate Support with RAG Chatbots | Studio Form`;
+                }
+            }
+            
             // Perform variable substitutions
-            let rendered = rawEmailTemplate
+            rendered = rendered
+                .replace(/\{\{\s*first_name\s*\|\s*default\("[^"]*"\)\s*\}\}/g, name)
+                .replace(/\{\{\s*first_name\s*\}\}/g, name)
+                .replace(/\{\{\s*company_name\s*\|\s*default\("[^"]*"\)\s*\}\}/g, company)
+                .replace(/\{\{\s*company_name\s*\}\}/g, company);
+                
+            subjectStr = subjectStr
                 .replace(/\{\{\s*first_name\s*\|\s*default\("[^"]*"\)\s*\}\}/g, name)
                 .replace(/\{\{\s*first_name\s*\}\}/g, name)
                 .replace(/\{\{\s*company_name\s*\|\s*default\("[^"]*"\)\s*\}\}/g, company)
@@ -555,15 +606,6 @@
             // Update preview iframe
             const iframe = document.getElementById("preview-frame");
             iframe.srcdoc = rendered;
-            
-            // Update Subject display dynamically based on selected template
-            const templateType = document.getElementById("campaign-template").value;
-            let subjectStr = `AI Can Save ${company} 4-6 Hours Every Day | Studio Form`;
-            if (templateType === "voice") {
-                subjectStr = `Automate Customer Calls with AI Voice Agents | Studio Form`;
-            } else if (templateType === "chatbot") {
-                subjectStr = `Extract Insights & Automate Support with RAG Chatbots | Studio Form`;
-            }
             
             const subjectHeader = document.getElementById("preview-subject");
             subjectHeader.textContent = `Subject: ${subjectStr}`;
@@ -590,6 +632,17 @@
                 logConsole("Validation failed: Recipient Email is required.", "error");
                 return;
             }
+            
+            let customSubject = "";
+            let customBody = "";
+            if (templateId === "custom") {
+                customSubject = document.getElementById("custom-subject").value;
+                customBody = document.getElementById("custom-body").value;
+                if (!customSubject || !customBody) {
+                    logConsole("Validation failed: Subject and Body are required for custom email.", "error");
+                    return;
+                }
+            }
 
             const sendBtn = document.getElementById("send-btn");
             const spinner = document.getElementById("btn-spinner");
@@ -610,7 +663,9 @@
                         recipient_email: email,
                         recipient_name: name,
                         recipient_company: company,
-                        template_id: templateId
+                        template_id: templateId,
+                        custom_subject: customSubject,
+                        custom_body: customBody
                     })
                 });
 
@@ -622,6 +677,10 @@
                     document.getElementById("rcpt-email").value = "";
                     document.getElementById("rcpt-name").value = "";
                     document.getElementById("rcpt-company").value = "";
+                    if (templateId === "custom") {
+                        document.getElementById("custom-subject").value = "";
+                        document.getElementById("custom-body").value = "";
+                    }
                     updatePreview();
                     // Refresh campaign logs silently
                     fetchLogs();
