@@ -21,5 +21,6 @@ root.render(
             <App />
             <SpeedInsights />
         </QueryClientProvider>
+        
     </React.StrictMode>,
 );
