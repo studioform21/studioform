@@ -572,8 +572,15 @@
             let subjectStr = "";
             
             if (templateType === "custom") {
-                const customBody = document.getElementById("custom-body").value || "<p>Hello {{ first_name }},</p><p>Start writing your custom email here...</p>";
-                rendered = customBody;
+                let customBody = document.getElementById("custom-body").value || "Hello {{ first_name }},\n\nStart writing your custom email here...";
+                
+                // If it doesn't contain HTML tags, convert newlines to <br> and wrap in styled container
+                if (!/<[a-zA-Z\/][^>]*>/.test(customBody)) {
+                    const formattedBody = customBody.replace(/\n/g, "<br>");
+                    rendered = `<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #333333; background-color: #ffffff; padding: 30px; min-height: 100vh; box-sizing: border-box;">${formattedBody}</div>`;
+                } else {
+                    rendered = customBody;
+                }
                 
                 const customSubject = document.getElementById("custom-subject").value || "Custom Email Subject";
                 subjectStr = customSubject;

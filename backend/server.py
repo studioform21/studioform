@@ -381,6 +381,11 @@ async def send_marketing_email(payload: MarketingEmailSend):
     if t_id == "custom":
         rendered_html = payload.custom_body or ""
         subject = payload.custom_subject or "Custom Email"
+        # If it doesn't contain HTML tags, format newlines and wrap in styled container
+        import re
+        if not re.search(r"<[a-zA-Z/][^>]*>", rendered_html):
+            formatted_body = rendered_html.replace("\n", "<br>")
+            rendered_html = f'<div style="font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #333333; background-color: #ffffff; padding: 30px; min-height: 100%;">{formatted_body}</div>'
     else:
         template_filename = "email-template.html"
         if t_id == "voice":
