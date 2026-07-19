@@ -520,7 +520,7 @@
             logConsole(`Loading template: ${templateFile}...`, "info");
             
             try {
-                const response = await fetch(`./${templateFile}`);
+                const response = await fetch(`/${templateFile}`);
                 if (response.ok) {
                     rawEmailTemplate = await response.text();
                     logConsole(`Template ${templateFile} loaded.`, "success");
