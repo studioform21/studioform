@@ -14,7 +14,7 @@
       "use": "@vercel/static"
     },
     {
-      "src": "backend/api/index.py",
+      "src": "backend/server.py",
       "use": "@vercel/python"
     }
   ],
@@ -70,7 +70,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/backend/api/index.py"
+      "destination": "/backend/server.py"
     },
     {
       "source": "/b2b-marketing-email",
