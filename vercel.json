@@ -69,12 +69,44 @@
       "destination": "/backend/api/index.py"
     },
     {
-      "source": "/(b2b-marketing-email|blueprint-template|chatbots-template|voice-agents-template|email-template)",
-      "destination": "/frontend/$1.html"
+      "source": "/b2b-marketing-email",
+      "destination": "/frontend/b2b-marketing-email.html"
     },
     {
-      "source": "/(b2b-marketing-email|blueprint-template|chatbots-template|voice-agents-template|email-template).html",
-      "destination": "/frontend/$1.html"
+      "source": "/b2b-marketing-email.html",
+      "destination": "/frontend/b2b-marketing-email.html"
+    },
+    {
+      "source": "/blueprint-template",
+      "destination": "/frontend/blueprint-template.html"
+    },
+    {
+      "source": "/blueprint-template.html",
+      "destination": "/frontend/blueprint-template.html"
+    },
+    {
+      "source": "/chatbots-template",
+      "destination": "/frontend/chatbots-template.html"
+    },
+    {
+      "source": "/chatbots-template.html",
+      "destination": "/frontend/chatbots-template.html"
+    },
+    {
+      "source": "/voice-agents-template",
+      "destination": "/frontend/voice-agents-template.html"
+    },
+    {
+      "source": "/voice-agents-template.html",
+      "destination": "/frontend/voice-agents-template.html"
+    },
+    {
+      "source": "/email-template",
+      "destination": "/frontend/email-template.html"
+    },
+    {
+      "source": "/email-template.html",
+      "destination": "/frontend/email-template.html"
     },
     {
       "source": "/(static|images|logo_dark.png|favicon.ico|manifest.json|robots.txt|sitemap.xml|rss.xml|llms.txt)(.*)",
