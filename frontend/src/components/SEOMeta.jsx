@@ -14,12 +14,12 @@ export default function SEOMeta({
     faqs = []
 }) {
     const location = useLocation();
-    const siteUrl = "https://www.studioform.app";
+    const siteUrl = "https://studioform.app";
     const currentUrl = `${siteUrl}${location.pathname}`;
     const canonical = canonicalUrl || currentUrl;
 
-    const metaTitle = title ? `${title} | Studio Form` : "Studio Form | Fabric of Future Intelligence";
-    const metaDesc = description || "India's pioneering agentic AI company. We build autonomous AI agents, voice systems, domain LLMs, and automation workflows that actually ship.";
+    const metaTitle = title ? (title.includes("Studio Form") ? title : `${title} | Studio Form`) : "Studio Form | Custom Enterprise AI & Voice Agent Company";
+    const metaDesc = description || "Studio Form builds autonomous AI voice agents, domain LLMs, and custom automation workflows for enterprise scale.";
 
     useEffect(() => {
         // 1. Update Title

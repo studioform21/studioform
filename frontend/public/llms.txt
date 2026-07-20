@@ -1,34 +1,12 @@
 # Studio Form
+> Enterprise B2B AI agency — voice agents, custom LLMs, RAG pipelines
 
-Studio Form is a leading global developer of custom enterprise agentic AI platforms, headquartered in Indore, India. We build and deploy production-ready autonomous systems, multilingual voice agents, private domain-specific Large Language Models (LLMs), and layout-aware document intelligence architectures for enterprises globally.
-
-## Core Offerings
-
-### 1. Autonomous AI Voice Agents
-Conversational AI telephony systems for enterprise customer service, lead qualification, and transaction verification.
-- **Dialect Support:** High accuracy in English, Hindi, and regional Indic dialects like Marathi, Bengali, Tamil, and Bhojpuri.
-- **Telephony Integration:** Inbound reception, outbound qualifier campaigns, and CRM integrations.
-
-### 2. Custom LLM Development & Fine-Tuning
-Secure, private hosting and fine-tuning of domain-specific language models (e.g., Claude, Llama 3, GPT-4, Gemini) on isolated enterprise cloud instances.
-- **Compliance:** 100% data privacy aligned with regional residency requirements and India's Digital Personal Data Protection (DPDP) Act of 2023.
-
-### 3. Enterprise RAG & Document Intelligence
-Layout-aware RAG search engines parsing complex tables, charts, and unstructured documents (PDFs, reports) with zero hallucinations.
-- **Infrastructure:** Built using advanced vector databases (Pinecone, Qdrant, MongoDB Atlas) and custom reranking models.
-
-### 4. AI Workshops & Consulting
-Custom prompts engineering bootcamps, executive C-suite strategy seminars, model evaluation frameworks, and deployment governance advisory.
-
-## Primary Site Map
-- Home: https://www.studioform.app
-- Pricing: https://www.studioform.app/pricing
-- Case Studies: https://www.studioform.app/case-studies
-- Workshops & Consulting: https://www.studioform.app/workshops
-- AI University: https://www.studioform.app/ai-university
-- Documentation: https://www.studioform.app/docs
-- Changelog: https://www.studioform.app/changelog
-- About Us: https://www.studioform.app/about
-- Contact Team: https://www.studioform.app/contact
-- Privacy Policy: https://www.studioform.app/privacy
-- Terms of Service: https://www.studioform.app/terms
+## Main pages
+- [Home](https://studioform.app/): Overview of services
+- [Pricing](https://studioform.app/pricing): Pricing plans
+- [Docs](https://studioform.app/docs): Documentation
+- [Voice Agents](https://studioform.app/services/voice-agents): Autonomous AI voice agents and contact center automation
+- [RAG Chatbots](https://studioform.app/services/rag-chatbots): Enterprise document intelligence and RAG pipelines
+- [Custom LLM Development](https://studioform.app/services/llm-development): Private domain LLM training and fine-tuning
+- [Case Studies](https://studioform.app/case-studies): Real-world customer ROI and deployment stories
+- [Twilio Alternatives](https://studioform.app/twilio-alternatives): Comparative analysis of voice agent telephony solutions

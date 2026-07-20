@@ -135,10 +135,16 @@ export default function Home() {
     return (
         <div>
             <SEOMeta
-                title="Fabric of Future Intelligence"
-                description="Studio Form is a pioneering agentic AI company in Indore, India. We build autonomous AI voice agents, domain LLMs, and custom automation workflows that actually ship."
-                keywords="AI company in Indore, agentic AI Indore, AI voice agents, domain LLM, RAG chatbots, AI automation, Studio Form"
+                title="Studio Form | Custom Enterprise AI & Voice Agent Company"
+                description="Studio Form builds autonomous AI voice agents, domain LLMs, and custom automation workflows for enterprise scale with sub-800ms latency."
+                keywords="AI company, agentic AI, AI voice agents, domain LLM, RAG chatbots, AI automation, Studio Form"
+                canonicalUrl="https://studioform.app/"
                 structuredData={HOME_STRUCTURED_DATA}
+                faqs={[
+                    { q: "What AI services does Studio Form provide?", a: "Studio Form builds autonomous AI voice agents for call centers, private domain LLMs, layout-aware RAG chatbots, and enterprise automation workflows." },
+                    { q: "What is the typical deployment latency for AI Voice Agents?", a: "Our AI Voice Agents achieve conversational latency under 800ms on Twilio, Vonage, and SIP trunks with 99.97% service uptime." },
+                    { q: "Is Studio Form compliant with data privacy laws?", a: "Yes, Studio Form platforms are fully compliant with India's Digital Personal Data Protection (DPDP) Act of 2023 and feature private VPC deployment modes." }
+                ]}
             />
             <Marquee items={MARQUEE_ITEMS} />
 

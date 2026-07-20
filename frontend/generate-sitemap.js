@@ -60,7 +60,7 @@ const BLOGS = [
     "rbi-ai-regulation"
 ];
 
-const siteUrl = "https://www.studioform.app";
+const siteUrl = "https://studioform.app";
 const today = new Date().toISOString().split("T")[0];
 
 let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;

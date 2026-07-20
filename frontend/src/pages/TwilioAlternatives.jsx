@@ -92,9 +92,10 @@ export default function TwilioAlternatives() {
     return (
         <div className="bg-[#0A0A0A] text-white">
             <SEOMeta
-                title="Twilio Alternatives for Enterprise Voice Agents"
+                title="Twilio Alternatives for AI Voice Telephony | Studio Form"
                 description="Evaluate Twilio alternatives for AI voice. Compare programmable CPaaS primitives, developer API platforms, and Studio Form's enterprise voice agents."
                 keywords="Twilio alternatives, Vapi alternatives, Bland AI alternatives, voice agent platform, CPaaS alternatives, enterprise voice AI"
+                canonicalUrl="https://studioform.app/twilio-alternatives"
                 structuredData={STRUCTURED_DATA}
                 faqs={FAQ_ITEMS}
             />

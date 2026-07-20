@@ -67,10 +67,15 @@ export default function Pricing() {
     return (
         <div>
             <SEOMeta
-                title="Pricing"
-                description="Transparent pricing models for enterprise AI voice agents, custom LLM fine-tuning, RAG chatbots, and automation workflows."
+                title="Pricing & Plans | Enterprise AI & Voice Agents — Studio Form"
+                description="Explore Studio Form transparent pricing plans for enterprise AI voice agents, custom LLM fine-tuning, and RAG chatbots with 99.97% SLA."
                 keywords="AI pricing, voice AI cost, chatbot pricing, LLM fine-tuning cost, Studio Form pricing"
+                canonicalUrl="https://studioform.app/pricing"
                 structuredData={PRICING_STRUCTURED_DATA}
+                faqs={[
+                    { q: "What pricing options are available?", a: "We offer Pilot Proof-of-Concept pricing, Monthly Retainer plans, and Custom Enterprise Contracts with dedicated SLAs." },
+                    { q: "Are there hidden API or telephony charges?", a: "No, Studio Form provides transparent per-minute or per-agent flat pricing that includes ASR, LLM inference, TTS, and telephony." }
+                ]}
             />
             <PageHero 
                 command="studioform --pricing" 
