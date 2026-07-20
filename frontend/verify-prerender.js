@@ -2,74 +2,79 @@ const fs = require('fs');
 const path = require('path');
 
 const BUILD_DIR = path.join(__dirname, 'build');
+const SITEMAP_PATH = path.join(BUILD_DIR, 'sitemap.xml');
 
-const TEST_ROUTES = [
-    { route: '/', file: path.join(BUILD_DIR, 'index.html'), expectedCanonical: 'https://studioform.app/' },
-    { route: '/pricing', file: path.join(BUILD_DIR, 'pricing', 'index.html'), expectedCanonical: 'https://studioform.app/pricing' },
-    { route: '/services/voice-agents', file: path.join(BUILD_DIR, 'services', 'voice-agents', 'index.html'), expectedCanonical: 'https://studioform.app/services/voice-agents' },
-    { route: '/services/rag-chatbots', file: path.join(BUILD_DIR, 'services', 'rag-chatbots', 'index.html'), expectedCanonical: 'https://studioform.app/services/rag-chatbots' },
-    { route: '/case-studies', file: path.join(BUILD_DIR, 'case-studies', 'index.html'), expectedCanonical: 'https://studioform.app/case-studies' },
-    { route: '/twilio-alternatives', file: path.join(BUILD_DIR, 'twilio-alternatives', 'index.html'), expectedCanonical: 'https://studioform.app/twilio-alternatives' }
-];
+if (!fs.existsSync(SITEMAP_PATH)) {
+    console.error("Error: sitemap.xml not found in build/");
+    process.exit(1);
+}
 
-console.log("=== VERIFYING PRERENDERED ROUTES & CANONICAL TAGS ===");
+const sitemapContent = fs.readFileSync(SITEMAP_PATH, 'utf8');
+const urlRegex = /<loc>(.*?)<\/loc>/g;
+let match;
+const routes = [];
 
-let passed = true;
+while ((match = urlRegex.exec(sitemapContent)) !== null) {
+    const fullUrl = match[1];
+    const parsed = new URL(fullUrl);
+    routes.push({
+        url: fullUrl,
+        routePath: parsed.pathname
+    });
+}
 
-TEST_ROUTES.forEach(({ route, file, expectedCanonical }) => {
-    console.log(`\nChecking Route: ${route}`);
-    console.log(`Target File: ${file}`);
-    
-    if (!fs.existsSync(file)) {
-        console.error(`❌ FAIL: Pre-rendered HTML file does NOT exist at ${file}`);
-        passed = false;
+console.log(`=== VERIFYING ALL ${routes.length} PRERENDERED ROUTES & CANONICAL TAGS ===\n`);
+
+let totalPassed = 0;
+let totalFailed = 0;
+
+routes.forEach(({ url, routePath }) => {
+    let filePath;
+    if (routePath === "/" || routePath === "") {
+        filePath = path.join(BUILD_DIR, "index.html");
+    } else {
+        const clean = routePath.startsWith('/') ? routePath.slice(1) : routePath;
+        filePath = path.join(BUILD_DIR, clean, "index.html");
+    }
+
+    if (!fs.existsSync(filePath)) {
+        console.error(`❌ FAIL [${routePath}]: File does NOT exist at ${filePath}`);
+        totalFailed++;
         return;
     }
-    
-    const content = fs.readFileSync(file, 'utf8');
-    
-    // Check canonical link
-    const canonicalMatch = /<link\s+rel="canonical"\s+href="(.*?)"\s*\/?>/i.exec(content);
-    if (!canonicalMatch) {
-        console.error(`❌ FAIL: Canonical tag missing in ${route}`);
-        passed = false;
-    } else {
-        const canonicalUrl = canonicalMatch[1];
-        if (canonicalUrl === expectedCanonical) {
-            console.log(`  ✓ Canonical Tag Match: ${canonicalUrl}`);
-        } else {
-            console.error(`❌ FAIL: Canonical mismatch for ${route}. Got ${canonicalUrl}, expected ${expectedCanonical}`);
-            passed = false;
-        }
-    }
 
-    // Check Open Graph Tags
-    const ogImageMatch = /<meta\s+property="og:image"\s+content="(.*?)"\s*\/?>/i.exec(content);
-    if (ogImageMatch) {
-        console.log(`  ✓ OG Image: ${ogImageMatch[1]}`);
-    } else {
-        console.error(`❌ FAIL: OG Image tag missing in ${route}`);
-        passed = false;
-    }
+    const html = fs.readFileSync(filePath, 'utf8');
 
-    // Check word count of static article
-    const articleMatch = /<article>([\s\S]*?)<\/article>/i.exec(content);
+    // Canonical test (normalize trailing slashes)
+    const norm = (u) => u ? (u.endsWith('/') ? u : u + '/') : '';
+    const canonicalMatch = /<link\s+rel="canonical"\s+href="(.*?)"\s*\/?>/i.exec(html);
+    const canonicalOk = canonicalMatch && norm(canonicalMatch[1]) === norm(url);
+
+    // OG Image test
+    const ogImageMatch = /<meta\s+property="og:image"\s+content="(.*?)"\s*\/?>/i.exec(html);
+    const ogOk = ogImageMatch && ogImageMatch[1] === "https://studioform.app/og-image.png";
+
+    // Article word count test
+    const articleMatch = /<article>([\s\S]*?)<\/article>/i.exec(html);
+    let wordCount = 0;
     if (articleMatch) {
         const text = articleMatch[1].replace(/<[^>]+>/g, ' ');
-        const wordCount = text.trim().split(/\s+/).length;
-        console.log(`  ✓ Static Article Word Count: ${wordCount} words`);
-        if (wordCount < 150) {
-            console.warn(`  ⚠️ WARNING: Article word count is low (${wordCount} words) for ${route}`);
-        }
+        wordCount = text.trim().split(/\s+/).length;
+    }
+
+    if (canonicalOk && ogOk && wordCount > 30) {
+        console.log(`✓ [${routePath.padEnd(45)}] WordCount: ${String(wordCount).padStart(3)} | Canonical: OK`);
+        totalPassed++;
     } else {
-        console.error(`❌ FAIL: No <article> block found in ${route}`);
-        passed = false;
+        console.error(`❌ FAIL [${routePath}]: Canonical: ${canonicalMatch ? canonicalMatch[1] : 'NONE'}, OG: ${ogOk}, Words: ${wordCount}`);
+        totalFailed++;
     }
 });
 
-if (passed) {
-    console.log("\n✅ ALL ROUTE PRERENDER & CANONICAL VERIFICATIONS PASSED!");
-} else {
-    console.error("\n❌ VERIFICATION FAILED FOR ONE OR MORE ROUTES!");
+console.log(`\n==================================================`);
+console.log(`VERIFICATION SUMMARY: ${totalPassed}/${routes.length} PASSED, ${totalFailed} FAILED`);
+console.log(`==================================================`);
+
+if (totalFailed > 0) {
     process.exit(1);
 }

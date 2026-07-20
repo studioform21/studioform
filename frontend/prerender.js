@@ -369,7 +369,12 @@ const getGenericSEO = (route, lastmod) => {
             title: `${formattedName} Solutions & Automation | Studio Form`,
             description: `Deploy custom ${formattedName} solutions at enterprise scale. Optimize workloads, connect databases, and secure domain workflows with Studio Form.`,
             h1: `${formattedName} Enterprise Solutions`,
-            article: `<h2>What Are Studio Form's ${formattedName} Services?</h2><p>Studio Form specializes in deploying secure, production-grade ${formattedName} systems. We integrate with existing CRM endpoints, databases, and telemetry streams to automate enterprise workloads with guaranteed 99.97% uptime.</p>`,
+            article: `
+                <h2>What Are Studio Form's ${formattedName} Services?</h2>
+                <p>Studio Form specializes in deploying secure, production-grade ${formattedName} systems. We integrate with existing CRM endpoints, databases, and telemetry streams to automate enterprise workloads with guaranteed 99.97% service availability and sub-800ms conversational voice latency.</p>
+                <h2>How Does ${formattedName} Drive Business ROI?</h2>
+                <p>By replacing manual data processing and repetitive support tasks with specialized agentic AI workers, your organization reduces operating costs while improving customer response times across regional Indic languages and English.</p>
+            `,
             schema: {
                 "@context": "https://schema.org",
                 "@type": "Service",
@@ -387,11 +392,35 @@ const getGenericSEO = (route, lastmod) => {
             title: `Enterprise AI for ${formattedName} | Studio Form`,
             description: `Explore custom AI voice agents, document intelligence models, and automated compliance architectures tailored for the ${formattedName} industry.`,
             h1: `Agentic AI & Voice Solutions for ${formattedName}`,
-            article: `<h2>How Does AI Automation Transform the ${formattedName} Sector?</h2><p>Our platforms are custom-engineered to address industry-specific compliance, performance, and security challenges within ${formattedName}, delivering sub-800ms voice response times and zero-hallucination data extraction.</p>`,
+            article: `
+                <h2>How Does AI Automation Transform the ${formattedName} Sector?</h2>
+                <p>Our platforms are custom-engineered to address industry-specific compliance, performance, and security challenges within ${formattedName}, delivering sub-800ms voice response times and 99.4% precision data extraction for tabular documents and medical billing records.</p>
+                <h2>What ROI Can Organizations in ${formattedName} Expect?</h2>
+                <p>Enterprise deployments in ${formattedName} achieve a 45% reduction in average call handling time, total alignment with India's DPDP Act 2023, and predictable flat-rate monthly hosting billing.</p>
+            `,
             schema: {
                 "@context": "https://schema.org",
                 "@type": "WebPage",
                 "name": `AI Solutions for ${formattedName}`
+            }
+        };
+    }
+
+    if (category === "resources" || category === "case-studies") {
+        return {
+            title: `${formattedName} — Studio Form AI Architecture Resources`,
+            description: `Access technical documentation, prompt templates, calculators, and case studies for ${formattedName} on the Studio Form enterprise AI platform.`,
+            h1: `${formattedName} Architecture & Case Studies`,
+            article: `
+                <h2>Overview of ${formattedName}</h2>
+                <p>Explore technical execution patterns, vector database integration blueprints, and deployment metrics for ${formattedName}. Studio Form provides production-ready agentic models, layout-aware PDF parsers, and multilingual voice agent tools built for scale.</p>
+                <h2>Key Implementation Highlights</h2>
+                <p>Discover how 52+ autonomous voice agents operate across Indic languages with sub-800ms latency and 99.97% SLA availability. Learn more on our <a href="/services/voice-agents">Voice Agents Page</a> or contact solution engineers on our <a href="/contact">Contact Page</a>.</p>
+            `,
+            schema: {
+                "@context": "https://schema.org",
+                "@type": "WebPage",
+                "name": formattedName
             }
         };
     }
@@ -401,7 +430,12 @@ const getGenericSEO = (route, lastmod) => {
             title: `${formattedName} | Studio Form AI Insights`,
             description: `Read technical analysis and engineering insights on ${formattedName} in conversational AI, voice assistants, and secure enterprise automation.`,
             h1: formattedName,
-            article: `<h2>Technical Analysis: ${formattedName}</h2><p>Stay informed with the latest technical research on ${formattedName} and how key developments affect corporate model hosting decisions and agentic automation pipelines.</p>`,
+            article: `
+                <h2>Technical Deep-Dive: ${formattedName}</h2>
+                <p>Stay informed with the latest technical research on ${formattedName} and how key developments affect corporate model hosting decisions, VPC security boundaries, and agentic automation pipelines.</p>
+                <h2>Engineering Takeaways for Enterprise Systems</h2>
+                <p>Implementing domain-specific fine-tuned LLMs ensures data privacy under DPDP 2023 while delivering fast, accurate inference across complex workflows.</p>
+            `,
             schema: {
                 "@context": "https://schema.org",
                 "@type": "BlogPosting",
@@ -416,10 +450,15 @@ const getGenericSEO = (route, lastmod) => {
     }
     
     return {
-        title: `${formattedName} | Studio Form`,
-        description: `Explore ${formattedName} on the Studio Form enterprise AI platform. Deploy secure voice agents and layout-aware parsers.`,
+        title: `${formattedName} | Studio Form Enterprise AI`,
+        description: `Learn about ${formattedName} on the Studio Form enterprise AI platform. Deploy secure voice agents, RAG chatbots, and automated workflows.`,
         h1: formattedName,
-        article: `<p>Learn about ${formattedName} and discover how Studio Form helps enterprises automate workflows safely with 99.97% service availability.</p>`,
+        article: `
+            <h2>Overview of ${formattedName}</h2>
+            <p>Studio Form provides production-grade artificial intelligence solutions, multilingual voice agents, and private LLM hosting for enterprises globally. We ensure 99.97% service availability and full compliance with DPDP Act 2023.</p>
+            <h2>Explore Related Solutions</h2>
+            <p>Check out our <a href="/pricing">Pricing Plans</a>, read developer guides in <a href="/docs">Docs</a>, or reach out directly on our <a href="/contact">Contact Page</a>.</p>
+        `,
         schema: {
             "@context": "https://schema.org",
             "@type": "WebPage",
