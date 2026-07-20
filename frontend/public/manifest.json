@@ -1,19 +1,24 @@
 {
   "short_name": "Studio Form",
-  "name": "Studio Form: Fabric of Future Intelligence",
+  "name": "Studio Form: Custom Enterprise AI & Voice Agent Company",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "/favicon-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png"
     },
     {
-      "src": "logo_dark.png",
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#0A0A0A",
   "background_color": "#0A0A0A"

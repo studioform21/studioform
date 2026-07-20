@@ -89,7 +89,7 @@
       "destination": "/email-template.html"
     },
     {
-      "source": "/(static|images|logo_dark.png|email_hero_blue.png|favicon.ico|manifest.json|robots.txt|sitemap.xml|rss.xml|llms.txt|email-template.html|voice-agents-template.html|chatbots-template.html|blueprint-template.html|b2b-marketing-email.html)(.*)",
+      "source": "/(static|images|logo_dark.png|og-image.png|email_hero_blue.png|favicon.ico|favicon-32x32.png|favicon-48x48.png|icon-192.png|icon-512.png|apple-touch-icon.png|manifest.json|robots.txt|sitemap.xml|rss.xml|llms.txt|email-template.html|voice-agents-template.html|chatbots-template.html|blueprint-template.html|b2b-marketing-email.html)(.*)",
       "destination": "/$1$2"
     },
     {

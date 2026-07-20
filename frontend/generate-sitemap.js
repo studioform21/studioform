@@ -67,8 +67,9 @@ let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
 xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
 
 const addUrl = (route, lastmod = today) => {
+    const routeUrl = route ? `${siteUrl}/${route}` : `${siteUrl}/`;
     xml += `  <url>\n`;
-    xml += `    <loc>${siteUrl}${route ? "/" + route : ""}</loc>\n`;
+    xml += `    <loc>${routeUrl}</loc>\n`;
     xml += `    <lastmod>${lastmod}</lastmod>\n`;
     xml += `  </url>\n`;
 };
