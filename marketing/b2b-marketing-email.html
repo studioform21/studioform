@@ -444,7 +444,7 @@
                     <span style="font-family:'JetBrains Mono', monospace; font-size:11px; color:#71717a;" id="preview-subject">Subject: AI Can Save Your Business 4-6 Hours Every Day</span>
                 </div>
                 
-                <iframe class="preview-iframe" id="preview-frame" sandbox="allow-same-origin"></iframe>
+                <iframe class="preview-iframe" id="preview-frame" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
                 
                 <!-- Logs Container -->
                 <div id="logs-container" style="display: none; flex: 1; flex-direction: column; overflow-y: auto; background-color: #050505; border: 1px solid #27272a; border-radius: 8px; padding: 16px;">
@@ -543,13 +543,11 @@
             
             logConsole(`Loading template: ${templateFile}...`, "info");
             
-            // On production Vercel, cleanUrls is enabled, so we must fetch without the .html extension.
-            // Locally on Webpack Dev Server, we must fetch with the .html extension.
-            const isLocal = window.location.origin.includes("localhost") || window.location.origin.includes("127.0.0.1");
-            const fetchPath = isLocal ? `/${templateFile}` : `/${templateFile.replace(/\.html$/, "")}`;
-            
             try {
-                const response = await fetch(fetchPath);
+                let response = await fetch(`/${templateFile}`);
+                if (!response.ok) {
+                    response = await fetch(`/${templateFile.replace(/\.html$/, "")}`);
+                }
                 if (response.ok) {
                     rawEmailTemplate = await response.text();
                     logConsole(`Template ${templateFile} loaded.`, "success");

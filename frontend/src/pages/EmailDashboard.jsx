@@ -7,7 +7,7 @@ export default function EmailDashboard() {
                 src="/b2b-marketing-email.html" 
                 className="w-full h-full border-none"
                 title="Emailing Dashboard"
-                sandbox="allow-same-origin allow-scripts allow-forms"
+                sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-modals"
             />
         </div>
     );
