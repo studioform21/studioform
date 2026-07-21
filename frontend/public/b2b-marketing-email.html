@@ -548,6 +548,9 @@
                 if (!response.ok) {
                     response = await fetch(`/${templateFile.replace(/\.html$/, "")}`);
                 }
+                if (!response.ok) {
+                    response = await fetch(`https://www.studioform.app/${templateFile}`);
+                }
                 if (response.ok) {
                     rawEmailTemplate = await response.text();
                     logConsole(`Template ${templateFile} loaded.`, "success");
