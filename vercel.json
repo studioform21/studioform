@@ -109,8 +109,8 @@
       "destination": "/email-template.html"
     },
     {
-      "source": "/:path((static|images|logo_dark.png|og-image.png|email_hero_blue.png|favicon.ico|favicon-32x32.png|favicon-48x48.png|icon-192.png|icon-512.png|apple-touch-icon.png|manifest.json|robots.txt|sitemap.xml|rss.xml|llms.txt).*)",
-      "destination": "/:path"
+      "source": "/(static|images|logo_dark.png|og-image.png|email_hero_blue.png|favicon.ico|favicon-32x32.png|favicon-48x48.png|icon-192.png|icon-512.png|apple-touch-icon.png|manifest.json|robots.txt|sitemap.xml|rss.xml|llms.txt)(.*)",
+      "destination": "/$1$2"
     },
     {
       "source": "/(pricing|about|team|contact|ai-news|docs|changelog|privacy|terms|refund|shipping|cancellation|workshops|ai-university|case-studies|twilio-alternatives|blog-admin|admin|blog)",
