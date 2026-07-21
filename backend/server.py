@@ -43,7 +43,7 @@ except Exception as e:
     db = None
 
 app = FastAPI(title="Studio Form API")
-api_router = APIRouter(prefix="/api")
+api_router = APIRouter()
 
 @app.middleware("http")
 async def add_security_headers(request, call_next):
@@ -949,6 +949,7 @@ async def get_marketing_campaign_logs(password: str):
         raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
 
 
+app.include_router(api_router, prefix="/api")
 app.include_router(api_router)
 
 cors_origins_str = os.environ.get('CORS_ORIGINS', '*')
