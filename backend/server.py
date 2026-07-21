@@ -771,39 +771,34 @@ async def send_marketing_email(payload: MarketingEmailSend):
         elif t_id == "blueprint":
             template_filename = "blueprint-template.html"
             
-        # Load template HTML (HTTP first for instant Vercel sync, fallback to local files)
+        # Locate template path (local filesystem first)
+        possible_paths = [
+            ROOT_DIR / ".." / "frontend" / "public" / template_filename,
+            ROOT_DIR / ".." / "marketing" / template_filename,
+            ROOT_DIR / template_filename
+        ]
         template_html = ""
-        try:
-            import requests
-            # Fetch directly from live website to ensure instant updates without backend redeploys
-            resp = requests.get(f"https://www.studioform.app/{template_filename}", timeout=5)
-            if resp.status_code == 200:
-                template_html = resp.text
-        except Exception as e:
-            print(f"HTTP template fetch failed: {str(e)}, falling back to local files.")
-            
+        for p in possible_paths:
+            if p.exists():
+                try:
+                    with open(p, "r", encoding="utf-8") as f:
+                        template_html = f.read()
+                        if template_html and "<div id=\"root\">" not in template_html:
+                            break
+                except Exception as e:
+                    print(f"Error reading local template {p}: {str(e)}")
+
         if not template_html:
-            # Locate template path (resilient check)
-            possible_paths = [
-                ROOT_DIR / ".." / "marketing" / template_filename,
-                ROOT_DIR / ".." / "frontend" / "public" / template_filename,
-                ROOT_DIR / template_filename
-            ]
-            template_path = None
-            for p in possible_paths:
-                if p.exists():
-                    template_path = p
-                    break
-                    
-            if not template_path:
-                raise HTTPException(status_code=500, detail=f"Email template file ({template_filename}) not found on server")
-                
-            # Read template HTML
             try:
-                with open(template_path, "r", encoding="utf-8") as f:
-                    template_html = f.read()
+                import requests
+                resp = requests.get(f"https://www.studioform.app/{template_filename}", timeout=5)
+                if resp.status_code == 200 and "<div id=\"root\">" not in resp.text:
+                    template_html = resp.text
             except Exception as e:
-                raise HTTPException(status_code=500, detail=f"Failed to read template: {str(e)}")
+                print(f"HTTP template fetch failed: {str(e)}")
+
+        if not template_html:
+            raise HTTPException(status_code=500, detail=f"Email template file ({template_filename}) not found on server")
             
         rendered_html = template_html
         

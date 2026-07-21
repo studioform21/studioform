@@ -479,7 +479,7 @@
         let rawEmailTemplate = "";
         const API_BASE = window.location.origin.includes("localhost") || window.location.origin.includes("127.0.0.1") 
             ? "http://localhost:5000/api" 
-            : window.location.origin + "/api";
+            : "/api";
 
         // Check authentication on load
         window.addEventListener("DOMContentLoaded", () => {
@@ -676,6 +676,14 @@
                     })
                 });
 
+                const contentType = response.headers.get("content-type") || "";
+                if (!contentType.includes("application/json")) {
+                    const rawText = await response.text();
+                    const cleanText = rawText.replace(/<[^>]*>/g, '').trim().substring(0, 120);
+                    logConsole(`HTTP Error ${response.status}: Server returned non-JSON response (${cleanText || "HTML Error Page"})`, "error");
+                    return;
+                }
+
                 const result = await response.json();
                 
                 if (response.ok && result.ok) {
@@ -731,8 +739,11 @@
             
             try {
                 const response = await fetch(`${API_BASE}/marketing-campaign-logs?password=${encodeURIComponent(password)}`);
-                if (!response.ok) {
-                    throw new Error("Failed to fetch logs");
+                const contentType = response.headers.get("content-type") || "";
+                if (!response.ok || !contentType.includes("application/json")) {
+                    const rawText = await response.text();
+                    const cleanText = rawText.replace(/<[^>]*>/g, '').trim().substring(0, 100);
+                    throw new Error(`Server returned HTTP ${response.status} (${cleanText || "HTML Error Page"})`);
                 }
                 const logs = await response.json();
                 
