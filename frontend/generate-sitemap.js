@@ -55,6 +55,7 @@ const RESOURCES = [
 ];
 
 const BLOGS = [
+    "how-to-build-ai-receptionist",
     "gpt-5-reasoning-bands",
     "marathi-voice-agent-playbook",
     "rbi-ai-regulation"
@@ -91,8 +92,10 @@ RESOURCES.forEach(res => addUrl(`resources/${res}`));
 
 // Blogs (only AI News, with their specific publication dates)
 BLOGS.forEach(b => {
-    let date = "2026-07-18"; // default fallback
-    if (b === "gpt-5-reasoning-bands") {
+    let date = "2026-07-21"; // default fallback
+    if (b === "how-to-build-ai-receptionist") {
+        date = "2026-07-21";
+    } else if (b === "gpt-5-reasoning-bands") {
         date = "2026-02-08";
     } else if (b === "marathi-voice-agent-playbook") {
         date = "2026-01-06";

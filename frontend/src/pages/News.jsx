@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageHero from "@/components/PageHero";
@@ -22,6 +22,7 @@ const NEWS_STRUCTURED_DATA = {
 const TAGS = ["All", "Breaking", "Tools", "India", "Voice", "LLMs", "Open Source"];
 
 const ARTICLES = [
+    { tag: "Voice", slug: "how-to-build-ai-receptionist", title: "How to Build an AI Receptionist That Actually Works", date: "Jul 21, 2026", excerpt: "Learn how to build a production-grade AI receptionist in days — no engineering team, no dropped calls." },
     { tag: "Breaking", slug: "gpt-5-reasoning-bands", title: "GPT-5.2 launches with reasoning bands", date: "Feb 8, 2026", excerpt: "OpenAI's latest unlocks tunable reasoning depth — what it means for production agents." },
     { tag: "India", slug: "rbi-ai-regulation", title: "RBI's draft AI regulation — what BFSI must do", date: "Jan 12, 2026", excerpt: "A pragmatic checklist for banks and NBFCs deploying generative AI." },
     { tag: "Voice", slug: "marathi-voice-agent-playbook", title: "Building a Marathi voice agent — playbook", date: "Jan 6, 2026", excerpt: "Dialect modeling, code-mix detection, and accent control for Marathi customer support." },
@@ -34,7 +35,33 @@ const ARTICLES = [
 
 export default function News() {
     const [tag, setTag] = useState("All");
-    const filtered = tag === "All" ? ARTICLES : ARTICLES.filter(a => a.tag === tag);
+    const [articles, setArticles] = useState(ARTICLES);
+
+    useEffect(() => {
+        let isMounted = true;
+        fetch("/api/blogs")
+            .then(res => res.ok ? res.json() : null)
+            .then(data => {
+                if (isMounted && data && data.items && data.items.length > 0) {
+                    const mapped = data.items.map(item => ({
+                        tag: item.tag || "Voice",
+                        slug: item.slug,
+                        title: item.title,
+                        date: item.date || "Recent",
+                        excerpt: (Array.isArray(item.body) && item.body[0]) 
+                            ? item.body[0].slice(0, 140) + "..." 
+                            : (item.callout || "Read full article")
+                    }));
+                    
+                    const unlinkedBriefs = ARTICLES.filter(a => !a.slug);
+                    setArticles([...mapped, ...unlinkedBriefs]);
+                }
+            })
+            .catch(() => {});
+        return () => { isMounted = false; };
+    }, []);
+
+    const filtered = tag === "All" ? articles : articles.filter(a => a.tag === tag);
 
     return (
         <div>

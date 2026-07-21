@@ -363,6 +363,256 @@ async def get_stats():
         "calls_processed_m": 1.0,
         "avg_response_s": 0.42,
     }
+
+
+# ===== Blog Models & Endpoints =====
+class BlogPostCreate(BaseModel):
+    slug: str
+    title: str
+    tag: str = "Voice AI"
+    date: Optional[str] = None
+    readTime: str = "5 min read"
+    author: str = "Studio Form Editorial"
+    keywords: Optional[str] = ""
+    callout: Optional[str] = None
+    body: List[str] = []
+    sections: List[dict] = []
+    published: bool = True
+    password: Optional[str] = "admin@1234"
+
+
+SEED_BLOGS = [
+    {
+        "id": "b-01",
+        "slug": "how-to-build-ai-receptionist",
+        "title": "How to Build an AI Receptionist That Actually Works (Without Hiring an Engineering Team)",
+        "tag": "Voice AI",
+        "date": "Jul 21, 2026",
+        "readTime": "8 min read",
+        "author": "Studio Form Voice Engineering",
+        "keywords": "ai receptionist, voice AI, virtual receptionist, phone automation, ai phone answering, Studio Form",
+        "callout": "Quick Summary (AI Overview Box): An AI receptionist is an automated voice AI agent that answers inbound phone calls 24/7, understands conversational intent, books appointments in your CRM/calendar, and escalates complex callers to live staff. Building a production-grade system requires low-latency speech synthesis (<500ms), reliable phone line connectivity, and deep calendar integration—capabilities provided natively by platforms like Studio Form.",
+        "body": [
+            "If you've searched 'ai receptionist' recently, you've probably landed on two kinds of results: enterprise sales pages that never mention pricing, or DIY tutorials that ask you to wire together five different tools and hope nothing breaks at 2 AM when a real customer calls.",
+            "Neither is a great option if you're a clinic, law firm, home services company, or growing SaaS business that just needs your phones answered — every time, correctly, without a human sitting by the line.",
+            "According to industry research, over 67% of callers hang up without leaving a message when directed to voicemail. For service businesses, missed calls directly translate to lost revenue. This guide walks through exactly how to build a production-grade AI receptionist, why so many businesses are suddenly searching for this, and how to do it with Studio Form instead of duct-taping it together yourself."
+        ],
+        "sections": [
+            {
+                "title": "1. Why 'AI Receptionist' Searches Are Spiking Right Now",
+                "content": [
+                    "Search demand for AI receptionists isn't coming from Fortune 500 enterprises with dedicated AI teams — it's coming from small and mid-sized businesses realizing that missed calls are missed revenue, and that voice AI has finally gotten good enough to handle real conversations.",
+                    "A good example of where this demand is coming from: a solo builder recently documented in a popular automation community how they wired together a working AI voice agent receptionist using workflow tools like n8n, chaining together speech-to-text, an LLM, text-to-speech, and telephony APIs by hand. The build worked — but it also needed constant babysitting: managing API rate limits, handling call transfers, keeping latency low enough that callers didn't feel like they were talking to a laggy bot, and rebuilding the whole flow every time one connected service changed its API."
+                ],
+                "bullets": [
+                    "The demand is real: Business owners are actively trying to solve 'someone needs to answer the phone' with AI, not just chatbots.",
+                    "The DIY path is fragile: Stitching together five tools to answer a phone call works as a weekend project. It does not hold up when a real patient, client, or customer calls your business and the call drops or mishears an appointment time."
+                ]
+            },
+            {
+                "title": "2. What an AI Receptionist Actually Needs to Do",
+                "content": "Before building anything, it helps to define what 'receptionist' actually means in AI terms. A real front-desk person does more than answer questions — they:",
+                "bullets": [
+                    "Answer every call within a ring or two, 24/7",
+                    "Understand context (a returning patient vs. a new lead vs. a vendor)",
+                    "Book, reschedule, or cancel appointments in your actual calendar system",
+                    "Route urgent calls to a real human immediately with warm live transfers",
+                    "Speak naturally with low latency (<500ms), without robotic pauses",
+                    "Log every call transcript and audio recording so your team has a record, not a guess"
+                ]
+            },
+            {
+                "title": "3. Step-by-Step: Building an AI Receptionist with Studio Form",
+                "content": "Here's the practical build process using Studio Form's voice agent infrastructure instead of hand-wiring your own stack:",
+                "subsections": [
+                    {"subTitle": "Step 1: Define the Call Flows You Need Covered", "text": "Start narrow, not broad. List the actual call types your business gets: New appointment bookings, reschedules & cancellations, FAQs, and urgent escalations."},
+                    {"subTitle": "Step 2: Connect Your Existing Systems", "text": "Studio Form connects directly to your scheduling tool, CRM, or practice management system (Google Calendar, Calendly, HubSpot, Salesforce)."},
+                    {"subTitle": "Step 3: Train the Voice Agent on Your Business", "text": "Studio Form builds the agent around your actual business: services, tone, and specific guardrails."},
+                    {"subTitle": "Step 4: Set Live Escalation Rules", "text": "Configure warm live transfers, SMS alerts to on-call staff, or priority callback queues."},
+                    {"subTitle": "Step 5: Test with Real Call Scenarios", "text": "Test against background noise, accents, interruptions, and callers changing their minds."},
+                    {"subTitle": "Step 6: Deploy and Monitor", "text": "Port your number or launch a new local line with full transcript logging."}
+                ]
+            },
+            {
+                "title": "4. DIY Voice Agent vs. Studio Form: The Real Difference",
+                "content": "There is a real gap between getting a voice agent to answer a test call and trusting it to run your front desk every single day.",
+                "table": {
+                    "headers": ["Feature / Metric", "DIY (n8n / workflow tools)", "Studio Form Platform"],
+                    "rows": [
+                        ["Setup time", "Days to weeks of manual wiring", "2-3 days, guided setup"],
+                        ["Voice Latency", "High / Variable (1.2s - 2.5s)", "Ultra-low (<500ms)"],
+                        ["Reliability", "Depends on maintaining 5 connected APIs", "Enterprise 99.9% uptime SLA"],
+                        ["Calendar / CRM Integration", "Manual, custom-built per tool", "Native integration out of the box"],
+                        ["Escalation handling", "Custom logic you write yourself", "Built-in warm & cold live transfers"],
+                        ["Ongoing maintenance", "You fix every break, update, and API change", "Fully managed by Studio Form team"]
+                    ]
+                }
+            },
+            {
+                "title": "5. Who This Is For",
+                "content": "An AI receptionist built this way makes the most sense for:",
+                "bullets": [
+                    "Healthcare & Dental Practices drowning in appointment calls and no-shows",
+                    "Law Firms & Professional Services that lose high-value leads to voicemail",
+                    "Home Services Businesses (HVAC, plumbing, electrical) getting calls during jobs",
+                    "Growing SaaS & E-Commerce Businesses needing consistent 24/7 phone support"
+                ]
+            },
+            {
+                "title": "6. Frequently Asked Questions",
+                "faqs": [
+                    {"q": "Is an AI receptionist the same as a chatbot?", "a": "No. A chatbot handles text on a website. An AI receptionist is a voice agent that answers real phone calls, understands spoken conversation, and takes real actions like booking appointments."},
+                    {"q": "Can it sound natural instead of robotic?", "a": "Yes — voice quality has advanced significantly. Platforms like Studio Form tune the agent's tone, pacing, and vocabulary to match your business."},
+                    {"q": "What happens if the AI can't answer a question?", "a": "It escalates based on rules set during setup — transferring to a live team member, sending an SMS alert, or logging a callback request."},
+                    {"q": "How long does it take to go live?", "a": "Unlike a hand-built workflow stack, which can take weeks of trial and error, a guided build with Studio Form is typically live within days."}
+                ]
+            }
+        ],
+        "published": True
+    },
+    {
+        "id": "b-02",
+        "slug": "gpt-5-reasoning-bands",
+        "title": "GPT-5 Launches with Reasoning Bands",
+        "tag": "Breaking",
+        "date": "Feb 8, 2026",
+        "readTime": "5 min read",
+        "author": "Studio Form Research",
+        "keywords": "GPT-5 release, reasoning bands, o1 reasoning, OpenAI, LLM benchmarks, agentic workflows",
+        "body": [
+            "OpenAI's latest release introduces 'Reasoning Bands'—allowing developers to configure the amount of compute allocated to search and self-correction at inference time.",
+            "This marks a major shift from standard next-token predictions, introducing a structured verification loop before output generation."
+        ],
+        "sections": [
+            {"title": "1. What are Inference Reasoning Bands?", "content": "Reasoning bands allow you to specify the maximum reasoning tokens, preventing agents from wasting compute on trivial tasks."},
+            {"title": "2. Strategic Impact on Agentic Workflows", "content": "Eliminates the need for multi-turn validation loops in orchestration code."}
+        ],
+        "published": True
+    },
+    {
+        "id": "b-03",
+        "slug": "marathi-voice-agent-playbook",
+        "title": "Building a Marathi Voice Agent: Playbook",
+        "tag": "Voice AI",
+        "date": "Jan 6, 2026",
+        "readTime": "8 min read",
+        "author": "Sarthak, Voice Engineering",
+        "keywords": "Marathi voice agent, voice AI, Indic dialect, ASR, TTS, Studio Form voice",
+        "body": [
+            "Creating conversational voice bots that sound natural to local regional speakers requires more than translating English text to Marathi. The system must account for regional dialects, code-mixed phrases, and custom background telephony noise."
+        ],
+        "sections": [
+            {"title": "1. Dialect & Code-Mix Adaptation", "content": "Drivers use colloquial expressions and mix in English terms. Our custom ASR uses code-mix token mapping to interpret sentences accurately."},
+            {"title": "2. Reducing Latency below 800ms", "content": "Streaming media payloads from Twilio directly to our Indic parser routes responses straight into our fast TTS node."}
+        ],
+        "published": True
+    },
+    {
+        "id": "b-04",
+        "slug": "rbi-ai-regulation",
+        "title": "RBI's Draft AI Regulation: A Pragmatic BFSI Checklist",
+        "tag": "India",
+        "date": "Jan 12, 2026",
+        "readTime": "6 min read",
+        "author": "Compliance Operations",
+        "keywords": "RBI AI guidelines, BFSI compliance, financial AI guardrails",
+        "body": [
+            "The Reserve Bank of India (RBI) recently issued draft directives detailing regulatory frameworks for artificial intelligence in banking and financial services."
+        ],
+        "sections": [
+            {"title": "1. On-Premise Data Residence", "content": "All customer transaction files and prompt query logs must remain within local Indian geography."},
+            {"title": "2. Explanations & Model Transparency", "content": "Audit logs of weights and search nodes must be preserved."}
+        ],
+        "published": True
+    }
+]
+
+
+@api_router.get("/blogs")
+async def get_blogs(tag: Optional[str] = None, q: Optional[str] = None):
+    try:
+        cursor = db.blogs.find({"published": True})
+        db_items = await cursor.to_list(length=1000)
+        for item in db_items:
+            item.pop("_id", None)
+    except Exception as e:
+        db_items = []
+
+    # Combine DB items and SEED_BLOGS (de-duplicating by slug)
+    seen_slugs = {item["slug"] for item in db_items}
+    combined = list(db_items)
+    for seed in SEED_BLOGS:
+        if seed["slug"] not in seen_slugs:
+            combined.append(seed)
+
+    if tag and tag.lower() != "all":
+        combined = [b for b in combined if b.get("tag", "").lower() == tag.lower()]
+    if q:
+        ql = q.lower()
+        combined = [b for b in combined if ql in b.get("title", "").lower() or ql in b.get("keywords", "").lower()]
+
+    return {"count": len(combined), "items": combined}
+
+
+@api_router.get("/blogs/{slug}")
+async def get_blog_by_slug(slug: str):
+    try:
+        item = await db.blogs.find_one({"slug": slug})
+        if item:
+            item.pop("_id", None)
+            return item
+    except Exception:
+        pass
+
+    # Check SEED_BLOGS
+    for seed in SEED_BLOGS:
+        if seed["slug"] == slug:
+            return seed
+
+    raise HTTPException(status_code=404, detail="Article not found")
+
+
+@api_router.post("/blogs")
+async def create_or_update_blog(payload: BlogPostCreate):
+    auth_pass = os.getenv("ADMIN_PASSWORD", "admin@1234")
+    if payload.password != auth_pass:
+        raise HTTPException(status_code=401, detail="Invalid admin password")
+
+    date_str = payload.date or datetime.now(timezone.utc).strftime("%b %d, %Y")
+    
+    doc = {
+        "id": str(uuid.uuid4()),
+        "slug": payload.slug,
+        "title": payload.title,
+        "tag": payload.tag,
+        "date": date_str,
+        "readTime": payload.readTime,
+        "author": payload.author,
+        "keywords": payload.keywords or "",
+        "callout": payload.callout,
+        "body": payload.body,
+        "sections": payload.sections,
+        "published": payload.published,
+        "updated_at": datetime.now(timezone.utc).isoformat()
+    }
+
+    await db.blogs.update_one(
+        {"slug": payload.slug},
+        {"$set": doc},
+        upsert=True
+    )
+    return {"ok": True, "slug": payload.slug, "message": "Blog post published successfully!"}
+
+
+@api_router.delete("/blogs/{slug}")
+async def delete_blog(slug: str, password: str = "admin@1234"):
+    auth_pass = os.getenv("ADMIN_PASSWORD", "admin@1234")
+    if password != auth_pass:
+        raise HTTPException(status_code=401, detail="Invalid admin password")
+
+    res = await db.blogs.delete_one({"slug": slug})
+    return {"ok": True, "deleted_count": res.deleted_count}
+
 class MarketingEmailSend(BaseModel):
     password: str
     recipient_email: EmailStr

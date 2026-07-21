@@ -28,6 +28,7 @@ const IndustryPage = lazy(() => import("@/pages/IndustryPage"));
 const Resources = lazy(() => import("@/pages/Resources"));
 const Docs = lazy(() => import("@/pages/Docs"));
 const BlogPost = lazy(() => import("@/pages/BlogPost"));
+const BlogAdmin = lazy(() => import("@/pages/BlogAdmin"));
 const Changelog = lazy(() => import("@/pages/Changelog"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
 const EmailDashboard = lazy(() => import("@/pages/EmailDashboard"));
@@ -92,6 +93,8 @@ function App() {
                             <Route path="/blog" element={<News />} />
                             <Route path="/blog/:slug" element={<BlogPost />} />
                             <Route path="/ai-news/:slug" element={<BlogPost />} />
+                            <Route path="/blog-admin" element={<BlogAdmin />} />
+                            <Route path="/admin" element={<BlogAdmin />} />
                             <Route path="/docs" element={<Docs />} />
                             <Route path="/changelog" element={<Changelog />} />
                             
