@@ -41,7 +41,12 @@ export default function News() {
     useEffect(() => {
         let isMounted = true;
         fetch("/api/blogs")
-            .then(res => res.ok ? res.json() : null)
+            .then(res => {
+                if (res.ok && res.headers.get("content-type")?.includes("application/json")) {
+                    return res.json();
+                }
+                return null;
+            })
             .then(data => {
                 if (isMounted && data && data.items && data.items.length > 0) {
                     const mapped = data.items.map(item => ({

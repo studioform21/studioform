@@ -252,7 +252,12 @@ export default function BlogPost() {
         let isMounted = true;
         setLoading(true);
         fetch(`/api/blogs/${slug}`)
-            .then(res => res.ok ? res.json() : null)
+            .then(res => {
+                if (res.ok && res.headers.get("content-type")?.includes("application/json")) {
+                    return res.json();
+                }
+                return null;
+            })
             .then(data => {
                 if (isMounted) {
                     if (data && data.title) {

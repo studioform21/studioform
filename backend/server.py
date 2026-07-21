@@ -30,9 +30,17 @@ def encode_mongo_url(url: str) -> str:
         parsed = parsed._replace(netloc=netloc)
     return urlunparse(parsed)
 
-mongo_url = encode_mongo_url(os.environ['MONGO_URL'])
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+raw_mongo_url = os.getenv('MONGO_URL', 'mongodb://localhost:27017')
+db_name = os.getenv('DB_NAME', 'studioform_db')
+
+try:
+    mongo_url = encode_mongo_url(raw_mongo_url)
+    client = AsyncIOMotorClient(mongo_url)
+    db = client[db_name]
+except Exception as e:
+    logging.exception(f"MongoDB connection initialization warning: {e}")
+    client = None
+    db = None
 
 app = FastAPI(title="Studio Form API")
 api_router = APIRouter(prefix="/api")
@@ -635,13 +643,15 @@ SEED_BLOGS = [
 
 @api_router.get("/blogs")
 async def get_blogs(tag: Optional[str] = None, q: Optional[str] = None):
-    try:
-        cursor = db.blogs.find({"published": True})
-        db_items = await cursor.to_list(length=1000)
-        for item in db_items:
-            item.pop("_id", None)
-    except Exception as e:
-        db_items = []
+    db_items = []
+    if db is not None:
+        try:
+            cursor = db.blogs.find({"published": True})
+            db_items = await cursor.to_list(length=1000)
+            for item in db_items:
+                item.pop("_id", None)
+        except Exception as e:
+            db_items = []
 
     # Combine DB items and SEED_BLOGS (de-duplicating by slug)
     seen_slugs = {item["slug"] for item in db_items}
@@ -661,13 +671,14 @@ async def get_blogs(tag: Optional[str] = None, q: Optional[str] = None):
 
 @api_router.get("/blogs/{slug}")
 async def get_blog_by_slug(slug: str):
-    try:
-        item = await db.blogs.find_one({"slug": slug})
-        if item:
-            item.pop("_id", None)
-            return item
-    except Exception:
-        pass
+    if db is not None:
+        try:
+            item = await db.blogs.find_one({"slug": slug})
+            if item:
+                item.pop("_id", None)
+                return item
+        except Exception:
+            pass
 
     # Check SEED_BLOGS
     for seed in SEED_BLOGS:
@@ -701,11 +712,12 @@ async def create_or_update_blog(payload: BlogPostCreate):
         "updated_at": datetime.now(timezone.utc).isoformat()
     }
 
-    await db.blogs.update_one(
-        {"slug": payload.slug},
-        {"$set": doc},
-        upsert=True
-    )
+    if db is not None:
+        await db.blogs.update_one(
+            {"slug": payload.slug},
+            {"$set": doc},
+            upsert=True
+        )
     return {"ok": True, "slug": payload.slug, "message": "Blog post published successfully!"}
 
 
@@ -715,8 +727,11 @@ async def delete_blog(slug: str, password: str = "admin@1234"):
     if password != auth_pass:
         raise HTTPException(status_code=401, detail="Invalid admin password")
 
-    res = await db.blogs.delete_one({"slug": slug})
-    return {"ok": True, "deleted_count": res.deleted_count}
+    deleted_count = 0
+    if db is not None:
+        res = await db.blogs.delete_one({"slug": slug})
+        deleted_count = res.deleted_count
+    return {"ok": True, "deleted_count": deleted_count}
 
 class MarketingEmailSend(BaseModel):
     password: str

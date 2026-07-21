@@ -58,13 +58,17 @@ export default function BlogAdmin() {
         setLoading(true);
         try {
             const res = await fetch("/api/blogs");
-            const data = await res.json();
-            if (data.items) {
-                setBlogs(data.items);
+            if (res.ok) {
+                const contentType = res.headers.get("content-type");
+                if (contentType && contentType.includes("application/json")) {
+                    const data = await res.json();
+                    if (data.items) {
+                        setBlogs(data.items);
+                    }
+                }
             }
         } catch (err) {
             console.error("Failed to fetch blogs:", err);
-            toast.error("Could not load blogs list.");
         } finally {
             setLoading(false);
         }
