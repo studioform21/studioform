@@ -18,9 +18,22 @@ try:
     from server import app
 except Exception as e:
     import logging
+    import traceback
+    err_str = str(e)
+    tb_str = traceback.format_exc()
     logging.exception("Failed to import app from server.py")
     from fastapi import FastAPI
+    from fastapi.responses import JSONResponse
     app = FastAPI()
-    @app.get("/api/health")
-    def fallback_health():
-        return {"status": "error", "message": str(e)}
+    
+    @app.api_route("/{path:path}", methods=["GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD", "PATCH"])
+    async def fallback_route(path: str):
+        return JSONResponse(
+            status_code=500,
+            content={
+                "status": "error",
+                "message": f"Backend import error: {err_str}",
+                "traceback": tb_str,
+                "path": path
+            }
+        )
