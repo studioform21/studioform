@@ -35,16 +35,8 @@ const EmailDashboard = lazy(() => import("@/pages/EmailDashboard"));
 const TwilioAlternatives = lazy(() => import("@/pages/TwilioAlternatives"));
 
 function App() {
-    if (
-        typeof window !== "undefined" && 
-        window.location.hostname === "email.studioform.app" && 
-        window.location.pathname === "/"
-    ) {
-        window.location.href = "/b2b-marketing-email";
-        return null;
-    }
-
-    const isEmailDashboard = typeof window !== "undefined" && window.location.pathname.startsWith("/b2b-marketing-email");
+    const isEmailHost = typeof window !== "undefined" && window.location.hostname === "email.studioform.app";
+    const isEmailDashboard = isEmailHost || (typeof window !== "undefined" && window.location.pathname.startsWith("/b2b-marketing-email"));
 
     return (
         <div className="min-h-screen bg-[#0A0A0A] text-white antialiased">

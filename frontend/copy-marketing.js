@@ -13,6 +13,16 @@ if (fs.existsSync(srcDir)) {
         if (fs.lstatSync(srcPath).isFile()) {
             fs.copyFileSync(srcPath, destPath);
             console.log(`Copied ${file} to public/`);
+
+            if (file.endsWith('.html')) {
+                const folderName = file.replace('.html', '');
+                const folderPath = path.join(destDir, folderName);
+                if (!fs.existsSync(folderPath)) {
+                    fs.mkdirSync(folderPath, { recursive: true });
+                }
+                fs.copyFileSync(srcPath, path.join(folderPath, 'index.html'));
+                console.log(`Copied ${file} to public/${folderName}/index.html`);
+            }
         }
     });
 } else {

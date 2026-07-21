@@ -93,7 +93,7 @@
       "destination": "/$1$2"
     },
     {
-      "source": "/(pricing|about|team|contact|ai-news|docs|changelog|privacy|terms|refund|shipping|cancellation|workshops|ai-university|case-studies|twilio-alternatives|blog-admin|admin|blog)",
+      "source": "/(pricing|about|team|contact|ai-news|docs|changelog|privacy|terms|refund|shipping|cancellation|workshops|ai-university|case-studies|twilio-alternatives|blog-admin|admin|blog|b2b-marketing-email|blueprint-template|chatbots-template|voice-agents-template|email-template)",
       "destination": "/$1/index.html"
     },
     {
