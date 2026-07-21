@@ -18,7 +18,10 @@ const STATIC_ROUTES = [
     "shipping",
     "cancellation",
     "changelog",
-    "twilio-alternatives"
+    "twilio-alternatives",
+    "blog-admin",
+    "admin",
+    "blog"
 ];
 
 const SERVICES = [
