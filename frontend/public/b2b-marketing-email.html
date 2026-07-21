@@ -674,14 +674,6 @@
                     })
                 });
 
-                const contentType = response.headers.get("content-type") || "";
-                if (!contentType.includes("application/json")) {
-                    const rawText = await response.text();
-                    const cleanText = rawText.replace(/<[^>]*>/g, '').trim().substring(0, 120);
-                    logConsole(`HTTP Error ${response.status}: Server returned non-JSON response (${cleanText || "HTML Error Page"})`, "error");
-                    return;
-                }
-
                 const result = await response.json();
                 
                 if (response.ok && result.ok) {
@@ -737,11 +729,8 @@
             
             try {
                 const response = await fetch(`${API_BASE}/marketing-campaign-logs?password=${encodeURIComponent(password)}`);
-                const contentType = response.headers.get("content-type") || "";
-                if (!response.ok || !contentType.includes("application/json")) {
-                    const rawText = await response.text();
-                    const cleanText = rawText.replace(/<[^>]*>/g, '').trim().substring(0, 100);
-                    throw new Error(`Server returned HTTP ${response.status} (${cleanText || "HTML Error Page"})`);
+                if (!response.ok) {
+                    throw new Error("Failed to fetch logs");
                 }
                 const logs = await response.json();
                 
