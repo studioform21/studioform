@@ -58,6 +58,7 @@ const RESOURCES = [
 ];
 
 const BLOGS = [
+    "ai-call-center-solutions",
     "how-to-build-ai-receptionist",
     "gpt-5-reasoning-bands",
     "marathi-voice-agent-playbook",
