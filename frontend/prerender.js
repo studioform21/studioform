@@ -950,6 +950,11 @@ const SEO_CONFIG = {
             <h2>Explore Our Resources &amp; Integration Docs</h2>
             <p>Evaluate technical API integration schemas in our <a href="/docs">Developer Docs</a>, check our <a href="/pricing">Pricing Tiers</a>, examine client success stories in <a href="/case-studies">Case Studies</a>, or contact our engineering support team via the <a href="/contact">Contact Page</a>.</p>
         `,
+        schema: {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Engine Changelog — Studio Form"
+        }
     },
     "/team": {
         title: "Our Team | Enterprise AI & Voice Builders — Studio Form",

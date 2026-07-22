@@ -265,6 +265,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://studioform.app/ai-news/how-we-achieve-sub-800ms-conversational-latency-in-enterprise-voice-agents</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://studioform.app/ai-news/designing-domain-llms-for-telecom-finance-workflows</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://studioform.app/ai-news/gpt-5-reasoning-bands</loc>
     <lastmod>2026-02-08</lastmod>
     <changefreq>monthly</changefreq>
@@ -281,5 +293,23 @@
     <lastmod>2026-01-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://studioform.app/team/pranjal-rai</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://studioform.app/team/sarthak-choukse</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://studioform.app/team/nehal-mishra</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>
