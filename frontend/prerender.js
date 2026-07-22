@@ -77,10 +77,6 @@ const SEO_CONFIG = {
                         {
                             "@type": "Person",
                             "name": "Sarthak Choukse"
-                        },
-                        {
-                            "@type": "Person",
-                            "name": "Nehal Mishra"
                         }
                     ],
                     "contactPoint": {
@@ -958,14 +954,14 @@ const SEO_CONFIG = {
     },
     "/team": {
         title: "Our Team | Enterprise AI & Voice Builders — Studio Form",
-        description: "Meet the team of builders, engineers, and researchers at Studio Form behind India's pioneering multilingual voice agent and domain LLM platforms.",
+        description: "Meet the team of builders, engineers, and researchers at Studio Form behind enterprise multilingual voice agent and domain LLM platforms.",
         h1: "Meet the Studio Form Team",
         article: `
             <h2>Who are the builders of Studio Form?</h2>
-            <p>Studio Form is founded and operated by an experienced team of speech technologists, product engineers, and enterprise software architects based in Indore, India. We are dedicated to constructing the fabric of future intelligence, deploying autonomous voice systems and sandboxed AI workflows that solve real organizational inefficiencies.</p>
+            <p>Studio Form is operated by an experienced team of speech technologists, product engineers, and enterprise software architects based in Indore, India. We are dedicated to constructing the fabric of future intelligence, deploying autonomous voice systems and sandboxed AI workflows that solve real organizational inefficiencies.</p>
             
-            <h2>Our Core Leadership &amp; Founders</h2>
-            <p>Our company is led by our core co-founders: Pranjal Rai, Sarthak Choukse, and Nehal Mishra. Pranjal Rai serves as CEO, leading Go-To-Market strategy and enterprise partnerships. Sarthak Choukse serves as CTO, leading telephony integrations, Whisper-based automatic speech recognition (ASR), and real-time speech synthesis (TTS) pipelines. Nehal Mishra serves as COO and Head of Products, leading our RAG document engineering, user interface designs, and agentic workflows.</p>
+            <h2>Our Leadership &amp; Founders</h2>
+            <p>Our company is led by co-founders Pranjal Rai (CEO) and Sarthak Choukse (CTO), alongside Nehal Mishra (COO &amp; Head of Products). Pranjal Rai leads Go-To-Market strategy and enterprise partnerships. Sarthak Choukse leads telephony integrations, Whisper-based automatic speech recognition (ASR), and real-time speech synthesis (TTS) pipelines. Nehal Mishra leads our RAG document engineering, user interface designs, and agentic workflows.</p>
 
             <h2>Company Culture &amp; Technical Tenets</h2>
             <p>We believe in building useful, deployable, and privacy-conscious software. Our engineering teams operate async-first, demo-focused, and align with India's DPDP Act of 2023 guidelines. Meet our leaders or read our playbook to see how we ship enterprise AI.</p>
@@ -974,7 +970,7 @@ const SEO_CONFIG = {
             "@context": "https://schema.org",
             "@type": "AboutPage",
             "name": "Studio Form Team",
-            "description": "Meet the team of builders, founders, and engineers at Studio Form behind India's agentic AI and voice systems."
+            "description": "Meet the team of builders, founders, and leaders at Studio Form behind enterprise agentic AI and voice systems."
         }
     },
     "/team/pranjal-rai": {
