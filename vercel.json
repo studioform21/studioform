@@ -73,11 +73,19 @@
       "destination": "/b2b-marketing-email.html"
     },
     {
+      "source": "/b2b-marketing-email/",
+      "destination": "/b2b-marketing-email.html"
+    },
+    {
       "source": "/b2b-marketing-email.html",
       "destination": "/b2b-marketing-email.html"
     },
     {
       "source": "/blueprint-template",
+      "destination": "/blueprint-template.html"
+    },
+    {
+      "source": "/blueprint-template/",
       "destination": "/blueprint-template.html"
     },
     {
@@ -89,11 +97,19 @@
       "destination": "/chatbots-template.html"
     },
     {
+      "source": "/chatbots-template/",
+      "destination": "/chatbots-template.html"
+    },
+    {
       "source": "/chatbots-template.html",
       "destination": "/chatbots-template.html"
     },
     {
       "source": "/voice-agents-template",
+      "destination": "/voice-agents-template.html"
+    },
+    {
+      "source": "/voice-agents-template/",
       "destination": "/voice-agents-template.html"
     },
     {
@@ -105,6 +121,10 @@
       "destination": "/email-template.html"
     },
     {
+      "source": "/email-template/",
+      "destination": "/email-template.html"
+    },
+    {
       "source": "/email-template.html",
       "destination": "/email-template.html"
     },
@@ -113,7 +133,7 @@
       "destination": "/$1$2"
     },
     {
-      "source": "/(pricing|about|team|contact|ai-news|docs|changelog|privacy|terms|refund|shipping|cancellation|workshops|ai-university|case-studies|twilio-alternatives|blog-admin|admin|blog)",
+      "source": "/(pricing|about|team|contact|ai-news|docs|changelog|privacy|terms|refund|shipping|cancellation|workshops|ai-university|case-studies|twilio-alternatives|blog-admin|admin|blog|accessibility)",
       "destination": "/$1/index.html"
     },
     {

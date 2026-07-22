@@ -59,13 +59,28 @@ function VoiceCard({ item }) {
 const VOICE_AGENTS_STRUCTURED_DATA = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "serviceType": "AI Voice Agent Development",
     "name": "AI Voice Agents",
-    "description": "Multilingual conversational AI voice agents for inbound, outbound, and support automation across 12+ industries in 15+ languages.",
+    "description": "Custom conversational AI voice agents for inbound reception, appointment booking, and outbound lead qualification with sub-800ms turn-taking latency.",
     "provider": {
         "@type": "Organization",
         "name": "Studio Form",
-        "url": "https://www.studioform.app"
-    }
+        "url": "https://www.studioform.app",
+        "logo": "https://www.studioform.app/logo_dark.png",
+        "sameAs": [
+            "https://github.com/studioform",
+            "https://www.linkedin.com/company/studioform"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Scheme 78, Vijay Nagar",
+            "addressLocality": "Indore",
+            "addressRegion": "Madhya Pradesh",
+            "postalCode": "452010",
+            "addressCountry": "IN"
+        }
+    },
+    "areaServed": ["IN", "US", "Global"]
 };
 
 const SERVICE_FAQS = [
@@ -91,12 +106,12 @@ export default function VoiceAgents() {
                 structuredData={VOICE_AGENTS_STRUCTURED_DATA}
                 faqs={SERVICE_FAQS}
             />
-            <PageHero command="studioform --voice" eyebrow="Voice AI" title="52+ multilingual" accent="voice agents." subtitle="Inbound, outbound, and bilingual conversational agents across 12+ industries.">
+            <PageHero command="studioform --voice" eyebrow="Voice AI" title="Custom multilingual" accent="voice agents." subtitle="Inbound, outbound, and bilingual conversational voice agents built for your scale.">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl">
-                    <StatCounter value={52} suffix="+" label="Agents" />
-                    <StatCounter value={14} suffix="+" label="Inbound" />
-                    <StatCounter value={38} suffix="+" label="Outbound" />
-                    <StatCounter value={15} suffix="+" label="Languages" />
+                    <StatCounter value={5} suffix="+" label="Active Pilots" />
+                    <StatCounter value={3} suffix="+" label="Languages" />
+                    <StatCounter value={99.9} suffix="%" label="Telephony Uptime" />
+                    <StatCounter value={800} suffix="ms" label="Avg Latency" />
                 </div>
             </PageHero>
 

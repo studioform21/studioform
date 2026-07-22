@@ -17,6 +17,7 @@ const STATIC_ROUTES = [
     "refund",
     "shipping",
     "cancellation",
+    "accessibility",
     "changelog",
     "twilio-alternatives",
     "blog-admin",

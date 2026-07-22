@@ -361,15 +361,15 @@ async def subscribe(payload: SubscribeCreate):
 @api_router.get("/stats")
 async def get_stats():
     return {
-        "projects": 121,
-        "voice_agents": 50,
-        "courses": 100,
-        "industries": 12,
+        "projects": 15,
+        "voice_agents": 5,
+        "dialects": 5,
+        "industries": 4,
         "models": 4,
         "uptime": 99.97,
-        "agents_active": 200,
-        "calls_processed_m": 1.0,
-        "avg_response_s": 0.42,
+        "agents_active": 5,
+        "calls_processed_m": 0.01,
+        "avg_response_s": 0.8,
     }
 
 
@@ -789,13 +789,20 @@ async def send_marketing_email(payload: MarketingEmailSend):
                     print(f"Error reading local template {p}: {str(e)}")
 
         if not template_html:
-            try:
-                import requests
-                resp = requests.get(f"https://www.studioform.app/{template_filename}", timeout=5)
-                if resp.status_code == 200 and "<div id=\"root\">" not in resp.text:
-                    template_html = resp.text
-            except Exception as e:
-                print(f"HTTP template fetch failed: {str(e)}")
+            clean_url_name = template_filename.replace(".html", "")
+            urls_to_try = [
+                f"https://www.studioform.app/{clean_url_name}",
+                f"https://www.studioform.app/{template_filename}"
+            ]
+            import requests
+            for url in urls_to_try:
+                try:
+                    resp = requests.get(url, timeout=5)
+                    if resp.status_code == 200 and "<div id=\"root\">" not in resp.text:
+                        template_html = resp.text
+                        break
+                except Exception as e:
+                    print(f"HTTP template fetch failed for {url}: {str(e)}")
 
         if not template_html:
             raise HTTPException(status_code=500, detail=f"Email template file ({template_filename}) not found on server")

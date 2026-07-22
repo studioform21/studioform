@@ -27,6 +27,11 @@ const LEGAL_META = {
         title: "Cancellation Policy",
         desc: "Review how to cancel subscriptions, active plans, or custom service contracts with Studio Form.",
         keywords: "cancellation policy, terminate subscription, cancel plan"
+    },
+    accessibility: {
+        title: "Accessibility Statement",
+        desc: "Review Studio Form's commitment to web accessibility and digital inclusion, aligned with WCAG 2.2 AA standards.",
+        keywords: "accessibility statement, WCAG 2.2, digital inclusion, enterprise compliance, Studio Form accessibility"
     }
 };
 
@@ -95,6 +100,17 @@ const COPY = {
             ["How to Cancel", "You can cancel your subscription at any time via your account billing dashboard, or by writing to support@studioform.app."],
             ["Effect of Cancellation", "Upon cancellation, your plan remains active until the end of your current billing period. No additional recurring charges will be generated."],
             ["Custom Engagements", "Cancellation terms for dedicated GPU clusters, model fine-tuning contracts, and workshops are governed by their respective custom Statement of Work (SOW)."],
+        ],
+    },
+    accessibility: {
+        title: "Accessibility",
+        accent: "Statement.",
+        cmd: "studioform --accessibility",
+        body: [
+            ["Our Commitment", "Studio Form is committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone, applying the relevant accessibility standards to our website, documentation, and client interfaces."],
+            ["Conformance Standard", "We aim to conform our web content to the Web Content Accessibility Guidelines (WCAG) 2.2 Level AA conformance standard, ensuring our design parameters, font contrasts, keyboard navigations, and semantic HTML elements work for assistive technologies."],
+            ["Key Implementation Features", "Our accessibility features include: (1) High-contrast text elements and semantic color contrasts; (2) Semantic HTML landmarks and keyboard focus rings; (3) Alt descriptions for informative visual assets; (4) Graceful scaling of the developer terminal interface on mobile and zoom viewports."],
+            ["Feedback & Grievances", "We welcome your feedback on the accessibility of our website. If you encounter accessibility barriers, please contact our team at accessibility@studioform.app. We respond to and address accessibility complaints within 10 working days."],
         ],
     },
 };

@@ -61,11 +61,11 @@ const TESTIMONIALS = [
 
 const MARQUEE_ITEMS = [
     "Studio Form — India's full-stack agentic AI company",
-    "10,000+ AI automation projects shipped",
-    "52+ voice agents across 12+ industries",
-    "100+ AI courses across 12+ tracks",
+    "Production-ready AI automation workflows",
+    "Conversational voice agents across regional dialects",
     "Domain LLMs for aviation, healthcare, legal, finance",
-    "Concept to deployed AI in 2–4 weeks",
+    "Private VPC and secure on-premise deployments",
+    "Concept to validated pilot in 2–4 weeks",
 ];
 
 const HOME_STRUCTURED_DATA = {
@@ -109,6 +109,25 @@ const HOME_STRUCTURED_DATA = {
                 "https://x.com/Studio_Form_",
                 "https://www.linkedin.com/in/studioform"
             ]
+        },
+        {
+            "@type": "ProfessionalService",
+            "@id": "https://www.studioform.app/#service",
+            "name": "Studio Form",
+            "image": "https://www.studioform.app/logo_dark.png",
+            "description": "AI engineering studio building voice agents, custom domain LLMs, RAG pipelines, and enterprise AI automation.",
+            "url": "https://www.studioform.app",
+            "telephone": "+917300000000",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Scheme 78, Vijay Nagar",
+                "addressLocality": "Indore",
+                "addressRegion": "Madhya Pradesh",
+                "postalCode": "452010",
+                "addressCountry": "IN"
+            },
+            "areaServed": ["IN", "US", "Global"],
+            "serviceType": ["AI Voice Agents", "RAG Chatbots", "LLM Development", "AI Automation"]
         },
         {
             "@type": "WebSite",
@@ -174,10 +193,10 @@ export default function Home() {
                         </motion.div>
 
                         <motion.div {...fadeUp} transition={{ delay: 0.2 }} className="mt-12 grid grid-cols-1 lg:grid-cols-4 gap-6">
-                            <StatCounter testid="hero-stat-projects" value={121} suffix="+" label="Projects" />
-                            <StatCounter testid="hero-stat-voice" value={50} suffix="+" label="Voice Agents" />
-                            <StatCounter testid="hero-stat-courses" value={100} suffix="+" label="AI Courses" />
-                            <StatCounter testid="hero-stat-industries" value={12} suffix="+" label="Industries" />
+                            <StatCounter testid="hero-stat-projects" value={15} suffix="+" label="Pilot Projects" />
+                            <StatCounter testid="hero-stat-voice" value={5} suffix="+" label="Voice Agents" />
+                            <StatCounter testid="hero-stat-courses" value={25} suffix="+" label="Workflows" />
+                            <StatCounter testid="hero-stat-industries" value={5} suffix="+" label="Indic Dialects" />
                         </motion.div>
 
                     </div>

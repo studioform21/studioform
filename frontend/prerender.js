@@ -199,11 +199,28 @@ const SEO_CONFIG = {
             "@graph": [
                 {
                     "@type": "Service",
+                    "serviceType": "AI Voice Agent Development",
                     "name": "AI Voice Agents",
+                    "description": "Custom conversational AI voice agents for inbound reception, appointment booking, and outbound lead qualification with sub-800ms turn-taking latency.",
                     "provider": {
                         "@type": "Organization",
-                        "name": "Studio Form"
-                    }
+                        "name": "Studio Form",
+                        "url": "https://www.studioform.app",
+                        "logo": "https://www.studioform.app/logo_dark.png",
+                        "sameAs": [
+                            "https://github.com/studioform",
+                            "https://www.linkedin.com/company/studioform"
+                        ],
+                        "address": {
+                            "@type": "PostalAddress",
+                            "streetAddress": "Scheme 78, Vijay Nagar",
+                            "addressLocality": "Indore",
+                            "addressRegion": "Madhya Pradesh",
+                            "postalCode": "452010",
+                            "addressCountry": "IN"
+                        }
+                    },
+                    "areaServed": ["IN", "US", "Global"]
                 },
                 {
                     "@type": "FAQPage",
@@ -251,12 +268,200 @@ const SEO_CONFIG = {
         `,
         schema: {
             "@context": "https://schema.org",
-            "@type": "Service",
-            "name": "RAG Chatbots",
-            "provider": {
-                "@type": "Organization",
-                "name": "Studio Form"
-            }
+            "@graph": [
+                {
+                    "@type": "Service",
+                    "serviceType": "RAG Chatbot Development",
+                    "name": "RAG Chatbots",
+                    "description": "Secure, permission-aware Retrieval-Augmented Generation (RAG) chatbots that interface with databases, documents, and Notion with page-level citations.",
+                    "provider": {
+                        "@type": "Organization",
+                        "name": "Studio Form",
+                        "url": "https://www.studioform.app",
+                        "logo": "https://www.studioform.app/logo_dark.png",
+                        "sameAs": [
+                            "https://github.com/studioform",
+                            "https://www.linkedin.com/company/studioform"
+                        ],
+                        "address": {
+                            "@type": "PostalAddress",
+                            "streetAddress": "Scheme 78, Vijay Nagar",
+                            "addressLocality": "Indore",
+                            "addressRegion": "Madhya Pradesh",
+                            "postalCode": "452010",
+                            "addressCountry": "IN"
+                        }
+                    },
+                    "areaServed": ["IN", "US", "Global"]
+                },
+                {
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": "How does the RAG chatbot prevent hallucinations?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "We utilize dual-embed verification checks and contextual filtering layers, ensuring the model only references the parsed source text."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Can we restrict database access based on user role?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Yes. Our RAG engines support role-based access control (ACL) syncs so users only query information they are authorized to view."
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "/services/llm-development": {
+        title: "Domain-Specific LLMs & Fine-Tuning | Studio Form",
+        description: "Fine-tuned Large Language Models for specific enterprise domains including aviation, legal, healthcare, indic speech, and finance.",
+        h1: "Domain-Specific LLMs Fine-Tuned for Your Industry",
+        article: `
+            <h2>What Are Domain-Specific LLMs?</h2>
+            <p>Generic Large Language Models do not understand specialized industry terminology, operational constraints, or local legislation. Studio Form fine-tunes foundation models (such as Llama, Claude, and GPT-4) on custom corpora tailored specifically for aviation, healthcare, legal, and financial sectors.</p>
+            <h2>How Is Model Accuracy Evaluated?</h2>
+            <p>We run models against specialized evaluation frameworks matching your target business workflows, benchmarking against standard datasets and custom human-in-the-loop metrics to ensure 92%+ domain win rates.</p>
+            <h2>Where Are Fine-Tuned Models Hosted?</h2>
+            <p>To satisfy strict data privacy requirements under India's DPDP Act 2023, we deploy and host custom models on secure, private VPC infrastructure or on-premise GPU clusters, ensuring complete data sovereignty.</p>
+        `,
+        schema: {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "Service",
+                    "serviceType": "Custom Domain LLM Development",
+                    "name": "Domain-Specific LLMs",
+                    "description": "Fine-tuned Large Language Models for specific enterprise domains including aviation, legal, healthcare, indic speech, and finance.",
+                    "provider": {
+                        "@type": "Organization",
+                        "name": "Studio Form",
+                        "url": "https://www.studioform.app",
+                        "logo": "https://www.studioform.app/logo_dark.png",
+                        "sameAs": [
+                            "https://github.com/studioform",
+                            "https://www.linkedin.com/company/studioform"
+                        ],
+                        "address": {
+                            "@type": "PostalAddress",
+                            "streetAddress": "Scheme 78, Vijay Nagar",
+                            "addressLocality": "Indore",
+                            "addressRegion": "Madhya Pradesh",
+                            "postalCode": "452010",
+                            "addressCountry": "IN"
+                        }
+                    },
+                    "areaServed": ["IN", "US", "Global"]
+                },
+                {
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": "What is a domain-specific LLM?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "It is a Large Language Model fine-tuned on custom corpora to speak the specialized language of an industry."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Where do you host the models?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "We host models on our optimized GPU clouds or deploy them on-premise within your private AWS/Azure VPC nodes."
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "/services/ai-automation": {
+        title: "AI Automation Workflows & Integrations | Studio Form",
+        description: "Custom agentic AI automation workflows and integrations with CRMs, databases, and communication channels for enterprise operations.",
+        h1: "Enterprise-Grade AI Automation Workflows",
+        article: `
+            <h2>What Are AI Automation Workflows?</h2>
+            <p>AI automation workflows replace manual data entry, customer ticket sorting, and lead scoring with autonomous software workers. Studio Form builds custom automation loops using platforms like n8n and Make or custom Python/Node runtimes.</p>
+            <h2>How Are Integrations Secured?</h2>
+            <p>Our automation loops connect natively to Salesforce, HubSpot, SAP, and Zoho, executing tasks securely under strict API rate limits and end-to-end TLS encryption.</p>
+            <h2>How Do Human-in-the-Loop Reviews Work?</h2>
+            <p>For sensitive or high-risk tasks (like financial reconciliation or healthcare routing), the AI workflow halts and requests human validation via Slack, Teams, or email before completion.</p>
+        `,
+        schema: {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "Service",
+                    "serviceType": "Enterprise AI Automation",
+                    "name": "AI Automation Workflows",
+                    "description": "Custom agentic AI automation workflows and integrations with CRMs, databases, and communication channels for enterprise operations.",
+                    "provider": {
+                        "@type": "Organization",
+                        "name": "Studio Form",
+                        "url": "https://www.studioform.app",
+                        "logo": "https://www.studioform.app/logo_dark.png",
+                        "sameAs": [
+                            "https://github.com/studioform",
+                            "https://www.linkedin.com/company/studioform"
+                        ],
+                        "address": {
+                            "@type": "PostalAddress",
+                            "streetAddress": "Scheme 78, Vijay Nagar",
+                            "addressLocality": "Indore",
+                            "addressRegion": "Madhya Pradesh",
+                            "postalCode": "452010",
+                            "addressCountry": "IN"
+                        }
+                    },
+                    "areaServed": ["IN", "US", "Global"]
+                },
+                {
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": "What is an AI Automation workflow?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "It is an automated sequence that triggers from your apps and uses AI to qualify, reconcile, route, or output data automatically."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Which automation platforms do you support?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "We deploy workflows natively using n8n, Make, Zapier, or our custom high-scale Node/Python runtime servers."
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "/accessibility": {
+        title: "Accessibility Statement | Studio Form",
+        description: "Studio Form is committed to ensuring web accessibility and digital inclusion, conforming to WCAG 2.2 Level AA guidelines.",
+        h1: "Studio Form Web Accessibility Statement",
+        article: `
+            <h2>Our Accessibility Standards</h2>
+            <p>We believe the web should be inclusive and usable for everyone. Studio Form strives to conform its website and documentation to the Web Content Accessibility Guidelines (WCAG) 2.2 Level AA standards.</p>
+            <h2>Implemented Features</h2>
+            <p>Our website utilizes high-contrast color palettes, logical keyboard focus outlines, clear semantic HTML structures, and text labels for assistive screen readers.</p>
+            <h2>Feedback & Assistance</h2>
+            <p>We welcome accessibility reports. If you encounter any barriers or need assistance, please contact us at accessibility@studioform.app and we will address your concerns within 10 business days.</p>
+        `,
+        schema: {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Accessibility Statement — Studio Form"
         }
     },
     "/twilio-alternatives": {

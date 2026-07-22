@@ -11,13 +11,28 @@ import { stagger } from "@/lib/anim";
 const LLMS_STRUCTURED_DATA = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "serviceType": "Custom Domain LLM Development",
     "name": "Domain-Specific LLMs",
     "description": "Fine-tuned Large Language Models for specific enterprise domains including aviation, legal, healthcare, indic speech, and finance.",
     "provider": {
         "@type": "Organization",
         "name": "Studio Form",
-        "url": "https://www.studioform.app"
-    }
+        "url": "https://www.studioform.app",
+        "logo": "https://www.studioform.app/logo_dark.png",
+        "sameAs": [
+            "https://github.com/studioform",
+            "https://www.linkedin.com/company/studioform"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Scheme 78, Vijay Nagar",
+            "addressLocality": "Indore",
+            "addressRegion": "Madhya Pradesh",
+            "postalCode": "452010",
+            "addressCountry": "IN"
+        }
+    },
+    "areaServed": ["IN", "US", "Global"]
 };
 
 const MODELS = [
@@ -51,9 +66,9 @@ export default function LLMs() {
             />
             <PageHero command="studioform --llms" eyebrow="Domain LLMs" title="Models that actually" accent="know your industry." subtitle="Generic LLMs don't speak aviation, healthcare, or Indian law. Ours do.">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl">
-                    <StatCounter value={4} suffix="+" label="Models" />
-                    <StatCounter value={12} suffix="+" label="Domains" />
-                    <StatCounter value={400} suffix="M+" label="Domain Tokens" />
+                    <StatCounter value={4} suffix="+" label="Custom Models" />
+                    <StatCounter value={4} suffix="+" label="Domains" />
+                    <StatCounter value={80} suffix="M+" label="Training Tokens" />
                     <StatCounter value={92} suffix="%" label="Eval Win Rate" />
                 </div>
             </PageHero>

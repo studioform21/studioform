@@ -95,6 +95,7 @@ function App() {
                             <Route path="/refund" element={<Legal kind="refund" />} />
                             <Route path="/shipping" element={<Legal kind="shipping" />} />
                             <Route path="/cancellation" element={<Legal kind="cancellation" />} />
+                            <Route path="/accessibility" element={<Legal kind="accessibility" />} />
                             <Route path="/b2b-marketing-email" element={<EmailDashboard />} />
                             <Route path="/twilio-alternatives" element={<TwilioAlternatives />} />
                             <Route path="*" element={<NotFound />} />

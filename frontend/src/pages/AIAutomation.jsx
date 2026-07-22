@@ -9,10 +9,29 @@ import SEOMeta from "@/components/SEOMeta";
 
 const AUTOMATION_STRUCTURED_DATA = {
     "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "AI Automation Workflows | Studio Form",
-    "description": "Browse and deploy from the world's largest catalog of 10,000+ agentic AI automation workflows across sales, finance, support, HR, and ops.",
-    "url": "https://www.studioform.app/ai-automation"
+    "@type": "Service",
+    "serviceType": "Enterprise AI Automation",
+    "name": "AI Automation Workflows",
+    "description": "Custom agentic AI automation workflows and integrations with CRMs, databases, and communication channels for enterprise operations.",
+    "provider": {
+        "@type": "Organization",
+        "name": "Studio Form",
+        "url": "https://www.studioform.app",
+        "logo": "https://www.studioform.app/logo_dark.png",
+        "sameAs": [
+            "https://github.com/studioform",
+            "https://www.linkedin.com/company/studioform"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Scheme 78, Vijay Nagar",
+            "addressLocality": "Indore",
+            "addressRegion": "Madhya Pradesh",
+            "postalCode": "452010",
+            "addressCountry": "IN"
+        }
+    },
+    "areaServed": ["IN", "US", "Global"]
 };
 
 const WORKFLOWS = [
@@ -60,12 +79,12 @@ export default function AIAutomation() {
                 structuredData={AUTOMATION_STRUCTURED_DATA}
                 faqs={AUTOMATION_FAQS}
             />
-            <PageHero command="studioform --automation" eyebrow="AI Automation" title="10,000+ workflows." accent="Browse. Pick. Deploy.">
+            <PageHero command="studioform --automation" eyebrow="AI Automation" title="AI workflows." accent="Browse. Pick. Deploy.">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl">
-                    <StatCounter value={10247} suffix="+" label="Workflows" />
-                    <StatCounter value={120} suffix="+" label="Integrations" />
+                    <StatCounter value={25} suffix="+" label="Workflows" />
+                    <StatCounter value={120} suffix="+" label="Connected Tools" />
                     <StatCounter value={48} suffix="hrs" label="Avg Deploy" />
-                    <StatCounter value={97} suffix="%" label="Uptime" />
+                    <StatCounter value={99.9} suffix="%" label="Uptime" />
                 </div>
             </PageHero>
 
