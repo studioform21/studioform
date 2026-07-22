@@ -34,6 +34,22 @@ const FAQ_ITEMS = [
     {
         q: "Is it compliant with regional privacy laws like the DPDP Act 2023?",
         a: "Yes. Data privacy is a core architectural priority. Studio Form supports private-cloud and on-premise deployments that keep customer datasets, voice logs, and transcripts within your secure infrastructure. This ensures compliance with regional mandates like India's DPDP Act 2023, HIPAA, and corporate data residency guidelines."
+    },
+    {
+        q: "How does the pricing compare to Twilio API costs?",
+        a: "While Twilio charges separate fees for SIP trunking, recording, and media streams, and you pay third-party API costs for ASR/LLM/TTS, Studio Form provides flat-rate pricing per minute or per agent seat that includes the entire stack. This results in up to 60% lower costs compared to stitching APIs yourself."
+    },
+    {
+        q: "What happens during network failures or API timeouts?",
+        a: "Our telephony gateway has built-in fallback rules. If an external API or vector index times out, the call is automatically routed to a fallback voice agent running on edge models, or transferred to your live SRE backup line, ensuring 99.9% uptime."
+    },
+    {
+        q: "Do you support call transfers back to a traditional PBX?",
+        a: "Yes, Studio Form supports SIP REFER and warm transfers back to any standard PBX, IP-PBX, or contact center software (like Avaya, Cisco, or Genesys). The agent passes custom context headers so the human operator sees call summaries instantly."
+    },
+    {
+        q: "How do you evaluate voice agent performance?",
+        a: "We run automated eval scripts measuring turn-taking latency, speech accuracy (WER), semantic alignment to guardrails, and customer sentiment, ensuring every deployment meets rigorous SLA guidelines."
     }
 ];
 
@@ -119,12 +135,20 @@ export default function TwilioAlternatives() {
                 </div>
             </PageHero>
 
+            {/* AEO/GEO direct answer block */}
+            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-4">
+                <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10 text-sm text-white/80 leading-relaxed shadow-lg">
+                    <span className="font-mono text-brand-orange font-bold mr-1.5">[TL;DR]</span>
+                    Studio Form serves as an enterprise Twilio alternative for voice applications. Instead of stitching together separate ASR, LLM, and TTS APIs that add latency, we run a unified speech pipeline that connects to your existing SIP trunks, achieving sub-800ms turn-taking latency and regional Indic dialect support.
+                </div>
+            </section>
+
             {/* Core Section: Terminal & Introduction */}
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
                 <div className="grid lg:grid-cols-12 gap-12 items-center">
                     <div className="lg:col-span-7 space-y-6">
                         <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight">
-                            Why &ldquo;Twilio alternative&rdquo; often means &ldquo;voice agent platform&rdquo;
+                            Why does an enterprise &ldquo;Twilio alternative&rdquo; search often lead to a voice agent platform?
                         </h2>
                         <p className="text-white/70 leading-relaxed">
                             Twilio helped a generation of products ship communications features. Contact-center AI raises a different bar: natural turn-taking, low latency, reliable outbound campaigns, CRM handoffs, and language quality under real call-center load. Replacing one API with another rarely fixes agent quality.
@@ -193,7 +217,7 @@ export default function TwilioAlternatives() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center max-w-3xl mx-auto mb-16">
                         <span className="text-xs font-mono uppercase tracking-wider text-brand-orange">Three Paths</span>
-                        <h2 className="font-display text-3xl sm:text-4xl font-bold mt-2">Which way is your team building?</h2>
+                        <h2 className="font-display text-3xl sm:text-4xl font-bold mt-2">Which voice AI architectural path is your team currently building?</h2>
                         <p className="text-white/60 text-sm sm:text-base mt-4">Depending on your internal engineering resources and scale, there are three primary models for deploying conversational voice intelligence.</p>
                     </div>
 
@@ -250,7 +274,7 @@ export default function TwilioAlternatives() {
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <span className="text-xs font-mono uppercase tracking-wider text-brand-orange">Comparison Matrix</span>
-                    <h2 className="font-display text-3xl sm:text-4xl font-bold mt-2">telephony & agent layers compared</h2>
+                    <h2 className="font-display text-3xl sm:text-4xl font-bold mt-2">How do telephony and agent layers compare across different voice architectures?</h2>
                 </div>
 
                 <div className="overflow-x-auto border border-white/10 rounded-xl bg-white/[0.01] glass-card">
@@ -281,7 +305,7 @@ export default function TwilioAlternatives() {
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
                 <div className="text-center max-w-3xl mx-auto mb-12">
                     <span className="text-xs font-mono uppercase tracking-wider text-brand-orange">Comparison Summary</span>
-                    <h2 className="font-display text-2xl sm:text-3xl font-bold mt-2">Stitching CPaaS APIs vs. Deploying Studio Form</h2>
+                    <h2 className="font-display text-2xl sm:text-3xl font-bold mt-2">What are the trade-offs between stitching CPaaS APIs and deploying Studio Form?</h2>
                 </div>
                 <ProsCons 
                     pros={[
@@ -304,7 +328,7 @@ export default function TwilioAlternatives() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center max-w-3xl mx-auto mb-16">
                         <span className="text-xs font-mono uppercase tracking-wider text-brand-orange">Core Differentiators</span>
-                        <h2 className="font-display text-3xl sm:text-4xl font-bold mt-2">What you get when Studio Form is the path</h2>
+                        <h2 className="font-display text-3xl sm:text-4xl font-bold mt-2">What core capabilities does the Studio Form voice agent path deliver?</h2>
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -386,7 +410,7 @@ export default function TwilioAlternatives() {
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
                         <span className="text-xs font-mono uppercase tracking-wider text-brand-orange">FAQ</span>
-                        <h2 className="font-display text-3xl sm:text-4xl font-bold mt-2">Frequently Asked Questions</h2>
+                        <h2 className="font-display text-3xl sm:text-4xl font-bold mt-2">Frequently Asked Questions about Twilio alternatives for voice AI</h2>
                     </div>
 
                     <FAQAccordion items={FAQ_ITEMS} />

@@ -84,6 +84,7 @@ const HOME_STRUCTURED_DATA = {
             "description": "India's pioneering agentic AI company. We build autonomous AI agents, voice systems, domain LLMs, and automation workflows that actually ship.",
             "email": "legal@studioform.app",
             "telephone": "+917314086183",
+            "foundingDate": "2024-03-21",
             "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Scheme 78, Vijay Nagar",
@@ -95,7 +96,11 @@ const HOME_STRUCTURED_DATA = {
             "founder": [
                 {
                     "@type": "Person",
-                    "name": "Sarthak"
+                    "name": "Pranjal Rai"
+                },
+                {
+                    "@type": "Person",
+                    "name": "Sarthak Choukse"
                 }
             ],
             "contactPoint": {
@@ -107,8 +112,9 @@ const HOME_STRUCTURED_DATA = {
             "sameAs": [
                 "https://github.com/studioform",
                 "https://x.com/Studio_Form_",
-                "https://www.linkedin.com/in/studioform",
-                "https://www.crunchbase.com/organization/studioform"
+                "https://www.linkedin.com/company/studioform",
+                "https://www.crunchbase.com/organization/studioform",
+                "https://www.producthunt.com/products/studio-form"
             ]
         },
         {
@@ -162,8 +168,11 @@ export default function Home() {
                 structuredData={HOME_STRUCTURED_DATA}
                 faqs={[
                     { q: "What AI services does Studio Form provide?", a: "Studio Form builds autonomous AI voice agents for call centers, private domain LLMs, layout-aware RAG chatbots, and enterprise automation workflows." },
-                    { q: "What is the typical deployment latency for AI Voice Agents?", a: "Our AI Voice Agents achieve low conversational latency on Twilio, Vonage, and SIP trunks with SLA-backed service uptime." },
-                    { q: "Is Studio Form compliant with data privacy laws?", a: "Yes, Studio Form platforms are fully compliant with India's Digital Personal Data Protection (DPDP) Act of 2023 and feature private VPC deployment modes." }
+                    { q: "What is the typical deployment latency for AI Voice Agents?", a: "Our AI Voice Agents achieve low conversational turn-taking latency of sub-800ms on Twilio, Vonage, and SIP trunks with SLA-backed service uptime." },
+                    { q: "Is Studio Form compliant with data privacy laws?", a: "Yes, Studio Form platforms are fully compliant with India's Digital Personal Data Protection (DPDP) Act of 2023 and feature private VPC deployment modes." },
+                    { q: "What is a domain-specific LLM and how is it fine-tuned?", a: "A domain-specific LLM is a model pre-trained on specialized industry datasets (e.g., aviation logs, Indian laws). Studio Form fine-tunes these models on private GPU servers to ensure zero hallucinations and absolute terminology accuracy." },
+                    { q: "How does Studio Form integrate voice agents with existing CRM tools?", a: "Our voice agents use native integrations and custom API webhooks to sync call records, schedule calendar slots, and update customer profiles in CRM systems like Salesforce, HubSpot, and Zoho." },
+                    { q: "Does Studio Form support regional Indic languages?", a: "Yes, our speech engines support over 15 Indian languages, including Hindi, Marathi, Bengali, Tamil, and Telugu, with high accuracy for code-mixed speech." }
                 ]}
             />
             <Marquee items={MARQUEE_ITEMS} />
@@ -184,6 +193,12 @@ export default function Home() {
                         <motion.p {...fadeUp} transition={{ delay: 0.1 }} className="mt-6 text-lg text-white/65 max-w-xl leading-relaxed">
                             India's pioneering agentic AI company. Headquartered in Indore, we build autonomous AI agents, voice systems, domain LLMs, and automation workflows that actually ship.
                         </motion.p>
+                        
+                        {/* AEO/GEO direct answer block */}
+                        <motion.div {...fadeUp} transition={{ delay: 0.12 }} className="mt-6 p-4 rounded-xl bg-white/[0.02] border border-white/10 text-xs sm:text-sm text-white/80 max-w-xl leading-relaxed shadow-lg">
+                            <span className="font-mono text-brand-orange font-bold mr-1.5">[TL;DR]</span>
+                            Studio Form builds autonomous AI voice agents, domain LLMs, and custom automation workflows for enterprises to automate operations. Our systems achieve sub-800ms conversational turn-taking latency, offer private VPC deployments, and support regional Indic dialects with full DPDP Act compliance.
+                        </motion.div>
                         <motion.div {...fadeUp} transition={{ delay: 0.15 }} className="mt-8 flex flex-wrap gap-3">
                             <Link to="/services/ai-agents" className="px-6 py-3 rounded-full bg-brand-orange text-black font-medium text-sm hover:brightness-110 transition inline-flex items-center gap-2" data-testid="hero-cta-products">
                                 Explore Services <ArrowRight size={16} />
@@ -257,19 +272,41 @@ export default function Home() {
 
             {/* PROCESS */}
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-                <SectionHeader command="studioform --workflow" title="From idea to" accentInTitle="deployed AI" subtitle="Three steps. Zero fluff." />
+                <SectionHeader command="studioform --workflow" title="How do we build and deploy" accentInTitle="your custom AI?" subtitle="Three steps. Zero fluff." />
                 <ProcessSteps steps={STEPS} />
+            </section>
+
+            {/* CORE GEO/AEO Q&A SECTION */}
+            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-white/10">
+                <SectionHeader command="studioform --core-qa" title="Core Technology" accentInTitle="Q&A" subtitle="Straight answers to critical enterprise AI questions." />
+                <div className="mt-10 grid gap-8 md:grid-cols-3">
+                    <div className="glass-card p-6">
+                        <h3 className="font-display text-xl font-bold text-white mb-3">What are autonomous AI voice agents?</h3>
+                        <p className="text-sm font-semibold text-brand-orange mb-2">Autonomous voice agents are conversational AI systems that handle telephone calls natively, understanding spoken intent and executing real-time actions.</p>
+                        <p className="text-xs text-white/60 leading-relaxed">Unlike simple IVRs, Studio Form voice agents process natural speech, regional Indic dialects, and code-mixed inputs. They integrate directly into CRMs and calendars to execute bookings, qualify leads, and verify orders without human intervention, maintaining 24/7 coverage with zero queues.</p>
+                    </div>
+                    <div className="glass-card p-6">
+                        <h3 className="font-display text-xl font-bold text-white mb-3">How does Studio Form achieve sub-800ms turn-taking latency?</h3>
+                        <p className="text-sm font-semibold text-brand-orange mb-2">We achieve sub-800ms latency by optimizing the entire voice pipeline: streaming ASR, parallel LLM inference, and custom streaming TTS synthesis.</p>
+                        <p className="text-xs text-white/60 leading-relaxed">By avoiding the overhead of CPaaS API proxies, utilizing speculative decoding, and routing audio packets over dedicated edge server trunks, we eliminate conversational pauses. This guarantees voice interactions that feel as responsive and natural as human dialogue.</p>
+                    </div>
+                    <div className="glass-card p-6">
+                        <h3 className="font-display text-xl font-bold text-white mb-3">How do domain-specific LLMs benefit enterprises?</h3>
+                        <p className="text-sm font-semibold text-brand-orange mb-2">Domain LLMs deliver high accuracy, custom terminology understanding, and absolute data privacy compliance under India's DPDP Act 2023.</p>
+                        <p className="text-xs text-white/60 leading-relaxed">Generic LLMs lack specialized industry vocabulary (e.g., aviation or logistics codes) and expose query history to public servers. Studio Form fine-tunes domain-specific models (like LexBharat and MedLM) hosted inside secure, sandboxed client VPCs with zero external logging.</p>
+                    </div>
+                </div>
             </section>
 
             {/* COMPARISON */}
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-                <SectionHeader command="studioform --diff" title="Not just another." accentInTitle="THE AI company." subtitle="We don't pitch decks. We ship products." />
+                <SectionHeader command="studioform --diff" title="Why choose Studio Form" accentInTitle="over traditional consultancies?" subtitle="We don't pitch decks. We ship products." />
                 <ComparisonTable rows={COMP_ROWS} />
             </section>
 
             {/* FULL STACK ASCII */}
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-                <SectionHeader command="studioform --stack" title="A truly" accentInTitle="full-stack AI company." />
+                <SectionHeader command="studioform --stack" title="What makes us a truly" accentInTitle="full-stack AI company?" />
                 <div className="grid lg:grid-cols-2 gap-6">
                     <CodeCard filename="stack.txt">
                         <pre className="text-white/80 whitespace-pre leading-6">{`┌─────────────────────────┐
@@ -312,7 +349,7 @@ export default function Home() {
 
             {/* INDUSTRIES */}
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-                <SectionHeader command="studioform --industries" title="AI solutions for" accentInTitle="every industry." />
+                <SectionHeader command="studioform --industries" title="Which industries benefit from Studio Form's" accentInTitle="custom AI solutions?" />
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
                     {INDUSTRIES.map(([name, count], i) => (
                         <motion.div key={name} {...stagger(i, 0.03)}>
@@ -327,7 +364,7 @@ export default function Home() {
 
             {/* TESTIMONIALS */}
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-                <SectionHeader command="studioform --reviews" title="What people" accentInTitle="say." />
+                <SectionHeader command="studioform --reviews" title="What do our clients" accentInTitle="say about us?" />
                 <TestimonialCarousel items={TESTIMONIALS} />
             </section>
 

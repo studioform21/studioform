@@ -80,6 +80,7 @@ function App() {
                             <Route path="/ai-university" element={<AIUniversity />} />
                             <Route path="/about" element={<About />} />
                             <Route path="/team" element={<Team />} />
+                            <Route path="/team/:leaderId" element={<Team />} />
                             <Route path="/contact" element={<Contact />} />
                             <Route path="/ai-news" element={<News />} />
                             <Route path="/blog" element={<News />} />

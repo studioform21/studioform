@@ -80,7 +80,18 @@ const VOICE_AGENTS_STRUCTURED_DATA = {
             "addressCountry": "IN"
         }
     },
-    "areaServed": ["IN", "US", "Global"]
+    "areaServed": ["IN", "US", "Global"],
+    "audience": {
+        "@type": "Audience",
+        "audienceType": "Enterprise Business Buyers"
+    },
+    "offers": {
+        "@type": "Offer",
+        "price": "199.00",
+        "priceCurrency": "USD",
+        "description": "Starter subscription pricing for voice agent runtime",
+        "url": "https://studioform.app/pricing"
+    }
 };
 
 const SERVICE_FAQS = [
@@ -88,7 +99,12 @@ const SERVICE_FAQS = [
     { q: "How long does deployment take?", a: "Standard voice agents can be deployed in 2 days. Complex custom integrations take 2-4 weeks." },
     { q: "Which LLMs do you support?", a: "We support major enterprise models including GPT-4, Claude 3.5, and our fine-tuned logibrain 7B." },
     { q: "Do you integrate with CRMs?", a: "Yes. Out-of-the-box integrations include Salesforce, HubSpot, Zoho, and Tally ERP." },
-    { q: "Is WhatsApp supported?", a: "Yes. Voice agents can coordinate checkouts, send reminders, and sync order files with WhatsApp Business APIs." }
+    { q: "Is WhatsApp supported?", a: "Yes. Voice agents can coordinate checkouts, send reminders, and sync order files with WhatsApp Business APIs." },
+    { q: "How do you achieve sub-800ms conversational turn-taking latency?", a: "Our pipeline streams raw audio directly to Whisper-based ASR models, runs inference in parallel using speculative decoding, and streams the output TTS neural synthetic voices straight back to the telephony trunk, keeping turn gaps under 800ms." },
+    { q: "Is call barge-in and interruption supported?", a: "Yes, our voice agents feature real-time interruption detection. The moment a user speaks over the agent, the synthesization stream cancels instantly, allowing the agent to listen, process, and respond naturally." },
+    { q: "How do you handle background noise in call center environments?", a: "We deploy proprietary audio filtering and noise cancellation layers at the SIP trunk level, separating the caller's voice from environmental sounds to ensure high ASR transcription accuracy." },
+    { q: "Are conversations compliant with Indian data privacy rules?", a: "Yes, Studio Form voice agents are designed with compliance at the core. We support private VPC sandboxing and on-premise GPU hosting that prevents data logging, fully conforming to India's DPDP Act of 2023." },
+    { q: "Can the voice agent transfer a call to a live human operator?", a: "Yes. We support both warm and cold live transfers. If the agent encounters a query out of its domain bounds or if the customer requests a human, it executes a SIP refer transfer to your active call center staff." }
 ];
 
 export default function VoiceAgents() {
@@ -114,6 +130,14 @@ export default function VoiceAgents() {
                     <StatCounter value="Low" suffix="" label="Turn Latency" />
                 </div>
             </PageHero>
+
+            {/* AEO/GEO direct answer block */}
+            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-4">
+                <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10 text-sm text-white/80 leading-relaxed shadow-lg">
+                    <span className="font-mono text-brand-orange font-bold mr-1.5">[TL;DR]</span>
+                    Studio Form deploys custom, low-latency AI voice agents for enterprise contact centers. Supporting multilingual Indic regional dialects (Hindi, Marathi, Tamil, etc.), our agents integrate directly with existing SIP trunks, Twilio, or Exotel. They deliver sub-800ms conversational turn-taking latency and direct CRM synchronization.
+                </div>
+            </section>
 
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div className="grid lg:grid-cols-5 gap-6 mb-12">
@@ -144,7 +168,7 @@ export default function VoiceAgents() {
                     </div>
                 </div>
 
-                <SectionHeader command="studioform --languages" title="Multi-language" accentInTitle="& accents." />
+                <SectionHeader command="studioform --languages" title="What regional languages" accentInTitle="and dialects are supported?" />
                 <div className="flex flex-wrap gap-2 mb-12">
                     {LANGS.map(([lang, accents]) => (
                         <div key={lang} className="px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 text-sm" data-testid={`lang-${lang}`}>
@@ -154,7 +178,7 @@ export default function VoiceAgents() {
                     ))}
                 </div>
 
-                <SectionHeader command="studioform --integrations" title="Platform" accentInTitle="integrations." />
+                <SectionHeader command="studioform --integrations" title="Which enterprise software" accentInTitle="platforms integrate natively?" />
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
                     {Object.entries(INTEGRATIONS).map(([cat, list], i) => (
                         <motion.div key={cat} {...stagger(i)} className="glass-card p-5">
@@ -166,7 +190,7 @@ export default function VoiceAgents() {
                     ))}
                 </div>
 
-                <SectionHeader command="studioform --partners" title="Built with leading" accentInTitle="AI platforms." />
+                <SectionHeader command="studioform --partners" title="Which underlying AI models" accentInTitle="and speech stacks power the agents?" />
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-16">
                     {PARTNERS.map((p, i) => (
                         <motion.div key={p.name} {...stagger(i)} className="glass-card p-5 relative">
@@ -177,7 +201,7 @@ export default function VoiceAgents() {
                     ))}
                 </div>
 
-                <SectionHeader command="studioform --catalog" title="Browse" accentInTitle="voice agents." />
+                <SectionHeader command="studioform --catalog" title="What production-ready AI voice agent" accentInTitle="templates can you deploy?" />
                 <FilterableCatalogGrid
                     items={items}
                     facets={[{ key: "industry", label: "industry", options: industries }, { key: "type", label: "type", options: ["Inbound", "Outbound"] }]}

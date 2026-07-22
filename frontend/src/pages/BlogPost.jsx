@@ -240,6 +240,76 @@ const BLOG_ARTICLES = {
                 }
             ]
         }
+    },
+    "how-we-achieve-sub-800ms-conversational-latency-in-enterprise-voice-agents": {
+        title: "How we achieve sub-800ms conversational latency in enterprise voice agents",
+        tag: "Voice AI",
+        date: "Feb 15, 2026",
+        readTime: "7 min read",
+        author: "Sarthak Choukse, CTO",
+        keywords: "low latency voice AI, voice agent performance, real-time ASR, streaming TTS, sub-800ms conversational turn-taking, SIP trunking optimization",
+        body: [
+            "Achieving sub-800ms conversational turn-taking latency is the holy grail of voice AI. When latency exceeds 1.2 seconds, conversation feels unnatural, leading to overlap, barge-in failures, and poor customer satisfaction.",
+            "At Studio Form, we have re-engineered the standard voice pipeline. By replacing REST-based API handshakes with direct WebSockets, optimizing audio streaming, and fine-tuning model execution, we keep the turn gap strictly under 800ms on production lines.",
+            "Here is how our engineering team optimizes each phase of the voice pipeline from ASR to TTS."
+        ],
+        sections: [
+            {
+                title: "1. Streaming ASR and Chunk Size Optimization",
+                content: "Traditional speech recognition processes audio in complete utterances, introducing delays. We stream audio packets in 80ms chunks directly to a sandboxed Whisper engine. By using speculative decoding on the stream, we transcribe words in real-time with sub-150ms latency."
+            },
+            {
+                title: "2. Parallelized LLM Inference and Speculative Generation",
+                content: "Instead of waiting for the full LLM completion, we stream the output token-by-token. Our orchestrator processes the first tokens immediately to kickstart the text-to-speech engine. By running custom domain adapters on lightweight weights (7B-8B), we achieve an LLM TTFT of under 180ms."
+            },
+            {
+                title: "3. Direct Telephony Carrier Integration via SIP Trunks",
+                content: "We avoid intermediate API aggregators by routing audio over dedicated SIP trunks. Connecting directly to Twilio Elastic SIP or Vonage Carrier networks eliminates network hop overheads, shaving off another 200ms of latency."
+            }
+        ],
+        structuredData: {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "How we achieve sub-800ms conversational latency in enterprise voice agents",
+            "datePublished": "2026-02-15T00:00:00Z",
+            "author": { "@type": "Person", "name": "Sarthak Choukse" },
+            "publisher": { "@type": "Organization", "name": "Studio Form", "url": "https://www.studioform.app" }
+        }
+    },
+    "designing-domain-llms-for-telecom-finance-workflows": {
+        title: "Designing domain LLMs for telecom/finance workflows",
+        tag: "LLM Ops",
+        date: "Feb 22, 2026",
+        readTime: "8 min read",
+        author: "Pranjal Rai, CEO",
+        keywords: "domain LLM design, financial LLM, telecom LLM, Model fine-tuning, RAG architecture, DPDP Act 2023 compliance, LexBharat",
+        body: [
+            "Generic Large Language Models are highly capable but fail when confronted with industry-specific terminology. A telecom support agent needs to know what an 'HLR lookup failure' means, while a finance agent must comprehend tax law variations.",
+            "Studio Form designs domain-specific LLMs (such as LexBharat and FinSathi) that are trained on curated industry corpora. These models deliver higher accuracy, complete data residency compliance, and lower inference costs.",
+            "Here is our blueprint for building and deploying secure domain LLMs for regulated enterprise sectors."
+        ],
+        sections: [
+            {
+                title: "1. Curating the Training Corpora",
+                content: "The performance of a domain LLM depends entirely on data quality. We compile millions of tokens of sanitized logs, legal briefs, product manuals, and tax guidelines. We run strict cleaning filters to remove PII (Personally Identifiable Information) before training begins."
+            },
+            {
+                title: "2. Supervised Fine-Tuning (SFT) & Direct Preference Optimization (DPO)",
+                content: "We initialize training on open base weights (Llama 3, Mistral) and perform task-specific fine-tuning. We then apply DPO using expert human feedback to align the model's tone and compliance boundaries with industry standards."
+            },
+            {
+                title: "3. Enforcing Data Security and Compliance",
+                content: "Unlike public API endpoints, our domain models deploy inside secure, sandboxed client VPCs or on-premise GPU nodes. This ensures that no customer transaction logs or prompt histories leave the company perimeter, complying with India's DPDP Act of 2023."
+            }
+        ],
+        structuredData: {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "Designing domain LLMs for telecom/finance workflows",
+            "datePublished": "2026-02-22T00:00:00Z",
+            "author": { "@type": "Person", "name": "Pranjal Rai" },
+            "publisher": { "@type": "Organization", "name": "Studio Form", "url": "https://www.studioform.app" }
+        }
     }
 };
 

@@ -61,6 +61,8 @@ const RESOURCES = [
 const BLOGS = [
     "ai-call-center-solutions",
     "how-to-build-ai-receptionist",
+    "how-we-achieve-sub-800ms-conversational-latency-in-enterprise-voice-agents",
+    "designing-domain-llms-for-telecom-finance-workflows",
     "gpt-5-reasoning-bands",
     "marathi-voice-agent-playbook",
     "rbi-ai-regulation"
@@ -116,6 +118,8 @@ BLOGS.forEach(b => {
     let date = "2026-07-21"; // default fallback
     if (b === "how-to-build-ai-receptionist") {
         date = "2026-07-21";
+    } else if (b === "how-we-achieve-sub-800ms-conversational-latency-in-enterprise-voice-agents" || b === "designing-domain-llms-for-telecom-finance-workflows") {
+        date = "2026-07-22";
     } else if (b === "gpt-5-reasoning-bands") {
         date = "2026-02-08";
     } else if (b === "marathi-voice-agent-playbook") {
@@ -126,8 +130,12 @@ BLOGS.forEach(b => {
     addUrl(`ai-news/${b}`, date, "monthly", "0.7");
 });
 
+// Leaders
+const LEADERS = ["pranjal-rai", "sarthak-choukse", "nehal-mishra"];
+LEADERS.forEach(l => addUrl(`team/${l}`, today, "monthly", "0.6"));
+
 xml += `</urlset>\n`;
 
 const destPath = path.join(__dirname, "public", "sitemap.xml");
 fs.writeFileSync(destPath, xml, "utf8");
-console.log(`Successfully generated dynamic sitemap with ${STATIC_ROUTES.length + SERVICES.length + INDUSTRIES.length + CASE_STUDIES.length + RESOURCES.length + BLOGS.length} routes at ${destPath}`);
+console.log(`Successfully generated dynamic sitemap with ${STATIC_ROUTES.length + SERVICES.length + INDUSTRIES.length + CASE_STUDIES.length + RESOURCES.length + BLOGS.length + LEADERS.length} routes at ${destPath}`);

@@ -129,7 +129,7 @@
       "destination": "/email-template.html"
     },
     {
-      "source": "/(static|images|logo_dark.png|og-image.png|email_hero_blue.png|favicon.ico|favicon-32x32.png|favicon-48x48.png|icon-192.png|icon-512.png|apple-touch-icon.png|manifest.json|robots.txt|sitemap.xml|rss.xml|llms.txt)(.*)",
+      "source": "/(static|images|logo_dark.png|og-image.png|email_hero_blue.png|favicon.ico|favicon-32x32.png|favicon-48x48.png|icon-192.png|icon-512.png|apple-touch-icon.png|manifest.json|robots.txt|sitemap.xml|rss.xml|llms.txt|llms-full.txt)(.*)",
       "destination": "/$1$2"
     },
     {
@@ -137,7 +137,7 @@
       "destination": "/$1/index.html"
     },
     {
-      "source": "/(services|industries|case-studies|resources|ai-news)/:slug",
+      "source": "/(services|industries|case-studies|resources|ai-news|team)/:slug",
       "destination": "/$1/:slug/index.html"
     },
     {

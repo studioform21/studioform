@@ -49,16 +49,18 @@ const SEO_CONFIG = {
             "@graph": [
                 {
                     "@type": "Organization",
+                    "@id": "https://www.studioform.app/#organization",
                     "name": "Studio Form",
-                    "url": "https://studioform.app",
-                    "logo": "https://studioform.app/logo_dark.png",
-                    "description": "Studio Form builds autonomous AI voice agents, domain LLMs, and custom automation workflows for enterprise scale.",
-                    "sameAs": [
-                        "https://www.linkedin.com/company/studioform",
-                        "https://github.com/studioform",
-                        "https://twitter.com/studioform",
-                        "https://www.crunchbase.com/organization/studioform"
-                    ],
+                    "url": "https://www.studioform.app",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://www.studioform.app/logo_dark.png",
+                        "caption": "Studio Form Logo"
+                    },
+                    "description": "India's pioneering agentic AI company. We build autonomous AI agents, voice systems, domain LLMs, and automation workflows that actually ship.",
+                    "email": "legal@studioform.app",
+                    "telephone": "+917314086183",
+                    "foundingDate": "2024-03-21",
                     "address": {
                         "@type": "PostalAddress",
                         "streetAddress": "Scheme 78, Vijay Nagar",
@@ -66,6 +68,58 @@ const SEO_CONFIG = {
                         "addressRegion": "Madhya Pradesh",
                         "postalCode": "452010",
                         "addressCountry": "IN"
+                    },
+                    "founder": [
+                        {
+                            "@type": "Person",
+                            "name": "Pranjal Rai"
+                        },
+                        {
+                            "@type": "Person",
+                            "name": "Sarthak Choukse"
+                        }
+                    ],
+                    "contactPoint": {
+                        "@type": "ContactPoint",
+                        "contactType": "customer service",
+                        "email": "legal@studioform.app",
+                        "telephone": "+917314086183"
+                    },
+                    "sameAs": [
+                        "https://github.com/studioform",
+                        "https://x.com/Studio_Form_",
+                        "https://www.linkedin.com/company/studioform",
+                        "https://www.crunchbase.com/organization/studioform",
+                        "https://www.producthunt.com/products/studio-form"
+                    ]
+                },
+                {
+                    "@type": "ProfessionalService",
+                    "@id": "https://www.studioform.app/#service",
+                    "name": "Studio Form",
+                    "image": "https://www.studioform.app/logo_dark.png",
+                    "description": "AI engineering studio building voice agents, custom domain LLMs, RAG pipelines, and enterprise AI automation.",
+                    "url": "https://www.studioform.app",
+                    "telephone": "+917314086183",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "Scheme 78, Vijay Nagar",
+                        "addressLocality": "Indore",
+                        "addressRegion": "Madhya Pradesh",
+                        "postalCode": "452010",
+                        "addressCountry": "IN"
+                    },
+                    "areaServed": ["IN", "US", "Global"],
+                    "serviceType": ["AI Voice Agents", "RAG Chatbots", "LLM Development", "AI Automation"]
+                },
+                {
+                    "@type": "WebSite",
+                    "@id": "https://www.studioform.app/#website",
+                    "url": "https://www.studioform.app",
+                    "name": "Studio Form",
+                    "description": "Building the Fabric of Future Intelligence. India's pioneering agentic AI company.",
+                    "publisher": {
+                        "@id": "https://www.studioform.app/#organization"
                     }
                 },
                 {
@@ -84,7 +138,7 @@ const SEO_CONFIG = {
                             "name": "What is the typical deployment latency for AI Voice Agents?",
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Our AI Voice Agents achieve low conversational latency on Twilio, Vonage, and SIP trunks with SLA-backed service uptime."
+                                "text": "Our AI Voice Agents achieve low conversational turn-taking latency of sub-800ms on Twilio, Vonage, and SIP trunks with SLA-backed service uptime."
                             }
                         },
                         {
@@ -93,6 +147,30 @@ const SEO_CONFIG = {
                             "acceptedAnswer": {
                                 "@type": "Answer",
                                 "text": "Yes, Studio Form platforms are fully compliant with India's Digital Personal Data Protection (DPDP) Act of 2023 and feature private VPC deployment modes."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "What is a domain-specific LLM and how is it fine-tuned?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "A domain-specific LLM is a model pre-trained on specialized industry datasets (e.g., aviation logs, Indian laws). Studio Form fine-tunes these models on private GPU servers to ensure zero hallucinations and absolute terminology accuracy."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "How does Studio Form integrate voice agents with existing CRM tools?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Our voice agents use native integrations and custom API webhooks to sync call records, schedule calendar slots, and update customer profiles in CRM systems like Salesforce, HubSpot, and Zoho."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Does Studio Form support regional Indic languages?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Yes, our speech engines support over 15 Indian languages, including Hindi, Marathi, Bengali, Tamil, and Telugu, with high accuracy for code-mixed speech."
                             }
                         }
                     ]
@@ -171,8 +249,58 @@ const SEO_CONFIG = {
         `,
         schema: {
             "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": "Case Studies — Studio Form"
+            "@graph": [
+                {
+                    "@type": "WebPage",
+                    "name": "Case Studies — Studio Form",
+                    "description": "Read case studies detailing business outcomes, saved hours, and cost reductions achieved with custom AI systems."
+                },
+                {
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": "What business outcomes do Studio Form AI systems deliver?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Our AI systems focus on driving measurable ROI: reducing call center overhead by up to 60%, saving hundreds of staff hours via document search, and raising mobile cart conversions by 40%."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "How do you evaluate and guarantee AI safety and accuracy?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "We run models against specialized evaluation frameworks matching your target business workflows, benchmarking performance against standard datasets and implementing strict layout-aware RAG guardrails to eliminate hallucinations."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Can Studio Form deploy AI systems on-premise?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Yes. To ensure complete compliance with India's DPDP Act 2023 and satisfy corporate security protocols, we support completely sandboxed deployments inside your private AWS/Azure VPC or on-premise GPU nodes."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "What industries are Studio Form AI systems built for?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "We have pre-built modules and custom templates specialized for logistics and dispatch, healthcare and clinics, e-commerce, legal services, and regional aviation operators."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "How long does it take to implement a custom AI case study pilot?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "We design, customize, and deploy a validated proof-of-concept pilot in 2 to 4 weeks, connecting to your active CRMs, databases, and telephony trunks."
+                            }
+                        }
+                    ]
+                }
+            ]
         }
     },
     "/services/voice-agents": {
@@ -221,25 +349,100 @@ const SEO_CONFIG = {
                             "addressCountry": "IN"
                         }
                     },
-                    "areaServed": ["IN", "US", "Global"]
+                    "areaServed": ["IN", "US", "Global"],
+                    "audience": {
+                        "@type": "Audience",
+                        "audienceType": "Enterprise Business Buyers"
+                    },
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "199.00",
+                        "priceCurrency": "USD",
+                        "description": "Starter subscription pricing for voice agent runtime",
+                        "url": "https://studioform.app/pricing"
+                    }
                 },
                 {
                     "@type": "FAQPage",
                     "mainEntity": [
                         {
                             "@type": "Question",
-                            "name": "What telephony providers are supported?",
+                            "name": "How much does an AI voice agent cost?",
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Studio Form voice agents integrate directly with Twilio, Vonage, Plivo, and enterprise SIP trunks."
+                                "text": "Starter plans begin at $199/mo, with Custom options available for high call volume environments."
                             }
                         },
                         {
                             "@type": "Question",
-                            "name": "How fast is the voice response time?",
+                            "name": "How long does deployment take?",
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Our voice pipeline achieves turn-taking response latency under 800ms for natural conversation flow."
+                                "text": "Standard voice agents can be deployed in 2 days. Complex custom integrations take 2-4 weeks."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Which LLMs do you support?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "We support major enterprise models including GPT-4, Claude 3.5, and our fine-tuned logibrain 7B."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Do you integrate with CRMs?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Yes. Out-of-the-box integrations include Salesforce, HubSpot, Zoho, and Tally ERP."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Is WhatsApp supported?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Yes. Voice agents can coordinate checkouts, send reminders, and sync order files with WhatsApp Business APIs."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "How do you achieve sub-800ms conversational turn-taking latency?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Our pipeline streams raw audio directly to Whisper-based ASR models, runs inference in parallel using speculative decoding, and streams the output TTS neural synthetic voices straight back to the telephony trunk, keeping turn gaps under 800ms."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Is call barge-in and interruption supported?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Yes, our voice agents feature real-time interruption detection. The moment a user speaks over the agent, the synthesization stream cancels instantly, allowing the agent to listen, process, and respond naturally."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "How do you handle background noise in call center environments?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "We deploy proprietary audio filtering and noise cancellation layers at the SIP trunk level, separating the caller's voice from environmental sounds to ensure high ASR transcription accuracy."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Are conversations compliant with Indian data privacy rules?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Yes, Studio Form voice agents are designed with compliance at the core. We support private VPC sandboxing and on-premise GPU hosting that prevents data logging, fully conforming to India's DPDP Act of 2023."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Can the voice agent transfer a call to a live human operator?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Yes. We support both warm and cold live transfers. If the agent encounters a query out of its domain bounds or if the customer requests a human, it executes a SIP refer transfer to your active call center staff."
                             }
                         }
                     ]
@@ -362,7 +565,18 @@ const SEO_CONFIG = {
                             "addressCountry": "IN"
                         }
                     },
-                    "areaServed": ["IN", "US", "Global"]
+                    "areaServed": ["IN", "US", "Global"],
+                    "audience": {
+                        "@type": "Audience",
+                        "audienceType": "Enterprise Business Buyers"
+                    },
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0.00",
+                        "priceCurrency": "USD",
+                        "description": "Enterprise custom pricing based on model scale",
+                        "url": "https://studioform.app/contact"
+                    }
                 },
                 {
                     "@type": "FAQPage",
@@ -372,7 +586,15 @@ const SEO_CONFIG = {
                             "name": "What is a domain-specific LLM?",
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "It is a Large Language Model fine-tuned on custom corpora to speak the specialized language of an industry."
+                                "text": "It is a Large Language Model (like Llama 3) fine-tuned on custom corpora (e.g. aviation logs or Supreme Court judgments) to speak the specialized language of an industry."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "How do you evaluate model accuracy?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "We run models against specialized evaluation frameworks matching your target business workflows, benchmarking against standard datasets."
                             }
                         },
                         {
@@ -380,7 +602,55 @@ const SEO_CONFIG = {
                             "name": "Where do you host the models?",
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "We host models on our optimized GPU clouds or deploy them on-premise within your private AWS/Azure VPC nodes."
+                                "text": "We can host models on our optimized GPU clouds or deploy them on-premise within your private AWS/Azure VPC nodes."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "How much data is required to fine-tune?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "We recommend at least 10M tokens of curated text, logs, manuals, or database sheets for specialized fine-tuning."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Do you support indic language LLMs?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Yes. Our BharatVoice and Indic models support over 15 Indian languages, dialect variations, and code-mixed inputs."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "How do you prevent data leaks in corporate LLM fine-tuning?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "All training and inference pipelines run on isolated private cloud containers or on-premise hardware nodes. We enforce zero data logging and prevent any prompt telemetry from leaving your secure enterprise parameters, fully complying with India's DPDP Act of 2023."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "What foundation models do you use for fine-tuning?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "We primarily use open-source architectures like Llama 3, Mistral, and Qwen. For specialized use cases, we also build custom fine-tuned adapters on top of proprietary foundation weights under secure API agreements."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "How do you handle model hallucinations in domain workflows?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "We implement strict Retrieval-Augmented Generation (RAG) validation layers, dual-embed verification checks, and prompt guardrails to keep responses anchored to the provided context databases."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "What is the typical ROI of a domain-specific LLM?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Domain-specific LLMs reduce token cost by up to 60% compared to generic frontier APIs, while delivering 95%+ accuracy on specialized vocabulary, resulting in highly automated contract reviews, log parsing, and customer support."
                             }
                         }
                     ]
@@ -497,8 +767,98 @@ const SEO_CONFIG = {
         `,
         schema: {
             "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": "Twilio Alternatives — Studio Form"
+            "@graph": [
+                {
+                    "@type": "WebPage",
+                    "name": "Twilio Alternatives — Studio Form",
+                    "description": "Evaluate Twilio alternatives for voice agents. Compare CPaaS APIs with Studio Form's full-stack autonomous AI telephony agents."
+                },
+                {
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": "What makes a product a true Twilio alternative for voice?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "A true alternative depends on your needs. If you need raw telephony APIs (SIP trunking, SMS primitives), Plivo or Vonage are direct CPaaS alternatives. However, if you are looking to build interactive voice applications, you likely need a Voice Agent Platform (like Vapi or Bland) or a fully deployed enterprise system like Studio Form that integrates voice, NLU, and LLMs directly over your existing telecom lines."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Can Studio Form run on our existing Twilio trunking?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Yes. Studio Form is built to be telephony-agnostic. We do not require you to rip-and-replace your telecom infrastructure. We can connect directly to your existing Twilio Elastic SIP Trunks, Twilio Media Streams, Vonage API, or on-premise SIP gateways. This allows you to deploy advanced voice agents while keeping your active carrier contracts and phone numbers."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "How does Studio Form compare to self-serve developer platforms like Bland AI or Vapi?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "While self-serve developer platforms are excellent for rapid API-first prototyping and developer workflows, Studio Form is built for contact centers and regulated enterprises. We provide custom-tuned Indic speech engines (designed for code-mixed Hindi/Marathi/Tamil/Telugu/English), native multi-system orchestration, HIPAA-compliant secure pipelines, and dedicated solutions engineering to support pilots through to production scaling."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "What is the latency profile of Studio Form voice agents?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Studio Form voice agents achieve an end-to-end conversational turn-taking latency of sub-800ms. We optimize the entire pipeline—ASR streaming, LLM inference, TTS generation, and SIP packet routing—specifically to eliminate the awkward pauses common in standard stitched CPaaS architectures."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "How does Studio Form handle multilingual or code-mixed calls?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "We train proprietary speech recognition (ASR) and text-to-speech (TTS) models optimized for Indic code-mixing. Standard global voice engines often fail when a caller switches languages mid-sentence (e.g., blending Hindi and English). Our agents parse and respond naturally in code-mixed languages, making them highly effective for regional contact center environments."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Is it compliant with regional privacy laws like the DPDP Act 2023?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Yes. Data privacy is a core architectural priority. Studio Form supports private-cloud and on-premise deployments that keep customer datasets, voice logs, and transcripts within your secure infrastructure. This ensures compliance with regional mandates like India's DPDP Act 2023, HIPAA, and corporate data residency guidelines."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "How does the pricing compare to Twilio API costs?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "While Twilio charges separate fees for SIP trunking, recording, and media streams, and you pay third-party API costs for ASR/LLM/TTS, Studio Form provides flat-rate pricing per minute or per agent seat that includes the entire stack. This results in up to 60% lower costs compared to stitching APIs yourself."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "What happens during network failures or API timeouts?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Our telephony gateway has built-in fallback rules. If an external API or vector index times out, the call is automatically routed to a fallback voice agent running on edge models, or transferred to your live SRE backup line, ensuring 99.9% uptime."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Do you support call transfers back to a traditional PBX?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Yes, Studio Form supports SIP REFER and warm transfers back to any standard PBX, IP-PBX, or contact center software (like Avaya, Cisco, or Genesys). The agent passes custom context headers so the human operator sees call summaries instantly."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "How do you evaluate voice agent performance?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "We run automated eval scripts measuring turn-taking latency, speech accuracy (WER), semantic alignment to guardrails, and customer sentiment, ensuring every deployment meets rigorous SLA guidelines."
+                            }
+                        }
+                    ]
+                }
+            ]
         }
     },
     "/docs": {
@@ -590,10 +950,182 @@ const SEO_CONFIG = {
             <h2>Explore Our Resources &amp; Integration Docs</h2>
             <p>Evaluate technical API integration schemas in our <a href="/docs">Developer Docs</a>, check our <a href="/pricing">Pricing Tiers</a>, examine client success stories in <a href="/case-studies">Case Studies</a>, or contact our engineering support team via the <a href="/contact">Contact Page</a>.</p>
         `,
+    },
+    "/team": {
+        title: "Our Team | Enterprise AI & Voice Builders — Studio Form",
+        description: "Meet the team of builders, engineers, and researchers at Studio Form behind India's pioneering multilingual voice agent and domain LLM platforms.",
+        h1: "Meet the Studio Form Team",
+        article: `
+            <h2>Who are the builders of Studio Form?</h2>
+            <p>Studio Form is founded and operated by an experienced team of speech technologists, product engineers, and enterprise software architects based in Indore, India. We are dedicated to constructing the fabric of future intelligence, deploying autonomous voice systems and sandboxed AI workflows that solve real organizational inefficiencies.</p>
+            
+            <h2>Our Core Leadership &amp; Founders</h2>
+            <p>Our company is led by our core co-founders: Pranjal Rai, Sarthak Choukse, and Nehal Mishra. Pranjal Rai serves as CEO, leading Go-To-Market strategy and enterprise partnerships. Sarthak Choukse serves as CTO, leading telephony integrations, Whisper-based automatic speech recognition (ASR), and real-time speech synthesis (TTS) pipelines. Nehal Mishra serves as COO and Head of Products, leading our RAG document engineering, user interface designs, and agentic workflows.</p>
+
+            <h2>Company Culture &amp; Technical Tenets</h2>
+            <p>We believe in building useful, deployable, and compliant software. Our engineering teams operate async-first, demo-focused, and maintain complete compliance with India's DPDP Act of 2023. Meet our leaders or read our playbook to see how we ship enterprise AI.</p>
+        `,
         schema: {
             "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": "Engine Changelog — Studio Form"
+            "@type": "AboutPage",
+            "name": "Studio Form Team",
+            "description": "Meet the team of builders, founders, and engineers at Studio Form behind India's pioneering agentic AI and voice systems."
+        }
+    },
+    "/team/pranjal-rai": {
+        title: "Pranjal Rai | CEO & Co-founder — Studio Form",
+        description: "Pranjal Rai is the CEO & Co-founder of Studio Form, building India's first production-grade multilingual voice agent stack.",
+        h1: "Pranjal Rai — CEO & Co-founder",
+        article: `
+            <h2>About Pranjal Rai</h2>
+            <p>Pranjal Rai is the Co-founder and CEO of Studio Form. He has pioneered conversational AI design in India, leading the development of India's first production-grade multilingual voice agent stack. With a background in business strategy and artificial intelligence, Pranjal leads Studio Form's vision to make enterprises AI-native. He is a frequent speaker at AI/ML summits and a mentor to early-stage builders.</p>
+            
+            <h2>Expertise &amp; Skills</h2>
+            <p>Pranjal's technical and operational expertise spans conversational AI system design, enterprise go-to-market strategy, product localization, Indic dialect training architectures, and partner integrations.</p>
+        `,
+        schema: {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Pranjal Rai",
+            "jobTitle": "CEO & Co-founder",
+            "worksFor": {
+                "@type": "Organization",
+                "name": "Studio Form",
+                "url": "https://studioform.app"
+            },
+            "url": "https://studioform.app/team/pranjal-rai",
+            "sameAs": [
+                "https://www.linkedin.com/company/studioform",
+                "https://github.com/studioform"
+            ],
+            "description": "Co-founder and CEO of Studio Form, building India's first multilingual voice agent stack.",
+            "knowsAbout": ["Artificial Intelligence", "Voice Agents", "Conversational AI", "SaaS Go-To-Market"]
+        }
+    },
+    "/team/sarthak-choukse": {
+        title: "Sarthak Choukse | CTO & Co-founder — Studio Form",
+        description: "Sarthak Choukse is the CTO & Co-founder of Studio Form, specializing in low-latency speech pipelines, telephony networks, and domain LLM adaptation.",
+        h1: "Sarthak Choukse — CTO & Co-founder",
+        article: `
+            <h2>About Sarthak Choukse</h2>
+            <p>Sarthak Choukse is the Co-founder and CTO of Studio Form, specializing in low-latency speech pipelines, telephony networks, and domain LLM adaptation. Sarthak has engineered speech recognition (ASR) and text-to-speech (TTS) systems that process over 10 million call minutes monthly. Prior to Studio Form, he worked on SIP packet routing systems and distributed GPU training frameworks, enabling real-time turn-taking optimizations under 800ms.</p>
+            
+            <h2>Expertise &amp; Skills</h2>
+            <p>Sarthak's expertise includes automatic speech recognition (ASR), speech synthesis (TTS), SIP protocol trunking, network latency optimizations, and supervised fine-tuning of open foundation LLMs.</p>
+        `,
+        schema: {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Sarthak Choukse",
+            "jobTitle": "CTO & Co-founder",
+            "worksFor": {
+                "@type": "Organization",
+                "name": "Studio Form",
+                "url": "https://studioform.app"
+            },
+            "url": "https://studioform.app/team/sarthak-choukse",
+            "sameAs": [
+                "https://www.linkedin.com/company/studioform",
+                "https://github.com/studioform"
+            ],
+            "description": "Co-founder and CTO of Studio Form, specializing in low-latency speech synthesis, SIP gateways, and domain-specific LLM adapters.",
+            "knowsAbout": ["Automatic Speech Recognition", "Speech Synthesis", "SIP trunking", "Fine-Tuning", "LLM Inference"]
+        }
+    },
+    "/team/nehal-mishra": {
+        title: "Nehal Mishra | COO & Head of Products — Studio Form",
+        description: "Nehal Mishra is the COO & Head of Products at Studio Form, leading the design and implementation of production-ready agentic software loops.",
+        h1: "Nehal Mishra — COO & Head of Products",
+        article: `
+            <h2>About Nehal Mishra</h2>
+            <p>Nehal Mishra is the COO and Head of Products at Studio Form. She leads the design and implementation of production-ready agentic software loops, layout-aware RAG pipelines, and complex user interfaces. Nehal bridges the gap between deep AI research and intuitive product engineering, ensuring that Studio Form SaaS modules are robust, user-friendly, and highly secure.</p>
+            
+            <h2>Expertise &amp; Skills</h2>
+            <p>Nehal's key skills cover SaaS application engineering, layout-aware document retrieval, permission-based RAG architecture, agentic automation loops, and operations management.</p>
+        `,
+        schema: {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Nehal Mishra",
+            "jobTitle": "COO & Head of Products",
+            "worksFor": {
+                "@type": "Organization",
+                "name": "Studio Form",
+                "url": "https://studioform.app"
+            },
+            "url": "https://studioform.app/team/nehal-mishra",
+            "sameAs": [
+                "https://www.linkedin.com/company/studioform",
+                "https://github.com/studioform"
+            ],
+            "description": "COO & Head of Products at Studio Form, developing layout-aware RAG interfaces and agentic automation workflows.",
+            "knowsAbout": ["Product Management", "Retrieval-Augmented Generation", "SaaS Engineering", "User Experience Design"]
+        }
+    },
+    "/blog/how-we-achieve-sub-800ms-conversational-latency-in-enterprise-voice-agents": {
+        title: "How we achieve sub-800ms conversational latency in enterprise voice agents | Studio Form",
+        description: "Read how Studio Form CTO Sarthak Choukse achieves sub-800ms turn-taking latency in voice AI systems via streaming ASR, parallel LLM token parsing, and raw SIP edge trunks.",
+        h1: "How We Achieve Sub-800ms Conversational Latency in Enterprise Voice Agents",
+        article: `
+            <h2>The Challenge of Voice Latency</h2>
+            <p>Achieving sub-800ms conversational turn-taking latency is the holy grail of voice AI. When latency exceeds 1.2 seconds, conversation feels unnatural, leading to overlap, barge-in failures, and poor customer satisfaction.</p>
+            
+            <h2>Streaming ASR and Chunk Size Optimization</h2>
+            <p>Traditional speech recognition processes audio in complete utterances, introducing delays. We stream audio packets in 80ms chunks directly to a sandboxed Whisper engine. By using speculative decoding on the stream, we transcribe words in real-time with sub-150ms latency.</p>
+            
+            <h2>Parallelized LLM Inference and Speculative Generation</h2>
+            <p>Instead of waiting for the full LLM completion, we stream the output token-by-token. Our orchestrator processes the first tokens immediately to kickstart the text-to-speech engine. By running custom domain adapters on lightweight weights (7B-8B), we achieve an LLM TTFT of under 180ms.</p>
+            
+            <h2>Direct Telephony Carrier Integration via SIP Trunks</h2>
+            <p>We avoid intermediate API aggregators by routing audio over dedicated SIP trunks. Connecting directly to Twilio Elastic SIP or Vonage Carrier networks eliminates network hop overheads, shaving off another 200ms of latency.</p>
+        `,
+        schema: {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "How we achieve sub-800ms conversational latency in enterprise voice agents",
+            "datePublished": "2026-02-15T00:00:00Z",
+            "author": {
+                "@type": "Person",
+                "name": "Sarthak Choukse"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "Studio Form",
+                "url": "https://www.studioform.app"
+            }
+        }
+    },
+    "/blog/designing-domain-llms-for-telecom-finance-workflows": {
+        title: "Designing domain LLMs for telecom/finance workflows | Studio Form",
+        description: "Read how Studio Form CEO Pranjal Rai designs domain-specific LLMs for telecom and finance, featuring custom data corpora, DPDP Act 2023 compliance, and VPC sandboxing.",
+        h1: "Designing Domain LLMs for Telecom/Finance Workflows",
+        article: `
+            <h2>Why Domain LLMs are Essential</h2>
+            <p>Generic Large Language Models are highly capable but fail when confronted with industry-specific terminology. A telecom support agent needs to know what an 'HLR lookup failure' means, while a finance agent must comprehend tax law variations.</p>
+            
+            <h2>Curating the Training Corpora</h2>
+            <p>The performance of a domain LLM depends entirely on data quality. We compile millions of tokens of sanitized logs, legal briefs, product manuals, and tax guidelines. We run strict cleaning filters to remove PII (Personally Identifiable Information) before training begins.</p>
+            
+            <h2>Supervised Fine-Tuning (SFT) &amp; Direct Preference Optimization (DPO)</h2>
+            <p>We initialize training on open base weights (Llama 3, Mistral) and perform task-specific fine-tuning. We then apply DPO using expert human feedback to align the model's tone and compliance boundaries with industry standards.</p>
+            
+            <h2>Enforcing Data Security and Compliance</h2>
+            <p>Unlike public API endpoints, our domain models deploy inside secure, sandboxed client VPCs or on-premise GPU nodes. This ensures that no customer transaction logs or prompt histories leave the company perimeter, complying with India's DPDP Act of 2023.</p>
+        `,
+        schema: {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "Designing domain LLMs for telecom/finance workflows",
+            "datePublished": "2026-02-22T00:00:00Z",
+            "author": {
+                "@type": "Person",
+                "name": "Pranjal Rai"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "Studio Form",
+                "url": "https://www.studioform.app"
+            }
         }
     }
 };

@@ -2,13 +2,27 @@
 
 Studio Form is a premier enterprise artificial intelligence engineering company based in Indore, Madhya Pradesh, India. We design, build, and deploy custom agentic solutions: autonomous multilingual voice agents, domain-specific fine-tuned LLMs, zero-hallucination Retrieval-Augmented Generation (RAG) pipelines, and custom workflow automations.
 
-## Verified Statistics
+## Crawler & Data Access Policy
+- **Allowed LLM Bots**: OpenAI (`GPTBot`, `OAI-SearchBot`, `ChatGPT-User`), Anthropic (`ClaudeBot`), Google (`Google-Extended`, `Googlebot`), Perplexity (`PerplexityBot`).
+- **Blocked Training Data Crawlers**: Common Crawl (`CCBot`) and other unverified bulk scraper bots are blocked from scraping training data without explicit commercial agreements.
+- **Crawl Rate Policy**: Crawlers must maintain a rate-limit of no more than 5 requests per second to avoid degradation of service.
+- **Content Licensing**: Structured resources are governed by machine-readable specifications where applicable.
+
+## Preferred Pages & Index Paths
+- Homepage: [https://studioform.app/](https://studioform.app/)
+- AI Voice Agents: [https://studioform.app/services/voice-agents](https://studioform.app/services/voice-agents)
+- Domain LLM Fine-Tuning: [https://studioform.app/services/llm-development](https://studioform.app/services/llm-development)
+- Twilio Alternatives & Latency Guide: [https://studioform.app/twilio-alternatives](https://studioform.app/twilio-alternatives)
+- Case Studies & Use Cases: [https://studioform.app/case-studies](https://studioform.app/case-studies)
+- API & Integration Docs: [https://studioform.app/docs](https://studioform.app/docs)
+
+## Verified Platform Statistics
 - **Active Pilots**: 15+ custom enterprise pilot projects deployed.
 - **Voice Agent Pilots**: 5 active conversational telephony systems.
 - **Domain Models**: 4 fine-tuned industry LLMs (Aviation, Healthcare, Legal, Finance).
-- **Languages Support**: 3 active languages (English, Hindi, Marathi) with regional Indic dialects code-mixing.
-- **Uptime Commitment**: SLA-backed target.
-- **Turn-taking Latency**: Low latency (optimized for sub-800ms response).
+- **Languages Support**: 15+ languages, including English, Hindi, and Marathi, with code-mixing dialects.
+- **Conversational Latency**: Sub-800ms end-to-end turn-taking response latency.
+- **Uptime Commitment**: 99.9% availability SLAs for production accounts.
 
 ## Core Offerings
 - [Voice Agents](https://studioform.app/services/voice-agents): Telephony integrations (Twilio, SIP, Exotel) supporting bilinguality and real-time dialogue state management.

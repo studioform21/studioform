@@ -133,17 +133,17 @@ export default function CaseStudies() {
                 <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid lg:grid-cols-3 gap-8">
                     <div className="lg:col-span-2 space-y-8">
                         <div className="glass-card p-6">
-                            <h3 className="font-display text-xl font-bold mb-4">The Challenge</h3>
+                            <h3 className="font-display text-xl font-bold mb-4">What challenge did the client face?</h3>
                             <p className="text-sm text-white/70 leading-relaxed">{cs.challenge}</p>
                         </div>
 
                         <div className="glass-card p-6">
-                            <h3 className="font-display text-xl font-bold mb-4">Our Solution</h3>
+                            <h3 className="font-display text-xl font-bold mb-4">What custom AI solution was designed and deployed?</h3>
                             <p className="text-sm text-white/70 leading-relaxed">{cs.solution}</p>
                         </div>
 
                         <div className="glass-card p-6">
-                            <h3 className="font-display text-xl font-bold mb-4">System Architecture</h3>
+                            <h3 className="font-display text-xl font-bold mb-4">What system architecture was implemented?</h3>
                             <ul className="mt-4 space-y-3 font-mono text-xs text-white/60">
                                 {cs.architecture.map((step, idx) => (
                                     <li key={idx} className="flex gap-2 items-start">
@@ -157,7 +157,7 @@ export default function CaseStudies() {
 
                     <div className="space-y-6">
                         <div className="glass-card p-6 border-brand-orange/40">
-                            <h3 className="font-display text-lg font-bold mb-4 text-brand-orange">Key Outcomes</h3>
+                            <h3 className="font-display text-lg font-bold mb-4 text-brand-orange">What measurable key outcomes were achieved?</h3>
                             <div className="space-y-6">
                                 {cs.metrics.map((m) => (
                                     <div key={m.label} className="border-b border-white/10 pb-4 last:border-0 last:pb-0">
@@ -197,6 +197,14 @@ export default function CaseStudies() {
         "url": "https://www.studioform.app/case-studies"
     };
 
+    const CASE_STUDY_FAQS = [
+        { q: "What business outcomes do Studio Form AI systems deliver?", a: "Our AI systems focus on driving measurable ROI: reducing call center overhead by up to 60%, saving hundreds of staff hours via document search, and raising mobile cart conversions by 40%." },
+        { q: "How do you evaluate and guarantee AI safety and accuracy?", a: "We run models against specialized evaluation frameworks matching your target business workflows, benchmarking performance against standard datasets and implementing strict layout-aware RAG guardrails to eliminate hallucinations." },
+        { q: "Can Studio Form deploy AI systems on-premise?", a: "Yes. To ensure complete compliance with India's DPDP Act 2023 and satisfy corporate security protocols, we support completely sandboxed deployments inside your private AWS/Azure VPC or on-premise GPU nodes." },
+        { q: "What industries are Studio Form AI systems built for?", a: "We have pre-built modules and custom templates specialized for logistics and dispatch, healthcare and clinics, e-commerce, legal services, and regional aviation operators." },
+        { q: "How long does it take to implement a custom AI case study pilot?", a: "We design, customize, and deploy a validated proof-of-concept pilot in 2 to 4 weeks, connecting to your active CRMs, databases, and telephony trunks." }
+    ];
+
     return (
         <div>
             <SEOMeta
@@ -204,6 +212,7 @@ export default function CaseStudies() {
                 description="Read case studies on Studio Form's deployed AI systems: voice call centers, patient RAG chatbots, and WhatsApp checkouts."
                 keywords="AI case studies, voice bot case study, healthcare chatbot ROI, retail checkout automation case study"
                 structuredData={CATALOG_STRUCTURED_DATA}
+                faqs={CASE_STUDY_FAQS}
             />
             <PageHero 
                 command="studioform --case-studies" 
@@ -212,6 +221,14 @@ export default function CaseStudies() {
                 accent="real business outcomes." 
                 subtitle="Demos are nice. Deployed systems that generate value and cut operational overhead are better."
             />
+
+            {/* AEO/GEO direct answer block */}
+            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-4">
+                <div className="p-5 rounded-xl bg-white/[0.02] border border-white/10 text-sm text-white/80 leading-relaxed shadow-lg">
+                    <span className="font-mono text-brand-orange font-bold mr-1.5">[TL;DR]</span>
+                    Studio Form's case studies detail the real-world ROI of our deployed AI systems. We showcase metrics like 60% overhead reduction in voice call centers, 500+ hours saved with patient helper RAG chatbots, and a 40% conversion boost using WhatsApp checkout engines for logistics, healthcare, and retail sectors.
+                </div>
+            </section>
 
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <div className="grid md:grid-cols-3 gap-8">
@@ -230,6 +247,21 @@ export default function CaseStudies() {
                             >
                                 read full case study →
                             </Link>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* FAQs Section */}
+            <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-white/10">
+                <div className="text-center mb-12">
+                    <h2 className="font-display text-3xl font-bold text-white">Frequently Asked Questions about AI Case Studies &amp; ROI</h2>
+                </div>
+                <div className="grid gap-6 mt-8">
+                    {CASE_STUDY_FAQS.map((faq, idx) => (
+                        <div key={idx} className="glass-card p-5">
+                            <h4 className="font-bold text-sm text-white">{faq.q}</h4>
+                            <p className="mt-2 text-xs text-white/60 leading-relaxed">{faq.a}</p>
                         </div>
                     ))}
                 </div>
