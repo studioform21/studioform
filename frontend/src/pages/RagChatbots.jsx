@@ -42,7 +42,7 @@ const RAG_FAQS = [
     { q: "How does the RAG chatbot prevent hallucinations?", a: "We utilize dual-embed verification checks and contextual filtering layers, ensuring the model only references the parsed source text." },
     { q: "Can we restrict database access based on user role?", a: "Yes. Our RAG engines support role-based access control (ACL) syncs so users only query information they are authorized to view." },
     { q: "Which file formats do you parse?", a: "Our layout-aware parsers extract text, tables, and structures from scanned PDFs, spreadsheets (XLSX), docs, Notion sheets, and database tables." },
-    { q: "Is the query processing real-time?", a: "Yes. Document syncing is schedulable, and queries are answered under 200ms using dense vector databases." },
+    { q: "Is the query processing real-time?", a: "Yes. Document syncing is schedulable, and queries are answered in sub-seconds using optimized dense vector databases." },
     { q: "Is my corporate data secure?", a: "Absolutely. We configure fully private deployments in your local VPC environment so no data is shared with external model creators." }
 ];
 

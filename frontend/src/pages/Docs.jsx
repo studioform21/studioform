@@ -24,7 +24,7 @@ const DOC_CONTENT = {
     intro: {
         title: "Introduction to Studio Form",
         body: "Studio Form is a full-stack agentic AI system company. We provide client-ready autonomous agents, multilingual voice callers, domain-specific fine-tuned LLMs, and secure knowledge retrievers.",
-        code: "$ studioform --status\n● Operational\nUptime: 99.97%\nAgents active: 200",
+        code: "$ studioform --status\n● Operational\nUptime: SLA Target\nPilots active: 15+",
         notes: "We design, build, and deploy all assets on public staging grids or private client VPC infrastructures."
     },
     quickstart: {

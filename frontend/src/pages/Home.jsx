@@ -205,10 +205,10 @@ export default function Home() {
                         <CodeCard filename="studioform-core.tsx">
                             <div><Cmt>// Studio Form system status</Cmt></div>
                             <div className="mt-2"><Kw>const</Kw> platform = {"{"}</div>
-                            <div className="pl-6">agents: <Str>"200 active"</Str>,</div>
-                            <div className="pl-6">voices: <Str>"50+ active"</Str>,</div>
+                            <div className="pl-6">pilots: <Str>"15+ active"</Str>,</div>
+                            <div className="pl-6">voices: <Str>"5 active"</Str>,</div>
                             <div className="pl-6">llms: <Str>"4 domain models"</Str>,</div>
-                            <div className="pl-6">uptime: <Str>"99.97%"</Str>,</div>
+                            <div className="pl-6">uptime: <Str>"SLA backed"</Str>,</div>
                             <div className="pl-6">status: <Str>"● operational"</Str></div>
                             <div>{"};"}</div>
                             <div className="mt-4 space-y-1 text-white/60">
