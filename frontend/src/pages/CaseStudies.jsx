@@ -37,11 +37,11 @@ const CASE_STUDY_DETAILS = {
         title: "AI Voice Call Center Integration",
         client: "Logistics Group, Mumbai",
         challenge: "The client faced high call drop rates during peak dispatch hours. Inbound booking inquiries were backed up, and manually calling drivers for delivery validation took hundreds of staff hours daily.",
-        solution: "Deployed 52+ dialect-aware inbound/outbound voice agents integrated directly into Twilio and Tally ERP. The bots handle dispatch inquiries, validation codes, and consignee confirmations dynamically.",
+        solution: "Deployed custom, dialect-aware inbound/outbound voice agents integrated directly into Twilio and Tally ERP. The bots handle dispatch inquiries, validation codes, and consignee confirmations dynamically.",
         metrics: [
-            { label: "Calls Handled", value: "50,000+" },
+            { label: "Call Capacity", value: "Dynamic" },
             { label: "Wait Time", value: "0 sec" },
-            { label: "Cost Reduced", value: "60%" }
+            { label: "Cost Efficiency", value: "Significant" }
         ],
         architecture: [
             "SIP Trunking ➔ Twilio Media Streams ➔ Custom ASR (indic dialect model)",

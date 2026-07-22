@@ -19,12 +19,11 @@ const ABOUT_STRUCTURED_DATA = {
 };
 
 const TIMELINE = [
-    { year: "2023", title: "The studio begins", body: "Founders ship their first voice agent for a logistics SMB. It books truckloads at night, while everyone sleeps." },
-    { year: "2024", title: "Voice AI catalog crosses 100", body: "Across 12 industries, in 8 languages. Word spreads in the Indian SMB world." },
-    { year: "2025", title: "Domain LLMs", body: "First aviation and legal LLMs ship to production with marquee clients." },
-    { year: "2025", title: "Full-stack rebrand to Studio Form", body: "We absorb infra and education arms — one company, every layer of the AI stack." },
-    { year: "2025", title: "10,000+ workflows shipped", body: "Marketplace and university go live. We start training other companies' AI teams." },
-    { year: "2026", title: "Today", body: "60+ platforms, 50+ voice agents, 100+ courses, 12+ industries. And just getting started." },
+    { year: "2023", title: "The studio begins", body: "Founders ship their first voice agent pilot for a logistics SMB. It handles dispatch inquiries at night, while everyone sleeps." },
+    { year: "2024", title: "Multilingual Expansion", body: "Expanded voice agents to support regional Indic dialects (Hindi, Marathi), serving local customer care pilots." },
+    { year: "2025", title: "Domain LLMs & Rebrand", body: "Aviation and legal domain models ship to production. Rebranded as Studio Form to align under one unified AI stack." },
+    { year: "2025", title: "Automation Launch", body: "Launched custom agentic workflows connecting CRM and ERP endpoints, and established our engineer-led workshops." },
+    { year: "2026", title: "Today", body: "Active voice agent pilots, custom domain LLMs, and enterprise-grade automation workflows in production. And just getting started." },
 ];
 
 const PHILOSOPHY = [

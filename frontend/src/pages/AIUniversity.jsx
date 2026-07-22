@@ -26,10 +26,10 @@ const RADAR = [
 ];
 
 const COLLEGES = [
-    { stat: "120+", label: "Colleges onboarded" },
-    { stat: "18", label: "States covered" },
-    { stat: "9,500+", label: "Faculty trained" },
-    { stat: "60+", label: "AI Labs deployed" },
+    { stat: "Active", label: "Colleges onboarded" },
+    { stat: "Multi", label: "States covered" },
+    { stat: "High", label: "Faculty trained" },
+    { stat: "Custom", label: "AI Labs deployed" },
 ];
 
 const SCHOOLS = [

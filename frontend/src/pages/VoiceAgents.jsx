@@ -99,9 +99,9 @@ export default function VoiceAgents() {
     return (
         <div>
             <SEOMeta
-                title="AI Voice Agents for Enterprise Telephony | Studio Form"
-                description="Deploy production AI voice agents with sub-800ms latency, Indic dialect support, and Twilio/SIP telephony. Studio Form powers 52+ voice agents."
-                keywords="voice agents, conversational AI, voice AI, call center automation, multilingual voice AI, Studio Form voice"
+                title="AI Voice Agents for Enterprise Telephony"
+                description="Deploy production AI voice agents with low latency, Indic dialect support, and Twilio/SIP telephony."
+                keywords="AI voice agents, conversational AI, Twilio voice AI, Indic language AI, contact center automation, customer service bots"
                 canonicalUrl="https://studioform.app/services/voice-agents"
                 structuredData={VOICE_AGENTS_STRUCTURED_DATA}
                 faqs={SERVICE_FAQS}

@@ -13,7 +13,7 @@ const PRODUCTS_STRUCTURED_DATA = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "AI SaaS Platforms | Studio Form",
-    "description": "Browse Studio Form's portfolio of 60+ enterprise-ready AI SaaS platforms across 12+ industries, including logistics, healthcare, aviation, and legal.",
+    "description": "Browse Studio Form's portfolio of enterprise-ready AI SaaS platforms across logistics, healthcare, aviation, and legal.",
     "url": "https://www.studioform.app/products"
 };
 
@@ -26,16 +26,16 @@ export default function Products() {
         <div>
             <SEOMeta
                 title="AI SaaS Platforms"
-                description="Browse Studio Form's portfolio of 60+ enterprise-ready AI SaaS platforms across 12+ industries, including logistics, healthcare, aviation, and legal."
+                description="Browse Studio Form's portfolio of enterprise-ready AI SaaS platforms across logistics, healthcare, aviation, and legal."
                 keywords="AI SaaS, Enterprise AI, AI platforms, Studio Form products, AI logistics, AI aviation"
                 structuredData={PRODUCTS_STRUCTURED_DATA}
             />
-            <PageHero command="studioform --products" eyebrow="AI SaaS Platforms" title="60+ AI platforms." accent="Across 12+ industries." subtitle="Production-ready SaaS apps built and shipped by us. Browse, customize, deploy.">
+            <PageHero command="studioform --products" eyebrow="AI SaaS Platforms" title="Custom AI platforms." accent="Built for your industry." subtitle="Production-ready SaaS apps built and shipped by us. Browse, customize, deploy.">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl">
-                    <StatCounter value={items.length || 24} suffix="+" label="Products" />
-                    <StatCounter value={categories.length || 13} suffix="+" label="Industries" />
-                    <StatCounter value={260} suffix="+" label="Deployments" />
-                    <StatCounter value={97} decimals={0} suffix="%" label="Retention" />
+                    <StatCounter value={items.length || 6} suffix="" label="Products" />
+                    <StatCounter value={categories.length || 4} suffix="" label="Active Domains" />
+                    <StatCounter value={15} suffix="+" label="Pilot Projects" />
+                    <StatCounter value="High" suffix="" label="Client Retention" />
                 </div>
             </PageHero>
 
@@ -43,10 +43,10 @@ export default function Products() {
                 <CodeCard filename="catalog.json" className="mb-10">
                     <div><Cmt>// Product catalog metrics</Cmt></div>
                     <div className="mt-2"><Kw>const</Kw> catalog = {"{"}</div>
-                    <div className="pl-6">total: <Str>"60+"</Str>,</div>
-                    <div className="pl-6">live: <Str>"{items.filter(i => i.status === 'Live').length}"</Str>,</div>
-                    <div className="pl-6">beta: <Str>"{items.filter(i => i.status === 'Beta').length}"</Str>,</div>
-                    <div className="pl-6">categories: <Str>"{categories.length}"</Str></div>
+                    <div className="pl-6">total: <Str>"Custom"</Str>,</div>
+                    <div className="pl-6">live: <Str>"{items.filter(i => i.status === 'Live').length || 4}"</Str>,</div>
+                    <div className="pl-6">beta: <Str>"{items.filter(i => i.status === 'Beta').length || 2}"</Str>,</div>
+                    <div className="pl-6">categories: <Str>"{categories.length || 4}"</Str></div>
                     <div>{"};"}</div>
                 </CodeCard>
 

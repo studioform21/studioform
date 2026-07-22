@@ -74,7 +74,7 @@ export default function AIAutomation() {
         <div>
             <SEOMeta
                 title="AI Automation Workflows"
-                description="Browse and deploy from the world's largest catalog of 10,000+ agentic AI automation workflows across sales, finance, support, HR, and ops."
+                description="Browse and deploy custom agentic AI automation workflows across sales, finance, support, HR, and ops."
                 keywords="AI automation, workflow automation, RPA, agentic workflows, CRM automation, invoice OCR automation, Studio Form workflows"
                 structuredData={AUTOMATION_STRUCTURED_DATA}
                 faqs={AUTOMATION_FAQS}

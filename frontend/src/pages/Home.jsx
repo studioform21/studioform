@@ -16,22 +16,22 @@ import AgentDesignStudio from "@/components/AgentDesignStudio";
 import { fadeUp, stagger } from "@/lib/anim";
 
 const ECOSYSTEM = [
-    { icon: Package, count: "60+ Platforms", title: "AI SaaS Platforms", desc: "Enterprise-ready AI apps across 12+ industries — healthcare, logistics, aviation, real estate, finance.", tags: ["Health", "Logi", "Avia", "Fin", "Real", "Edu"], to: "/services/ai-agents" },
-    { icon: Mic2, count: "52+ Agents", title: "AI Voice Agents", desc: "Multilingual voice agents in 15+ languages and 12+ industries — inbound, outbound, multilingual.", tags: ["EN", "HI", "TA", "TE"], to: "/services/voice-agents" },
-    { icon: Brain, count: "4+ Models", title: "Domain LLM", desc: "Custom LLMs fine-tuned for aviation, legal, healthcare, finance and more.", tags: ["Domain", "Tuned"], to: "/services/llm-development" },
-    { icon: MessageCircle, count: "100+ Deployed", title: "RAG Chatbots", desc: "Secure, permission-aware chatbots that talk to your enterprise PDFs, documents, Notion, and databases.", tags: ["Notion", "SQL", "ACL"], to: "/services/rag-chatbots" },
-    { icon: Zap, count: "10,000+ Workflows", title: "AI Automations", desc: "The world's largest catalog of agentic automation workflows. Pick one, we deploy it.", tags: ["$ find 'sales'"], to: "/services/ai-automation" },
-    { icon: Shield, count: "100+ Skills", title: "Claude Skills", desc: "Custom Claude skill packs for enterprise automation and agentic workflows.", tags: ["Agents"], to: "/services/custom-ai" },
-    { icon: GraduationCap, count: "45+ Companies", title: "AI & ML Workshops", desc: "Hands-on, engineer-led workshops to help your teams design, build, and deploy modern AI systems.", tags: ["Agents", "RAG", "Eval"], to: "/workshops" },
+    { icon: Package, count: "SaaS Modules", title: "AI SaaS Platforms", desc: "Enterprise-ready AI app templates across healthcare, logistics, aviation, real estate, and finance.", tags: ["Health", "Logi", "Avia", "Fin", "Real", "Edu"], to: "/services/ai-agents" },
+    { icon: Mic2, count: "5+ Active Pilots", title: "AI Voice Agents", desc: "Multilingual voice agents in regional Indic dialects — inbound, outbound, bilingual.", tags: ["EN", "HI", "MR", "TE"], to: "/services/voice-agents" },
+    { icon: Brain, count: "4+ Custom Models", title: "Domain LLM", desc: "Custom LLMs fine-tuned for aviation, legal, healthcare, finance and more.", tags: ["Domain", "Tuned"], to: "/services/llm-development" },
+    { icon: MessageCircle, count: "Layout-Aware", title: "RAG Chatbots", desc: "Secure, permission-aware chatbots that talk to your enterprise PDFs, documents, Notion, and databases.", tags: ["Notion", "SQL", "ACL"], to: "/services/rag-chatbots" },
+    { icon: Zap, count: "Custom Loops", title: "AI Automations", desc: "Agentic automation workflows connecting CRMs, databases, and communication channels. Pick one, we deploy it.", tags: ["n8n", "Make", "Python"], to: "/services/ai-automation" },
+    { icon: Shield, count: "Custom Packs", title: "Claude Skills", desc: "Custom Claude skill packs for enterprise automation and agentic workflows.", tags: ["Agents"], to: "/services/custom-ai" },
+    { icon: GraduationCap, count: "Engineer-Led", title: "AI & ML Workshops", desc: "Hands-on, engineer-led workshops to help your teams design, build, and deploy modern AI systems.", tags: ["Agents", "RAG", "Eval"], to: "/workshops" },
     { icon: Newspaper, count: "Media", title: "AI News & Media", desc: "Studio Form Media House — latest AI industry news, insights, and analysis.", tags: ["Daily"], to: "/ai-news" },
 ];
 
 const COMP_ROWS = [
     { label: "Approach", others: "PowerPoint consultants. Slides over systems.", ours: "Product builders. We ship working AI — not decks." },
-    { label: "Platforms", others: "1–2 niche tools, half-baked MVPs.", ours: "60+ production-ready SaaS platforms across 12+ industries." },
-    { label: "Voice AI", others: "Basic bots with robotic voices.", ours: "52+ multilingual voice agents, 15+ languages, real conversations." },
+    { label: "Platforms", others: "1–2 niche tools, half-baked MVPs.", ours: "Custom SaaS templates across healthcare, logistics, aviation, real estate, and finance." },
+    { label: "Voice AI", others: "Basic bots with robotic voices.", ours: "Active voice agent pilots in regional Indic dialects and English with natural conversation flows." },
     { label: "RAG Chatbots", others: "Out-of-the-box templates that hallucinate.", ours: "Zero-hallucination, permission-aware chatbots connected to your docs." },
-    { label: "Automations", others: "A handful of templates, mostly broken.", ours: "10,000+ tested AI automation workflows — browse, pick, deploy." },
+    { label: "Automations", others: "A handful of templates, mostly broken.", ours: "Production-ready agentic automation workflows built to connect your apps." },
     { label: "Domain LLM", others: "Generic GPT wrappers, no domain knowledge.", ours: "Domain LLM fine-tuned for aviation, healthcare, legal, finance." },
     { label: "Workshops", others: "A YouTube playlist.", ours: "Hands-on, engineer-led workshops to upskill your product & engineering teams." },
     { label: "Pricing", others: "$50K+ annual contracts, long cycles.", ours: "Pick a platform, customize, deploy — at a cost you'll love." },
@@ -39,7 +39,7 @@ const COMP_ROWS = [
 ];
 
 const STEPS = [
-    { tag: "DISCOVER", title: "Browse & Choose", body: "Explore 10,000+ automation projects, 50+ voice agents, or 60+ SaaS platforms. Find what fits." },
+    { tag: "DISCOVER", title: "Browse & Choose", body: "Explore our catalog of automation workflows, voice agent architectures, or SaaS platforms. Find what fits." },
     { tag: "CUSTOMIZE", title: "We Tailor It", body: "Our team customizes the solution for your industry, data, workflows, and scale. No templates." },
     { tag: "DEPLOY", title: "Go Live", body: "Deployed on your infra or ours. Trained, tested, monitored. You get a working AI system." },
 ];
