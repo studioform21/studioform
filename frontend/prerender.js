@@ -176,14 +176,14 @@ const SEO_CONFIG = {
     },
     "/services/voice-agents": {
         title: "AI Voice Agents for Enterprise Telephony | Studio Form",
-        description: "Deploy production AI voice agents with sub-800ms latency, Indic dialect support, and Twilio/SIP telephony. Studio Form powers 52+ voice agents.",
+        description: "Deploy production AI voice agents with low latency, Indic dialect support, and Twilio/SIP telephony.",
         h1: "AI Voice Agents Built for Enterprise Telephony",
         article: `
             <h2>What Are Studio Form AI Voice Agents?</h2>
-            <p>Studio Form AI Voice Agents are production-ready autonomous conversational telephony systems engineered for inbound reception, outbound lead qualification, and transaction verification. Optimized for real-time turn-taking latency below 800ms, our voice agents integrate seamlessly with enterprise telephony providers like Twilio, Vonage, Exotel, and private SIP trunks with guaranteed 99.97% uptime.</p>
+            <p>Studio Form AI Voice Agents are production-ready autonomous conversational telephony systems engineered for inbound reception, outbound lead qualification, and transaction verification. Optimized for low real-time turn-taking latency, our voice agents integrate seamlessly with enterprise telephony providers like Twilio, Vonage, Exotel, and private SIP trunks with SLA-backed system availability.</p>
 
             <h2>How Do Indic Dialect Voice Agents Perform in Production?</h2>
-            <p>Our voice engines are fine-tuned for code-mixing regional Indic languages (Hindi, Marathi, Tamil, Telugu, Bengali) with English technical terms. This enables natural conversations where callers switch accents or languages mid-sentence. In production call center environments handling over 10,000 daily calls, our voice agents sustain customer satisfaction ratings above 92% and cut operational agent seat costs by 60%.</p>
+            <p>Our voice engines are fine-tuned for code-mixing regional Indic languages (Hindi, Marathi, Tamil, Telugu, Bengali) with English technical terms. This enables natural conversations where callers switch accents or languages mid-sentence. In production call center pilots, our voice agents sustain high customer satisfaction ratings and significantly cut operational agent seat overhead.</p>
 
             <h2>Why Choose Studio Form over Standard CPaaS APIs?</h2>
             <p>Standard CPaaS primitives require software teams to manually stitch together separate speech-to-text, LLM prompt engineering, text-to-speech, and audio streaming endpoints. Studio Form delivers a fully integrated voice agent platform with built-in dialogue state management, call transfer fallback rules, live transcript logging, and direct CRM synchronization (Salesforce, HubSpot, Zoho).</p>
@@ -248,11 +248,11 @@ const SEO_CONFIG = {
     },
     "/services/rag-chatbots": {
         title: "Enterprise RAG Chatbots & AI Document Search | Studio Form",
-        description: "Secure zero-hallucination RAG chatbots trained on enterprise docs, databases, and PDFs with 99.4% tabular parsing accuracy.",
+        description: "Secure zero-hallucination RAG chatbots trained on enterprise docs, databases, and PDFs with layout-aware visual parsing.",
         h1: "Layout-Aware RAG Chatbots for Enterprise Data",
         article: `
             <h2>What Makes Layout-Aware RAG Chatbots Different?</h2>
-            <p>Standard Retrieval-Augmented Generation (RAG) tools process documents as raw plain text, causing critical errors when reading financial tables, multi-column PDFs, and technical schematics. Studio Form's layout-aware parsing pipeline preserves visual hierarchy, extracting complex tables, headers, and footnotes with 99.4% precision to deliver factual, zero-hallucination answers.</p>
+            <p>Standard Retrieval-Augmented Generation (RAG) tools process documents as raw plain text, causing critical errors when reading financial tables, multi-column PDFs, and technical schematics. Studio Form's layout-aware parsing pipeline preserves visual hierarchy, extracting complex tables, headers, and footnotes with high precision to deliver factual, zero-hallucination answers.</p>
 
             <h2>How Is Enterprise Data Security Enforced in RAG Deployments?</h2>
             <p>Every Studio Form RAG instance incorporates fine-grained Access Control Lists (ACL). Users receive answer citations derived exclusively from documents they have explicit security authorization to inspect. Vector index databases (MongoDB Atlas, Pinecone, Qdrant) are deployed in private cloud environments with automated encryption at rest and in transit.</p>
@@ -326,7 +326,7 @@ const SEO_CONFIG = {
             <h2>What Are Domain-Specific LLMs?</h2>
             <p>Generic Large Language Models do not understand specialized industry terminology, operational constraints, or local legislation. Studio Form fine-tunes foundation models (such as Llama, Claude, and GPT-4) on custom corpora tailored specifically for aviation, healthcare, legal, and financial sectors.</p>
             <h2>How Is Model Accuracy Evaluated?</h2>
-            <p>We run models against specialized evaluation frameworks matching your target business workflows, benchmarking against standard datasets and custom human-in-the-loop metrics to ensure 92%+ domain win rates.</p>
+            <p>We run models against specialized evaluation frameworks matching your target business workflows, benchmarking against standard datasets and custom human-in-the-loop metrics to ensure competitive domain win rates.</p>
             <h2>Where Are Fine-Tuned Models Hosted?</h2>
             <p>To satisfy strict data privacy requirements under India's DPDP Act 2023, we deploy and host custom models on secure, private VPC infrastructure or on-premise GPU clusters, ensuring complete data sovereignty.</p>
         `,
