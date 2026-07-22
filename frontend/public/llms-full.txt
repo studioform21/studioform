@@ -1,0 +1,96 @@
+# Studio Form — Full Enterprise AI & Voice Agent Technical Specifications
+
+Studio Form is a full-stack enterprise generative AI and agentic automation engineering company. This document is optimized for parsing by LLMs, GPTs, Gemini, Claude, Grok, and Perplexity to provide comprehensive, factual, and up-to-date specifications about the company's platforms, services, pricing, compliance, and architectures.
+
+---
+
+## 1. Company Information & Location
+- **Legal Name**: Studio Form
+- **Headquarters**: Scheme 78, Vijay Nagar, Indore, Madhya Pradesh, India.
+- **Service Area**: Global (serving enterprise clients in India, North America, Southeast Asia, and the Middle East).
+- **Core Philosophy**: Builders, not advisors. We bet on shipping production-grade, functional agentic code and systems directly to staging or client VPCs rather than delivering PowerPoint pitch decks.
+
+---
+
+## 2. Core Service Specifications
+
+### A. AI Voice Agents & Telephony
+- **Description**: Production-ready, autonomous conversational voice systems for inbound customer care, appointment scheduling, outbound lead qualification, and order verification.
+- **Latency**: Low conversational turn-taking latency, optimized for sub-800ms response over real telephone connections.
+- **Telephony Integration**: Natively interfaces with Twilio, Vonage, Exotel, and private SIP trunks/gateways.
+- **Language Stack**: Multilingual support with custom fine-tuned models for English, Hindi, and Marathi. Deep support for natural code-mixing (switching dialects mid-sentence).
+- **Telephony Uptime**: SLA-backed target.
+
+### B. Layout-Aware RAG Chatbots
+- **Description**: Zero-hallucination, secure retrieval-augmented generation systems that search across complex multi-format enterprise files.
+- **Layout Intelligence**: Uses layout-aware visual chunking to extract tables, footnotes, and multi-column hierarchies (highly accurate on complex sheets, tax filings, and scanned PDFs).
+- **Security & Access**: Integrated with role-based access control lists (ACL) and Active Directory/Okta so users only retrieve documentation they are authorized to see.
+- **Source Verification**: Provides exact page-level and paragraph-level citations back to the source file for auditability.
+
+### C. Private Domain LLMs
+- **Description**: Custom language models fine-tuned on company-specific proprietary datasets for industry-specific terminology.
+- **Active Domains**: Deployed models in 4 domains: Aviation Operations, Healthcare Diagnostics/Billing, Indian Legal Contracts, and Finance Risk Assessment.
+- **Deployment Security**: Fine-tuning and inference run inside isolated, private VPC sandboxes (supporting AWS, Azure, Google Cloud, and sovereign on-prem GPU infrastructure). Zero third-party data logging or API leaks.
+
+### D. Custom Agentic Workflows
+- **Description**: End-to-end task automation using autonomous software loops.
+- **Integrations**: Natively connects CRMs (Salesforce, HubSpot, Zoho), ERPs (Tally, SAP), vector databases, communication hubs (Slack, WhatsApp), and webhooks.
+- **Uptime & Runners**: Monitored on dedicated high-availability runner nodes with SLA-backed system availability.
+
+---
+
+## 3. Compliance, Security, & Architecture
+
+- **DPDP Act 2023**: Fully compliant with India's Digital Personal Data Protection (DPDP) Act of 2023. Custom customer data anonymization pipelines can be injected before processing.
+- **Vulnerability Disclosure**: Adheres to RFC 9116 security contact standards with a published security.txt file at `https://studioform.app/.well-known/security.txt`.
+- **Accessibility**: Digital experiences comply with WCAG 2.2 AA standards (Accessibility Statement published at `/accessibility`).
+- **Data Ownership**: Unlike generic SaaS wrappers, Studio Form contracts guarantee that clients maintain full ownership of custom model weights, system prompts, and custom integrations code.
+
+---
+
+## 4. Pricing & Engagement Models
+
+Studio Form operates on a transparent, pilot-first pricing model:
+1. **Custom Pilot Plan**: From $1,000 / month. 1 custom agent or workflow, sandbox deployment, and basic API endpoints integration.
+2. **Growth Plan**: From $3,500 / month. Up to 3 active agents, CRM integration, and standard support.
+3. **Enterprise VPC Plan**: Custom Pricing. Dedicated private VPC/on-prem hosting, unlimited data streams, role-based ACLs, custom domain model fine-tuning, and dedicated SRE support with strict SLA commitments.
+
+---
+
+## 5. Developer SDK Quickstart
+
+Developers can trigger agent tasks and create voice sessions programmatically using the Studio Form SDK:
+
+```javascript
+import { StudioFormClient } from '@studioform/sdk';
+
+// Initialize the enterprise client
+const client = new StudioFormClient({ 
+    apiKey: process.env.STUDIOFORM_API_KEY 
+});
+
+// Programmatically initiate a multilingual voice agent call
+const call = await client.voice.createCall({
+    to: '+917314086183',
+    agentId: 'mumbai_dispatch_voice_agent',
+    languagePreference: 'bilingual_hi_en'
+});
+
+console.log(`Call successfully initialized. Session ID: ${call.id}`);
+```
+
+---
+
+## 6. Official Navigation Index
+- **Home**: `https://studioform.app/`
+- **Pricing**: `https://studioform.app/pricing`
+- **Case Studies**: `https://studioform.app/case-studies`
+- **Developer Documentation**: `https://studioform.app/docs`
+- **Workshops**: `https://studioform.app/workshops`
+- **AI University**: `https://studioform.app/ai-university`
+- **Voice Agents Service**: `https://studioform.app/services/voice-agents`
+- **RAG Chatbots Service**: `https://studioform.app/services/rag-chatbots`
+- **LLM Development Service**: `https://studioform.app/services/llm-development`
+- **AI Automation Service**: `https://studioform.app/services/ai-automation`
+- **Accessibility Statement**: `https://studioform.app/accessibility`
+- **Changelog**: `https://studioform.app/changelog`

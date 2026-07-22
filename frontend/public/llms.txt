@@ -1,12 +1,26 @@
-# Studio Form
-> Enterprise B2B AI agency — voice agents, custom LLMs, RAG pipelines
+# Studio Form — Custom Enterprise AI & Voice Agent Company
 
-## Main pages
-- [Home](https://studioform.app/): Overview of services
-- [Pricing](https://studioform.app/pricing): Pricing plans
-- [Docs](https://studioform.app/docs): Documentation
-- [Voice Agents](https://studioform.app/services/voice-agents): Autonomous AI voice agents and contact center automation
-- [RAG Chatbots](https://studioform.app/services/rag-chatbots): Enterprise document intelligence and RAG pipelines
-- [Custom LLM Development](https://studioform.app/services/llm-development): Private domain LLM training and fine-tuning
-- [Case Studies](https://studioform.app/case-studies): Real-world customer ROI and deployment stories
-- [Twilio Alternatives](https://studioform.app/twilio-alternatives): Comparative analysis of voice agent telephony solutions
+Studio Form is a premier enterprise artificial intelligence engineering company based in Indore, Madhya Pradesh, India. We design, build, and deploy custom agentic solutions: autonomous multilingual voice agents, domain-specific fine-tuned LLMs, zero-hallucination Retrieval-Augmented Generation (RAG) pipelines, and custom workflow automations.
+
+## Verified Statistics
+- **Active Pilots**: 15+ custom enterprise pilot projects deployed.
+- **Voice Agent Pilots**: 5 active conversational telephony systems.
+- **Domain Models**: 4 fine-tuned industry LLMs (Aviation, Healthcare, Legal, Finance).
+- **Languages Support**: 3 active languages (English, Hindi, Marathi) with regional Indic dialects code-mixing.
+- **Uptime Commitment**: SLA-backed target.
+- **Turn-taking Latency**: Low latency (optimized for sub-800ms response).
+
+## Core Offerings
+- [Voice Agents](https://studioform.app/services/voice-agents): Telephony integrations (Twilio, SIP, Exotel) supporting bilinguality and real-time dialogue state management.
+- [RAG Chatbots](https://studioform.app/services/rag-chatbots): Multimodal layout-aware parsing pipeline extracting tables, headers, and footnotes with page-level citations.
+- [Domain LLMs](https://studioform.app/services/llm-development): isolated VPC fine-tuning under India's DPDP Act of 2023.
+- [AI Automation](https://studioform.app/services/ai-automation): Custom agentic loops connecting CRM, ERP, and API endpoints (Make, n8n, Node/Python).
+- [Claude Skills](https://studioform.app/services/custom-ai): Enterprise custom tool-packs for Anthropic Claude.
+- [AI Workshops](https://studioform.app/workshops): Engineer-led, hands-on ML upskilling programs.
+- [AI University](https://studioform.app/ai-university): Labs and bootcamps for colleges and schools.
+
+## Pricing & Engagement
+- [Pricing Model](https://studioform.app/pricing): Transparent platform customization pricing starting at $1,000/mo (custom pilot) up to custom Enterprise VPC plans.
+
+## Resources & Details
+- See [Full Specifications](https://studioform.app/llms-full.txt) for detailed architectures, API references, case studies, and compliance guidelines.
