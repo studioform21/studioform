@@ -7,6 +7,8 @@ import CodeCard, { Cmt, Kw, Str, Num } from "@/components/CodeCard";
 import StatCounter from "@/components/StatCounter";
 import { Check, X, AlertTriangle, ArrowRight, ChevronDown, ChevronUp, Phone, Shield, Zap, Database, Network } from "lucide-react";
 import { fadeUp, stagger } from "@/lib/anim";
+import FAQAccordion from "@/components/FAQAccordion";
+import ProsCons from "@/components/ProsCons";
 
 const FAQ_ITEMS = [
     {
@@ -275,6 +277,28 @@ export default function TwilioAlternatives() {
                 </div>
             </section>
 
+            {/* Pros/Cons Section */}
+            <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                <div className="text-center max-w-3xl mx-auto mb-12">
+                    <span className="text-xs font-mono uppercase tracking-wider text-brand-orange">Comparison Summary</span>
+                    <h2 className="font-display text-2xl sm:text-3xl font-bold mt-2">Stitching CPaaS APIs vs. Deploying Studio Form</h2>
+                </div>
+                <ProsCons 
+                    pros={[
+                        "Deploy directly on top of your existing Twilio Elastic SIP Trunks.",
+                        "Built-in turn-taking, noise suppression, and speech optimization logic.",
+                        "Optimized specifically for regional Indic dialect code-mixing.",
+                        "Available for secure private VPC and on-premise cloud deployments."
+                    ]}
+                    cons={[
+                        "Stitching together CPaaS APIs, ASR, TTS, and LLMs is complex and fragile.",
+                        "Telephony latency is extremely hard to optimize across multiple vendors.",
+                        "Standard public API gateways run risks of compliance and data leaks.",
+                        "Requires dedicated developer capacity to maintain turn-taking state machines."
+                    ]}
+                />
+            </section>
+
             {/* Features Spotlight / What You Get */}
             <section className="bg-white/[0.02] border-y border-white/10 py-16 md:py-24">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -365,26 +389,7 @@ export default function TwilioAlternatives() {
                         <h2 className="font-display text-3xl sm:text-4xl font-bold mt-2">Frequently Asked Questions</h2>
                     </div>
 
-                    <div className="space-y-4">
-                        {FAQ_ITEMS.map((faq, idx) => (
-                            <div key={idx} className="glass-card overflow-hidden">
-                                <button 
-                                    onClick={() => toggleFaq(idx)}
-                                    className="w-full text-left p-5 flex justify-between items-center hover:bg-white/[0.02] transition-colors"
-                                >
-                                    <span className="font-display font-bold text-base sm:text-lg">{faq.q}</span>
-                                    <span className="text-brand-orange ml-4">
-                                        {openFaq === idx ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                                    </span>
-                                </button>
-                                {openFaq === idx && (
-                                    <div className="px-5 pb-5 pt-1 text-sm text-white/70 leading-relaxed border-t border-white/5 bg-white/[0.01]">
-                                        {faq.a}
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
+                    <FAQAccordion items={FAQ_ITEMS} />
                 </div>
             </section>
 
