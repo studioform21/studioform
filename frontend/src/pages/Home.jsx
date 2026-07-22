@@ -83,7 +83,7 @@ const HOME_STRUCTURED_DATA = {
             },
             "description": "India's pioneering agentic AI company. We build autonomous AI agents, voice systems, domain LLMs, and automation workflows that actually ship.",
             "email": "legal@studioform.app",
-            "telephone": "+917300000000",
+            "telephone": "+917314086183",
             "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Scheme 78, Vijay Nagar",
@@ -102,12 +102,13 @@ const HOME_STRUCTURED_DATA = {
                 "@type": "ContactPoint",
                 "contactType": "customer service",
                 "email": "legal@studioform.app",
-                "telephone": "+917300000000"
+                "telephone": "+917314086183"
             },
             "sameAs": [
                 "https://github.com/studioform",
                 "https://x.com/Studio_Form_",
-                "https://www.linkedin.com/in/studioform"
+                "https://www.linkedin.com/in/studioform",
+                "https://www.crunchbase.com/organization/studioform"
             ]
         },
         {
@@ -117,7 +118,7 @@ const HOME_STRUCTURED_DATA = {
             "image": "https://www.studioform.app/logo_dark.png",
             "description": "AI engineering studio building voice agents, custom domain LLMs, RAG pipelines, and enterprise AI automation.",
             "url": "https://www.studioform.app",
-            "telephone": "+917300000000",
+            "telephone": "+917314086183",
             "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Scheme 78, Vijay Nagar",

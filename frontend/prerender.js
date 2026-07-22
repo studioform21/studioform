@@ -56,14 +56,15 @@ const SEO_CONFIG = {
                     "sameAs": [
                         "https://www.linkedin.com/company/studioform",
                         "https://github.com/studioform",
-                        "https://twitter.com/studioform"
+                        "https://twitter.com/studioform",
+                        "https://www.crunchbase.com/organization/studioform"
                     ],
                     "address": {
                         "@type": "PostalAddress",
-                        "streetAddress": "Indore HQ",
+                        "streetAddress": "Scheme 78, Vijay Nagar",
                         "addressLocality": "Indore",
                         "addressRegion": "Madhya Pradesh",
-                        "postalCode": "452001",
+                        "postalCode": "452010",
                         "addressCountry": "IN"
                     }
                 },
@@ -83,7 +84,7 @@ const SEO_CONFIG = {
                             "name": "What is the typical deployment latency for AI Voice Agents?",
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Our AI Voice Agents achieve conversational latency under 800ms on Twilio, Vonage, and SIP trunks with 99.97% service uptime."
+                                "text": "Our AI Voice Agents achieve low conversational latency on Twilio, Vonage, and SIP trunks with SLA-backed service uptime."
                             }
                         },
                         {

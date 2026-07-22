@@ -12,5 +12,7 @@ Allow: /
 
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /blog-admin
 
 Sitemap: https://studioform.app/sitemap.xml
