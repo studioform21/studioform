@@ -891,13 +891,13 @@ const SEO_CONFIG = {
         h1: "About Studio Form — Full-Stack Agentic AI",
         article: `
             <h2>Who is Studio Form?</h2>
-            <p>Studio Form is a full-stack agentic artificial intelligence systems engineering studio based in Indore, India. Founded on the principle of building useful, deployable, and compliant AI, we design and operate custom speech pipelines, layout-aware document retrieval databases, and private model architectures. We serve global enterprise clients who want to leverage the power of generative AI without exposing corporate intellectual property or compromising customer records.</p>
+            <p>Studio Form is a full-stack agentic artificial intelligence systems engineering studio based in Indore, India. Founded on the principle of building useful, deployable, and privacy-conscious AI, we design and operate custom speech pipelines, layout-aware document retrieval databases, and private model architectures. We serve global enterprise clients who want to leverage generative AI without exposing corporate intellectual property or compromising customer records.</p>
             
             <h2>Our Core Mission &amp; Engineering Philosophy</h2>
-            <p>Enterprise AI should not be limited to PowerPoint decks or generic chat wrappers that hallucinate. Our mission is to make AI useful for every business that powers the economy—from regional logistics hubs to Tier-1 financial institutions. We operate with an engineer-first philosophy, prioritizing measurable ROI, sub-second latency, and data privacy. Every validated pilot we deploy is built to scale, utilizing on-premise GPU clusters or private VPC nodes to satisfy strict corporate governance guidelines.</p>
+            <p>Enterprise AI should not be limited to PowerPoint decks or generic chat wrappers that hallucinate. Our mission is to make AI useful for every business that powers the economy—from regional logistics hubs to financial institutions. We operate with an engineer-first philosophy, prioritizing measurable operational value, low latency, and data privacy. Every validated pilot we deploy is built to scale, utilizing on-premise GPU clusters or private VPC nodes to satisfy corporate governance guidelines.</p>
             
-            <h2>DPDP Act 2023 &amp; Data Residency Compliance</h2>
-            <p>As an Indian AI engineering studio, we build with compliance at the core. Under India's Digital Personal Data Protection (DPDP) Act of 2023, organizations face significant liabilities for data logging leaks. Studio Form ensures absolute compliance by deploying completely sandboxed environments featuring zero third-party data logging, isolated database structures, and role-based access control. Your data remains yours—fully encrypted at rest and in transit.</p>
+            <h2>DPDP Act 2023 &amp; Data Residency Safeguards</h2>
+            <p>As an Indian AI engineering studio, we build with compliance guidelines at the core. Under India's Digital Personal Data Protection (DPDP) Act of 2023, organizations prioritize data privacy. Studio Form supports privacy-conscious deployments by offering sandboxed environments featuring privacy-conscious data logging, isolated database structures, and role-based access control. Your data remains yours—encrypted at rest and in transit.</p>
             
             <h2>Explore Our Platforms &amp; Client Success Stories</h2>
             <p>See our <a href="/services/voice-agents">Voice Agent Systems</a>, review our layout-aware <a href="/services/rag-chatbots">RAG Chatbots</a>, inspect our transparent <a href="/pricing">Pricing Plans</a>, read real-world results in <a href="/case-studies">Case Studies</a>, or reach out directly on our <a href="/contact">Contact Page</a>.</p>
@@ -915,13 +915,13 @@ const SEO_CONFIG = {
         h1: "Contact Our Solutions Engineering Team",
         article: `
             <h2>How to Partner with Studio Form?</h2>
-            <p>Ready to deploy production-grade artificial intelligence? Get in touch with Studio Form's solutions architects. Whether you want to validate a proof-of-concept pilot in 2-4 weeks or scale an enterprise voice agent network handling 10,000+ daily calls, our engineering team based in Indore is ready to design and deploy your custom solution.</p>
+            <p>Ready to deploy production-grade artificial intelligence? Get in touch with Studio Form's solutions architects. Whether you want to validate a proof-of-concept pilot or scale an enterprise voice agent network for high-volume call operations, our engineering team based in Indore is ready to design and deploy your custom solution.</p>
             
             <h2>What to Expect During Your Architectural Review?</h2>
             <p>During our initial engineering discovery call, we will evaluate your existing telephony backbones (Twilio, SIP trunks), data warehouse structure (Snowflake, BigQuery), document repositories, and compliance mandates (DPDP Act 2023). We will outline a technical execution blueprint detailing model choice, hosting parameters, latency targets, and projected ROI—prioritizing security and integration compatibility.</p>
             
             <h2>Compliance, Support, &amp; Corporate Details</h2>
-            <p>Every Studio Form engagement features direct developer support, SLA-backed system availability, and complete ownership of custom codebases. Reach out to our website administration and support desk at admin@studioform.app or mail us directly at Indore HQ, Scheme 78, Vijay Nagar, Madhya Pradesh, India. We answer all technical inquiries within 12 business hours.</p>
+            <p>Every Studio Form engagement features direct developer support, high system availability options, and complete ownership of custom codebases. Reach out to our website administration and support desk at admin@studioform.app or mail us directly at Indore HQ, Scheme 78, Vijay Nagar, Madhya Pradesh, India. We answer all technical inquiries promptly.</p>
             
             <h2>Navigate Our Platform &amp; Services</h2>
             <p>Explore our transparent <a href="/pricing">Pricing Plans</a>, read developer integration guidelines in <a href="/docs">Docs</a>, learn about <a href="/about">Our Team</a>, check our client success stories in <a href="/case-studies">Case Studies</a>, or review our product updates in the <a href="/changelog">Changelog</a>.</p>
@@ -942,10 +942,10 @@ const SEO_CONFIG = {
             <p>Our product changelog is the central repository for tracking updates to the Studio Form conversational engine, voice dialing protocols, document extraction pipelines, and security compliance matrices. Updated continuously by our engineering team in Indore, this ledger ensures absolute transparency on latency improvements, dialect training datasets, and model evaluations.</p>
             
             <h2>Recent Releases &amp; Speech Optimization Updates</h2>
-            <p>Our recent release introduced significant upgrades to our turn-taking dialogue manager, successfully lowering conversational audio response times. We expanded our Indic dialect model support, adding code-mixed Hindi, Marathi, and Tamil models. In addition, we upgraded our layout-aware document parsers to extract structured tables from multi-column PDFs with 99.4% precision.</p>
+            <p>Our recent release introduced significant upgrades to our turn-taking dialogue manager, successfully lowering conversational audio response times. We expanded our Indic dialect model support, adding code-mixed Hindi, Marathi, and Tamil models. In addition, we upgraded our layout-aware document parsers to extract structured tables from multi-column PDFs with high extraction precision.</p>
             
             <h2>Compliance, Security, &amp; Infrastructure Upgrades</h2>
-            <p>To support India's DPDP Act 2023 regulations, we deployed automated VPC sandboxing scripts that isolate data streams for enterprise customers. We also updated our global API rate limiting, token throttling, and role-based access control (ACL) mechanisms, ensuring secure deployments on AWS, Azure, and private GPU clusters.</p>
+            <p>To support India's DPDP Act 2023 guidelines, we deployed automated VPC sandboxing scripts that isolate data streams for enterprise customers. We also updated our global API rate limiting, token throttling, and role-based access control (ACL) mechanisms, ensuring secure deployments on AWS, Azure, and private GPU clusters.</p>
             
             <h2>Explore Our Resources &amp; Integration Docs</h2>
             <p>Evaluate technical API integration schemas in our <a href="/docs">Developer Docs</a>, check our <a href="/pricing">Pricing Tiers</a>, examine client success stories in <a href="/case-studies">Case Studies</a>, or contact our engineering support team via the <a href="/contact">Contact Page</a>.</p>
@@ -968,22 +968,22 @@ const SEO_CONFIG = {
             <p>Our company is led by our core co-founders: Pranjal Rai, Sarthak Choukse, and Nehal Mishra. Pranjal Rai serves as CEO, leading Go-To-Market strategy and enterprise partnerships. Sarthak Choukse serves as CTO, leading telephony integrations, Whisper-based automatic speech recognition (ASR), and real-time speech synthesis (TTS) pipelines. Nehal Mishra serves as COO and Head of Products, leading our RAG document engineering, user interface designs, and agentic workflows.</p>
 
             <h2>Company Culture &amp; Technical Tenets</h2>
-            <p>We believe in building useful, deployable, and compliant software. Our engineering teams operate async-first, demo-focused, and maintain complete compliance with India's DPDP Act of 2023. Meet our leaders or read our playbook to see how we ship enterprise AI.</p>
+            <p>We believe in building useful, deployable, and privacy-conscious software. Our engineering teams operate async-first, demo-focused, and align with India's DPDP Act of 2023 guidelines. Meet our leaders or read our playbook to see how we ship enterprise AI.</p>
         `,
         schema: {
             "@context": "https://schema.org",
             "@type": "AboutPage",
             "name": "Studio Form Team",
-            "description": "Meet the team of builders, founders, and engineers at Studio Form behind India's pioneering agentic AI and voice systems."
+            "description": "Meet the team of builders, founders, and engineers at Studio Form behind India's agentic AI and voice systems."
         }
     },
     "/team/pranjal-rai": {
         title: "Pranjal Rai | CEO & Co-founder — Studio Form",
-        description: "Pranjal Rai is the CEO & Co-founder of Studio Form, building India's first production-grade multilingual voice agent stack.",
+        description: "Pranjal Rai is the CEO & Co-founder of Studio Form, building production-grade multilingual voice agent systems.",
         h1: "Pranjal Rai — CEO & Co-founder",
         article: `
             <h2>About Pranjal Rai</h2>
-            <p>Pranjal Rai is the Co-founder and CEO of Studio Form. He has pioneered conversational AI design in India, leading the development of India's first production-grade multilingual voice agent stack. With a background in business strategy and artificial intelligence, Pranjal leads Studio Form's vision to make enterprises AI-native. He is a frequent speaker at AI/ML summits and a mentor to early-stage builders.</p>
+            <p>Pranjal Rai is the Co-founder and CEO of Studio Form. He focuses on conversational AI design in India, leading the development of production-grade multilingual voice agent systems. With a background in business strategy and artificial intelligence, Pranjal leads Studio Form's vision to make enterprises AI-native and advises early-stage software builders.</p>
             
             <h2>Expertise &amp; Skills</h2>
             <p>Pranjal's technical and operational expertise spans conversational AI system design, enterprise go-to-market strategy, product localization, Indic dialect training architectures, and partner integrations.</p>
@@ -1003,7 +1003,7 @@ const SEO_CONFIG = {
                 "https://www.linkedin.com/company/studioform",
                 "https://github.com/studioform"
             ],
-            "description": "Co-founder and CEO of Studio Form, building India's first multilingual voice agent stack.",
+            "description": "Co-founder and CEO of Studio Form, building production-grade multilingual voice agent systems.",
             "knowsAbout": ["Artificial Intelligence", "Voice Agents", "Conversational AI", "SaaS Go-To-Market"]
         }
     },
@@ -1013,7 +1013,7 @@ const SEO_CONFIG = {
         h1: "Sarthak Choukse — CTO & Co-founder",
         article: `
             <h2>About Sarthak Choukse</h2>
-            <p>Sarthak Choukse is the Co-founder and CTO of Studio Form, specializing in low-latency speech pipelines, telephony networks, and domain LLM adaptation. Sarthak has engineered speech recognition (ASR) and text-to-speech (TTS) systems that process over 10 million call minutes monthly. Prior to Studio Form, he worked on SIP packet routing systems and distributed GPU training frameworks, enabling real-time turn-taking optimizations under 800ms.</p>
+            <p>Sarthak Choukse is the Co-founder and CTO of Studio Form, specializing in low-latency speech pipelines, telephony networks, and domain LLM adaptation. Sarthak has engineered speech recognition (ASR) and text-to-speech (TTS) systems for high-volume voice operations. Prior to Studio Form, he worked on SIP packet routing systems and distributed GPU training frameworks, enabling real-time turn-taking optimizations for low-latency voice interactions.</p>
             
             <h2>Expertise &amp; Skills</h2>
             <p>Sarthak's expertise includes automatic speech recognition (ASR), speech synthesis (TTS), SIP protocol trunking, network latency optimizations, and supervised fine-tuning of open foundation LLMs.</p>
@@ -1068,21 +1068,21 @@ const SEO_CONFIG = {
         }
     },
     "/blog/how-we-achieve-sub-800ms-conversational-latency-in-enterprise-voice-agents": {
-        title: "How we achieve sub-800ms conversational latency in enterprise voice agents | Studio Form",
-        description: "Read how Studio Form CTO Sarthak Choukse achieves sub-800ms turn-taking latency in voice AI systems via streaming ASR, parallel LLM token parsing, and raw SIP edge trunks.",
-        h1: "How We Achieve Sub-800ms Conversational Latency in Enterprise Voice Agents",
+        title: "How we optimize conversational latency in enterprise voice agents | Studio Form",
+        description: "Read how Studio Form CTO Sarthak Choukse optimizes turn-taking latency in voice AI systems via streaming ASR, parallel LLM token parsing, and raw SIP edge trunks.",
+        h1: "How We Optimize Conversational Latency in Enterprise Voice Agents",
         article: `
             <h2>The Challenge of Voice Latency</h2>
-            <p>Achieving sub-800ms conversational turn-taking latency is the holy grail of voice AI. When latency exceeds 1.2 seconds, conversation feels unnatural, leading to overlap, barge-in failures, and poor customer satisfaction.</p>
+            <p>Achieving low conversational turn-taking latency is a key goal in voice AI. When latency exceeds 1.2 seconds, conversation feels unnatural, leading to overlap, barge-in failures, and poor customer satisfaction.</p>
             
             <h2>Streaming ASR and Chunk Size Optimization</h2>
-            <p>Traditional speech recognition processes audio in complete utterances, introducing delays. We stream audio packets in 80ms chunks directly to a sandboxed Whisper engine. By using speculative decoding on the stream, we transcribe words in real-time with sub-150ms latency.</p>
+            <p>Traditional speech recognition processes audio in complete utterances, introducing delays. We stream audio packets in 80ms chunks directly to a sandboxed Whisper engine. By using speculative decoding on the stream, we transcribe words in real-time with low latency.</p>
             
             <h2>Parallelized LLM Inference and Speculative Generation</h2>
-            <p>Instead of waiting for the full LLM completion, we stream the output token-by-token. Our orchestrator processes the first tokens immediately to kickstart the text-to-speech engine. By running custom domain adapters on lightweight weights (7B-8B), we achieve an LLM TTFT of under 180ms.</p>
+            <p>Instead of waiting for the full LLM completion, we stream the output token-by-token. Our orchestrator processes the first tokens immediately to kickstart the text-to-speech engine. By running custom domain adapters on lightweight weights (7B-8B), we achieve fast time-to-first-token (TTFT).</p>
             
             <h2>Direct Telephony Carrier Integration via SIP Trunks</h2>
-            <p>We avoid intermediate API aggregators by routing audio over dedicated SIP trunks. Connecting directly to Twilio Elastic SIP or Vonage Carrier networks eliminates network hop overheads, shaving off another 200ms of latency.</p>
+            <p>We avoid intermediate API aggregators by routing audio over dedicated SIP trunks. Connecting directly to Twilio Elastic SIP or Vonage Carrier networks eliminates network hop overheads, reducing overall voice latency.</p>
         `,
         schema: {
             "@context": "https://schema.org",
@@ -1102,7 +1102,7 @@ const SEO_CONFIG = {
     },
     "/blog/designing-domain-llms-for-telecom-finance-workflows": {
         title: "Designing domain LLMs for telecom/finance workflows | Studio Form",
-        description: "Read how Studio Form CEO Pranjal Rai designs domain-specific LLMs for telecom and finance, featuring custom data corpora, DPDP Act 2023 compliance, and VPC sandboxing.",
+        description: "Read how Studio Form CEO Pranjal Rai designs domain-specific LLMs for telecom and finance, featuring custom data corpora, DPDP Act 2023 alignment, and VPC sandboxing.",
         h1: "Designing Domain LLMs for Telecom/Finance Workflows",
         article: `
             <h2>Why Domain LLMs are Essential</h2>
@@ -1115,7 +1115,7 @@ const SEO_CONFIG = {
             <p>We initialize training on open base weights (Llama 3, Mistral) and perform task-specific fine-tuning. We then apply DPO using expert human feedback to align the model's tone and compliance boundaries with industry standards.</p>
             
             <h2>Enforcing Data Security and Compliance</h2>
-            <p>Unlike public API endpoints, our domain models deploy inside secure, sandboxed client VPCs or on-premise GPU nodes. This ensures that no customer transaction logs or prompt histories leave the company perimeter, complying with India's DPDP Act of 2023.</p>
+            <p>Unlike public API endpoints, our domain models deploy inside secure, sandboxed client VPCs or on-premise GPU nodes. This ensures that no customer transaction logs or prompt histories leave the company perimeter, supporting compliance guidelines under India's DPDP Act of 2023.</p>
         `,
         schema: {
             "@context": "https://schema.org",
