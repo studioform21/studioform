@@ -13,6 +13,7 @@ const BLOG_ARTICLES = {
         date: "Feb 8, 2026",
         readTime: "5 min read",
         author: "Studio Form Research",
+        description: "Explore OpenAI's GPT-5 reasoning bands, compute-budget scaling, and inference verification loops for enterprise agentic workflows.",
         keywords: "GPT-5 release, reasoning bands, o1 reasoning, OpenAI, LLM benchmarks, agentic workflows",
         body: [
             "OpenAI's latest release introduces 'Reasoning Bands'—allowing developers to configure the amount of compute allocated to search and self-correction at inference time.",
@@ -25,16 +26,17 @@ const BLOG_ARTICLES = {
                 content: "Reasoning bands allow you to specify the maximum reasoning tokens. This prevents the agent from spending minutes correcting itself on trivial tasks while allowing high-compute budgets for complex mathematical or code evaluation checks."
             },
             {
-                title: "2. Strategic Impact on Agentic Workflows",
-                content: "For enterprise automation, this eliminates the need for expensive multi-turn validation loops in the agent orchestration code. The validation is now handled natively within the model container."
+                title: "2. How do reasoning bands impact agentic workflows?",
+                content: "For enterprise automation, this simplifies multi-turn validation loops in agent orchestration. Structured verification helps maintain consistency directly within model inference containers."
             }
         ],
         structuredData: {
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             "headline": "GPT-5 Launches with Reasoning Bands",
+            "description": "Explore OpenAI's GPT-5 reasoning bands, compute-budget scaling, and inference verification loops for enterprise agentic workflows.",
             "datePublished": "2026-02-08T00:00:00Z",
-            "author": { "@type": "Person", "name": "Studio Form Research" },
+            "author": { "@type": "Organization", "name": "Studio Form Research" },
             "publisher": { "@type": "Organization", "name": "Studio Form", "url": "https://www.studioform.app" }
         }
     },
@@ -43,12 +45,13 @@ const BLOG_ARTICLES = {
         tag: "Voice AI",
         date: "Jan 6, 2026",
         readTime: "8 min read",
-        author: "Sarthak, Voice Engineering",
+        author: "Sarthak Choukse, CTO",
+        description: "Engineering playbook for building Marathi and Indic dialect voice agents, covering code-mix ASR, latency optimization, and speech synthesis.",
         keywords: "Marathi voice agent, voice AI, Indic dialect, ASR, TTS, Studio Form voice, logistics voice bot",
         body: [
             "Creating conversational voice bots that sound natural to local regional speakers requires more than translating English text to Marathi. The system must account for regional dialects, code-mixed phrases (using English words within Marathi sentences), and custom background telephony noise.",
-            "Over the past 6 months, we have deployed voice agents across Maharashtra's logistics dispatch loops, automating delivery verifications for thousands of local drivers daily.",
-            "Here is our engineering playbook detailing how to achieve sub-second TTS latency while preserving accent authenticity."
+            "In regional logistics dispatch loops across Maharashtra, our voice agents assist with automating delivery verifications for local drivers.",
+            "Here is our engineering playbook detailing how to achieve low TTS latency while preserving accent authenticity."
         ],
         sections: [
             {
@@ -56,16 +59,17 @@ const BLOG_ARTICLES = {
                 content: "Drivers rarely speak formal book Marathi. They use colloquial expressions and mix in English terms like 'address', 'delivery location', and 'payment code'. Our custom ASR model uses code-mix token mapping to interpret sentences accurately."
             },
             {
-                title: "2. Reducing Latency below 800ms",
-                content: " टेलीफोनी systems demand speed. We stream media payloads from Twilio directly to our Whisper-based Indic parser, routing responses straight into our fast TTS node to keep conversational gaps natural."
+                title: "2. Optimizing Voice Pipeline Latency",
+                content: "Telephony systems demand speed. We stream media payloads from Twilio directly to our Whisper-based Indic parser, routing responses straight into fast TTS nodes to keep conversational gaps natural."
             }
         ],
         structuredData: {
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             "headline": "Building a Marathi Voice Agent: Playbook",
+            "description": "Engineering playbook for building Marathi and Indic dialect voice agents, covering code-mix ASR, latency optimization, and speech synthesis.",
             "datePublished": "2026-01-06T00:00:00Z",
-            "author": { "@type": "Person", "name": "Sarthak" },
+            "author": { "@type": "Person", "name": "Sarthak Choukse", "jobTitle": "CTO" },
             "publisher": { "@type": "Organization", "name": "Studio Form", "url": "https://www.studioform.app" }
         }
     },
@@ -74,29 +78,31 @@ const BLOG_ARTICLES = {
         tag: "India",
         date: "Jan 12, 2026",
         readTime: "6 min read",
-        author: "Compliance Operations",
+        author: "Studio Form Compliance",
+        description: "A practical BFSI compliance checklist for RBI's draft AI directives, covering on-premise data residency, model transparency, and governance.",
         keywords: "RBI AI guidelines, BFSI compliance, financial AI guardrails, secure banking LLM, finance automation",
         body: [
             "The Reserve Bank of India (RBI) recently issued draft directives detailing regulatory frameworks for artificial intelligence in banking, financial services, and insurance (BFSI) operations.",
             "The draft places significant emphasis on data security, bias audits, explainability of credit-scoring models, and the prevention of automated decisions without human oversight.",
-            "Here is a checklist of critical requirements that financial institutions must meet before deploying generative AI agents in production."
+            "Here is a checklist of critical requirements that financial institutions evaluate before deploying generative AI agents in production."
         ],
         sections: [
             {
                 title: "1. On-Premise Data Residence",
-                content: "All customer transaction files and prompt query logs must remain within local Indian geography. This mandates private VPC hosting or secure hybrid setups rather than public APIs."
+                content: "Data residency guidelines emphasize keeping customer transaction records and prompt query logs within local geography. This supports private VPC hosting or secure hybrid setups rather than public third-party endpoints."
             },
             {
                 title: "2. Explanations & Model Transparency",
-                content: "If an AI model assists in loan pre-qualification or risk scoring, a clear audit log of the weights and search nodes must be preserved to justify decisions to audit officers."
+                content: "If an AI model assists in loan pre-qualification or risk scoring, a clear audit log of the decision process can be preserved to support internal governance and audit reviews."
             }
         ],
         structuredData: {
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             "headline": "RBI's Draft AI Regulation: A Pragmatic BFSI Checklist",
+            "description": "A practical BFSI compliance checklist for RBI's draft AI directives, covering on-premise data residency, model transparency, and governance.",
             "datePublished": "2026-01-12T00:00:00Z",
-            "author": { "@type": "Person", "name": "Compliance Operations" },
+            "author": { "@type": "Organization", "name": "Studio Form" },
             "publisher": { "@type": "Organization", "name": "Studio Form", "url": "https://www.studioform.app" }
         }
     },
@@ -106,8 +112,9 @@ const BLOG_ARTICLES = {
         date: "Jul 21, 2026",
         readTime: "8 min read",
         author: "Studio Form Voice Engineering",
+        description: "Learn how to build a production-grade AI receptionist using Studio Form's voice agent platform — no engineering team, no dropped calls, rapid deployment.",
         keywords: "ai receptionist, voice AI, virtual receptionist, phone automation, ai phone answering, Studio Form, twilio voice agent, n8n voice agent",
-        callout: "Quick Summary (AI Overview Box): An AI receptionist is an automated voice AI agent that answers inbound phone calls 24/7, understands conversational intent, books appointments in your CRM/calendar, and escalates complex callers to live staff. Building a production-grade system requires low-latency speech synthesis (<500ms), reliable phone line connectivity, and deep calendar integration—capabilities provided natively by platforms like Studio Form.",
+        callout: "Quick Summary (AI Overview Box): An AI receptionist is an automated voice AI agent that answers inbound phone calls 24/7, understands conversational intent, books appointments in your CRM/calendar, and escalates complex callers to live staff. Building a production-grade system requires low-latency speech synthesis, reliable phone line connectivity, and deep calendar integration—capabilities provided natively by platforms like Studio Form.",
         body: [
             "If you've searched 'ai receptionist' recently, you've probably landed on two kinds of results: enterprise sales pages that never mention pricing, or DIY tutorials that ask you to wire together five different tools and hope nothing breaks at 2 AM when a real customer calls.",
             "Neither is a great option if you're a clinic, law firm, home services company, or growing SaaS business that just needs your phones answered — every time, correctly, without a human sitting by the line.",
@@ -133,7 +140,7 @@ const BLOG_ARTICLES = {
                     "Understand context (a returning patient vs. a new lead vs. a vendor)",
                     "Book, reschedule, or cancel appointments in your actual calendar system",
                     "Route urgent calls to a real human immediately with warm live transfers",
-                    "Speak naturally with low latency (<500ms), without robotic pauses",
+                    "Speak naturally with low latency, without robotic pauses",
                     "Log every call transcript and audio recording so your team has a record, not a guess"
                 ]
             },
@@ -173,9 +180,9 @@ const BLOG_ARTICLES = {
                 table: {
                     headers: ["Feature / Metric", "DIY (n8n / workflow tools)", "Studio Form Platform"],
                     rows: [
-                        ["Setup time", "Days to weeks of manual wiring", "2-3 days, guided setup"],
-                        ["Voice Latency", "High / Variable (1.2s - 2.5s)", "Ultra-low (<500ms)"],
-                        ["Reliability", "Depends on maintaining 5 connected APIs", "Enterprise 99.9% uptime SLA"],
+                        ["Setup time", "Days to weeks of manual wiring", "Rapid guided setup"],
+                        ["Voice Latency", "High / Variable (1.2s - 2.5s)", "Optimized low latency"],
+                        ["Reliability", "Depends on maintaining 5 connected APIs", "Monitored enterprise availability"],
                         ["Calendar / CRM Integration", "Manual, custom-built per tool", "Native integration out of the box"],
                         ["Escalation handling", "Custom logic you write yourself", "Built-in warm & cold live transfers"],
                         ["Ongoing maintenance", "You fix every break, update, and API change", "Fully managed by Studio Form team"]
@@ -198,7 +205,7 @@ const BLOG_ARTICLES = {
                     { q: "Is an AI receptionist the same as a chatbot?", a: "No. A chatbot handles text on a website. An AI receptionist is a voice agent that answers real phone calls, understands spoken conversation, and takes real actions like booking appointments." },
                     { q: "Can it sound natural instead of robotic?", a: "Yes — voice quality has advanced significantly. Platforms like Studio Form tune the agent's tone, pacing, and vocabulary to match your business rather than using a flat, generic voice." },
                     { q: "What happens if the AI can't answer a question?", a: "It escalates based on rules set during setup — transferring to a live team member, sending an SMS alert, or logging a callback request, rather than leaving the caller stuck." },
-                    { q: "How long does it take to go live?", a: "Unlike a hand-built workflow stack, which can take weeks of trial and error, a guided build with Studio Form is typically live within days." }
+                    { q: "How long does it take to go live?", a: "Unlike a hand-built workflow stack, which can take weeks of trial and error, a guided build with Studio Form is typically live rapidly." }
                 ]
             }
         ],
@@ -208,7 +215,7 @@ const BLOG_ARTICLES = {
                 {
                     "@type": "TechArticle",
                     "headline": "How to Build an AI Receptionist That Actually Works (Without Hiring an Engineering Team)",
-                    "description": "Learn how to build a production-grade AI receptionist using Studio Form's voice agent platform — no engineering team, no dropped calls, deployed in days.",
+                    "description": "Learn how to build a production-grade AI receptionist using Studio Form's voice agent platform — no engineering team, no dropped calls, rapid deployment.",
                     "datePublished": "2026-07-21T00:00:00Z",
                     "author": { "@type": "Organization", "name": "Studio Form Voice Engineering" },
                     "publisher": { "@type": "Organization", "name": "Studio Form", "url": "https://studioform.app" }
@@ -234,7 +241,7 @@ const BLOG_ARTICLES = {
                         {
                             "@type": "Question",
                             "name": "How long does it take to go live?",
-                            "acceptedAnswer": { "@type": "Answer", "text": "Unlike a hand-built workflow stack, which can take weeks of trial and error, a guided build with Studio Form is typically live within days." }
+                            "acceptedAnswer": { "@type": "Answer", "text": "Unlike a hand-built workflow stack, which can take weeks of trial and error, a guided build with Studio Form is typically live rapidly." }
                         }
                     ]
                 }
@@ -247,32 +254,34 @@ const BLOG_ARTICLES = {
         date: "Feb 15, 2026",
         readTime: "7 min read",
         author: "Sarthak Choukse, CTO",
+        description: "Technical guide on optimizing turn-taking latency in voice AI systems via streaming ASR, token parsing, and direct SIP carrier routing.",
         keywords: "low latency voice AI, voice agent performance, real-time ASR, streaming TTS, sub-800ms conversational turn-taking, SIP trunking optimization",
         body: [
-            "Achieving sub-800ms conversational turn-taking latency is the holy grail of voice AI. When latency exceeds 1.2 seconds, conversation feels unnatural, leading to overlap, barge-in failures, and poor customer satisfaction.",
-            "At Studio Form, we have re-engineered the standard voice pipeline. By replacing REST-based API handshakes with direct WebSockets, optimizing audio streaming, and fine-tuning model execution, we keep the turn gap strictly under 800ms on production lines.",
+            "Achieving low conversational turn-taking latency is a key goal in voice AI. When latency exceeds 1.2 seconds, conversation feels unnatural, leading to overlap, barge-in failures, and poor customer satisfaction.",
+            "At Studio Form, we have optimized the voice pipeline. By replacing REST-based API handshakes with direct WebSockets, streaming audio, and fine-tuning model execution, we keep turn gaps natural on production lines.",
             "Here is how our engineering team optimizes each phase of the voice pipeline from ASR to TTS."
         ],
         sections: [
             {
                 title: "1. Streaming ASR and Chunk Size Optimization",
-                content: "Traditional speech recognition processes audio in complete utterances, introducing delays. We stream audio packets in 80ms chunks directly to a sandboxed Whisper engine. By using speculative decoding on the stream, we transcribe words in real-time with sub-150ms latency."
+                content: "Traditional speech recognition processes audio in complete utterances, introducing delays. We stream audio packets in 80ms chunks directly to a sandboxed Whisper engine. By using speculative decoding on the stream, we transcribe words in real-time with low latency."
             },
             {
                 title: "2. Parallelized LLM Inference and Speculative Generation",
-                content: "Instead of waiting for the full LLM completion, we stream the output token-by-token. Our orchestrator processes the first tokens immediately to kickstart the text-to-speech engine. By running custom domain adapters on lightweight weights (7B-8B), we achieve an LLM TTFT of under 180ms."
+                content: "Instead of waiting for the full LLM completion, we stream the output token-by-token. Our orchestrator processes the first tokens immediately to kickstart the text-to-speech engine. By running custom domain adapters on lightweight weights (7B-8B), we achieve fast time-to-first-token (TTFT)."
             },
             {
                 title: "3. Direct Telephony Carrier Integration via SIP Trunks",
-                content: "We avoid intermediate API aggregators by routing audio over dedicated SIP trunks. Connecting directly to Twilio Elastic SIP or Vonage Carrier networks eliminates network hop overheads, shaving off another 200ms of latency."
+                content: "We avoid intermediate API aggregators by routing audio over dedicated SIP trunks. Connecting directly to Twilio Elastic SIP or Vonage Carrier networks eliminates network hop overheads, reducing overall voice latency."
             }
         ],
         structuredData: {
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             "headline": "How we achieve sub-800ms conversational latency in enterprise voice agents",
+            "description": "Technical guide on optimizing turn-taking latency in voice AI systems via streaming ASR, token parsing, and direct SIP carrier routing.",
             "datePublished": "2026-02-15T00:00:00Z",
-            "author": { "@type": "Person", "name": "Sarthak Choukse" },
+            "author": { "@type": "Person", "name": "Sarthak Choukse", "jobTitle": "CTO" },
             "publisher": { "@type": "Organization", "name": "Studio Form", "url": "https://www.studioform.app" }
         }
     },
@@ -282,10 +291,11 @@ const BLOG_ARTICLES = {
         date: "Feb 22, 2026",
         readTime: "8 min read",
         author: "Pranjal Rai, CEO",
+        description: "Blueprint for building domain-specific LLMs for telecom and finance, featuring custom data corpora, DPO alignment, and VPC sandboxing.",
         keywords: "domain LLM design, financial LLM, telecom LLM, Model fine-tuning, RAG architecture, DPDP Act 2023 compliance, LexBharat",
         body: [
             "Generic Large Language Models are highly capable but fail when confronted with industry-specific terminology. A telecom support agent needs to know what an 'HLR lookup failure' means, while a finance agent must comprehend tax law variations.",
-            "Studio Form designs domain-specific LLMs (such as LexBharat and FinSathi) that are trained on curated industry corpora. These models deliver higher accuracy, complete data residency compliance, and lower inference costs.",
+            "Studio Form designs domain-specific LLMs (such as LexBharat and FinSathi) that are trained on curated industry corpora. These models deliver higher accuracy, support privacy-conscious data residency requirements, and lower inference costs.",
             "Here is our blueprint for building and deploying secure domain LLMs for regulated enterprise sectors."
         ],
         sections: [
@@ -298,16 +308,17 @@ const BLOG_ARTICLES = {
                 content: "We initialize training on open base weights (Llama 3, Mistral) and perform task-specific fine-tuning. We then apply DPO using expert human feedback to align the model's tone and compliance boundaries with industry standards."
             },
             {
-                title: "3. Enforcing Data Security and Compliance",
-                content: "Unlike public API endpoints, our domain models deploy inside secure, sandboxed client VPCs or on-premise GPU nodes. This ensures that no customer transaction logs or prompt histories leave the company perimeter, complying with India's DPDP Act of 2023."
+                title: "3. Enforcing Data Security and Governance",
+                content: "Unlike public API endpoints, our domain models deploy inside secure, sandboxed client VPCs or on-premise GPU nodes. This ensures that no customer transaction logs or prompt histories leave the company perimeter, supporting compliance guidelines under India's DPDP Act of 2023."
             }
         ],
         structuredData: {
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             "headline": "Designing domain LLMs for telecom/finance workflows",
+            "description": "Blueprint for building domain-specific LLMs for telecom and finance, featuring custom data corpora, DPO alignment, and VPC sandboxing.",
             "datePublished": "2026-02-22T00:00:00Z",
-            "author": { "@type": "Person", "name": "Pranjal Rai" },
+            "author": { "@type": "Person", "name": "Pranjal Rai", "jobTitle": "CEO" },
             "publisher": { "@type": "Organization", "name": "Studio Form", "url": "https://www.studioform.app" }
         }
     }
@@ -369,7 +380,7 @@ export default function BlogPost() {
         <div>
             <SEOMeta
                 title={art.title}
-                description={art.body[0]}
+                description={art.description || art.body[0]}
                 keywords={art.keywords}
                 structuredData={art.structuredData}
             />
