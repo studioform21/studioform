@@ -82,9 +82,9 @@ export default function AIAutomation() {
             <PageHero command="studioform --automation" eyebrow="AI Automation" title="AI workflows." accent="Browse. Pick. Deploy.">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl">
                     <StatCounter value={25} suffix="+" label="Workflows" />
-                    <StatCounter value={120} suffix="+" label="Connected Tools" />
-                    <StatCounter value={48} suffix="hrs" label="Avg Deploy" />
-                    <StatCounter value={99.9} suffix="%" label="Uptime" />
+                    <StatCounter value="Multi" suffix="-App" label="Integrations" />
+                    <StatCounter value="Rapid" suffix="" label="Deployment" />
+                    <StatCounter value="SLA" suffix=" Backed" label="Runner Uptime" />
                 </div>
             </PageHero>
 

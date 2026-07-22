@@ -350,10 +350,10 @@ export default function TwilioAlternatives() {
             {/* Performance Stats Section */}
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <StatCounter value={45} suffix="%" label="Reduction in Average Handling Time" />
-                    <StatCounter value={92} suffix="%+" label="Customer Multilingual CSAT" />
-                    <StatCounter value={10} suffix="k+" label="Supported Parallel Calls" />
-                    <StatCounter value={99.97} suffix="%" label="Uptime SLA Guarantee" />
+                    <StatCounter value="High" suffix="" label="AHT Reduction" />
+                    <StatCounter value="High" suffix="" label="Multilingual CSAT" />
+                    <StatCounter value="Multi" suffix="-Trunk" label="SIP Telephony" />
+                    <StatCounter value="SLA" suffix=" Backed" label="Service Uptime" />
                 </div>
             </section>
 

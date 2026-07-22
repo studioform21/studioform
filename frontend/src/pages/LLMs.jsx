@@ -66,10 +66,10 @@ export default function LLMs() {
             />
             <PageHero command="studioform --llms" eyebrow="Domain LLMs" title="Models that actually" accent="know your industry." subtitle="Generic LLMs don't speak aviation, healthcare, or Indian law. Ours do.">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl">
-                    <StatCounter value={4} suffix="+" label="Custom Models" />
-                    <StatCounter value={4} suffix="+" label="Domains" />
-                    <StatCounter value={80} suffix="M+" label="Training Tokens" />
-                    <StatCounter value={92} suffix="%" label="Eval Win Rate" />
+                    <StatCounter value={4} suffix="" label="Custom Models" />
+                    <StatCounter value={4} suffix="" label="Active Domains" />
+                    <StatCounter value="Custom" suffix="" label="Fine-Tuning" />
+                    <StatCounter value="High" suffix="" label="Eval Win Rate" />
                 </div>
             </PageHero>
 

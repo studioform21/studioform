@@ -64,8 +64,8 @@ export default function RagChatbots() {
                 subtitle="We build custom Retrieval-Augmented Generation (RAG) chatbots that talk to your PDFs, docs, Notion, and databases with absolute accuracy, zero hallucinations, and strict permission compliance."
                 stats={[
                     { value: 10, suffix: "+", label: "RAG Deployments" },
-                    { value: 99.4, suffix: "%", label: "Extraction Precision" },
-                    { value: 200, suffix: " ms", label: "Avg Latency" },
+                    { value: "High", suffix: "", label: "Visual Precision" },
+                    { value: "Sub-Sec", suffix: "", label: "Query Latency" },
                     { value: 25, suffix: "+", label: "Document Formats" },
                 ]}
                 sectionCmd="studioform --rag-stack"

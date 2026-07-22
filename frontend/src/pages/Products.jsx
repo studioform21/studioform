@@ -62,10 +62,10 @@ export default function Products() {
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 <SectionHeader command="studioform --metrics" title="Platform" accentInTitle="metrics." />
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div className="glass-card p-5"><StatCounter value={260} suffix="+" label="Deployments" /></div>
-                    <div className="glass-card p-5"><StatCounter value={12} suffix="+" label="Industries" /></div>
-                    <div className="glass-card p-5"><StatCounter value={2} suffix=" wks" label="Avg Deploy" /></div>
-                    <div className="glass-card p-5"><StatCounter value={99.97} decimals={2} suffix="%" label="Uptime" /></div>
+                    <div className="glass-card p-5"><StatCounter value={15} suffix="+" label="Pilot Projects" /></div>
+                    <div className="glass-card p-5"><StatCounter value={4} suffix="" label="Active Domains" /></div>
+                    <div className="glass-card p-5"><StatCounter value="Rapid" suffix="" label="Deployment" /></div>
+                    <div className="glass-card p-5"><StatCounter value="SLA" suffix=" Target" label="Runner Uptime" /></div>
                 </div>
             </section>
 

@@ -68,14 +68,14 @@ export default function ClaudeSkills() {
             <GenericOffering
                 command="studioform --claude-skills"
                 eyebrow="Claude Skills"
-                title="100+ enterprise"
+                title="Custom enterprise"
                 accent="skill packs."
                 subtitle="Custom skill packs for Claude — wired into your data, tools, and policies."
                 stats={[
-                    { value: 100, suffix: "+", label: "Skills" },
-                    { value: 12, suffix: "+", label: "Domains" },
-                    { value: 24, suffix: "/7", label: "Support" },
-                    { value: 99.9, decimals: 1, suffix: "%", label: "Uptime" },
+                    { value: "Custom", suffix: "", label: "Skill Packs" },
+                    { value: 4, suffix: "", label: "Active Domains" },
+                    { value: "Direct", suffix: "", label: "Support" },
+                    { value: "SLA", suffix: " Target", label: "Runtime Uptime" },
                 ]}
                 sectionCmd="studioform --packs"
                 sectionTitle="Featured" sectionAccent="packs."

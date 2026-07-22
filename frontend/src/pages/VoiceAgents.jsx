@@ -108,10 +108,10 @@ export default function VoiceAgents() {
             />
             <PageHero command="studioform --voice" eyebrow="Voice AI" title="Custom multilingual" accent="voice agents." subtitle="Inbound, outbound, and bilingual conversational voice agents built for your scale.">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl">
-                    <StatCounter value={5} suffix="+" label="Active Pilots" />
-                    <StatCounter value={3} suffix="+" label="Languages" />
-                    <StatCounter value={99.9} suffix="%" label="Telephony Uptime" />
-                    <StatCounter value={800} suffix="ms" label="Avg Latency" />
+                    <StatCounter value={5} suffix="" label="Active Pilots" />
+                    <StatCounter value={3} suffix="" label="Languages" />
+                    <StatCounter value="SLA" suffix=" Target" label="Telephony Uptime" />
+                    <StatCounter value="Low" suffix="" label="Turn Latency" />
                 </div>
             </PageHero>
 

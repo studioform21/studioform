@@ -366,10 +366,10 @@ async def get_stats():
         "dialects": 5,
         "industries": 4,
         "models": 4,
-        "uptime": 99.97,
+        "uptime": "SLA Backed",
         "agents_active": 5,
-        "calls_processed_m": 0.01,
-        "avg_response_s": 0.8,
+        "calls_processed": "Pilot Stage",
+        "avg_response": "Low Latency",
     }
 
 

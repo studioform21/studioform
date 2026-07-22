@@ -46,10 +46,10 @@ export default function DataCenters() {
         <div>
             <PageHero command="studioform --infra" eyebrow="AI Data Centers" title="GPU infrastructure," accent="built for AI." subtitle="From a single H200 to a 256-GPU training cluster — deployed in 48 hours.">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl">
-                    <div className="glass-card p-4"><StatCounter value={48} suffix="h" label="Deploy Time" /></div>
-                    <div className="glass-card p-4"><StatCounter value={60} suffix="%" label="Cost Reduction" /></div>
-                    <div className="glass-card p-4"><StatCounter value={100} suffix="%" label="Sovereignty" /></div>
-                    <div className="glass-card p-4"><StatCounter value={99.99} decimals={2} suffix="%" label="Uptime SLA" /></div>
+                    <div className="glass-card p-4"><StatCounter value="Rapid" suffix="" label="Deploy Time" /></div>
+                    <div className="glass-card p-4"><StatCounter value="High" suffix="" label="Efficiency" /></div>
+                    <div className="glass-card p-4"><StatCounter value="Private" suffix="" label="Data Hosting" /></div>
+                    <div className="glass-card p-4"><StatCounter value="SLA" suffix=" Target" label="Uptime SLA" /></div>
                 </div>
             </PageHero>
 

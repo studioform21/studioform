@@ -161,7 +161,7 @@ export default function Home() {
                 structuredData={HOME_STRUCTURED_DATA}
                 faqs={[
                     { q: "What AI services does Studio Form provide?", a: "Studio Form builds autonomous AI voice agents for call centers, private domain LLMs, layout-aware RAG chatbots, and enterprise automation workflows." },
-                    { q: "What is the typical deployment latency for AI Voice Agents?", a: "Our AI Voice Agents achieve conversational latency under 800ms on Twilio, Vonage, and SIP trunks with 99.97% service uptime." },
+                    { q: "What is the typical deployment latency for AI Voice Agents?", a: "Our AI Voice Agents achieve low conversational latency on Twilio, Vonage, and SIP trunks with SLA-backed service uptime." },
                     { q: "Is Studio Form compliant with data privacy laws?", a: "Yes, Studio Form platforms are fully compliant with India's Digital Personal Data Protection (DPDP) Act of 2023 and feature private VPC deployment modes." }
                 ]}
             />
@@ -297,12 +297,12 @@ export default function Home() {
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
                 <SectionHeader command="studioform --health-check" title="Studio Form" accentInTitle="Command Center" subtitle="Live, animated counters from across the platform." />
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                    <div className="glass-card p-5"><StatCounter value={200} label="AI Agents Active" /></div>
-                    <div className="glass-card p-5"><StatCounter value={1} suffix="M+" label="Voice Calls" /></div>
+                    <div className="glass-card p-5"><StatCounter value={5} label="AI Agents Active" /></div>
+                    <div className="glass-card p-5"><StatCounter value={5000} suffix="+" label="Pilot Calls" /></div>
                     <div className="glass-card p-5"><StatCounter value={4} label="Models in Prod" /></div>
-                    <div className="glass-card p-5"><StatCounter value={99.97} decimals={2} suffix="%" label="Uptime" /></div>
-                    <div className="glass-card p-5"><StatCounter value={0.42} decimals={2} suffix="s" label="Avg Response" /></div>
-                    <div className="glass-card p-5"><StatCounter value={12} suffix="+" label="Industries" /></div>
+                    <div className="glass-card p-5"><StatCounter value="SLA" suffix=" Target" label="System Uptime" /></div>
+                    <div className="glass-card p-5"><StatCounter value={0.8} decimals={1} suffix="s" label="Turn Latency" /></div>
+                    <div className="glass-card p-5"><StatCounter value={4} label="Active Domains" /></div>
                 </div>
                 <div className="mt-6 font-mono text-xs text-white/40 flex items-center gap-2">
                     <span className="pulse-dot" /> $ studioform --health-check &nbsp;→&nbsp; All systems operational. Last checked: just now.

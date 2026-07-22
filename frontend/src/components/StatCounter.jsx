@@ -4,22 +4,26 @@ import { motion, useInView } from "framer-motion";
 export default function StatCounter({ value, suffix = "", prefix = "", label, decimals = 0, duration = 1400, testid }) {
     const ref = useRef(null);
     const inView = useInView(ref, { once: true, margin: "-40px" });
+    const isNumeric = typeof value === 'number' || !isNaN(parseFloat(value));
+    const numericValue = isNumeric ? parseFloat(value) : 0;
     const [n, setN] = useState(0);
 
     useEffect(() => {
-        if (!inView) return;
+        if (!inView || !isNumeric) return;
         let start = null;
         const animate = (ts) => {
             if (!start) start = ts;
             const p = Math.min((ts - start) / duration, 1);
             const eased = 1 - Math.pow(1 - p, 3);
-            setN(value * eased);
+            setN(numericValue * eased);
             if (p < 1) requestAnimationFrame(animate);
         };
         requestAnimationFrame(animate);
-    }, [inView, value, duration]);
+    }, [inView, numericValue, duration, isNumeric]);
 
-    const formatted = decimals > 0 ? n.toFixed(decimals) : Math.floor(n).toLocaleString();
+    const formatted = isNumeric 
+        ? (decimals > 0 ? n.toFixed(decimals) : Math.floor(n).toLocaleString())
+        : value;
 
     return (
         <div ref={ref} className="flex flex-col" data-testid={testid}>
