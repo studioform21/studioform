@@ -5,6 +5,7 @@ import CTASection from "@/components/CTASection";
 import SectionHeader from "@/components/SectionHeader";
 import SEOMeta from "@/components/SEOMeta";
 import { stagger } from "@/lib/anim";
+import AutomaticLinker from "@/lib/linker";
 
 const ABOUT_STRUCTURED_DATA = {
     "@context": "https://schema.org",
@@ -57,12 +58,12 @@ export default function About() {
                 <div className="glass-card p-6">
                     <div className="font-mono text-xs text-brand-orange uppercase">Mission</div>
                     <div className="mt-3 font-display text-2xl font-bold">Make AI useful for every business that powers India.</div>
-                    <p className="mt-3 text-sm text-white/65 leading-relaxed">From the dhaba on the highway to the bank in Mumbai — we believe enterprise-grade AI shouldn't be reserved for the Fortune 500. Studio Form exists to put deployable AI in the hands of operators who actually need it.</p>
+                    <p className="mt-3 text-sm text-white/65 leading-relaxed"><AutomaticLinker>From the dhaba on the highway to the bank in Mumbai — we believe enterprise-grade AI shouldn't be reserved for the Fortune 500. Studio Form exists to put deployable AI in the hands of operators who actually need it.</AutomaticLinker></p>
                 </div>
                 <div className="glass-card p-6">
                     <div className="font-mono text-xs text-brand-orange uppercase">Vision</div>
                     <div className="mt-3 font-display text-2xl font-bold">A world where every operator has an AI co-builder.</div>
-                    <p className="mt-3 text-sm text-white/65 leading-relaxed">We see the next decade as a Cambrian explosion of agents — calling, scheduling, deciding, and helping. Our job is to make sure that explosion is grounded, governed, and useful.</p>
+                    <p className="mt-3 text-sm text-white/65 leading-relaxed"><AutomaticLinker>We see the next decade as a Cambrian explosion of agents — calling, scheduling, deciding, and helping. Our job is to make sure that explosion is grounded, governed, and useful.</AutomaticLinker></p>
                 </div>
             </section>
 
@@ -74,7 +75,7 @@ export default function About() {
                             <span className="absolute -left-[33px] top-1 w-3 h-3 rounded-full bg-brand-orange ring-4 ring-[#0A0A0A]" />
                             <div className="font-mono text-xs text-brand-orange">{t.year}</div>
                             <div className="mt-1 font-display text-xl font-bold">{t.title}</div>
-                            <div className="mt-1 text-sm text-white/60 max-w-2xl">{t.body}</div>
+                            <div className="mt-1 text-sm text-white/60 max-w-2xl"><AutomaticLinker>{t.body}</AutomaticLinker></div>
                         </motion.div>
                     ))}
                 </div>
@@ -86,7 +87,7 @@ export default function About() {
                     {PHILOSOPHY.map(([t, b], i) => (
                         <motion.div key={t} {...stagger(i)} className="glass-card p-6">
                             <div className="font-display text-lg font-bold">{t}</div>
-                            <p className="mt-2 text-sm text-white/60">{b}</p>
+                            <p className="mt-2 text-sm text-white/60"><AutomaticLinker>{b}</AutomaticLinker></p>
                         </motion.div>
                     ))}
                 </div>

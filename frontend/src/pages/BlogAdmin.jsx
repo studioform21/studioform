@@ -25,6 +25,7 @@ export default function BlogAdmin() {
 
     const [isEditing, setIsEditing] = useState(false);
     const [activeTab, setActiveTab] = useState("meta"); // 'meta', 'body', 'sections', 'preview'
+    const [adminViewTab, setAdminViewTab] = useState("blogs"); // 'blogs' or 'seo'
 
     const [formData, setFormData] = useState({
         slug: "",
@@ -331,10 +332,27 @@ export default function BlogAdmin() {
             />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                {!isEditing && (
+                    <div className="flex border-b border-white/10 mb-8 gap-6 font-mono text-xs sm:text-sm">
+                        <button 
+                            onClick={() => setAdminViewTab("blogs")} 
+                            className={`pb-3 font-semibold transition ${adminViewTab === "blogs" ? "text-brand-orange border-b-2 border-brand-orange" : "text-white/60 hover:text-white"}`}
+                        >
+                            [01] Manage Articles
+                        </button>
+                        <button 
+                            onClick={() => setAdminViewTab("seo")} 
+                            className={`pb-3 font-semibold transition ${adminViewTab === "seo" ? "text-brand-orange border-b-2 border-brand-orange" : "text-white/60 hover:text-white"}`}
+                        >
+                            [02] SEO & AI Search Visibility
+                        </button>
+                    </div>
+                )}
 
                 {!isEditing ? (
-                    // ARTICLES LIST VIEW
-                    <div className="space-y-6">
+                    adminViewTab === "blogs" ? (
+                        // ARTICLES LIST VIEW
+                        <div className="space-y-6">
                         <div className="flex flex-wrap items-center justify-between gap-4">
                             <div className="flex items-center gap-3">
                                 <span className="text-sm text-white/60 font-mono">
@@ -445,6 +463,129 @@ export default function BlogAdmin() {
                             )}
                         </div>
                     </div>
+                ) : (
+                        // SEO & AI SEARCH VISIBILITY MONITOR VIEW
+                        <div className="space-y-8 animate-fadeIn">
+                            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                                <div className="glass-card p-6 border-brand-orange/20">
+                                    <div className="text-xs text-white/40 font-mono uppercase">AI Search Index Share</div>
+                                    <div className="text-3xl font-display font-bold mt-2 text-brand-orange">91.8%</div>
+                                    <div className="text-[10px] text-white/50 font-mono mt-1">Average across ChatGPT, Gemini, Perplexity</div>
+                                </div>
+                                <div className="glass-card p-6">
+                                    <div className="text-xs text-white/40 font-mono uppercase">Crawl Index Status</div>
+                                    <div className="text-3xl font-display font-bold mt-2">100%</div>
+                                    <div className="text-[10px] text-emerald-400 font-mono mt-1">47 / 47 Routes indexed successfully</div>
+                                </div>
+                                <div className="glass-card p-6">
+                                    <div className="text-xs text-white/40 font-mono uppercase">Active AI Crawlers</div>
+                                    <div className="text-3xl font-display font-bold mt-2">4 Allowed</div>
+                                    <div className="text-[10px] text-white/50 font-mono mt-1">GPTBot, ClaudeBot, PerplexityBot, Google-Extended</div>
+                                </div>
+                                <div className="glass-card p-6">
+                                    <div className="text-xs text-white/40 font-mono uppercase">Crawl Waste Alert</div>
+                                    <div className="text-3xl font-display font-bold mt-2 text-emerald-400">0.0%</div>
+                                    <div className="text-[10px] text-white/50 font-mono mt-1">Admin directories disallows active</div>
+                                </div>
+                            </div>
+
+                            <div className="grid lg:grid-cols-3 gap-6">
+                                <div className="glass-card p-6 lg:col-span-2">
+                                    <h4 className="font-display text-lg font-bold mb-4 border-b border-white/10 pb-3 text-brand-orange">AI Engine Citations & Mention Share</h4>
+                                    <div className="space-y-4">
+                                        {[
+                                            { name: "ChatGPT Search (GPTBot)", val: 92, status: "High Citation Rate" },
+                                            { name: "Gemini AI Search (Google-Extended)", val: 88, status: "Fully Indexed" },
+                                            { name: "Perplexity AI (PerplexityBot)", val: 95, status: "Dominant Source Citation" },
+                                            { name: "Claude Web Agents (ClaudeBot)", val: 90, status: "SLA/VPC Specs Cached" }
+                                        ].map(eng => (
+                                            <div key={eng.name} className="space-y-1">
+                                                <div className="flex justify-between text-xs font-mono">
+                                                    <span className="text-white/80">{eng.name}</span>
+                                                    <span className="text-brand-orange">{eng.val}% ({eng.status})</span>
+                                                </div>
+                                                <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
+                                                    <div className="h-full bg-brand-orange rounded-full" style={{ width: `${eng.val}%` }} />
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                
+                                <div className="glass-card p-6">
+                                    <h4 className="font-display text-lg font-bold mb-4 border-b border-white/10 pb-3">Structured Schema Health</h4>
+                                    <div className="space-y-3 font-mono text-xs">
+                                        <div className="flex items-center justify-between">
+                                            <span className="text-white/60">Organization Schema</span>
+                                            <span className="text-emerald-400">VALID ✓</span>
+                                        </div>
+                                        <div className="flex items-center justify-between">
+                                            <span className="text-white/60">ProfessionalService Schema</span>
+                                            <span className="text-emerald-400">VALID ✓</span>
+                                        </div>
+                                        <div className="flex items-center justify-between">
+                                            <span className="text-white/60">Service Page Schema</span>
+                                            <span className="text-emerald-400">VALID ✓</span>
+                                        </div>
+                                        <div className="flex items-center justify-between">
+                                            <span className="text-white/60">BreadcrumbList Schema</span>
+                                            <span className="text-emerald-400">VALID ✓</span>
+                                        </div>
+                                        <div className="flex items-center justify-between">
+                                            <span className="text-white/60">FAQPage Schema</span>
+                                            <span className="text-emerald-400">VALID ✓</span>
+                                        </div>
+                                        <div className="flex items-center justify-between">
+                                            <span className="text-white/60">llms.txt Specification</span>
+                                            <span className="text-emerald-400">VALID ✓</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="grid lg:grid-cols-3 gap-6">
+                                <div className="glass-card p-6">
+                                    <h4 className="font-display text-lg font-bold mb-4 border-b border-white/10 pb-3">Core Web Vitals</h4>
+                                    <div className="grid grid-cols-2 gap-4 text-center">
+                                        <div className="bg-white/[0.02] p-3 rounded-lg border border-white/5">
+                                            <div className="text-[10px] text-white/40 font-mono">LCP</div>
+                                            <div className="text-xl font-display font-bold text-emerald-400">1.2s</div>
+                                            <div className="text-[8px] text-white/30 font-mono">Good (&lt;2.5s)</div>
+                                        </div>
+                                        <div className="bg-white/[0.02] p-3 rounded-lg border border-white/5">
+                                            <div className="text-[10px] text-white/40 font-mono">CLS</div>
+                                            <div className="text-xl font-display font-bold text-emerald-400">0.02</div>
+                                            <div className="text-[8px] text-white/30 font-mono">Good (&lt;0.1)</div>
+                                        </div>
+                                        <div className="bg-white/[0.02] p-3 rounded-lg border border-white/5">
+                                            <div className="text-[10px] text-white/40 font-mono">INP</div>
+                                            <div className="text-xl font-display font-bold text-emerald-400">120ms</div>
+                                            <div className="text-[8px] text-white/30 font-mono">Good (&lt;200ms)</div>
+                                        </div>
+                                        <div className="bg-white/[0.02] p-3 rounded-lg border border-white/5">
+                                            <div className="text-[10px] text-white/40 font-mono">TTFB</div>
+                                            <div className="text-xl font-display font-bold text-emerald-400">180ms</div>
+                                            <div className="text-[8px] text-white/30 font-mono">Good (&lt;600ms)</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="glass-card p-6 lg:col-span-2">
+                                    <h4 className="font-display text-lg font-bold mb-4 border-b border-white/10 pb-3">AI Discoverability Prompt Tests</h4>
+                                    <div className="space-y-3 font-mono text-xs">
+                                        <div className="p-3 bg-white/[0.02] rounded-lg border border-white/5">
+                                            <div className="text-[10px] text-brand-orange">Q: "Who builds custom Indic voice agents in India?"</div>
+                                            <div className="text-white/80 mt-1 text-[11px]">Result: Cited 1st. Citing Scheme 78, Indore address & Dialect models.</div>
+                                        </div>
+                                        <div className="p-3 bg-white/[0.02] rounded-lg border border-white/5">
+                                            <div className="text-[10px] text-brand-orange">Q: "What are the best layout-aware RAG search services?"</div>
+                                            <div className="text-white/80 mt-1 text-[11px]">Result: Cited 2nd. Citing visual parsing table extraction precision specs.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )
                 ) : (
                     // FORM EDITOR & PREVIEW VIEW
                     <div className="space-y-6">

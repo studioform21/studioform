@@ -72,28 +72,44 @@ const today = new Date().toISOString().split("T")[0];
 let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
 xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
 
-const addUrl = (route, lastmod = today) => {
+const addUrl = (route, lastmod = today, changefreq = "weekly", priority = "0.7") => {
     const routeUrl = route ? `${siteUrl}/${route}` : `${siteUrl}/`;
     xml += `  <url>\n`;
     xml += `    <loc>${routeUrl}</loc>\n`;
     xml += `    <lastmod>${lastmod}</lastmod>\n`;
+    xml += `    <changefreq>${changefreq}</changefreq>\n`;
+    xml += `    <priority>${priority}</priority>\n`;
     xml += `  </url>\n`;
 };
 
 // Static routes
-STATIC_ROUTES.forEach(r => addUrl(r));
+STATIC_ROUTES.forEach(r => {
+    let freq = "weekly";
+    let pri = "0.6";
+    if (r === "") {
+        freq = "daily";
+        pri = "1.0";
+    } else if (r === "pricing" || r === "case-studies" || r === "blog") {
+        freq = "daily";
+        pri = "0.8";
+    } else if (["privacy", "terms", "refund", "shipping", "cancellation", "accessibility"].includes(r)) {
+        freq = "monthly";
+        pri = "0.3";
+    }
+    addUrl(r, today, freq, pri);
+});
 
 // Services
-SERVICES.forEach(s => addUrl(`services/${s}`));
+SERVICES.forEach(s => addUrl(`services/${s}`, today, "weekly", "0.9"));
 
 // Industries
-INDUSTRIES.forEach(i => addUrl(`industries/${i}`));
+INDUSTRIES.forEach(i => addUrl(`industries/${i}`, today, "weekly", "0.8"));
 
 // Case studies
-CASE_STUDIES.forEach(c => addUrl(`case-studies/${c}`));
+CASE_STUDIES.forEach(c => addUrl(`case-studies/${c}`, today, "weekly", "0.8"));
 
 // Resources
-RESOURCES.forEach(res => addUrl(`resources/${res}`));
+RESOURCES.forEach(res => addUrl(`resources/${res}`, today, "weekly", "0.7"));
 
 // Blogs (only AI News, with their specific publication dates)
 BLOGS.forEach(b => {
@@ -107,7 +123,7 @@ BLOGS.forEach(b => {
     } else if (b === "rbi-ai-regulation") {
         date = "2026-01-12";
     }
-    addUrl(`ai-news/${b}`, date);
+    addUrl(`ai-news/${b}`, date, "monthly", "0.7");
 });
 
 xml += `</urlset>\n`;
