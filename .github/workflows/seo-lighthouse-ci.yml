@@ -21,18 +21,18 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: 18
-        cache: 'npm'
-        cache-dependency-path: frontend/package.json
+        cache: 'yarn'
+        cache-dependency-path: frontend/yarn.lock
 
     - name: Install Frontend Dependencies
       run: |
         cd frontend
-        npm ci
+        yarn install --frozen-lockfile
 
     - name: Build and Prerender Site
       run: |
         cd frontend
-        npm run build
+        yarn build
 
     - name: Run Schema, Sitemap, and Canonical Validations
       run: |
