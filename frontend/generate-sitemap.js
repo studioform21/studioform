@@ -129,6 +129,7 @@ BLOGS.forEach(b => {
         date = "2026-01-12";
     }
     addUrl(`ai-news/${b}`, date, "monthly", "0.7");
+    addUrl(`blog/${b}`, date, "monthly", "0.7");
 });
 
 // Leaders
