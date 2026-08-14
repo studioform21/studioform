@@ -5,6 +5,7 @@ import CTASection from "@/components/CTASection";
 import SEOMeta from "@/components/SEOMeta";
 import { ArrowLeft, Clock, User, Share2, BookOpen } from "lucide-react";
 import { toast } from "sonner";
+import { API } from "@/lib/api";
 
 const BLOG_ARTICLES = {
     "gpt-5-reasoning-bands": {
@@ -332,7 +333,7 @@ export default function BlogPost() {
     useEffect(() => {
         let isMounted = true;
         setLoading(true);
-        fetch(`/api/blogs/${slug}`)
+        fetch(`${API}/blogs/${slug}`)
             .then(res => {
                 if (res.ok && res.headers.get("content-type")?.includes("application/json")) {
                     return res.json();

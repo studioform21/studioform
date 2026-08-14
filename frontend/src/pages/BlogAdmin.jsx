@@ -8,6 +8,7 @@ import {
     ArrowLeft, FileText, Layout, Layers, HelpCircle, Table, Share2, Clock, User
 } from "lucide-react";
 import { toast } from "sonner";
+import { API } from "@/lib/api";
 
 const DEFAULT_AUTH_PASS = "admin@1234";
 
@@ -58,7 +59,7 @@ export default function BlogAdmin() {
     const fetchBlogs = async () => {
         setLoading(true);
         try {
-            const res = await fetch("/api/blogs");
+            const res = await fetch(`${API}/blogs`);
             if (res.ok) {
                 const contentType = res.headers.get("content-type");
                 if (contentType && contentType.includes("application/json")) {
@@ -138,7 +139,7 @@ export default function BlogAdmin() {
         if (!window.confirm(`Are you sure you want to delete article '${slug}'?`)) return;
 
         try {
-            const res = await fetch(`/api/blogs/${slug}?password=${DEFAULT_AUTH_PASS}`, {
+            const res = await fetch(`${API}/blogs/${slug}?password=${DEFAULT_AUTH_PASS}`, {
                 method: "DELETE"
             });
             const data = await res.json();
@@ -161,7 +162,7 @@ export default function BlogAdmin() {
         }
 
         try {
-            const res = await fetch("/api/blogs", {
+            const res = await fetch(`${API}/blogs`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

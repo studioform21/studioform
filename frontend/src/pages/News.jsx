@@ -5,6 +5,7 @@ import PageHero from "@/components/PageHero";
 import CTASection from "@/components/CTASection";
 import SEOMeta from "@/components/SEOMeta";
 import { stagger } from "@/lib/anim";
+import { API } from "@/lib/api";
 
 const NEWS_STRUCTURED_DATA = {
     "@context": "https://schema.org",
@@ -40,7 +41,7 @@ export default function News() {
 
     useEffect(() => {
         let isMounted = true;
-        fetch("/api/blogs")
+        fetch(`${API}/blogs`)
             .then(res => {
                 if (res.ok && res.headers.get("content-type")?.includes("application/json")) {
                     return res.json();
