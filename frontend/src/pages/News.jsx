@@ -23,6 +23,7 @@ const NEWS_STRUCTURED_DATA = {
 const TAGS = ["All", "Breaking", "Tools", "India", "Voice", "LLMs", "Open Source"];
 
 const ARTICLES = [
+    { tag: "Tools", slug: "how-to-build-a-production-ready-ai-agent-architecture-tools-memory-and-deployment", title: "How to Build a Production-Ready AI Agent Architecture: Tools, Memory, and Deployment", date: "Aug 14, 2026", excerpt: "Comprehensive engineering guide to building production-grade AI agent architectures: stateful memory, structured tool execution, and deployment." },
     { tag: "Voice", slug: "ai-call-center-solutions", title: "AI Call Center Solutions: Platform Comparison Guide", date: "Jul 21, 2026", excerpt: "Compare enterprise CX suites, voice platforms like Bland & Retell, and Studio Form. A buyer scorecard for choosing AI call center software." },
     { tag: "Voice", slug: "how-to-build-ai-receptionist", title: "How to Build an AI Receptionist That Actually Works", date: "Jul 21, 2026", excerpt: "Learn how to build a production-grade AI receptionist in days — no engineering team, no dropped calls." },
     { tag: "Breaking", slug: "gpt-5-reasoning-bands", title: "GPT-5.2 launches with reasoning bands", date: "Feb 8, 2026", excerpt: "OpenAI's latest unlocks tunable reasoning depth — what it means for production agents." },

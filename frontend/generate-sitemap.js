@@ -65,7 +65,8 @@ const BLOGS = [
     "designing-domain-llms-for-telecom-finance-workflows",
     "gpt-5-reasoning-bands",
     "marathi-voice-agent-playbook",
-    "rbi-ai-regulation"
+    "rbi-ai-regulation",
+    "how-to-build-a-production-ready-ai-agent-architecture-tools-memory-and-deployment"
 ];
 
 const siteUrl = "https://studioform.app";
