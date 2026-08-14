@@ -133,14 +133,6 @@
       "destination": "/$1$2"
     },
     {
-      "source": "/(pricing|about|team|contact|ai-news|docs|changelog|privacy|terms|refund|shipping|cancellation|workshops|ai-university|case-studies|twilio-alternatives|blog-admin|admin|blog|accessibility)",
-      "destination": "/$1/index.html"
-    },
-    {
-      "source": "/(services|industries|case-studies|resources|ai-news|team)/:slug",
-      "destination": "/$1/:slug/index.html"
-    },
-    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
