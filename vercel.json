@@ -60,14 +60,6 @@
   ],
   "rewrites": [
     {
-      "source": "/blog/(.*)",
-      "destination": "/ai-news/$1"
-    },
-    {
-      "source": "/blog",
-      "destination": "/ai-news"
-    },
-    {
       "source": "/api/(.*)",
       "destination": "/api/index.py"
     },
