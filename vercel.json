@@ -64,6 +64,38 @@
       "destination": "/api/index.py"
     },
     {
+      "source": "/blog/(.*)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/ai-news/(.*)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/ai-news",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/services/(.*)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/industries/(.*)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/case-studies/(.*)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/resources/(.*)",
+      "destination": "/index.html"
+    },
+    {
       "source": "/b2b-marketing-email",
       "destination": "/b2b-marketing-email.html"
     },
